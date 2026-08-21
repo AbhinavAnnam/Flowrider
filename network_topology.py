@@ -25,7 +25,7 @@ def build_network_graph():
 
     ]
 
-    #STORE NETWROK METRICS INSIDE EDGE ATTRIBUTES
+    #STORE NETWORK METRICS INSIDE EDGE ATTRIBUTES
 
     for u, v,capacity,delay in links:
         G.add_edge(u,v,capacity=capacity,base_delay=delay,current_load=0,latency=delay)
