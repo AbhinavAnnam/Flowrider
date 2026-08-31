@@ -1,1 +1,18 @@
 flowrider-env/
+# Python cache & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+ENV/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Generated output files
+*.pdf
+*.html

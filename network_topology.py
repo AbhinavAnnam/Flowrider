@@ -34,21 +34,22 @@ def build_network_graph():
 
 def visualize_topology(G):
     """Draws a visual plot of the router network structure."""
-
-    pos=nx.spring_layout(G, seed=42)
-    plt.figure(figsize=(8,5))
-
+    pos = nx.spring_layout(G, seed=42)
+    plt.figure(figsize=(8, 5))
+    
     edge_labels = {
-        (u,v): f"{d['current_load']}/{d['capacity']} Mbps"
-        for u,v,d in G.edges(data=True)
+        (u, v): f"{d['current_load']}/{d['capacity']} Mbps" 
+        for u, v, d in G.edges(data=True)
     }
-
-
-    nx.draw_networkx_nodes(G,pos,node_color="#007ACC",node_size=1500)
-    nx.draw_networkx_labels(G,pos,font_color="white",font_weight="bold")
-    nx.draw_networkx_edges(G,pos,edge_color="#666666",width=2)
-    nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels,font_size=8)
-
+    
+    nx.draw_networkx_nodes(G, pos, node_color="#007ACC", node_size=1500)
+    
+    # Decreased node label font size to 8 (default was 12)
+    nx.draw_networkx_labels(G, pos, font_color="white", font_size=8, font_weight="bold")
+    
+    nx.draw_networkx_edges(G, pos, edge_color="#666666", width=2)
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
+    
     plt.title("FlowRider - Network Topology Map")
     plt.axis("off")
     plt.show()
