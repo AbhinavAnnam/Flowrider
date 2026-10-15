@@ -1,0 +1,88 @@
+FlowRider Phase 2 validation — 2026-10-15
+Verdict: PARTIALLY COMPLETE; live Mininet execution requires sudo.
+OS-Ken Python command:
+~/.pyenv/versions/3.10.16/bin/python -m unittest discover -s tests -v
+test_buffered_packet_out_does_not_include_data (test_controller.ControllerTests) ... ok
+test_disconnect_and_stale_connection_event (test_controller.ControllerTests) ... ok
+test_failure_deletes_owned_rules_and_waits_for_barriers (test_controller.ControllerTests) ... ok
+test_features_registers_and_serializes_table_miss (test_controller.ControllerTests) ... ok
+test_known_unicast_rule_and_packet_out (test_controller.ControllerTests) ... ok
+test_multipart_ports_are_not_activated_early (test_controller.ControllerTests) ... ok
+test_no_path_is_logged_then_recovers_after_restoration (test_controller.ControllerTests) ... ok
+test_off_path_unicast_and_wrong_tree_ingress_are_dropped (test_controller.ControllerTests) ... Unexpected host attachment: 00:00:00:00:00:01 on 2/1
+ok
+test_old_barrier_replies_do_not_release_new_update (test_controller.ControllerTests) ... ok
+test_port_delete_and_add_recover_configured_link (test_controller.ControllerTests) ... ok
+test_protocol_errors_are_logged_and_disable_forwarding (test_controller.ControllerTests) ... ok
+test_truncated_or_control_packets_do_not_install_routes (test_controller.ControllerTests) ... ok
+test_unknown_and_broadcast_do_not_use_flood_or_install_flows (test_controller.ControllerTests) ... ok
+test_unknown_switch_and_wrong_port_map_fail_closed (test_controller.ControllerTests) ... Unconfigured DPID 99; rejecting connection
+Invalid static wiring on DPID=1: expected ports [1, 2, 3], received [1]; forwarding disabled
+ok
+test_existing_bridge_is_rejected_before_any_network_creation (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_partial_startup_stops_only_owned_network (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_six_switches_hosts_and_exact_wiring (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_tc_check_validates_applied_values (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_unsupported_bandwidth_is_rejected (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_six_real_openflow_handshakes_forwarding_failure_and_recovery (test_openflow_socket.SocketTests) ... ok
+test_access_port_failure_blocks_host_delivery (test_topology_state.TopologyTests) ... ok
+test_both_endpoints_required_and_port_names_validated (test_topology_state.TopologyTests) ... ok
+test_broadcast_forest_after_partition_and_restoration (test_topology_state.TopologyTests) ... ok
+test_broadcast_has_no_duplicates_for_every_source_and_failure_combination (test_topology_state.TopologyTests) ... ok
+test_configured_graph_and_unique_port_mapping (test_topology_state.TopologyTests) ... ok
+test_delay_weighted_path_and_explicit_output (test_topology_state.TopologyTests) ... ok
+test_disconnection_removes_routes_and_ports (test_topology_state.TopologyTests) ... ok
+test_failure_reroute_partition_and_recovery (test_topology_state.TopologyTests) ... ok
+test_shared_graph_preserves_simulation_metrics_and_path (test_topology_state.TopologyTests) ... ok
+test_static_host_registration_and_access_only_learning (test_topology_state.TopologyTests) ... ok
+test_unknown_and_broadcast_traverse_tree_exactly_once (test_topology_state.TopologyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 3.096s
+
+OK (skipped=5)
+
+Ubuntu Mininet structure/safety command (unprivileged, not a live network):
+/usr/bin/python3 -m unittest discover -s tests -p test_mininet_topology.py -v
+test_existing_bridge_is_rejected_before_any_network_creation (test_mininet_topology.MininetTopologyTests.test_existing_bridge_is_rejected_before_any_network_creation) ... ok
+test_partial_startup_stops_only_owned_network (test_mininet_topology.MininetTopologyTests.test_partial_startup_stops_only_owned_network) ... ok
+test_six_switches_hosts_and_exact_wiring (test_mininet_topology.MininetTopologyTests.test_six_switches_hosts_and_exact_wiring) ... ok
+test_tc_check_validates_applied_values (test_mininet_topology.MininetTopologyTests.test_tc_check_validates_applied_values) ... ok
+test_unsupported_bandwidth_is_rejected (test_mininet_topology.MininetTopologyTests.test_unsupported_bandwidth_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+OK
+
+Summary: 26 OS-Ken/topology/socket tests plus 5 Ubuntu Mininet structure/safety tests passed.
+The 5 skips in the first run were rerun successfully under Ubuntu Python.
+No test failures.
+
+Recorded real TCP 6653 smoke-test observation from this session:
+PASS: real OS-Ken controller listened on 127.0.0.1:6653 and sent OpenFlow 1.3 Hello
+Controller smoke-test process stopped; port 6653 is available for manual startup.
+INFO:os_ken.base.app_manager:loading app /home/bob_the_bob/Flowrider/controller.py
+INFO:os_ken.base.app_manager:loading app os_ken.controller.ofp_handler
+INFO:os_ken.base.app_manager:instantiating app /home/bob_the_bob/Flowrider/controller.py of FlowRiderController
+INFO:os_ken.base.app_manager:instantiating app os_ken.controller.ofp_handler of OFPHandler
+
+The six-peer test uses a real controller process and sockets with simulated switch peers.
+It does NOT validate host packets or Linux/OVS data-plane forwarding.
+
+$ /home/bob_the_bob/.pyenv/versions/3.10.16/bin/python -m compileall -q controller.py topology_config.py topology_state.py network_topology.py mininet_topology.py tests
+Exit status: 0
+
+$ git diff --check
+Exit status: 0
+
+$ sudo -n /usr/bin/python3 tests/integration_phase2.py --repeat 2
+sudo: a password is required
+Exit status: 1
+
+Live Mininet startup, six real OVS/controller connections, pingall, ARP, flow packet hits,
+actual TC rate/delay configuration, physical link failure/rerouting/recovery, and repeat cleanup
+were NOT executed because sudo requires a password. No global mn -c was run.
+
+Manual/live commands are documented in README.md and docs/phase2.md.
+No commit or push was performed. main.py, traffic_engine.py and requirements.txt are unchanged.

@@ -1,5 +1,5 @@
 import networkx as nx
-import matplotlib.pyplot as plt
+from topology_config import LINKS
 
 def build_network_graph():
     """Initializes the network topology graph with routers and physical links."""
@@ -14,16 +14,8 @@ def build_network_graph():
 
     #DEFINING PHYSICAL LINKS: SOURCE, TARGET CAPACITY IN MBPS, BASE LATENCY IN MS
 
-    links = [
-        ("Router_1", "Router_2",1000,5),
-        ("Router_2", "Router_3",1000,5),
-        ("Router_3", "Router_4",1000,5),
-        ("Router_4", "Router_5",1000,5),
-        ("Router_5", "Router_6",1000,5),
-        ("Router_6", "Router_1",1000,5),
-        ("Router_2", "Router_5",2000,2), #HIGH SPEED BACKBONE LINK
-
-    ]
+    links = [(f"Router_{u}", f"Router_{v}", capacity, delay)
+             for u, v, capacity, delay in LINKS]
 
     #STORE NETWORK METRICS INSIDE EDGE ATTRIBUTES
 
@@ -34,6 +26,7 @@ def build_network_graph():
 
 def visualize_topology(G):
     """Draws a visual plot of the router network structure."""
+    import matplotlib.pyplot as plt
     pos = nx.spring_layout(G, seed=42)
     plt.figure(figsize=(8, 5))
     

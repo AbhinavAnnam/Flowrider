@@ -1,0 +1,3 @@
+# OS-Ken runtime only. Simulation dependencies remain in requirements.txt.
+os-ken==4.2.2
+networkx>=3.0,<4.0
