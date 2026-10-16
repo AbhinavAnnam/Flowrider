@@ -16,3 +16,13 @@ ENV/
 # Generated output files
 *.pdf
 *.html
+
+# Local Phase 3 experiments and trusted model artifacts
+data/
+models/
+
+# Demo frontend build and local browser checks
+frontend/node_modules/
+frontend/dist/
+frontend/test-results/
+!frontend/index.html

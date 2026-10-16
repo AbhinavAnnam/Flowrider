@@ -1,0 +1,1655 @@
+{
+  "captured_timestamp": "2026-10-15T18:50:09.069351Z",
+  "verdict": "COMPLETE WITH RESEARCH LIMITATIONS",
+  "source": "live_mininet",
+  "run_directory": "/home/bob_the_bob/Flowrider/data/research-20261015T180515Z",
+  "quality": {
+    "captured_timestamp": "2026-10-15T18:48:24.961701Z",
+    "run_directory": "/home/bob_the_bob/Flowrider/data/research-20261015T180515Z",
+    "source": "live_mininet",
+    "sessions": [
+      {
+        "seed": 17,
+        "session_id": "ab02c31cde7f4b02b9cdf573f3dd4cab",
+        "observation_count": 944,
+        "valid_samples": 875,
+        "positive_samples": 225,
+        "precongestion_samples": 60,
+        "labeled_samples": 833,
+        "positive_labels": 225,
+        "traffic_seconds": 600,
+        "elapsed_seconds": 626.7715801949998,
+        "observation_elapsed_seconds": 635.1239581049995,
+        "observation_start": "2026-10-15T18:05:20.439411Z",
+        "observation_end": "2026-10-15T18:15:55.563366Z",
+        "actual_horizon_seconds": {
+          "min": 14.98504673899879,
+          "median": 15.001503871997556,
+          "max": 15.046922082001402
+        },
+        "statuses": {
+          "inactive": 55,
+          "topology_changed": 7,
+          "invalid_directions": 7,
+          "valid": 875
+        },
+        "prediction_statuses": {
+          "inactive": 55,
+          "topology_changed": 7,
+          "invalid_directions": 7,
+          "model_not_ready": 875
+        },
+        "independent_counter_rate_checks": 4960,
+        "iperf_completed_flows": 58,
+        "max_iperf_loss_percent": 0,
+        "links": [
+          "s1-s2",
+          "s1-s6",
+          "s2-s3",
+          "s2-s5",
+          "s3-s4",
+          "s4-s5",
+          "s5-s6"
+        ],
+        "scenarios": [
+          "burst",
+          "high",
+          "low",
+          "medium",
+          "ramp",
+          "recovery"
+        ]
+      },
+      {
+        "seed": 29,
+        "session_id": "eb78ab1846e545b38236c4a1ace61aa8",
+        "observation_count": 924,
+        "valid_samples": 875,
+        "positive_samples": 220,
+        "precongestion_samples": 50,
+        "labeled_samples": 833,
+        "positive_labels": 220,
+        "traffic_seconds": 600,
+        "elapsed_seconds": 625.9215178980012,
+        "observation_elapsed_seconds": 633.1685332119996,
+        "observation_start": "2026-10-15T18:15:56.208267Z",
+        "observation_end": "2026-10-15T18:26:29.376802Z",
+        "actual_horizon_seconds": {
+          "min": 14.997868227001163,
+          "median": 15.001580783002282,
+          "max": 15.0128879829972
+        },
+        "statuses": {
+          "inactive": 35,
+          "topology_changed": 7,
+          "invalid_directions": 7,
+          "valid": 875
+        },
+        "prediction_statuses": {
+          "inactive": 35,
+          "topology_changed": 7,
+          "invalid_directions": 7,
+          "model_not_ready": 875
+        },
+        "independent_counter_rate_checks": 4960,
+        "iperf_completed_flows": 48,
+        "max_iperf_loss_percent": 0,
+        "links": [
+          "s1-s2",
+          "s1-s6",
+          "s2-s3",
+          "s2-s5",
+          "s3-s4",
+          "s4-s5",
+          "s5-s6"
+        ],
+        "scenarios": [
+          "burst",
+          "high",
+          "low",
+          "medium",
+          "ramp",
+          "recovery"
+        ]
+      },
+      {
+        "seed": 43,
+        "session_id": "ff642af003f8499f91fa6883284c1fcd",
+        "observation_count": 917,
+        "valid_samples": 868,
+        "positive_samples": 215,
+        "precongestion_samples": 65,
+        "labeled_samples": 826,
+        "positive_labels": 215,
+        "traffic_seconds": 600,
+        "elapsed_seconds": 626.5813376349979,
+        "observation_elapsed_seconds": 629.9890983810001,
+        "observation_start": "2026-10-15T18:26:30.681758Z",
+        "observation_end": "2026-10-15T18:37:00.670855Z",
+        "actual_horizon_seconds": {
+          "min": 14.997516924999218,
+          "median": 15.001466251000238,
+          "max": 15.016887572000996
+        },
+        "statuses": {
+          "inactive": 35,
+          "topology_changed": 7,
+          "invalid_directions": 7,
+          "valid": 868
+        },
+        "prediction_statuses": {
+          "inactive": 35,
+          "topology_changed": 7,
+          "invalid_directions": 7,
+          "model_not_ready": 868
+        },
+        "independent_counter_rate_checks": 4920,
+        "iperf_completed_flows": 56,
+        "max_iperf_loss_percent": 0,
+        "links": [
+          "s1-s2",
+          "s1-s6",
+          "s2-s3",
+          "s2-s5",
+          "s3-s4",
+          "s4-s5",
+          "s5-s6"
+        ],
+        "scenarios": [
+          "burst",
+          "high",
+          "low",
+          "medium",
+          "ramp",
+          "recovery"
+        ]
+      },
+      {
+        "seed": 71,
+        "session_id": "7e7057af65524d5ca53c832b8c62b3fc",
+        "observation_count": 991,
+        "valid_samples": 898,
+        "positive_samples": 195,
+        "precongestion_samples": 80,
+        "labeled_samples": 850,
+        "positive_labels": 195,
+        "traffic_seconds": 600,
+        "elapsed_seconds": 626.7243115890014,
+        "observation_elapsed_seconds": 655.1081618759999,
+        "observation_start": "2026-10-15T18:37:10.295322Z",
+        "observation_end": "2026-10-15T18:48:05.403482Z",
+        "actual_horizon_seconds": {
+          "min": 14.996318558001803,
+          "median": 15.001629928501643,
+          "max": 15.023232268002175
+        },
+        "statuses": {
+          "inactive": 73,
+          "topology_changed": 10,
+          "invalid_directions": 10,
+          "valid": 898
+        },
+        "prediction_statuses": {
+          "inactive": 73,
+          "topology_changed": 10,
+          "invalid_directions": 10,
+          "insufficient_history": 27,
+          "valid": 871
+        },
+        "independent_counter_rate_checks": 5092,
+        "iperf_completed_flows": 58,
+        "max_iperf_loss_percent": 0.015239995289456,
+        "links": [
+          "s1-s2",
+          "s1-s6",
+          "s2-s3",
+          "s2-s5",
+          "s3-s4",
+          "s4-s5",
+          "s5-s6"
+        ],
+        "scenarios": [
+          "burst",
+          "high",
+          "low",
+          "medium",
+          "ramp",
+          "recovery"
+        ]
+      }
+    ],
+    "valid_samples_total": 3516,
+    "traffic_seconds_total": 2400,
+    "elapsed_seconds_total": 2505.9987473170004,
+    "integrity_checks": "all four databases passed; all rate, utilization, port-map and target checks passed",
+    "offline_holdout_metrics_independently_reproduced": true,
+    "live_audit_independently_reproduced": true,
+    "live_approaching_sample_count": 85,
+    "live_correct_approaching_warning_count": 44,
+    "measured_lead_time_pairs": [
+      {
+        "link_id": "s1-s2",
+        "observation_timestamp": "2026-10-15T18:40:50.323001Z",
+        "observed_crossing_timestamp": "2026-10-15T18:41:05.323387Z",
+        "observation_to_observed_crossing_seconds": 15.000386
+      },
+      {
+        "link_id": "s2-s3",
+        "observation_timestamp": "2026-10-15T18:40:50.322138Z",
+        "observed_crossing_timestamp": "2026-10-15T18:41:05.323692Z",
+        "observation_to_observed_crossing_seconds": 15.001554
+      },
+      {
+        "link_id": "s4-s5",
+        "observation_timestamp": "2026-10-15T18:40:50.323178Z",
+        "observed_crossing_timestamp": "2026-10-15T18:41:05.323365Z",
+        "observation_to_observed_crossing_seconds": 15.000187
+      },
+      {
+        "link_id": "s5-s6",
+        "observation_timestamp": "2026-10-15T18:40:50.323178Z",
+        "observed_crossing_timestamp": "2026-10-15T18:41:05.323365Z",
+        "observation_to_observed_crossing_seconds": 15.000187
+      },
+      {
+        "link_id": "s1-s2",
+        "observation_timestamp": "2026-10-15T18:41:55.349647Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:10.350487Z",
+        "observation_to_observed_crossing_seconds": 15.00084
+      },
+      {
+        "link_id": "s2-s3",
+        "observation_timestamp": "2026-10-15T18:41:55.349895Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:10.350898Z",
+        "observation_to_observed_crossing_seconds": 15.001003
+      },
+      {
+        "link_id": "s2-s5",
+        "observation_timestamp": "2026-10-15T18:41:55.349668Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:10.351231Z",
+        "observation_to_observed_crossing_seconds": 15.001563
+      },
+      {
+        "link_id": "s4-s5",
+        "observation_timestamp": "2026-10-15T18:41:55.349668Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:10.351231Z",
+        "observation_to_observed_crossing_seconds": 15.001563
+      },
+      {
+        "link_id": "s5-s6",
+        "observation_timestamp": "2026-10-15T18:41:55.349668Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:10.351231Z",
+        "observation_to_observed_crossing_seconds": 15.001563
+      },
+      {
+        "link_id": "s1-s2",
+        "observation_timestamp": "2026-10-15T18:42:00.350481Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:10.350487Z",
+        "observation_to_observed_crossing_seconds": 10.000006
+      },
+      {
+        "link_id": "s2-s3",
+        "observation_timestamp": "2026-10-15T18:42:00.350481Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:10.350898Z",
+        "observation_to_observed_crossing_seconds": 10.000417
+      },
+      {
+        "link_id": "s2-s5",
+        "observation_timestamp": "2026-10-15T18:42:00.350481Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:10.351231Z",
+        "observation_to_observed_crossing_seconds": 10.00075
+      },
+      {
+        "link_id": "s4-s5",
+        "observation_timestamp": "2026-10-15T18:42:00.350448Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:10.351231Z",
+        "observation_to_observed_crossing_seconds": 10.000783
+      },
+      {
+        "link_id": "s5-s6",
+        "observation_timestamp": "2026-10-15T18:42:00.350448Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:10.351231Z",
+        "observation_to_observed_crossing_seconds": 10.000783
+      },
+      {
+        "link_id": "s1-s2",
+        "observation_timestamp": "2026-10-15T18:42:20.353715Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:25.355549Z",
+        "observation_to_observed_crossing_seconds": 5.001834
+      },
+      {
+        "link_id": "s2-s3",
+        "observation_timestamp": "2026-10-15T18:42:20.353715Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:25.355549Z",
+        "observation_to_observed_crossing_seconds": 5.001834
+      },
+      {
+        "link_id": "s2-s5",
+        "observation_timestamp": "2026-10-15T18:42:20.353993Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:25.355549Z",
+        "observation_to_observed_crossing_seconds": 5.001556
+      },
+      {
+        "link_id": "s4-s5",
+        "observation_timestamp": "2026-10-15T18:42:20.353993Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:25.355580Z",
+        "observation_to_observed_crossing_seconds": 5.001587
+      },
+      {
+        "link_id": "s5-s6",
+        "observation_timestamp": "2026-10-15T18:42:20.353993Z",
+        "observed_crossing_timestamp": "2026-10-15T18:42:25.355213Z",
+        "observation_to_observed_crossing_seconds": 5.00122
+      },
+      {
+        "link_id": "s1-s2",
+        "observation_timestamp": "2026-10-15T18:43:55.367213Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:10.367144Z",
+        "observation_to_observed_crossing_seconds": 14.999931
+      },
+      {
+        "link_id": "s2-s3",
+        "observation_timestamp": "2026-10-15T18:43:55.367226Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:10.367113Z",
+        "observation_to_observed_crossing_seconds": 14.999887
+      },
+      {
+        "link_id": "s2-s5",
+        "observation_timestamp": "2026-10-15T18:43:55.367195Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:10.367301Z",
+        "observation_to_observed_crossing_seconds": 15.000106
+      },
+      {
+        "link_id": "s4-s5",
+        "observation_timestamp": "2026-10-15T18:43:55.367165Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:10.367301Z",
+        "observation_to_observed_crossing_seconds": 15.000136
+      },
+      {
+        "link_id": "s5-s6",
+        "observation_timestamp": "2026-10-15T18:43:55.367239Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:10.367301Z",
+        "observation_to_observed_crossing_seconds": 15.000062
+      },
+      {
+        "link_id": "s1-s2",
+        "observation_timestamp": "2026-10-15T18:44:35.371895Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:50.374781Z",
+        "observation_to_observed_crossing_seconds": 15.002886
+      },
+      {
+        "link_id": "s2-s3",
+        "observation_timestamp": "2026-10-15T18:44:35.371908Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:50.374781Z",
+        "observation_to_observed_crossing_seconds": 15.002873
+      },
+      {
+        "link_id": "s2-s5",
+        "observation_timestamp": "2026-10-15T18:44:35.371875Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:50.374781Z",
+        "observation_to_observed_crossing_seconds": 15.002906
+      },
+      {
+        "link_id": "s4-s5",
+        "observation_timestamp": "2026-10-15T18:44:35.372442Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:50.374996Z",
+        "observation_to_observed_crossing_seconds": 15.002554
+      },
+      {
+        "link_id": "s5-s6",
+        "observation_timestamp": "2026-10-15T18:44:35.372197Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:50.374738Z",
+        "observation_to_observed_crossing_seconds": 15.002541
+      },
+      {
+        "link_id": "s1-s2",
+        "observation_timestamp": "2026-10-15T18:44:40.371759Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:50.374781Z",
+        "observation_to_observed_crossing_seconds": 10.003022
+      },
+      {
+        "link_id": "s2-s3",
+        "observation_timestamp": "2026-10-15T18:44:40.371759Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:50.374781Z",
+        "observation_to_observed_crossing_seconds": 10.003022
+      },
+      {
+        "link_id": "s2-s5",
+        "observation_timestamp": "2026-10-15T18:44:40.371796Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:50.374781Z",
+        "observation_to_observed_crossing_seconds": 10.002985
+      },
+      {
+        "link_id": "s4-s5",
+        "observation_timestamp": "2026-10-15T18:44:40.371796Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:50.374996Z",
+        "observation_to_observed_crossing_seconds": 10.0032
+      },
+      {
+        "link_id": "s5-s6",
+        "observation_timestamp": "2026-10-15T18:44:40.371796Z",
+        "observed_crossing_timestamp": "2026-10-15T18:44:50.374738Z",
+        "observation_to_observed_crossing_seconds": 10.002942
+      },
+      {
+        "link_id": "s1-s2",
+        "observation_timestamp": "2026-10-15T18:45:55.382908Z",
+        "observed_crossing_timestamp": "2026-10-15T18:46:10.384645Z",
+        "observation_to_observed_crossing_seconds": 15.001737
+      },
+      {
+        "link_id": "s2-s3",
+        "observation_timestamp": "2026-10-15T18:45:55.382410Z",
+        "observed_crossing_timestamp": "2026-10-15T18:46:10.384406Z",
+        "observation_to_observed_crossing_seconds": 15.001996
+      },
+      {
+        "link_id": "s2-s5",
+        "observation_timestamp": "2026-10-15T18:45:55.382748Z",
+        "observed_crossing_timestamp": "2026-10-15T18:46:10.384363Z",
+        "observation_to_observed_crossing_seconds": 15.001615
+      },
+      {
+        "link_id": "s4-s5",
+        "observation_timestamp": "2026-10-15T18:45:55.382748Z",
+        "observed_crossing_timestamp": "2026-10-15T18:46:10.384363Z",
+        "observation_to_observed_crossing_seconds": 15.001615
+      },
+      {
+        "link_id": "s5-s6",
+        "observation_timestamp": "2026-10-15T18:45:55.382748Z",
+        "observed_crossing_timestamp": "2026-10-15T18:46:10.384363Z",
+        "observation_to_observed_crossing_seconds": 15.001615
+      },
+      {
+        "link_id": "s1-s2",
+        "observation_timestamp": "2026-10-15T18:46:05.382422Z",
+        "observed_crossing_timestamp": "2026-10-15T18:46:10.384645Z",
+        "observation_to_observed_crossing_seconds": 5.002223
+      },
+      {
+        "link_id": "s2-s3",
+        "observation_timestamp": "2026-10-15T18:46:05.382407Z",
+        "observed_crossing_timestamp": "2026-10-15T18:46:10.384406Z",
+        "observation_to_observed_crossing_seconds": 5.001999
+      },
+      {
+        "link_id": "s2-s5",
+        "observation_timestamp": "2026-10-15T18:46:05.382407Z",
+        "observed_crossing_timestamp": "2026-10-15T18:46:10.384363Z",
+        "observation_to_observed_crossing_seconds": 5.001956
+      },
+      {
+        "link_id": "s4-s5",
+        "observation_timestamp": "2026-10-15T18:46:05.382372Z",
+        "observed_crossing_timestamp": "2026-10-15T18:46:10.384363Z",
+        "observation_to_observed_crossing_seconds": 5.001991
+      },
+      {
+        "link_id": "s5-s6",
+        "observation_timestamp": "2026-10-15T18:46:05.382372Z",
+        "observed_crossing_timestamp": "2026-10-15T18:46:10.384363Z",
+        "observation_to_observed_crossing_seconds": 5.001991
+      }
+    ],
+    "lead_time_note": "Observation to first subsequently observed 80% crossing in five-second averages; not exact congestion onset or publication latency",
+    "model_sha256": "90cb8af35847d617b2715a409e4c9d5a09b0cd480bf11ee6154e68708fab8be9"
+  },
+  "research_evaluation": {
+    "source": "live_mininet",
+    "status": "offline_evaluated_live_inference_unverified",
+    "sessions": [
+      {
+        "session_id": "ab02c31cde7f4b02b9cdf573f3dd4cab",
+        "record_count": 944,
+        "valid_count": 875,
+        "duration_seconds": 635.1239581049995,
+        "links": [
+          "s1-s2",
+          "s1-s6",
+          "s2-s3",
+          "s2-s5",
+          "s3-s4",
+          "s4-s5",
+          "s5-s6"
+        ],
+        "statuses": {
+          "inactive": 55,
+          "topology_changed": 7,
+          "invalid_directions": 7,
+          "valid": 875
+        },
+        "utilization_min": 0.0,
+        "utilization_max": 0.9780065895626364,
+        "utilization_mean": 0.3757446748937297,
+        "positive_sample_count": 225,
+        "precongestion_sample_count": 60
+      },
+      {
+        "session_id": "eb78ab1846e545b38236c4a1ace61aa8",
+        "record_count": 924,
+        "valid_count": 875,
+        "duration_seconds": 633.1685332119996,
+        "links": [
+          "s1-s2",
+          "s1-s6",
+          "s2-s3",
+          "s2-s5",
+          "s3-s4",
+          "s4-s5",
+          "s5-s6"
+        ],
+        "statuses": {
+          "inactive": 35,
+          "topology_changed": 7,
+          "invalid_directions": 7,
+          "valid": 875
+        },
+        "utilization_min": 0.0,
+        "utilization_max": 0.9779266178014203,
+        "utilization_mean": 0.37695771695893576,
+        "positive_sample_count": 220,
+        "precongestion_sample_count": 50
+      },
+      {
+        "session_id": "ff642af003f8499f91fa6883284c1fcd",
+        "record_count": 917,
+        "valid_count": 868,
+        "duration_seconds": 629.9890983810001,
+        "links": [
+          "s1-s2",
+          "s1-s6",
+          "s2-s3",
+          "s2-s5",
+          "s3-s4",
+          "s4-s5",
+          "s5-s6"
+        ],
+        "statuses": {
+          "inactive": 35,
+          "topology_changed": 7,
+          "invalid_directions": 7,
+          "valid": 868
+        },
+        "utilization_min": 0.0,
+        "utilization_max": 0.9777554515538847,
+        "utilization_mean": 0.357581177798601,
+        "positive_sample_count": 215,
+        "precongestion_sample_count": 65
+      }
+    ],
+    "model_metadata": {
+      "schema_version": 1,
+      "model_version": "rf-b6f2c2909490",
+      "dataset_sha256": "e337d4ce4a198ba44106eb4e7d5a77a79d60e31ac0274c5524d1c902a7d079e3",
+      "trained_timestamp": "2026-10-15T18:37:07.130617Z",
+      "source": "live_mininet",
+      "features": [
+        "utilization",
+        "lag_5s",
+        "lag_10s",
+        "lag_15s",
+        "mean_15s",
+        "slope_per_second",
+        "std_15s",
+        "tx_mbps",
+        "rx_mbps",
+        "capacity_mbps"
+      ],
+      "horizon_seconds": 15,
+      "lookback_seconds": 15,
+      "tolerance_seconds": 2,
+      "threshold": 0.8,
+      "sklearn_version": "1.7.2",
+      "numpy_version": "1.26.4",
+      "hyperparameters": {
+        "bootstrap": true,
+        "ccp_alpha": 0.0,
+        "criterion": "squared_error",
+        "max_depth": null,
+        "max_features": 0.6,
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 2,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 100,
+        "n_jobs": 1,
+        "oob_score": false,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "train_count": 1666,
+      "test_count": 826,
+      "train_latest_label_time": 1792088786.298496,
+      "test_earliest_feature_time": 1792088815.685181,
+      "test_fraction": 0.2,
+      "holdout_session": "ff642af003f8499f91fa6883284c1fcd",
+      "train_sessions": [
+        "ab02c31cde7f4b02b9cdf573f3dd4cab",
+        "eb78ab1846e545b38236c4a1ace61aa8"
+      ],
+      "test_sessions": [
+        "ff642af003f8499f91fa6883284c1fcd"
+      ],
+      "train_positive_count": 445,
+      "evaluation": {
+        "random_forest": {
+          "sample_count": 826,
+          "mae": 0.1442586831669012,
+          "rmse": 0.2585600142801378,
+          "r2": 0.5394361377325552,
+          "positive_event_count": 215,
+          "negative_event_count": 611,
+          "predicted_positive_count": 126,
+          "congestion_precision": 0.7619047619047619,
+          "congestion_recall": 0.44651162790697674,
+          "congestion_f1": 0.563049853372434,
+          "false_alarm_rate": 0.049099836333878884,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 826,
+          "mae": 0.18380579144367803,
+          "rmse": 0.3356349958323828,
+          "r2": 0.2239287287552667,
+          "positive_event_count": 215,
+          "negative_event_count": 611,
+          "predicted_positive_count": 215,
+          "congestion_precision": 0.6046511627906976,
+          "congestion_recall": 0.6046511627906976,
+          "congestion_f1": 0.6046511627906976,
+          "false_alarm_rate": 0.13911620294599017,
+          "congestion_metrics_status": "available"
+        }
+      }
+    },
+    "selected_parameters": {
+      "n_estimators": 100,
+      "min_samples_leaf": 2,
+      "max_features": 0.6
+    },
+    "selection_rule": "Lowest validation MAE among four fixed candidates; final holdout never used for selection",
+    "validation_candidates": [
+      {
+        "parameters": {
+          "n_estimators": 100,
+          "min_samples_leaf": 2
+        },
+        "evaluation": {
+          "random_forest": {
+            "sample_count": 833,
+            "mae": 0.18177460351043231,
+            "rmse": 0.3325625362161276,
+            "r2": 0.2414142494986885,
+            "positive_event_count": 220,
+            "negative_event_count": 613,
+            "predicted_positive_count": 137,
+            "congestion_precision": 0.7883211678832117,
+            "congestion_recall": 0.4909090909090909,
+            "congestion_f1": 0.6050420168067228,
+            "false_alarm_rate": 0.04730831973898858,
+            "congestion_metrics_status": "available"
+          },
+          "persistence": {
+            "sample_count": 833,
+            "mae": 0.14047868654988635,
+            "rmse": 0.27364618459166956,
+            "r2": 0.4863860299329774,
+            "positive_event_count": 220,
+            "negative_event_count": 613,
+            "predicted_positive_count": 220,
+            "congestion_precision": 0.6818181818181818,
+            "congestion_recall": 0.6818181818181818,
+            "congestion_f1": 0.6818181818181818,
+            "false_alarm_rate": 0.11419249592169657,
+            "congestion_metrics_status": "available"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "n_estimators": 100,
+          "min_samples_leaf": 1,
+          "max_depth": 12
+        },
+        "evaluation": {
+          "random_forest": {
+            "sample_count": 833,
+            "mae": 0.1831031298535298,
+            "rmse": 0.33438067888030276,
+            "r2": 0.2330970934448593,
+            "positive_event_count": 220,
+            "negative_event_count": 613,
+            "predicted_positive_count": 139,
+            "congestion_precision": 0.7841726618705036,
+            "congestion_recall": 0.4954545454545455,
+            "congestion_f1": 0.607242339832869,
+            "false_alarm_rate": 0.048939641109298535,
+            "congestion_metrics_status": "available"
+          },
+          "persistence": {
+            "sample_count": 833,
+            "mae": 0.14047868654988635,
+            "rmse": 0.27364618459166956,
+            "r2": 0.4863860299329774,
+            "positive_event_count": 220,
+            "negative_event_count": 613,
+            "predicted_positive_count": 220,
+            "congestion_precision": 0.6818181818181818,
+            "congestion_recall": 0.6818181818181818,
+            "congestion_f1": 0.6818181818181818,
+            "false_alarm_rate": 0.11419249592169657,
+            "congestion_metrics_status": "available"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "n_estimators": 100,
+          "min_samples_leaf": 5
+        },
+        "evaluation": {
+          "random_forest": {
+            "sample_count": 833,
+            "mae": 0.17873622645932158,
+            "rmse": 0.3262336704904127,
+            "r2": 0.2700122062460947,
+            "positive_event_count": 220,
+            "negative_event_count": 613,
+            "predicted_positive_count": 147,
+            "congestion_precision": 0.7074829931972789,
+            "congestion_recall": 0.4727272727272727,
+            "congestion_f1": 0.5667574931880108,
+            "false_alarm_rate": 0.0701468189233279,
+            "congestion_metrics_status": "available"
+          },
+          "persistence": {
+            "sample_count": 833,
+            "mae": 0.14047868654988635,
+            "rmse": 0.27364618459166956,
+            "r2": 0.4863860299329774,
+            "positive_event_count": 220,
+            "negative_event_count": 613,
+            "predicted_positive_count": 220,
+            "congestion_precision": 0.6818181818181818,
+            "congestion_recall": 0.6818181818181818,
+            "congestion_f1": 0.6818181818181818,
+            "false_alarm_rate": 0.11419249592169657,
+            "congestion_metrics_status": "available"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "n_estimators": 100,
+          "min_samples_leaf": 2,
+          "max_features": 0.6
+        },
+        "evaluation": {
+          "random_forest": {
+            "sample_count": 833,
+            "mae": 0.17316494456795303,
+            "rmse": 0.3114234024236281,
+            "r2": 0.3347873124933308,
+            "positive_event_count": 220,
+            "negative_event_count": 613,
+            "predicted_positive_count": 115,
+            "congestion_precision": 0.8173913043478261,
+            "congestion_recall": 0.42727272727272725,
+            "congestion_f1": 0.5611940298507462,
+            "false_alarm_rate": 0.03425774877650897,
+            "congestion_metrics_status": "available"
+          },
+          "persistence": {
+            "sample_count": 833,
+            "mae": 0.14047868654988635,
+            "rmse": 0.27364618459166956,
+            "r2": 0.4863860299329774,
+            "positive_event_count": 220,
+            "negative_event_count": 613,
+            "predicted_positive_count": 220,
+            "congestion_precision": 0.6818181818181818,
+            "congestion_recall": 0.6818181818181818,
+            "congestion_f1": 0.6818181818181818,
+            "false_alarm_rate": 0.11419249592169657,
+            "congestion_metrics_status": "available"
+          }
+        }
+      }
+    ],
+    "validation_feature_importance": {
+      "utilization": {
+        "mae_increase_mean": 0.09431546746485255,
+        "std": 0.004529581653789617
+      },
+      "lag_5s": {
+        "mae_increase_mean": 0.03762721004538304,
+        "std": 0.0014836923354712213
+      },
+      "lag_10s": {
+        "mae_increase_mean": 0.02443173618827591,
+        "std": 0.001985346559892762
+      },
+      "lag_15s": {
+        "mae_increase_mean": -0.007520915207241008,
+        "std": 0.0004746474705056838
+      },
+      "mean_15s": {
+        "mae_increase_mean": -0.00036610154956620566,
+        "std": 0.0005196818322333315
+      },
+      "slope_per_second": {
+        "mae_increase_mean": 0.00719607607456092,
+        "std": 0.000995549936955427
+      },
+      "std_15s": {
+        "mae_increase_mean": 0.014233225858722803,
+        "std": 0.004417525813392814
+      },
+      "tx_mbps": {
+        "mae_increase_mean": 0.007640715823424809,
+        "std": 0.00034042015705109915
+      },
+      "rx_mbps": {
+        "mae_increase_mean": 0.00024224270072919495,
+        "std": 0.0005064282602173553
+      },
+      "capacity_mbps": {
+        "mae_increase_mean": -4.172264822317473e-05,
+        "std": 4.042211085207076e-05
+      }
+    },
+    "split": {
+      "train_count": 833,
+      "validation_count": 833,
+      "test_count": 826,
+      "final_refit_count": 1666,
+      "validation_session": "eb78ab1846e545b38236c4a1ace61aa8",
+      "holdout_session": "ff642af003f8499f91fa6883284c1fcd",
+      "train_positive_count": 225,
+      "validation_positive_count": 220,
+      "test_positive_count": 215
+    },
+    "test": {
+      "random_forest": {
+        "sample_count": 826,
+        "mae": 0.1442586831669012,
+        "rmse": 0.2585600142801378,
+        "r2": 0.5394361377325552,
+        "positive_event_count": 215,
+        "negative_event_count": 611,
+        "predicted_positive_count": 126,
+        "congestion_precision": 0.7619047619047619,
+        "congestion_recall": 0.44651162790697674,
+        "congestion_f1": 0.563049853372434,
+        "false_alarm_rate": 0.049099836333878884,
+        "congestion_metrics_status": "available"
+      },
+      "persistence": {
+        "sample_count": 826,
+        "mae": 0.18380579144367803,
+        "rmse": 0.3356349958323828,
+        "r2": 0.2239287287552667,
+        "positive_event_count": 215,
+        "negative_event_count": 611,
+        "predicted_positive_count": 215,
+        "congestion_precision": 0.6046511627906976,
+        "congestion_recall": 0.6046511627906976,
+        "congestion_f1": 0.6046511627906976,
+        "false_alarm_rate": 0.13911620294599017,
+        "congestion_metrics_status": "available"
+      },
+      "error_reduction_percent": {
+        "mae": 21.51570305057275,
+        "rmse": 22.963928824256605
+      }
+    },
+    "test_regimes": {
+      "steady": {
+        "random_forest": {
+          "sample_count": 481,
+          "mae": 0.07882023507862569,
+          "rmse": 0.18144185058656365,
+          "r2": 0.7762387929636052,
+          "positive_event_count": 110,
+          "negative_event_count": 371,
+          "predicted_positive_count": 50,
+          "congestion_precision": 0.9,
+          "congestion_recall": 0.4090909090909091,
+          "congestion_f1": 0.5625000000000001,
+          "false_alarm_rate": 0.013477088948787063,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 481,
+          "mae": 0.007225100866329535,
+          "rmse": 0.020866920497250002,
+          "r2": 0.9970404438407449,
+          "positive_event_count": 110,
+          "negative_event_count": 371,
+          "predicted_positive_count": 110,
+          "congestion_precision": 1.0,
+          "congestion_recall": 1.0,
+          "congestion_f1": 1.0,
+          "false_alarm_rate": 0.0,
+          "congestion_metrics_status": "available"
+        },
+        "error_reduction_percent": {
+          "mae": -990.9222796590191,
+          "rmse": -769.5190582169295
+        }
+      },
+      "approaching_congestion": {
+        "random_forest": {
+          "sample_count": 85,
+          "mae": 0.2846313844848186,
+          "rmse": 0.41777916639100154,
+          "r2": -33.449840052060416,
+          "positive_event_count": 85,
+          "negative_event_count": 0,
+          "predicted_positive_count": 31,
+          "congestion_precision": 1.0,
+          "congestion_recall": 0.36470588235294116,
+          "congestion_f1": 0.5344827586206896,
+          "false_alarm_rate": null,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 85,
+          "mae": 0.5436245492954549,
+          "rmse": 0.6302138521323624,
+          "r2": -77.39160229833759,
+          "positive_event_count": 85,
+          "negative_event_count": 0,
+          "predicted_positive_count": 0,
+          "congestion_precision": 0.0,
+          "congestion_recall": 0.0,
+          "congestion_f1": 0.0,
+          "false_alarm_rate": null,
+          "congestion_metrics_status": "available"
+        },
+        "error_reduction_percent": {
+          "mae": 47.641918516427396,
+          "rmse": 33.70834916157058
+        }
+      },
+      "transition": {
+        "random_forest": {
+          "sample_count": 260,
+          "mae": 0.2194287366993545,
+          "rmse": 0.30728267848911955,
+          "r2": -0.2181252566530021,
+          "positive_event_count": 20,
+          "negative_event_count": 240,
+          "predicted_positive_count": 45,
+          "congestion_precision": 0.4444444444444444,
+          "congestion_recall": 1.0,
+          "congestion_f1": 0.6153846153846153,
+          "false_alarm_rate": 0.10416666666666667,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 260,
+          "mae": 0.39284701356023,
+          "rmse": 0.4766903282647787,
+          "r2": -1.9314903528991456,
+          "positive_event_count": 20,
+          "negative_event_count": 240,
+          "predicted_positive_count": 105,
+          "congestion_precision": 0.19047619047619047,
+          "congestion_recall": 1.0,
+          "congestion_f1": 0.32,
+          "false_alarm_rate": 0.3541666666666667,
+          "congestion_metrics_status": "available"
+        },
+        "error_reduction_percent": {
+          "mae": 44.143972303428896,
+          "rmse": 35.538302275258516
+        }
+      }
+    },
+    "test_links": {
+      "s1-s2": {
+        "random_forest": {
+          "sample_count": 118,
+          "mae": 0.21375495839731756,
+          "rmse": 0.31764060550055956,
+          "r2": 0.19448377607701128,
+          "positive_event_count": 43,
+          "negative_event_count": 75,
+          "predicted_positive_count": 23,
+          "congestion_precision": 0.7391304347826086,
+          "congestion_recall": 0.3953488372093023,
+          "congestion_f1": 0.5151515151515151,
+          "false_alarm_rate": 0.08,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 118,
+          "mae": 0.2573064974621428,
+          "rmse": 0.3971681127491421,
+          "r2": -0.2593632272736812,
+          "positive_event_count": 43,
+          "negative_event_count": 75,
+          "predicted_positive_count": 43,
+          "congestion_precision": 0.6046511627906976,
+          "congestion_recall": 0.6046511627906976,
+          "congestion_f1": 0.6046511627906976,
+          "false_alarm_rate": 0.22666666666666666,
+          "congestion_metrics_status": "available"
+        },
+        "error_reduction_percent": {
+          "mae": 16.92593832428694,
+          "rmse": 20.023638528809443
+        }
+      },
+      "s1-s6": {
+        "random_forest": {
+          "sample_count": 118,
+          "mae": 3.3121334863549302e-06,
+          "rmse": 3.4545797211404925e-05,
+          "r2": -15057.071459928924,
+          "positive_event_count": 0,
+          "negative_event_count": 118,
+          "predicted_positive_count": 0,
+          "congestion_precision": null,
+          "congestion_recall": null,
+          "congestion_f1": null,
+          "false_alarm_rate": null,
+          "congestion_metrics_status": "unavailable_no_positive_events"
+        },
+        "persistence": {
+          "sample_count": 118,
+          "mae": 1.4233875680177913e-07,
+          "rmse": 3.9922207698285125e-07,
+          "r2": -1.0109812192209628,
+          "positive_event_count": 0,
+          "negative_event_count": 118,
+          "predicted_positive_count": 0,
+          "congestion_precision": null,
+          "congestion_recall": null,
+          "congestion_f1": null,
+          "false_alarm_rate": null,
+          "congestion_metrics_status": "unavailable_no_positive_events"
+        },
+        "error_reduction_percent": {
+          "mae": -2226.937203032766,
+          "rmse": -8553.278263689024
+        }
+      },
+      "s2-s3": {
+        "random_forest": {
+          "sample_count": 118,
+          "mae": 0.20539724314574295,
+          "rmse": 0.31099054801519843,
+          "r2": 0.2278466594643188,
+          "positive_event_count": 43,
+          "negative_event_count": 75,
+          "predicted_positive_count": 25,
+          "congestion_precision": 0.76,
+          "congestion_recall": 0.4418604651162791,
+          "congestion_f1": 0.5588235294117647,
+          "false_alarm_rate": 0.08,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 118,
+          "mae": 0.2573047246300482,
+          "rmse": 0.3971709664243964,
+          "r2": -0.259401373626891,
+          "positive_event_count": 43,
+          "negative_event_count": 75,
+          "predicted_positive_count": 43,
+          "congestion_precision": 0.6046511627906976,
+          "congestion_recall": 0.6046511627906976,
+          "congestion_f1": 0.6046511627906976,
+          "false_alarm_rate": 0.22666666666666666,
+          "congestion_metrics_status": "available"
+        },
+        "error_reduction_percent": {
+          "mae": 20.17354386280223,
+          "rmse": 21.69856955684672
+        }
+      },
+      "s2-s5": {
+        "random_forest": {
+          "sample_count": 118,
+          "mae": 0.20565514066079085,
+          "rmse": 0.3062433861289274,
+          "r2": 0.2511292104379502,
+          "positive_event_count": 43,
+          "negative_event_count": 75,
+          "predicted_positive_count": 23,
+          "congestion_precision": 0.7391304347826086,
+          "congestion_recall": 0.3953488372093023,
+          "congestion_f1": 0.5151515151515151,
+          "false_alarm_rate": 0.08,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 118,
+          "mae": 0.2573385955532496,
+          "rmse": 0.3970900065747742,
+          "r2": -0.25907432974786104,
+          "positive_event_count": 43,
+          "negative_event_count": 75,
+          "predicted_positive_count": 43,
+          "congestion_precision": 0.6046511627906976,
+          "congestion_recall": 0.6046511627906976,
+          "congestion_f1": 0.6046511627906976,
+          "false_alarm_rate": 0.22666666666666666,
+          "congestion_metrics_status": "available"
+        },
+        "error_reduction_percent": {
+          "mae": 20.08383343405797,
+          "rmse": 22.8780928609796
+        }
+      },
+      "s3-s4": {
+        "random_forest": {
+          "sample_count": 118,
+          "mae": 1.4073423328051772e-07,
+          "rmse": 2.853592629257202e-07,
+          "r2": -0.027976479940556853,
+          "positive_event_count": 0,
+          "negative_event_count": 118,
+          "predicted_positive_count": 0,
+          "congestion_precision": null,
+          "congestion_recall": null,
+          "congestion_f1": null,
+          "false_alarm_rate": null,
+          "congestion_metrics_status": "unavailable_no_positive_events"
+        },
+        "persistence": {
+          "sample_count": 118,
+          "mae": 1.5179571667812708e-07,
+          "rmse": 4.1221839048875077e-07,
+          "r2": -1.1451316740310915,
+          "positive_event_count": 0,
+          "negative_event_count": 118,
+          "predicted_positive_count": 0,
+          "congestion_precision": null,
+          "congestion_recall": null,
+          "congestion_f1": null,
+          "false_alarm_rate": null,
+          "congestion_metrics_status": "unavailable_no_positive_events"
+        },
+        "error_reduction_percent": {
+          "mae": 7.287085327357765,
+          "rmse": 30.7747374911194
+        }
+      },
+      "s4-s5": {
+        "random_forest": {
+          "sample_count": 118,
+          "mae": 0.20048452755259685,
+          "rmse": 0.3073804749402876,
+          "r2": 0.2455664275600703,
+          "positive_event_count": 43,
+          "negative_event_count": 75,
+          "predicted_positive_count": 27,
+          "congestion_precision": 0.7777777777777778,
+          "congestion_recall": 0.4883720930232558,
+          "congestion_f1": 0.6000000000000001,
+          "false_alarm_rate": 0.08,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 118,
+          "mae": 0.25733821919287664,
+          "rmse": 0.39710690111923963,
+          "r2": -0.25916696380583804,
+          "positive_event_count": 43,
+          "negative_event_count": 75,
+          "predicted_positive_count": 43,
+          "congestion_precision": 0.6046511627906976,
+          "congestion_recall": 0.6046511627906976,
+          "congestion_f1": 0.6046511627906976,
+          "false_alarm_rate": 0.22666666666666666,
+          "congestion_metrics_status": "available"
+        },
+        "error_reduction_percent": {
+          "mae": 22.09298401869626,
+          "rmse": 22.595030689736063
+        }
+      },
+      "s5-s6": {
+        "random_forest": {
+          "sample_count": 118,
+          "mae": 0.1845154595441432,
+          "rmse": 0.28652141727720404,
+          "r2": 0.3444876976391058,
+          "positive_event_count": 43,
+          "negative_event_count": 75,
+          "predicted_positive_count": 28,
+          "congestion_precision": 0.7857142857142857,
+          "congestion_recall": 0.5116279069767442,
+          "congestion_f1": 0.619718309859155,
+          "false_alarm_rate": 0.08,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 118,
+          "mae": 0.2573522091329553,
+          "rmse": 0.3971074192182921,
+          "r2": -0.2591650698807426,
+          "positive_event_count": 43,
+          "negative_event_count": 75,
+          "predicted_positive_count": 43,
+          "congestion_precision": 0.6046511627906976,
+          "congestion_recall": 0.6046511627906976,
+          "congestion_f1": 0.6046511627906976,
+          "false_alarm_rate": 0.22666666666666666,
+          "congestion_metrics_status": "available"
+        },
+        "error_reduction_percent": {
+          "mae": 28.302360346626216,
+          "rmse": 27.847881099471063
+        }
+      }
+    },
+    "limitations": [
+      "Link samples and overlapping windows are correlated; counts are not independent congestion events",
+      "Permutation importance is validation-only and correlated features can obscure contributions",
+      "15-second endpoint forecasting does not estimate exact congestion onset or routing benefit",
+      "Controlled UDP offered load differs from measured wire throughput; inspect iperf3 and telemetry together",
+      "No accuracy or live-inference claim follows from synthetic or offline-only evaluation"
+    ]
+  },
+  "live_evaluation": {
+    "random_forest": {
+      "sample_count": 850,
+      "mae": 0.16601769595131943,
+      "rmse": 0.2808820581061949,
+      "r2": 0.41550932091549575,
+      "positive_event_count": 195,
+      "negative_event_count": 655,
+      "predicted_positive_count": 188,
+      "congestion_precision": 0.5957446808510638,
+      "congestion_recall": 0.5743589743589743,
+      "congestion_f1": 0.5848563968668407,
+      "false_alarm_rate": 0.11603053435114503,
+      "congestion_metrics_status": "available"
+    },
+    "persistence": {
+      "sample_count": 850,
+      "mae": 0.18648385976644594,
+      "rmse": 0.3237443278457699,
+      "r2": 0.22351346563910202,
+      "positive_event_count": 195,
+      "negative_event_count": 655,
+      "predicted_positive_count": 195,
+      "congestion_precision": 0.5641025641025641,
+      "congestion_recall": 0.5641025641025641,
+      "congestion_f1": 0.5641025641025641,
+      "false_alarm_rate": 0.1297709923664122,
+      "congestion_metrics_status": "available"
+    },
+    "error_reduction_percent": {
+      "mae": 10.974764164983773,
+      "rmse": 13.239543075483436
+    }
+  },
+  "live_audit": {
+    "checked_predictions": 871,
+    "matured_pairs": 850,
+    "prediction_status_counts": {
+      "inactive": 73,
+      "topology_changed": 10,
+      "invalid_directions": 10,
+      "insufficient_history": 27,
+      "valid": 871
+    },
+    "measured_example": {
+      "link_id": "s2-s5",
+      "session_id": "7e7057af65524d5ca53c832b8c62b3fc",
+      "source": "live_mininet",
+      "observation_timestamp": "2026-10-15T18:41:55.349668Z",
+      "target_timestamp": "2026-10-15T18:42:10.349668+00:00",
+      "target_monotonic_elapsed_time": 300.05434878000233,
+      "prediction_horizon_seconds": 15,
+      "current_utilization": 0.6175267210177127,
+      "predicted_utilization": 0.801976483570841,
+      "raw_predicted_utilization": 0.801976483570841,
+      "congestion_threshold": 0.8,
+      "congestion_predicted": true,
+      "model_version": "rf-b6f2c2909490",
+      "status": "valid",
+      "schema_version": 1,
+      "actual_future_utilization": 0.8025016825320698,
+      "actual_target_timestamp": "2026-10-15T18:42:10.351231Z",
+      "actual_horizon_seconds": 15.00156242599769
+    },
+    "lead_time_seconds": {
+      "min": 5.00122,
+      "median": 14.9999965,
+      "max": 15.002906
+    }
+  },
+  "validation_only_diagnostics": {
+    "source": "live_mininet",
+    "scope": "Exploratory training/validation only; final holdout and live inference excluded",
+    "parameters": {
+      "n_estimators": 100,
+      "min_samples_leaf": 2,
+      "max_features": 0.6
+    },
+    "horizons_seconds": {
+      "5": {
+        "train_count": 749,
+        "validation_count": 749,
+        "random_forest": {
+          "sample_count": 749,
+          "mae": 0.07187599894476342,
+          "rmse": 0.13208829491860402,
+          "r2": 0.8817628903818442,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 161,
+          "congestion_precision": 0.9565217391304348,
+          "congestion_recall": 0.7162790697674418,
+          "congestion_f1": 0.8191489361702127,
+          "false_alarm_rate": 0.013108614232209739,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 749,
+          "mae": 0.0579667453051127,
+          "rmse": 0.1557165848870063,
+          "r2": 0.8356783159226939,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 215,
+          "congestion_precision": 0.8837209302325582,
+          "congestion_recall": 0.8837209302325582,
+          "congestion_f1": 0.8837209302325582,
+          "false_alarm_rate": 0.04681647940074907,
+          "congestion_metrics_status": "available"
+        }
+      },
+      "10": {
+        "train_count": 749,
+        "validation_count": 749,
+        "random_forest": {
+          "sample_count": 749,
+          "mae": 0.13682691307704659,
+          "rmse": 0.25789416630742584,
+          "r2": 0.5498094220164254,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 102,
+          "congestion_precision": 0.9019607843137255,
+          "congestion_recall": 0.42790697674418604,
+          "congestion_f1": 0.580441640378549,
+          "false_alarm_rate": 0.018726591760299626,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 749,
+          "mae": 0.10575054073778403,
+          "rmse": 0.23713269897834452,
+          "r2": 0.6193759258842677,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 215,
+          "congestion_precision": 0.7674418604651163,
+          "congestion_recall": 0.7674418604651163,
+          "congestion_f1": 0.7674418604651162,
+          "false_alarm_rate": 0.09363295880149813,
+          "congestion_metrics_status": "available"
+        }
+      },
+      "15": {
+        "train_count": 749,
+        "validation_count": 749,
+        "random_forest": {
+          "sample_count": 749,
+          "mae": 0.15756018232194247,
+          "rmse": 0.29587235704586773,
+          "r2": 0.4089146409125317,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 114,
+          "congestion_precision": 0.868421052631579,
+          "congestion_recall": 0.4604651162790698,
+          "congestion_f1": 0.6018237082066868,
+          "false_alarm_rate": 0.028089887640449437,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 749,
+          "mae": 0.14255589294949936,
+          "rmse": 0.27711431566524375,
+          "r2": 0.4814873657364951,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 215,
+          "congestion_precision": 0.6976744186046512,
+          "congestion_recall": 0.6976744186046512,
+          "congestion_f1": 0.6976744186046512,
+          "false_alarm_rate": 0.12172284644194757,
+          "congestion_metrics_status": "available"
+        }
+      },
+      "30": {
+        "train_count": 749,
+        "validation_count": 749,
+        "random_forest": {
+          "sample_count": 749,
+          "mae": 0.20489228228628462,
+          "rmse": 0.3451313960861923,
+          "r2": 0.191512415393298,
+          "positive_event_count": 205,
+          "negative_event_count": 544,
+          "predicted_positive_count": 118,
+          "congestion_precision": 0.7457627118644068,
+          "congestion_recall": 0.4292682926829268,
+          "congestion_f1": 0.544891640866873,
+          "false_alarm_rate": 0.05514705882352941,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 749,
+          "mae": 0.20636818174852165,
+          "rmse": 0.3308524594801887,
+          "r2": 0.25702679126779737,
+          "positive_event_count": 205,
+          "negative_event_count": 544,
+          "predicted_positive_count": 215,
+          "congestion_precision": 0.5116279069767442,
+          "congestion_recall": 0.5365853658536586,
+          "congestion_f1": 0.5238095238095238,
+          "false_alarm_rate": 0.19301470588235295,
+          "congestion_metrics_status": "available"
+        }
+      }
+    },
+    "feature_ablations_at_15s": {
+      "baseline_10_features": {
+        "train_count": 749,
+        "validation_count": 749,
+        "random_forest": {
+          "sample_count": 749,
+          "mae": 0.15756018232194247,
+          "rmse": 0.29587235704586773,
+          "r2": 0.4089146409125317,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 114,
+          "congestion_precision": 0.868421052631579,
+          "congestion_recall": 0.4604651162790698,
+          "congestion_f1": 0.6018237082066868,
+          "false_alarm_rate": 0.028089887640449437,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 749,
+          "mae": 0.14255589294949936,
+          "rmse": 0.27711431566524375,
+          "r2": 0.4814873657364951,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 215,
+          "congestion_precision": 0.6976744186046512,
+          "congestion_recall": 0.6976744186046512,
+          "congestion_f1": 0.6976744186046512,
+          "false_alarm_rate": 0.12172284644194757,
+          "congestion_metrics_status": "available"
+        }
+      },
+      "current_only": {
+        "train_count": 749,
+        "validation_count": 749,
+        "random_forest": {
+          "sample_count": 749,
+          "mae": 0.15327391524562098,
+          "rmse": 0.2625419172499107,
+          "r2": 0.5345867705503469,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 120,
+          "congestion_precision": 0.7,
+          "congestion_recall": 0.39069767441860465,
+          "congestion_f1": 0.5014925373134328,
+          "false_alarm_rate": 0.06741573033707865,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 749,
+          "mae": 0.14255589294949936,
+          "rmse": 0.27711431566524375,
+          "r2": 0.4814873657364951,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 215,
+          "congestion_precision": 0.6976744186046512,
+          "congestion_recall": 0.6976744186046512,
+          "congestion_f1": 0.6976744186046512,
+          "false_alarm_rate": 0.12172284644194757,
+          "congestion_metrics_status": "available"
+        }
+      },
+      "four_lags": {
+        "train_count": 749,
+        "validation_count": 749,
+        "random_forest": {
+          "sample_count": 749,
+          "mae": 0.12473948339333207,
+          "rmse": 0.2229493611264779,
+          "r2": 0.6643753241684951,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 188,
+          "congestion_precision": 0.7712765957446809,
+          "congestion_recall": 0.6744186046511628,
+          "congestion_f1": 0.7196029776674937,
+          "false_alarm_rate": 0.08052434456928839,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 749,
+          "mae": 0.14255589294949936,
+          "rmse": 0.27711431566524375,
+          "r2": 0.4814873657364951,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 215,
+          "congestion_precision": 0.6976744186046512,
+          "congestion_recall": 0.6976744186046512,
+          "congestion_f1": 0.6976744186046512,
+          "false_alarm_rate": 0.12172284644194757,
+          "congestion_metrics_status": "available"
+        }
+      },
+      "extended_60s_history": {
+        "train_count": 749,
+        "validation_count": 749,
+        "random_forest": {
+          "sample_count": 749,
+          "mae": 0.1390145008839981,
+          "rmse": 0.24939197530064358,
+          "r2": 0.5800415063429285,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 140,
+          "congestion_precision": 0.8571428571428571,
+          "congestion_recall": 0.5581395348837209,
+          "congestion_f1": 0.676056338028169,
+          "false_alarm_rate": 0.03745318352059925,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 749,
+          "mae": 0.14255589294949936,
+          "rmse": 0.27711431566524375,
+          "r2": 0.4814873657364951,
+          "positive_event_count": 215,
+          "negative_event_count": 534,
+          "predicted_positive_count": 215,
+          "congestion_precision": 0.6976744186046512,
+          "congestion_recall": 0.6976744186046512,
+          "congestion_f1": 0.6976744186046512,
+          "false_alarm_rate": 0.12172284644194757,
+          "congestion_metrics_status": "available"
+        }
+      }
+    },
+    "base_features": [
+      "utilization",
+      "lag_5s",
+      "lag_10s",
+      "lag_15s",
+      "mean_15s",
+      "slope_per_second",
+      "std_15s",
+      "tx_mbps",
+      "rx_mbps",
+      "capacity_mbps"
+    ],
+    "additional_features": [
+      "lag_30s",
+      "lag_60s",
+      "mean_60s",
+      "std_60s",
+      "slope_60s"
+    ],
+    "note": "Longer-history comparisons use common observations and a 62-second boundary purge. No model is saved or promoted."
+  },
+  "protocol_source_hashes_match": true,
+  "model_path": "/home/bob_the_bob/Flowrider/data/research-20261015T180515Z/evaluation/model.pkl",
+  "test_results": {
+    "pyenv_discovered": 89,
+    "pyenv_passed": 84,
+    "pyenv_skipped": 5,
+    "system_mininet_passed": 5,
+    "distinct_passed": 89,
+    "failures": 0
+  },
+  "live_checks": {
+    "pingall": "passed in all four sessions; final 30/30",
+    "phase2_fault_recovery": "LIVE PHASE 2 NETWORK CHECKS PASSED in session 71",
+    "cleanup": "All four owned networks stopped; no lab interfaces remain; original controller PID 19315 left running",
+    "ml_failure_scope": "Unavailable model during collection verified live; thrown inference/storage failures covered by automated tests"
+  },
+  "phase4": {
+    "controlled_research_integration_ready": true,
+    "validated_proactive_routing": false,
+    "limitations": [
+      "Alert F1/recall varies across independent sessions",
+      "Only one final offline holdout and one inference session",
+      "Correlated link windows and fixed flow pairs; no statistical power claim",
+      "Lag-only candidate requires a fresh independent holdout before promotion",
+      "80% utilization threshold is not exact congestion onset or demonstrated packet-loss avoidance"
+    ]
+  },
+  "component_status_note": "research_evaluation.status records the offline report state at creation; the subsequent live audit verifies the completed pipeline.",
+  "engineered_artifacts": {
+    "features": "data/research-20261015T180515Z/evaluation/features.jsonl",
+    "labels": "data/research-20261015T180515Z/evaluation/labels.jsonl",
+    "example_count": 2492
+  }
+}

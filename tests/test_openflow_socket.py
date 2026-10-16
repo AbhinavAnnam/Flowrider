@@ -73,6 +73,8 @@ class SwitchPeer:
                                       struct.pack('!HH4x', subtype, 0) +
                                       b''.join(self.port(p) for p in sorted(ports)), xid)
                             self.ready.set()
+                        else:
+                            self.multipart_request(subtype, body, xid)
                     elif kind == ofp.OFPT_BARRIER_REQUEST:
                         self.send(ofp.OFPT_BARRIER_REPLY, xid=xid)
                     elif kind == ofp.OFPT_ECHO_REQUEST:
@@ -85,6 +87,10 @@ class SwitchPeer:
         except (OSError, AssertionError) as error:
             if not self.stopped.is_set():
                 self.errors.append(str(error))
+
+    def multipart_request(self, subtype, body, xid):
+        """Optional simulated-switch extension used by the Phase 3 wire test."""
+        pass
 
     def inject(self, src, dst):
         frame = packet.Packet()

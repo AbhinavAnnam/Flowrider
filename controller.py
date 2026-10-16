@@ -7,12 +7,30 @@ from os_ken.controller.handler import (
 )
 from os_ken.ofproto import ofproto_v1_3
 from os_ken.lib.packet import packet, ethernet, ether_types
+from os_ken import cfg
+from os_ken.controller import event
+from os_ken.lib import hub
+import threading
 
 from topology_state import TopologyState
 
 
 ROUTE_COOKIE = 0x4652000000000000
 COOKIE_MASK = 0xFFFF000000000000
+
+# The direct launcher is imported again by AppManager after argument parsing.
+if 'telemetry_enabled' not in cfg.CONF:
+    cfg.CONF.register_cli_opts([
+        cfg.BoolOpt('telemetry-enabled', default=False),
+        cfg.StrOpt('telemetry-db', default='data/telemetry.sqlite'),
+        cfg.StrOpt('telemetry-model', default=None),
+        cfg.StrOpt('telemetry-source', default='live_mininet', choices=['live_mininet', 'simulated_openflow']),
+        cfg.FloatOpt('telemetry-bandwidth-scale', default=0.1),
+    ])
+
+
+class EventTelemetryPoll(event.EventBase):
+    pass
 
 
 class FlowRiderController(app_manager.OSKenApp):
@@ -28,6 +46,59 @@ class FlowRiderController(app_manager.OSKenApp):
         self.failed = set()
         self.port_snapshots = {}
         self.port_overrides = {}
+        self.telemetry = None
+        self.telemetry_worker = None
+        self.telemetry_stop = threading.Event()
+
+    def start(self):
+        super().start()
+        if self.CONF.telemetry_enabled:
+            try:
+                from telemetry_runtime import PollCollector, TelemetryWorker
+                self.telemetry_worker = TelemetryWorker(
+                    self.CONF.telemetry_db, source=self.CONF.telemetry_source,
+                    model_path=self.CONF.telemetry_model, logger=self.logger,
+                    scale=self.CONF.telemetry_bandwidth_scale)
+                self.telemetry = PollCollector(self.telemetry_worker,
+                                               scale=self.CONF.telemetry_bandwidth_scale)
+                self.threads.append(hub.spawn(self._telemetry_clock))
+            except Exception:
+                self.logger.exception('Telemetry startup failed; forwarding continues')
+
+    def _telemetry_clock(self):
+        while not self.telemetry_stop.is_set():
+            self.send_event(self.name, EventTelemetryPoll())
+            # OS-Ken 4.2.2 uses native threads; Event.wait also permits prompt stop.
+            self.telemetry_stop.wait(5)
+
+    def stop(self):
+        self.telemetry_stop.set()
+        if self.telemetry_worker:
+            self.telemetry_worker.close()
+        super().stop()
+
+    def _telemetry_call(self, method, *args):
+        if self.telemetry is not None:
+            try:
+                return getattr(self.telemetry, method)(*args)
+            except Exception:
+                self.logger.exception('Telemetry operation failed; forwarding continues')
+
+    @set_ev_cls(EventTelemetryPoll)
+    def telemetry_poll_handler(self, ev):
+        # In OS-Ken 4.2.2's native hub, serve() can wait for helper threads
+        # after _recv_loop has closed the socket, delaying its DEAD event.
+        for dp in list(self.datapaths.values()):
+            if getattr(dp, 'socket', None) is not None and dp.socket.fileno() < 0:
+                dp.close()  # Emits the normal state-change event; never closes a live socket.
+        self._telemetry_call('poll', self.topology,
+                             {i: dp for i, dp in self.datapaths.items()
+                              if i not in self.failed and getattr(dp, 'state', None) != DEAD_DISPATCHER})
+
+    @set_ev_cls(ofp_event.EventOFPPortStatsReply, [CONFIG_DISPATCHER, MAIN_DISPATCHER])
+    def port_stats_reply_handler(self, ev):
+        if self._current(ev.msg.datapath):
+            self._telemetry_call('reply', ev.msg)
 
     def _current(self, datapath):
         return self.datapaths.get(datapath.id) is datapath
@@ -55,6 +126,7 @@ class FlowRiderController(app_manager.OSKenApp):
             dp.send_msg(barrier)
         self.logger.info('Topology changed; invalidating routes on %d switches',
                          len(self.pending_barriers))
+        self._telemetry_call('topology_changed', self.topology, self.datapaths)
 
     @set_ev_cls(ofp_event.EventOFPSwitchFeatures, CONFIG_DISPATCHER)
     def switch_features_handler(self, ev):
@@ -172,6 +244,10 @@ class FlowRiderController(app_manager.OSKenApp):
     def error_handler(self, ev):
         msg, dp = ev.msg, ev.msg.datapath
         if not self._current(dp):
+            return
+        if self._telemetry_call('statistics_error', dp, getattr(msg, 'xid', None)):
+            self.logger.warning('OpenFlow telemetry request error: DPID=%d type=%d code=%d',
+                                dp.id, msg.type, msg.code)
             return
         self.logger.error('OpenFlow error: DPID=%d type=%d code=%d data=%r; reconnect required',
                           dp.id, msg.type, msg.code, msg.data)

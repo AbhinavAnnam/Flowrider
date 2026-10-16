@@ -1,0 +1,58 @@
+{
+  "captured_utc": "2026-10-15T19:18:42.647149Z",
+  "display_timezone": "Asia/Kolkata",
+  "implementation": "Phase 4 faculty demo: read-only live integration and genuine recorded replay; ML route previews only",
+  "checks": {
+    "frontend_build": "passed: Vite production build",
+    "backend_startup": "passed: one-command script on localhost:8080",
+    "api_endpoints": "all seven GET endpoints returned HTTP 200",
+    "demo_unit_checks": "3 passed, including real saved-warning jump, route weighting, and missing/stale live handling",
+    "controller_wire_check": "1 passed: actual OS-Ken process, simulated OpenFlow peers, forwarding/failure/recovery",
+    "browser_smoke": "passed: real API data, six switches/seven links, forecast warnings, changed route preview, Start/Reset/Next Event, Live/Replay separation, 320/768/1440 viewport checks, zero console/page errors",
+    "new_live_mininet_check": "not executed: sudo requires interactive authentication; no new traffic experiment was run",
+    "phase3_pipeline_source_hashes_unchanged": true,
+    "shutdown": "passed: Ctrl+C stopped only the demo API/dashboard; port 8080 is free",
+    "original_user_controller_untouched": true,
+    "standalone_backup_creation": "passed: fresh SQLite backup creation in DELETE journal mode exactly preserves session/observations/predictions"
+  },
+  "replay": {
+    "database": "data/demo-replay.sqlite",
+    "source": "live_mininet",
+    "valid_saved_predictions": 871,
+    "works_without_running_sdn": true,
+    "original_timestamps_preserved": true,
+    "original_recording": "data/research-20261015T180515Z/inference-71.sqlite",
+    "standalone_backup": "passed: SQLite backup includes original committed WAL records; observations/predictions/session metadata exactly match source; integrity_check=ok; journal_mode=delete"
+  },
+  "live": {
+    "database": "data/demo-live.sqlite",
+    "freshness_seconds": 10,
+    "refresh_seconds": 2,
+    "controller_status": "inferred from fresh telemetry, not direct flow verification"
+  },
+  "routing": {
+    "actual_ml_flow_updates": false,
+    "baseline": "existing Phase 2 base-delay policy calculation",
+    "proposed": "existing Dijkstra with D0*(1+25*predicted_utilization**4)",
+    "packet_path_verified_by_dashboard": false
+  },
+  "versions": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "vite": "7.3.7",
+    "tailwindcss": "4.3.3",
+    "playwright": "1.64.1"
+  },
+  "commands": {
+    "replay": "bash scripts/start_demo.sh replay",
+    "live": "bash scripts/start_demo.sh live --live-db \"$PWD/data/demo-live.sqlite\"",
+    "url": "http://localhost:8080",
+    "stop": "Ctrl+C in dashboard terminal; no controller/network process is affected"
+  },
+  "limitations": [
+    "No applied ML rerouting or packet-path capture",
+    "No privileged live Mininet revalidation during sprint",
+    "Replay requires the preserved local standalone SQLite backup (or original validated recording), both ignored by Git",
+    "Model alert accuracy is experimental; Phase 3 results remain authoritative"
+  ]
+}

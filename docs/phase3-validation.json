@@ -1,0 +1,134 @@
+{
+  "verdict": "PARTIALLY COMPLETE",
+  "evidence_scope": "Synthetic mechanical evaluation only; not measured network prediction skill",
+  "synthetic_generator": {
+    "seeds": [
+      17,
+      29
+    ],
+    "lengths": [
+      300,
+      180
+    ],
+    "cadence_seconds": 5,
+    "description": "Independent seeded bounded autoregression with random high/low resets; one synthetic backbone link"
+  },
+  "synthetic_evaluation": {
+    "schema_version": 1,
+    "model_version": "rf-97d8678e16e1",
+    "dataset_sha256": "0e1d261f0a85f2c5c40d75102f8e1e6969e7e68af87db43efbcab14c4be99be7",
+    "trained_timestamp": "2026-10-15T17:07:14.843318Z",
+    "source": "synthetic",
+    "features": [
+      "utilization",
+      "lag_5s",
+      "lag_10s",
+      "lag_15s",
+      "mean_15s",
+      "slope_per_second",
+      "std_15s",
+      "tx_mbps",
+      "rx_mbps",
+      "capacity_mbps"
+    ],
+    "horizon_seconds": 15,
+    "lookback_seconds": 15,
+    "tolerance_seconds": 2,
+    "threshold": 0.8,
+    "sklearn_version": "1.7.2",
+    "numpy_version": "1.26.4",
+    "hyperparameters": {
+      "bootstrap": true,
+      "ccp_alpha": 0.0,
+      "criterion": "squared_error",
+      "max_depth": null,
+      "max_features": 1.0,
+      "max_leaf_nodes": null,
+      "max_samples": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 2,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "n_estimators": 100,
+      "n_jobs": 1,
+      "oob_score": false,
+      "random_state": 42,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "train_count": 294,
+    "test_count": 174,
+    "train_latest_label_time": 1792023895.0,
+    "test_earliest_feature_time": 1792026015.0,
+    "test_fraction": 0.2,
+    "holdout_session": "synthetic-holdout-seed29",
+    "train_sessions": [
+      "synthetic-train-seed17"
+    ],
+    "test_sessions": [
+      "synthetic-holdout-seed29"
+    ],
+    "train_positive_count": 144,
+    "evaluation": {
+      "random_forest": {
+        "sample_count": 174,
+        "mae": 0.13025326600844836,
+        "rmse": 0.18771334496628303,
+        "r2": 0.6350443244447432,
+        "positive_event_count": 59,
+        "negative_event_count": 115,
+        "predicted_positive_count": 40,
+        "congestion_precision": 0.8,
+        "congestion_recall": 0.5423728813559322,
+        "congestion_f1": 0.6464646464646464,
+        "false_alarm_rate": 0.06956521739130435,
+        "congestion_metrics_status": "available"
+      },
+      "persistence": {
+        "sample_count": 174,
+        "mae": 0.07744407788795886,
+        "rmse": 0.14982651518703055,
+        "r2": 0.7674977386335275,
+        "positive_event_count": 59,
+        "negative_event_count": 115,
+        "predicted_positive_count": 58,
+        "congestion_precision": 0.8448275862068966,
+        "congestion_recall": 0.8305084745762712,
+        "congestion_f1": 0.8376068376068375,
+        "false_alarm_rate": 0.0782608695652174,
+        "congestion_metrics_status": "available"
+      }
+    }
+  },
+  "environment": {
+    "os-ken": "4.2.2",
+    "networkx": "3.4.2",
+    "numpy": "1.26.4",
+    "scikit-learn": "1.7.2",
+    "scipy": "1.15.3"
+  },
+  "live_validation": {
+    "status": "unverified",
+    "blockers": [
+      "sudo requires a password",
+      "iperf3 is not installed"
+    ],
+    "iperf3_path": null
+  },
+  "captured_timestamp": "2026-10-15T17:07:14.882633Z",
+  "test_results": {
+    "pyenv_discovered": 82,
+    "pyenv_passed": 77,
+    "pyenv_skipped": 5,
+    "system_mininet_passed": 5,
+    "distinct_passed": 82,
+    "failures": 0
+  },
+  "existing_user_services": {
+    "controller_pid": 19315,
+    "mininet_pid": 33624,
+    "telemetry_enabled_in_observed_command": false,
+    "action": "left running unchanged"
+  }
+}

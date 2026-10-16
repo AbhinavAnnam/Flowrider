@@ -1,0 +1,125 @@
+Phase 3 finalization: executed checks
+
+Controller Python unit/regression suite:
+test_buffered_packet_out_does_not_include_data (test_controller.ControllerTests) ... ok
+test_disconnect_and_stale_connection_event (test_controller.ControllerTests) ... ok
+test_failure_deletes_owned_rules_and_waits_for_barriers (test_controller.ControllerTests) ... ok
+test_features_registers_and_serializes_table_miss (test_controller.ControllerTests) ... ok
+test_known_unicast_rule_and_packet_out (test_controller.ControllerTests) ... ok
+test_multipart_ports_are_not_activated_early (test_controller.ControllerTests) ... ok
+test_no_path_is_logged_then_recovers_after_restoration (test_controller.ControllerTests) ... ok
+test_off_path_unicast_and_wrong_tree_ingress_are_dropped (test_controller.ControllerTests) ... Unexpected host attachment: 00:00:00:00:00:01 on 2/1
+ok
+test_old_barrier_replies_do_not_release_new_update (test_controller.ControllerTests) ... ok
+test_port_delete_and_add_recover_configured_link (test_controller.ControllerTests) ... ok
+test_protocol_errors_are_logged_and_disable_forwarding (test_controller.ControllerTests) ... ok
+test_truncated_or_control_packets_do_not_install_routes (test_controller.ControllerTests) ... ok
+test_unknown_and_broadcast_do_not_use_flood_or_install_flows (test_controller.ControllerTests) ... ok
+test_unknown_switch_and_wrong_port_map_fail_closed (test_controller.ControllerTests) ... Unconfigured DPID 99; rejecting connection
+Invalid static wiring on DPID=1: expected ports [1, 2, 3], received [1]; forwarding disabled
+ok
+test_existing_bridge_is_rejected_before_any_network_creation (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_partial_startup_stops_only_owned_network (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_six_switches_hosts_and_exact_wiring (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_tc_check_validates_applied_values (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_unsupported_bandwidth_is_rejected (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_six_real_openflow_handshakes_forwarding_failure_and_recovery (test_openflow_socket.SocketTests) ... ok
+test_original_synthetic_training_and_prediction_still_work (test_phase1_regression.SimulationTests) ... ok
+test_original_weight_equation_and_conceptual_capacity_are_preserved (test_phase1_regression.SimulationTests) ... ok
+test_matured_prediction_evaluation_matches_persistence_pairs (test_phase3_cli.CLITests) ... ok
+test_missing_database_is_an_error_and_does_not_create_data (test_phase3_cli.CLITests) ... ok
+test_training_inspection_and_export_preserve_provenance (test_phase3_cli.CLITests) ... ok
+test_alternative_horizons_use_real_future_labels_and_causal_extended_history (test_phase3_diagnostics.DiagnosticTests) ... ok
+test_missing_history_breaks_diagnostic_windows (test_phase3_diagnostics.DiagnosticTests) ... ok
+test_collection_schedule_is_reproducible_varied_and_bounded (test_phase3_research.ResearchTests) ... ok
+test_inference_audit_preserves_matured_pairs_and_checks_timestamp_and_warning (test_phase3_research.ResearchTests) ... ok
+test_overlapping_sessions_and_duplicate_records_are_rejected (test_phase3_research.ResearchTests) ... ok
+test_split_uses_whole_independent_sessions_and_purges_boundaries (test_phase3_research.ResearchTests) ... ok
+test_validation_selects_model_without_holdout_tuning_and_saves_evidence (test_phase3_research.ResearchTests) ... ok
+test_chronological_split_purges_overlapping_labels_and_windows (test_prediction.FeatureTests) ... ok
+test_irregular_alignment_and_missing_window_break (test_prediction.FeatureTests) ... ok
+test_lags_and_real_future_target (test_prediction.FeatureTests) ... ok
+test_no_future_information_and_missing_target_excluded (test_prediction.FeatureTests) ... ok
+test_regression_and_congestion_metrics_and_no_positive_events (test_prediction.FeatureTests) ... ok
+test_sessions_are_never_joined_and_out_of_order_is_rejected (test_prediction.FeatureTests) ... ok
+test_model_identifier_changes_with_warning_policy (test_prediction.ModelTests) ... ok
+test_no_labels_insufficient_samples_and_provenance_mismatch (test_prediction.ModelTests) ... ok
+test_no_model_insufficient_history_and_inference_failure (test_prediction.ModelTests) ... ok
+test_operational_clipping_preserves_raw_output_and_threshold (test_prediction.ModelTests) ... ok
+test_training_round_trip_baseline_and_reproducibility (test_prediction.ModelTests) ... ok
+test_above_capacity_retains_raw_values (test_telemetry.SamplingTests) ... ok
+test_aggregate_uses_maximum_tx_direction_without_double_counting (test_telemetry.SamplingTests) ... ok
+test_bytes_to_mbps_uses_elapsed_time_and_scaled_capacity (test_telemetry.SamplingTests) ... ok
+test_inactive_and_new_connection_reset_baseline (test_telemetry.SamplingTests) ... ok
+test_invalid_elapsed_stale_and_large_gap (test_telemetry.SamplingTests) ... ok
+test_nonfinite_time_and_stale_switch_duration_are_not_valid (test_telemetry.SamplingTests) ... ok
+test_openflow_unsupported_byte_sentinel_is_missing (test_telemetry.SamplingTests) ... ok
+test_optional_unsupported_counters_stay_null (test_telemetry.SamplingTests) ... ok
+test_reset_missing_and_recovery_never_become_zero_samples (test_telemetry.SamplingTests) ... ok
+test_snapshot_distinguishes_hosts_and_scaled_link_ports (test_telemetry.SamplingTests) ... ok
+test_atomic_sessions_schema_invalid_and_round_trip (test_telemetry.StorageTests) ... ok
+test_partial_batch_and_invalid_order_are_rejected (test_telemetry.StorageTests) ... ok
+test_buffered_packet_out_does_not_include_data (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_disconnect_and_stale_connection_event (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_failure_deletes_owned_rules_and_waits_for_barriers (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_features_registers_and_serializes_table_miss (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_known_unicast_rule_and_packet_out (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_multipart_ports_are_not_activated_early (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_no_path_is_logged_then_recovers_after_restoration (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_off_path_unicast_and_wrong_tree_ingress_are_dropped (test_telemetry_runtime.ForwardingIsolationTests) ... Unexpected host attachment: 00:00:00:00:00:01 on 2/1
+ok
+test_old_barrier_replies_do_not_release_new_update (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_port_delete_and_add_recover_configured_link (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_protocol_errors_are_logged_and_disable_forwarding (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_truncated_or_control_packets_do_not_install_routes (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_unknown_and_broadcast_do_not_use_flood_or_install_flows (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_unknown_switch_and_wrong_port_map_fail_closed (test_telemetry_runtime.ForwardingIsolationTests) ... Unconfigured DPID 99; rejecting connection
+Invalid static wiring on DPID=1: expected ports [1, 2, 3], received [1]; forwarding disabled
+ok
+test_multipart_does_not_publish_incomplete_or_duplicate_ports (test_telemetry_runtime.PollTests) ... ok
+test_poll_requests_all_valid_switches_and_correlates_final_replies (test_telemetry_runtime.PollTests) ... ok
+test_stale_delayed_duplicates_missing_and_disconnect (test_telemetry_runtime.PollTests) ... ok
+test_statistics_errors_remain_separate_from_forwarding_errors (test_telemetry_runtime.PollTests) ... ok
+test_bad_model_and_storage_failure_do_not_escape_worker (test_telemetry_runtime.WorkerTests) ... ok
+test_full_synthetic_counter_to_saved_model_inference_pipeline (test_telemetry_runtime.WorkerTests) ... ok
+test_storage_and_model_not_ready_with_real_worker_thread (test_telemetry_runtime.WorkerTests) ... ok
+test_unwritable_database_disables_worker_without_raising_to_controller (test_telemetry_runtime.WorkerTests) ... ok
+test_real_polling_storage_and_disconnect_with_simulated_peers (test_telemetry_socket.TelemetrySocketTests) ... ok
+test_access_port_failure_blocks_host_delivery (test_topology_state.TopologyTests) ... ok
+test_both_endpoints_required_and_port_names_validated (test_topology_state.TopologyTests) ... ok
+test_broadcast_forest_after_partition_and_restoration (test_topology_state.TopologyTests) ... ok
+test_broadcast_has_no_duplicates_for_every_source_and_failure_combination (test_topology_state.TopologyTests) ... ok
+test_configured_graph_and_unique_port_mapping (test_topology_state.TopologyTests) ... ok
+test_delay_weighted_path_and_explicit_output (test_topology_state.TopologyTests) ... ok
+test_disconnection_removes_routes_and_ports (test_topology_state.TopologyTests) ... ok
+test_failure_reroute_partition_and_recovery (test_topology_state.TopologyTests) ... ok
+test_shared_graph_preserves_simulation_metrics_and_path (test_topology_state.TopologyTests) ... ok
+test_static_host_registration_and_access_only_learning (test_topology_state.TopologyTests) ... ok
+test_unknown_and_broadcast_traverse_tree_exactly_once (test_topology_state.TopologyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 89 tests in 24.421s
+
+OK (skipped=5)
+
+Ubuntu Python Mininet topology suite:
+test_existing_bridge_is_rejected_before_any_network_creation (test_mininet_topology.MininetTopologyTests.test_existing_bridge_is_rejected_before_any_network_creation) ... ok
+test_partial_startup_stops_only_owned_network (test_mininet_topology.MininetTopologyTests.test_partial_startup_stops_only_owned_network) ... ok
+test_six_switches_hosts_and_exact_wiring (test_mininet_topology.MininetTopologyTests.test_six_switches_hosts_and_exact_wiring) ... ok
+test_tc_check_validates_applied_values (test_mininet_topology.MininetTopologyTests.test_tc_check_validates_applied_values) ... ok
+test_unsupported_bandwidth_is_rejected (test_mininet_topology.MininetTopologyTests.test_unsupported_bandwidth_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+OK
+
+Independent saved-evidence audit:
+{
+  "valid_samples": 3516,
+  "independent_rate_checks": 19932,
+  "integrity": "all four databases passed; all rate, utilization, port-map and target checks passed",
+  "offline_metrics_reproduced": true,
+  "live_audit_reproduced": true,
+  "source_hashes_match": true
+}

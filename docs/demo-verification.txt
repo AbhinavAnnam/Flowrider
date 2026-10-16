@@ -1,0 +1,20 @@
+Focused demo checks:
+test_live_missing_database_is_unknown_without_replay_fallback (test_demo.DemoTests) ... ok
+test_replay_real_records_next_event_and_reset (test_demo.DemoTests) ... ok
+test_weight_equation_and_route_preview (test_demo.DemoTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.184s
+
+OK
+
+Controller wire check (simulated peers):
+test_six_real_openflow_handshakes_forwarding_failure_and_recovery (test_openflow_socket.SocketTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.749s
+
+OK
+
+Browser smoke (standalone real replay):
+PASS: real API data; 6 switches/7 links; Start/Reset/Next Event; route preview; replay/live separation; 320/768/1440 layouts; no browser errors.
