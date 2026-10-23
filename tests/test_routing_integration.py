@@ -93,7 +93,9 @@ class RoutingApiTests(unittest.TestCase):
             path=Path(directory)/'routes.sqlite'
             with TelemetryStore(path,'live_mininet',{}) as store:
                 from telemetry_store import utc_now
-                store.write_routing('snapshot',dict(timestamp=utc_now(),routes=[],automatic_rerouting=True))
+                store.write_routing('snapshot',dict(timestamp=utc_now(),routes=[dict(
+                    installed_route=dict(cookie=0x465200000000007b),
+                    observed_route=dict(cookie=0x465200000000007c))],automatic_rerouting=True))
             demo=NS(live_db=path,mode='replay',snapshot=lambda:{})
             server=ThreadingHTTPServer(('127.0.0.1',0),handler_for(demo,Path(directory)))
             thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
@@ -104,6 +106,9 @@ class RoutingApiTests(unittest.TestCase):
                 self.assertEqual(body['view_mode'],'replay')
                 self.assertTrue(body['snapshot']['automatic_rerouting'])
                 self.assertEqual(body['status'],'available')
+                route=body['snapshot']['routes'][0]
+                self.assertEqual(route['installed_route']['cookie_hex'],'0x465200000000007b')
+                self.assertEqual(route['observed_route']['cookie_hex'],'0x465200000000007c')
             finally:server.shutdown();server.server_close();thread.join(2)
 
 class WorkerRoutingCallbackTests(unittest.TestCase):

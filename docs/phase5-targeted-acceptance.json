@@ -1,0 +1,272 @@
+{
+  "evidence_directory": "data/phase5-20261023T091240Z",
+  "status": "passed_targeted_live_mininet",
+  "scenario": "targeted",
+  "source": "live_mininet",
+  "baseline": [
+    1,
+    2,
+    5,
+    4
+  ],
+  "installed": {
+    "path": [
+      1,
+      6,
+      5,
+      4
+    ],
+    "cookie": 5067112530745229343,
+    "vlan": 16,
+    "reason": "predicted_congestion",
+    "activated_timestamp": "2026-10-23T09:14:05.353341Z"
+  },
+  "observed": {
+    "path": [
+      1,
+      6,
+      5,
+      4
+    ],
+    "cookie": 5067112530745229343,
+    "method": "openflow_flow_stats",
+    "verified_timestamp": "2026-10-23T09:14:11.315628Z",
+    "counters": [
+      {
+        "dpid": 6,
+        "source_mac": "00:00:00:00:00:01",
+        "packet_count": 2392,
+        "byte_count": 3531888,
+        "out_port": 2
+      },
+      {
+        "dpid": 6,
+        "source_mac": "00:00:00:00:00:04",
+        "packet_count": 30,
+        "byte_count": 3060,
+        "out_port": 3
+      },
+      {
+        "dpid": 1,
+        "source_mac": "00:00:00:00:00:04",
+        "packet_count": 30,
+        "byte_count": 3060,
+        "out_port": 1
+      },
+      {
+        "dpid": 1,
+        "source_mac": "00:00:00:00:00:01",
+        "packet_count": 32792,
+        "byte_count": 48246068,
+        "out_port": 3
+      },
+      {
+        "dpid": 5,
+        "source_mac": "00:00:00:00:00:01",
+        "packet_count": 2389,
+        "byte_count": 3527406,
+        "out_port": 2
+      },
+      {
+        "dpid": 5,
+        "source_mac": "00:00:00:00:00:04",
+        "packet_count": 30,
+        "byte_count": 3060,
+        "out_port": 3
+      },
+      {
+        "dpid": 4,
+        "source_mac": "00:00:00:00:00:01",
+        "packet_count": 2387,
+        "byte_count": 3524418,
+        "out_port": 1
+      },
+      {
+        "dpid": 4,
+        "source_mac": "00:00:00:00:00:04",
+        "packet_count": 439,
+        "byte_count": 42272,
+        "out_port": 3
+      }
+    ],
+    "end_to_end_delivery_verified": false,
+    "all_rule_counters_positive": true
+  },
+  "independent_ovs_switches": [
+    "s1",
+    "s6",
+    "s5",
+    "s4"
+  ],
+  "delivery": "ping_passed",
+  "initial_pingall": "0% dropped (30/30 received), mininet.log",
+  "final_pingall_loss": 0,
+  "continuous_ping": {
+    "h1": {
+      "packet_loss_percent": 0.0,
+      "duplicates": false
+    },
+    "h2": {
+      "packet_loss_percent": 0.0,
+      "duplicates": false
+    }
+  },
+  "scoped_cleanup_verified": true,
+  "low_load_recovery": {
+    "measured_utilization": 0.0,
+    "predicted_utilization": 8.14303868804301e-08,
+    "delivery": "ping_passed",
+    "installed_path": [
+      1,
+      6,
+      5,
+      4
+    ]
+  },
+  "stages": [
+    {
+      "index": 0,
+      "rate_mbps": 7,
+      "duration_seconds": 30,
+      "status": "passed",
+      "clients": [
+        {
+          "source": "h1",
+          "destination": "h2",
+          "rate_mbps": 7,
+          "exit_code": 0
+        },
+        {
+          "source": "h1",
+          "destination": "h4",
+          "rate_mbps": 5,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "rate_mbps": 45,
+      "duration_seconds": 15,
+      "status": "passed",
+      "clients": [
+        {
+          "source": "h1",
+          "destination": "h2",
+          "rate_mbps": 45,
+          "exit_code": 0
+        },
+        {
+          "source": "h1",
+          "destination": "h4",
+          "rate_mbps": 5,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "rate_mbps": 70,
+      "duration_seconds": 15,
+      "status": "passed",
+      "clients": [
+        {
+          "source": "h1",
+          "destination": "h2",
+          "rate_mbps": 70,
+          "exit_code": 0
+        },
+        {
+          "source": "h1",
+          "destination": "h4",
+          "rate_mbps": 5,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "rate_mbps": 85,
+      "duration_seconds": 60,
+      "status": "passed",
+      "clients": [
+        {
+          "source": "h1",
+          "destination": "h2",
+          "rate_mbps": 85,
+          "exit_code": 0
+        },
+        {
+          "source": "h1",
+          "destination": "h4",
+          "rate_mbps": 5,
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "rate_mbps": 7,
+      "duration_seconds": 35,
+      "status": "passed",
+      "clients": [
+        {
+          "source": "h1",
+          "destination": "h2",
+          "rate_mbps": 7,
+          "exit_code": 0
+        },
+        {
+          "source": "h1",
+          "destination": "h4",
+          "rate_mbps": 5,
+          "exit_code": 0
+        }
+      ]
+    }
+  ],
+  "backbone_failure_recovery_tested": false,
+  "full_acceptance_this_review": {
+    "status": "NOT RUN",
+    "reason": "sudo requires interactive password; OVS socket access denied",
+    "command": "FLOWRIDER_SCENARIO=full bash scripts/run_phase5_validation.sh data/research-20261015T180515Z/evaluation/model.pkl"
+  },
+  "artifact_sha256": {
+    "00-h1-h2.json": "44ee278536806bdf1244ca0b067f560c02710c4244771879102cf455a3b92c47",
+    "00-h1-h2.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "00-h1-h4.json": "41503a0d1f7672bb31ae7a46dea57799ce6686c17d441610b3a935325195fa0c",
+    "00-h1-h4.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "01-h1-h2.json": "4b0fcb9ac47e86311af456abe0b7acbd90724b09cf0c078623d443d9af7680d5",
+    "01-h1-h2.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "01-h1-h4.json": "9766ba9d64a81dda7430770394956ee3f9749db429273118f9ba3d250172789d",
+    "01-h1-h4.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "02-h1-h2.json": "19674b4b43c0002f5d5e2f7d8eaf1773fe4b5d567aa1ff7da106824d9885191a",
+    "02-h1-h2.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "02-h1-h4.json": "9ca906e4bcbb5527611e25a21b8ec2c90fc341de6c2681b46b855525a4af7233",
+    "02-h1-h4.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "03-h1-h2.json": "4c7015c1d83bb1a1d08a9578f8119e93add46c6cea3194c9ffd9f70f61494807",
+    "03-h1-h2.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "03-h1-h4.json": "aaecf1ed8e3843025d25b5a9fdfdf68eef06b5f80eed45c48d3434f8299a0b6d",
+    "03-h1-h4.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "04-h1-h2.json": "24cc724fb53d3a2052c661b456af48fb42422ba7543a9134ee8d5e2ca00f0687",
+    "04-h1-h2.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "04-h1-h4.json": "5edbb43f2e7abaca14662a0775c1ed20ed6826303b1c10ec2ba1e073a1a4ec89",
+    "04-h1-h4.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "acceptance.json": "c9735f0f28c3a8a4b463907c8a64b8ff8f38fd254a8cd8ddc44f5335433165d2",
+    "applied-ml-route.json": "ffbcd8a33defa23f6f1547ec7e2db29ae393459b49bff54e100eab5d10452a2b",
+    "cleanup.json": "87c89898096eaa4c6d3b2fdcb38d1d88c84907138ec553511b1a60fec274896f",
+    "controller.log": "37d58378f57055d3eabd245cd419e21044e7b52cfe01d0aad824a30d5ee00949",
+    "final-routing-state.json": "5d22113caa60626997e03171909b11d26a14b2e383d5a57d2013b0a39451bf3f",
+    "final-routing-state.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "h1-ping.log": "fa3cb05d20055dfed03fb9c2a5bdbb36274a58a08376ae07cf8011c6f001525e",
+    "h2-ping.log": "aebc191311000004777a750ade79bcbfe8e06d650de8865cec52743f67da9c4d",
+    "h2-server.log": "f85ec967789448e0730d2e956deec5f62b691e385b2f924c28cab8c93fe46969",
+    "h4-server.log": "341367cef02b5cb20816008773bf9beb1d9b15afe9cf80caddf73a9625fa310b",
+    "low-load-recovery.json": "7166171ea7b7707bf08e1945d2c548b4b1b70454deed85a7b5ea37fc4e8043e8",
+    "mininet.log": "1f3b06d4f8d2bf9c53cfce51a6f4424c5c8324c7f8b173b551f182dec67c001b",
+    "telemetry.sqlite": "47cda1771469ea0b8420b9e79e504dad5e837e7eae9abfdf9e077bdc15a08e49",
+    "telemetry.sqlite-shm": "889e3d77cfa90a05701c1b262338e018ced7bd89833de2d3c136f16208226bcf",
+    "telemetry.sqlite-wal": "f804d3670a2f00dab50ed49987f6ce2f0f9e9435494afeea38240d8c52f0fa9d",
+    "traffic-stages.json": "0398f4b7a65027464421b23073b58410f22a44f183161ee3f49b900cb8202e27"
+  }
+}

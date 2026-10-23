@@ -5,6 +5,8 @@ cd "$(dirname "$0")/.."
 phase5_python="${FLOWRIDER_PYTHON:-$HOME/.pyenv/versions/3.10.16/bin/python}"
 phase5_model="${1:-data/research-20261015T180515Z/evaluation/model.pkl}"
 phase5_port="${FLOWRIDER_OF_PORT:-16653}"
+phase5_scenario="${FLOWRIDER_SCENARIO:-full}"
+case "$phase5_scenario" in full|targeted) ;; *) echo 'FLOWRIDER_SCENARIO must be full or targeted.' >&2; exit 2;; esac
 [[ -f "$phase5_model" ]] || { echo "Model missing: $phase5_model" >&2; exit 1; }
 command -v iperf3 >/dev/null || { echo 'iperf3 is required.' >&2; exit 1; }
 "$phase5_python" - "$phase5_port" <<'PY'
@@ -71,7 +73,7 @@ printf 'Phase 5 evidence: %s\n' "$phase5_output"
 exec {phase5_log_fd}> >(tee "$phase5_output/mininet.log")
 phase5_logger=$!
 sudo /usr/bin/python3 tests/integration_phase5.py --controller-port "$phase5_port" \
-    --database "$phase5_output/telemetry.sqlite" --output "$phase5_output" \
+    --database "$phase5_output/telemetry.sqlite" --output "$phase5_output" --scenario "$phase5_scenario" \
     >&"$phase5_log_fd" 2>&1 &
 phase5_validation=$!
 exec {phase5_log_fd}>&-
@@ -81,4 +83,4 @@ phase5_validation=''
 wait "$phase5_logger" || { if (( phase5_result == 0 )); then phase5_result=1; fi; }
 phase5_logger=''
 if (( phase5_result != 0 )); then exit "$phase5_result"; fi
-printf 'Live acceptance passed. Evidence: %s/acceptance.json\n' "$phase5_output"
+printf 'Live acceptance passed (scenario: %s). Evidence: %s/acceptance.json\n' "$phase5_scenario" "$phase5_output"

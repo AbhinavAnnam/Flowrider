@@ -12,7 +12,7 @@ import unittest
 
 
 class Phase5LauncherTests(unittest.TestCase):
-    def run_launcher(self, mode):
+    def run_launcher(self, mode, scenario='full'):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             (root/'scripts').mkdir()
@@ -64,7 +64,7 @@ sys.exit(status)
                 path.chmod(0o755)
             (root/'bin/iperf3').symlink_to('/bin/true')
             environment = dict(os.environ, PATH=str(root/'bin')+':'+os.environ['PATH'],
-                FLOWRIDER_PYTHON=str(root/'bin/python'), PHASE5_FIXTURE_MODE=mode)
+                FLOWRIDER_PYTHON=str(root/'bin/python'), PHASE5_FIXTURE_MODE=mode,FLOWRIDER_SCENARIO=scenario)
             child = subprocess.Popen(['bash', str(root/'scripts/run_phase5_validation.sh'), 'model.pkl'],
                 env=environment, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             try:
@@ -90,6 +90,7 @@ sys.exit(status)
                     self.assertIn('fixture Mininet stopped', (evidence/'mininet.log').read_text())
                 if mode == 'success':
                     self.assertIn('Live acceptance passed', stdout)
+                    self.assertIn(f'scenario: {scenario}',stdout)
                 else:
                     self.assertNotIn('Live acceptance passed', stdout)
                     self.assertIn('Live validation failed', stderr)
@@ -113,6 +114,9 @@ sys.exit(status)
 
     def test_success_reaps_controller_and_logger(self):
         self.run_launcher('success')
+
+    def test_targeted_scenario_is_explicit_in_launcher_result(self):
+        self.run_launcher('success','targeted')
 
 
 if __name__ == '__main__':

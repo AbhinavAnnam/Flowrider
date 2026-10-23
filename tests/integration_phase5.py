@@ -94,19 +94,20 @@ def read_client_measurements(output,client,duration):
 def run_stage(net,args,stage,observe):
     clients=[];handles=[]
     duration=stage['duration_seconds'];index=stage['index'];rate=stage['rate_mbps']
+    flows=stage.get('flows') or [('h1','h4',rate),('h3','h6',rate)]
     stage.update(status='running',clients=[])
     with ExitStack() as files:
         try:
-            for src,dst in (('h1','h4'),('h3','h6')):
+            for src,dst,client_rate in flows:
                 name=f'{index:02d}-{src}-{dst}'
                 stdout=files.enter_context((args.output/f'{name}.json').open('w'))
                 stderr=files.enter_context((args.output/f'{name}.stderr.log').open('w'))
                 handles.extend((stdout,stderr))
-                command=['iperf3','-c',net[dst].IP(),'-u','-b',f'{rate}M','-t',str(duration),
+                command=['iperf3','-c',net[dst].IP(),'-u','-b',f'{client_rate}M','-t',str(duration),
                          '--connect-timeout',str(CONNECT_SECONDS*1000),'-J']
                 started=time.monotonic()
                 process=net[src].popen(command,stdout=stdout,stderr=stderr)
-                client=dict(source=src,destination=dst,pid=process.pid,command=process.args,
+                client=dict(source=src,destination=dst,rate_mbps=client_rate,pid=process.pid,command=process.args,
                     started=time.time(),started_monotonic=started,
                     deadline_monotonic=started+CONNECT_SECONDS+duration+RESULT_SECONDS,
                     stdout=Path(stdout.name).name,stderr=Path(stderr.name).name)
@@ -139,7 +140,7 @@ def run_stage(net,args,stage,observe):
             for _,client in clients:
                 read_client_measurements(args.output,client,duration)
             stage.update(finished=time.time(),client_exit_codes=[c['exit_code'] for _,c in clients],
-                status='passed' if len(clients)==2 and 'error' not in stage and
+                status='passed' if len(clients)==len(flows) and 'error' not in stage and
                     all(c['status']=='passed' for _,c in clients) else 'failed')
 
 
@@ -148,9 +149,9 @@ def route_for(state,src,dst):
     return next((r for r in (state.get('snapshot') or {}).get('routes',[]) if r['source_mac']==a and r['destination_mac']==b and r['installed_route']),None)
 
 
-def verify_path(net,args,route):
+def verify_path(net,args,route,require_alternative=True):
     installed=route['installed_route'];path=installed['path'];cookie=installed['cookie']
-    require(path!=route['baseline_path'],'ML route did not differ from baseline')
+    if require_alternative:require(path!=route['baseline_path'],'ML route did not differ from baseline')
     src=int(route['source_mac'].split(':')[-1],16);dst=int(route['destination_mac'].split(':')[-1],16)
     require(ping(net,f'h{src}',f'h{dst}'),'Packet delivery failed on ML path')
     def positive_readback():
@@ -177,12 +178,29 @@ def verify_path(net,args,route):
                 verification='exact_flow_entries_and_positive_per_hop_counters_plus_host_delivery')
 
 
+def verify_low_load_recovery(net,args):
+    state=read_routing_state(args.database)
+    link=next((l for l in (state.get('snapshot') or {}).get('topology',{}).get('links',[])
+               if l['link_id']=='s1-s2'),{})
+    measurement=link.get('measurement') or {};prediction=link.get('prediction') or {}
+    require(not state.get('stale') and state.get('source')=='live_mininet' and link.get('fresh') and
+            measurement.get('valid') and isinstance(measurement.get('utilization'),(int,float)) and
+            0<=measurement['utilization']<.2 and prediction.get('status')=='valid' and
+            isinstance(prediction.get('predicted_utilization'),(int,float)) and
+            0<=prediction['predicted_utilization']<.8,
+            'Low-load recovery was not observed with fresh measurements and forecasts')
+    route=route_for(state,1,4);require(route is not None,'No installed route after congestion subsided')
+    return dict(controller_snapshot=state,forwarding=verify_path(net,args,route,require_alternative=False),
+                note='Hysteresis may retain the alternative; return to baseline is not forced.')
+
+
 def checks(net,args):
     servers=[];pings=[];handles=[];proof=None;stages=[];down=False
+    targeted=getattr(args,'scenario','full')=='targeted'
     try:
         eventually(lambda:ping(net,'h1','h4'),'initial bidirectional forwarding')
         require(net.pingAll(timeout='2')==0,'Initial pingall failed')
-        for name in ('h4','h6'):
+        for name in (('h2','h4') if targeted else ('h4','h6')):
             handle=(args.output/f'{name}-server.log').open('w');handles.append(handle)
             servers.append(net[name].popen(['iperf3','-s','-p','5201'],stdout=handle,stderr=subprocess.STDOUT))
         time.sleep(1);require(all(p.poll() is None for p in servers),'iperf3 server startup failed')
@@ -193,12 +211,13 @@ def checks(net,args):
         # Several regimes exercise the saved model without assuming that any
         # fixed duration guarantees a congestion warning or a useful prediction.
         schedule=[(7,40),(45,20),(60,15),(70,15),(80,20),(95,35),(20,20),(7,20),(90,30),(95,35)]
+        if targeted:schedule=[(7,30),(45,15),(70,15),(85,60),(7,35)]
         def observe():
             nonlocal proof
             state=read_routing_state(args.database)
             require(state.get('source')=='live_mininet','Expected real Mininet provenance')
             if proof is None and not state.get('stale'):
-                for src,dst in ((1,4),(3,6)):
+                for src,dst in (((1,4),) if targeted else ((1,4),(3,6))):
                     route=route_for(state,src,dst)
                     if route and route['installed_route']['reason']=='predicted_congestion':
                         proof=verify_path(net,args,route)
@@ -208,9 +227,10 @@ def checks(net,args):
                         break
         for index,(rate,duration) in enumerate(schedule):
             stage=dict(index=index,rate_mbps=rate,duration_seconds=duration,started=time.time(),status='running')
+            if targeted:stage['flows']=[('h1','h2',rate),('h1','h4',5)]
             stages.append(stage)
             (args.output/'traffic-stages.json').write_text(json.dumps(stages,indent=2))
-            print(f'*** LIVE stage {index}: two UDP flows at {rate}M for {duration}s',flush=True)
+            print(f"*** LIVE stage {index}: {stage.get('flows') or 'two UDP flows at '+str(rate)+'M'} for {duration}s",flush=True)
             try:run_stage(net,args,stage,observe)
             finally:(args.output/'traffic-stages.json').write_text(json.dumps(stages,indent=2))
             require(stage['status']=='passed',f'iperf3 traffic stage {index} failed; see traffic-stages.json')
@@ -226,13 +246,18 @@ def checks(net,args):
             loss=float(found.group(1));ping_results[src]=dict(packet_loss_percent=loss,duplicates='DUP!' in output)
             require(loss<5 and 'DUP!' not in output,f'{src} experienced excessive loss or duplicate delivery')
         require(proof is not None,'No real RF-triggered, verified alternative occurred. Do not claim Phase 5 live acceptance.')
-        net.configLinkStatus('s2','s5','down');down=True
-        eventually(lambda:ping(net,'h2','h5'),'baseline recovery around failed backbone')
-        net.configLinkStatus('s2','s5','up');down=False
-        eventually(lambda:ping(net,'h2','h5'),'backbone restoration')
+        recovery=None
+        if targeted:
+            recovery=verify_low_load_recovery(net,args)
+            (args.output/'low-load-recovery.json').write_text(json.dumps(recovery,indent=2))
+        else:
+            net.configLinkStatus('s2','s5','down');down=True
+            eventually(lambda:ping(net,'h2','h5'),'baseline recovery around failed backbone')
+            net.configLinkStatus('s2','s5','up');down=False
+            eventually(lambda:ping(net,'h2','h5'),'backbone restoration')
         require(net.pingAll(timeout='2')==0,'Final connectivity regression')
-        return dict(source='live_mininet',applied_route=proof,
-            continuous_ping=ping_results,backbone_failure_recovery=True,final_pingall_loss=0,
+        return dict(source='live_mininet',scenario=getattr(args,'scenario','full'),applied_route=proof,
+            continuous_ping=ping_results,backbone_failure_recovery=not targeted,low_load_recovery=recovery,final_pingall_loss=0,
             network_wide_atomic_update=False,zero_loss_guarantee=False)
     finally:
         cleanup=dict(processes=[],errors=[])
@@ -257,6 +282,7 @@ def main():
     parser.add_argument('--bandwidth-scale',type=float,default=.1)
     parser.add_argument('--database',type=Path,required=True)
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--scenario',choices=('full','targeted'),default='full')
     args=parser.parse_args()
     if not shutil.which('iperf3'):parser.error('iperf3 is required; no packages will be installed')
     args.output.mkdir(parents=True,exist_ok=True);setLogLevel('info')
@@ -269,7 +295,8 @@ def main():
     try:
         run_network(args,checks=lambda net:result.update(checks(net,args)))
         preflight(args.controller_ip,args.controller_port)
-        result.update(status='passed_live_mininet',scoped_cleanup_verified=True)
+        result.update(status='passed_targeted_live_mininet' if args.scenario=='targeted' else 'passed_live_mininet',
+                      scoped_cleanup_verified=True)
     except BaseException as error:
         result.update(status='failed_live_mininet',error=f'{type(error).__name__}: {error}')
         raise

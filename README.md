@@ -143,13 +143,25 @@ Automatic forwarding updates are now available with the opt-in
 uses fresh saved-model predictions, applies the existing weight equation,
 stages bidirectional versioned OpenFlow rules, and verifies flow-entry readback
 before marking a route installed. Default launches keep Phase 2 forwarding.
-The React dashboard remains a preview; actual controller routes are exposed
-through SQLite snapshots, `routing_state.py`, and read-only `/api/routing`.
+The React dashboard retains calculated previews and now adds a live controller
+panel showing baseline, recommended, installed and observed OpenFlow routes,
+readback counters and routing events. SQLite snapshots, `routing_state.py`, and
+read-only `/api/routing` expose the same controller evidence.
 
-**Implementation and automated checks are available; live Mininet acceptance is
-pending at the user's request.** See [Phase 5 startup, safety and verification](docs/phase5.md).
-When ready for the privileged acceptance experiment:
+**Targeted Phase 5 live acceptance passed**, including real RF-selected h1→h4
+forwarding, initial/final 30/30 connectivity, 0% continuous ping loss, low-load
+recovery and scoped cleanup. Evidence: `data/phase5-20261023T091240Z/acceptance.json`.
+The full ten-stage/backbone-failure acceptance remains unpassed; it was not run
+in the latest review because interactive sudo authentication is required.
+See the [verification report, safety review and limitations](docs/phase5-manual-verification.md)
+and [Phase 5 routing details](docs/phase5.md). The next full validation command
+(in an authenticated terminal, with no conflicting lab names) is:
 
 ```bash
-bash scripts/run_phase5_validation.sh
+FLOWRIDER_SCENARIO=full bash scripts/run_phase5_validation.sh \
+  data/research-20261015T180515Z/evaluation/model.pkl
 ```
+
+Use `FLOWRIDER_SCENARIO=targeted` only when repeating the already-passed shorter
+demonstration is needed. No matched latency, throughput or packet-loss improvement
+over baseline routing has been established.

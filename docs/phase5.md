@@ -1,9 +1,14 @@
 # Phase 5: automatic predictive forwarding
 
-Status: **IMPLEMENTED; LIVE MININET ACCEPTANCE PENDING**. The user requested
-that privileged live validation remain pending. Automated tests exercise the
-real OS-Ken process, OF1.3 codecs, RF inference, rule readback and a simulated
-packet dataplane. Those are not real Mininet/OVS measurements.
+Status: **TARGETED LIVE ACCEPTANCE PASSED; FULL ACCEPTANCE NOT PASSED**.
+Confirmed evidence: `data/phase5-20261023T091240Z/acceptance.json`. The targeted
+run includes RF-selected forwarding, low-load recovery, 30/30 initial/final
+connectivity and scoped cleanup. The full suite additionally checks symmetric
+traffic regimes and physical s2–s5 failure/restoration; its next run requires
+interactive sudo and was not started during the latest review.
+See [preserved manual evidence and the shorter targeted procedure](phase5-manual-verification.md).
+Automated tests exercise OS-Ken, OF1.3 codecs, RF inference, rule readback and a
+simulated packet dataplane; those automated results are not live measurements.
 
 ## Running the controller
 
@@ -191,11 +196,12 @@ reads the configured live database; it never substitutes the replay route.
 Missing/old databases are explicitly unavailable/stale; reads create no files.
 A persisted snapshot older than five seconds does not establish a current path.
 
-The React dashboard is unchanged. Its existing `/api/routes` remains a preview;
-its base-delay labels describe the old comparison view, not a Phase 5 applied
-path. Use `/api/routing` or the CLI for actual controller route state. Wiring
-these fields into live topology/traffic visualization belongs to the next phase.
-Replay remains based on the original Phase 3 recording.
+The React dashboard keeps `/api/routes` calculated previews and adds a separate
+live controller panel using `/api/routing`. It shows baseline, recommendation,
+installation, observed path/counters and events for the selected pair, labels
+stale data, and keeps replay separate. The endpoint adds lossless `cookie_hex`
+fields alongside numeric cookies for JavaScript clients. Topology highlights
+remain calculated previews. Replay uses the original Phase 3 recording.
 
 ## Tests and live acceptance
 
@@ -219,11 +225,11 @@ actual protocol messages, automatic path change, forward/reverse packet delivery
 unrelated traffic and model-unavailable fallback. This does not evaluate the
 real model's accuracy or demonstrate OVS/kernel behavior.
 
-When ready for the pending privileged check, run in an Ubuntu terminal:
+For the remaining full privileged acceptance, run in an authenticated Ubuntu terminal:
 
 ```bash
 cd ~/Flowrider
-bash scripts/run_phase5_validation.sh
+FLOWRIDER_SCENARIO=full bash scripts/run_phase5_validation.sh
 ```
 
 The script authenticates sudo normally, starts only its own controller on 16653,
@@ -320,17 +326,17 @@ results cannot substitute for this Phase 5 check.
 
 ## Limitations and next phase
 
-Live OVS/Mininet verification is pending. The saved RF model was trained under
+Manual alternate forwarding is demonstrated; complete live acceptance remains
+unproven. The saved RF model was trained under
 baseline routing; closed-loop redistribution changes its input distribution.
 No latency/throughput benefit or prediction improvement is claimed. No tuning,
 large benchmarks or reactive/predictive comparison was performed. Internal VLAN
 versioning reserves IDs 1–4094 and requires the existing untagged lab. The controller
 handles bounded MAC pairs, not per-application QoS or arbitrary tenant VLANs.
 
-Future frontend work should consume the controller snapshots/events, display
-measurement/prediction/installation/verification times separately, respect
-staleness and in-progress phases, and keep replay visibly separate from live
-state. Independent traffic-path observation could enrich the flow-entry evidence.
+Future frontend work can overlay actual installed paths on the topology while
+preserving the separate preview view. Independent traffic-path observation
+could enrich the flow-entry evidence. No matched performance benefit is claimed.
 
 References used for protocol semantics: [OS-Ken OF1.3 messages](https://static.openstack.org/docs/os-ken/victoria/ofproto_v1_3_ref.html)
 and [OVS action semantics](https://www.openvswitch.org/support/dist-docs/ovs-actions.7.html).

@@ -15,6 +15,16 @@ DEFAULT_REPLAY = (ROOT/'data/demo-replay.sqlite' if (ROOT/'data/demo-replay.sqli
                   else ROOT/'data/research-20261015T180515Z/inference-71.sqlite')
 
 
+def routing_json(value):
+    """Keep numeric API fields; add lossless cookies for JavaScript clients."""
+    if isinstance(value,list):return [routing_json(item) for item in value]
+    if isinstance(value,dict):
+        result={key:routing_json(item) for key,item in value.items()}
+        if isinstance(value.get('cookie'),int):result['cookie_hex']=hex(value['cookie'])
+        return result
+    return value
+
+
 def handler_for(demo, assets):
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, format, *args):
@@ -44,7 +54,7 @@ def handler_for(demo, assets):
                 if path == '/api/routing':
                     # Actual persisted controller state; never a replay route
                     # preview, and never permission to issue OpenFlow updates.
-                    return self.send_json(200, dict(read_routing_state(demo.live_db), view_mode=demo.mode))
+                    return self.send_json(200, routing_json(dict(read_routing_state(demo.live_db), view_mode=demo.mode)))
                 state = demo.snapshot()
                 fields = {'/api/state': None, '/api/health': 'health', '/api/topology': 'topology',
                     '/api/telemetry': 'topology', '/api/predictions': 'topology', '/api/routes': 'routes', '/api/events': 'events'}

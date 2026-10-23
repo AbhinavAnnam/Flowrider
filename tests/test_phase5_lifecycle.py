@@ -207,6 +207,40 @@ class Phase5LifecycleTests(unittest.TestCase):
         self.assertTrue(all(p.poll() is not None for p in processes))
         self.assertTrue(all(h.closed for h in handles))
 
+    def test_targeted_stage_uses_cross_traffic_and_background_probe_rates(self):
+        network, processes, _ = self.network(finishes=(40,40))
+        stage=dict(index=0,rate_mbps=85,duration_seconds=40,
+                   flows=[('h1','h2',85),('h1','h4',5)])
+        live.run_stage(network,self.args,stage,lambda:None)
+        self.assertEqual(stage['status'],'passed')
+        commands=[p.args for p in processes]
+        self.assertEqual([c[c.index('-c')+1] for c in commands],['10.0.0.2','10.0.0.4'])
+        self.assertEqual([c[c.index('-b')+1] for c in commands],['85M','5M'])
+
+    def test_low_load_recovery_requires_fresh_safe_forecast_and_actual_forwarding(self):
+        route=dict(source_mac='00:00:00:00:00:01',destination_mac='00:00:00:00:00:04',
+                   installed_route=dict(path=[1,6,5,4]))
+        state=dict(stale=False,source='live_mininet',snapshot=dict(routes=[route],topology=dict(links=[dict(
+            link_id='s1-s2',fresh=True,measurement=dict(valid=True,utilization=.12),
+            prediction=dict(status='valid',predicted_utilization=.2))])))
+        with patch.object(live,'read_routing_state',return_value=state), \
+             patch.object(live,'verify_path',return_value=dict(delivery='ping_passed')) as verify:
+            result=live.verify_low_load_recovery(None,self.args)
+            self.assertEqual(result['forwarding']['delivery'],'ping_passed')
+            verify.assert_called_once_with(None,self.args,route,require_alternative=False)
+            for change in ('stale','high_prediction','missing_prediction','high_measurement'):
+                value=json.loads(json.dumps(state));link=value['snapshot']['topology']['links'][0]
+                if change=='stale':value['stale']=True
+                if change=='high_prediction':link['prediction']['predicted_utilization']=.9
+                if change=='missing_prediction':link['prediction']['predicted_utilization']=None
+                if change=='high_measurement':link['measurement']['utilization']=.9
+                with self.subTest(change=change), patch.object(live,'read_routing_state',return_value=value):
+                    with self.assertRaisesRegex(RuntimeError,'Low-load recovery'):
+                        live.verify_low_load_recovery(None,self.args)
+            verify.side_effect=RuntimeError('No positive per-hop readback')
+            with self.assertRaisesRegex(RuntimeError,'positive per-hop'):
+                live.verify_low_load_recovery(None,self.args)
+
     def test_stubborn_children_do_not_prevent_other_cleanup(self):
         network, processes, _ = self.network(finishes=(None, None), stubborn=True)
         stage = self.stage(network)
