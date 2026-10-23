@@ -1,4 +1,4 @@
-"""OS-Ken/OpenFlow 1.3 forwarding for the fixed FlowRider Phase 2 lab."""
+"""OS-Ken/OpenFlow 1.3 baseline and opt-in predictive forwarding for FlowRider."""
 
 from os_ken.base import app_manager
 from os_ken.controller import ofp_event
@@ -7,6 +7,7 @@ from os_ken.controller.handler import (
 )
 from os_ken.ofproto import ofproto_v1_3
 from os_ken.lib.packet import packet, ethernet, ether_types
+from os_ken.lib.packet import vlan
 from os_ken import cfg
 from os_ken.controller import event
 from os_ken.lib import hub
@@ -28,9 +29,30 @@ if 'telemetry_enabled' not in cfg.CONF:
         cfg.FloatOpt('telemetry-bandwidth-scale', default=0.1),
     ])
 
+if 'predictive_routing' not in cfg.CONF:
+    cfg.CONF.register_cli_opts([
+        cfg.BoolOpt('predictive-routing', default=False),
+        cfg.FloatOpt('routing-min-improvement', default=.10),
+        cfg.FloatOpt('routing-cooldown', default=30),
+        cfg.IntOpt('routing-confirmations', default=2),
+        cfg.FloatOpt('routing-prediction-max-age', default=10),
+        cfg.FloatOpt('routing-operation-timeout', default=3),
+        cfg.FloatOpt('routing-drain-seconds', default=1),
+    ])
+
 
 class EventTelemetryPoll(event.EventBase):
     pass
+
+
+class EventRoutingTick(event.EventBase):
+    pass
+
+
+class EventRoutingTelemetry(event.EventBase):
+    def __init__(self, frame):
+        super().__init__()
+        self.frame = frame
 
 
 class FlowRiderController(app_manager.OSKenApp):
@@ -49,8 +71,21 @@ class FlowRiderController(app_manager.OSKenApp):
         self.telemetry = None
         self.telemetry_worker = None
         self.telemetry_stop = threading.Event()
+        self.routing = None
 
     def start(self):
+        if self.CONF.predictive_routing:
+            if not self.CONF.telemetry_enabled:
+                raise ValueError('--predictive-routing requires --telemetry-enabled')
+            from predictive_routing import RoutingManager, RoutingPolicy
+            self.routing = RoutingManager(self.topology, self.datapaths,
+                policy=RoutingPolicy(min_improvement=self.CONF.routing_min_improvement,
+                    cooldown=self.CONF.routing_cooldown, confirmations=self.CONF.routing_confirmations,
+                    prediction_max_age=self.CONF.routing_prediction_max_age,
+                    operation_timeout=self.CONF.routing_operation_timeout,
+                    drain_seconds=self.CONF.routing_drain_seconds),
+                record=self._record_routing, release=self._release_routing_packet,
+                source=self.CONF.telemetry_source, scale=self.CONF.telemetry_bandwidth_scale)
         super().start()
         if self.CONF.telemetry_enabled:
             try:
@@ -58,12 +93,48 @@ class FlowRiderController(app_manager.OSKenApp):
                 self.telemetry_worker = TelemetryWorker(
                     self.CONF.telemetry_db, source=self.CONF.telemetry_source,
                     model_path=self.CONF.telemetry_model, logger=self.logger,
-                    scale=self.CONF.telemetry_bandwidth_scale)
+                    scale=self.CONF.telemetry_bandwidth_scale,
+                    on_batch=self._routing_batch if self.routing else None)
                 self.telemetry = PollCollector(self.telemetry_worker,
-                                               scale=self.CONF.telemetry_bandwidth_scale)
+                    scale=self.CONF.telemetry_bandwidth_scale,
+                    routing_epoch=lambda: self.routing.epoch if self.routing else None)
                 self.threads.append(hub.spawn(self._telemetry_clock))
             except Exception:
                 self.logger.exception('Telemetry startup failed; forwarding continues')
+        if self.routing:
+            self.threads.append(hub.spawn(self._routing_clock))
+
+    def _routing_clock(self):
+        while not self.telemetry_stop.is_set():
+            self.send_event(self.name, EventRoutingTick())
+            self.telemetry_stop.wait(1)
+
+    def _record_routing(self, kind, row):
+        if kind == 'event':
+            self.logger.info('[FlowRider routing] %s route=%s %s', row['kind'], row.get('route_id'), row)
+        if self.telemetry_worker and not self.telemetry_worker.submit('routing', dict(kind=kind, record=row)):
+            self.logger.warning('Routing history could not be queued; controller state remains authoritative')
+
+    def _routing_batch(self, frame):
+        self.send_event(self.name, EventRoutingTelemetry(frame))
+
+    @set_ev_cls(EventRoutingTelemetry)
+    def routing_telemetry_handler(self, ev):
+        if self.routing and not self.pending_barriers:
+            self.routing.telemetry(ev.frame)
+
+    @set_ev_cls(EventRoutingTick)
+    def routing_tick_handler(self, ev):
+        if self.routing and not self.pending_barriers:
+            self.routing.tick()
+
+    def _release_routing_packet(self, queued):
+        dp = self.datapaths.get(queued['dpid'])
+        if dp is not queued['datapath'] or dp.id not in self.validated or self.pending_barriers:
+            return
+        p, o = dp.ofproto_parser, dp.ofproto
+        dp.send_msg(p.OFPPacketOut(datapath=dp, buffer_id=o.OFP_NO_BUFFER,
+            in_port=queued['ingress'], actions=[p.OFPActionOutput(o.OFPP_TABLE)], data=queued['data']))
 
     def _telemetry_clock(self):
         while not self.telemetry_stop.is_set():
@@ -109,6 +180,8 @@ class FlowRiderController(app_manager.OSKenApp):
         The table-miss remains in place. Cookies restrict deletion to our routes.
         Barrier replies from previous connections/updates cannot release the pause.
         """
+        if self.routing:
+            self.routing.topology_changed()
         self.pending_barriers.clear()
         for dpid, dp in self.datapaths.items():
             if dpid in self.failed:
@@ -234,16 +307,31 @@ class FlowRiderController(app_manager.OSKenApp):
     def barrier_reply_handler(self, ev):
         msg, dp = ev.msg, ev.msg.datapath
         key = (dp.id, msg.xid)
+        if self.routing and self.routing.barrier_reply(msg):
+            return
         if self._current(dp) and self.pending_barriers.get(key) is dp:
             del self.pending_barriers[key]
             if not self.pending_barriers:
                 self.logger.info('Forwarding ready: switches=%s active_links=%d',
                                  sorted(self.validated), self.topology.active_graph().number_of_edges())
 
+    @set_ev_cls(ofp_event.EventOFPFlowStatsReply, [CONFIG_DISPATCHER, MAIN_DISPATCHER])
+    def routing_stats_reply_handler(self, ev):
+        if self.routing and self._current(ev.msg.datapath):
+            self.routing.stats_reply(ev.msg)
+
+    @set_ev_cls(ofp_event.EventOFPFlowRemoved, MAIN_DISPATCHER)
+    def routing_flow_removed_handler(self, ev):
+        if self.routing and self._current(ev.msg.datapath):
+            self.routing.flow_removed(ev.msg)
+
     @set_ev_cls(ofp_event.EventOFPErrorMsg, [CONFIG_DISPATCHER, MAIN_DISPATCHER])
     def error_handler(self, ev):
         msg, dp = ev.msg, ev.msg.datapath
         if not self._current(dp):
+            return
+        if self.routing and self.routing.error(msg):
+            self.logger.warning('Predictive route operation failed: DPID=%d type=%d code=%d', dp.id, msg.type, msg.code)
             return
         if self._telemetry_call('statistics_error', dp, getattr(msg, 'xid', None)):
             self.logger.warning('OpenFlow telemetry request error: DPID=%d type=%d code=%d',
@@ -280,11 +368,14 @@ class FlowRiderController(app_manager.OSKenApp):
         ingress = msg.match['in_port']
         if not self.topology.port_up(dp.id, ingress):
             return
-        eth = packet.Packet(msg.data).get_protocol(ethernet.ethernet)
+        decoded = packet.Packet(msg.data)
+        eth = decoded.get_protocol(ethernet.ethernet)
         if eth is None or eth.ethertype in (ether_types.ETH_TYPE_LLDP, ether_types.ETH_TYPE_IPV6):
             return
         if int(eth.src.split(':')[0], 16) & 1:
             return
+        if self.routing and (dp.id, ingress) in self.topology.access_ports and decoded.get_protocol(vlan.vlan):
+            return  # Internal version tags are never accepted from a lab host.
         if (dp.id, ingress) in self.topology.access_ports:
             if eth.src in self.topology.static_hosts and self.topology.static_hosts[eth.src] != (dp.id, ingress):
                 self.logger.warning('Unexpected host attachment: %s on %d/%d', eth.src, dp.id, ingress)
@@ -297,6 +388,18 @@ class FlowRiderController(app_manager.OSKenApp):
         ofp, parser = dp.ofproto, dp.ofproto_parser
         known_unicast = not int(eth.dst.split(':')[0], 16) & 1 and eth.dst in self.topology.hosts
         if known_unicast:
+            if self.routing:
+                tag = decoded.get_protocol(vlan.vlan)
+                if tag:
+                    self.routing.transit_miss(eth.src, eth.dst, tag.vid)
+                    return
+                if (dp.id, ingress) != self.topology.hosts.get(eth.src):
+                    return
+                if len(msg.data) < getattr(msg, 'total_len', len(msg.data)):
+                    return
+                self.routing.ensure(eth.src, eth.dst, packet=dict(dpid=dp.id, datapath=dp,
+                    ingress=ingress, data=msg.data))
+                return
             out_port = self._unicast_port(dp.id, ingress, eth.src, eth.dst)
             if out_port is None or out_port == ingress:
                 self.logger.warning('No valid path/ingress: %s -> %s at DPID=%d port=%d',

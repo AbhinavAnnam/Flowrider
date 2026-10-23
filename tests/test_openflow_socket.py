@@ -79,11 +79,10 @@ class SwitchPeer:
                         self.send(ofp.OFPT_BARRIER_REPLY, xid=xid)
                     elif kind == ofp.OFPT_ECHO_REQUEST:
                         self.send(ofp.OFPT_ECHO_REPLY, body, xid)
+                    elif kind == ofp.OFPT_FLOW_MOD:
+                        self.flow_mod(body, xid)
                     elif kind == ofp.OFPT_PACKET_OUT:
-                        actions_len = struct.unpack_from('!H', body, 8)[0]
-                        ports = [struct.unpack_from('!I', body, offset + 4)[0]
-                                 for offset in range(16, 16 + actions_len, 16)]
-                        self.outputs.put(ports)
+                        self.packet_out(body, xid)
         except (OSError, AssertionError) as error:
             if not self.stopped.is_set():
                 self.errors.append(str(error))
@@ -91,6 +90,16 @@ class SwitchPeer:
     def multipart_request(self, subtype, body, xid):
         """Optional simulated-switch extension used by the Phase 3 wire test."""
         pass
+
+    def flow_mod(self, body, xid):
+        """Optional Phase 5 switch-table simulation; Phase 2 needs no table."""
+        pass
+
+    def packet_out(self, body, xid):
+        actions_len = struct.unpack_from('!H', body, 8)[0]
+        ports = [struct.unpack_from('!I', body, offset + 4)[0]
+                 for offset in range(16, 16 + actions_len, 16)]
+        self.outputs.put(ports)
 
     def inject(self, src, dst):
         frame = packet.Packet()

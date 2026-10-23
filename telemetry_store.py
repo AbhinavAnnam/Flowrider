@@ -35,6 +35,11 @@ class TelemetryStore:
                 'observation_timestamp TEXT NOT NULL, link_id TEXT, record_json TEXT NOT NULL)')
             self.connection.execute(f'CREATE INDEX IF NOT EXISTS {table}_session_link '
                                     f'ON {table}(session_id, link_id, id)')
+        for table in ('routing_events', 'routing_snapshots'):
+            self.connection.execute(f'CREATE TABLE IF NOT EXISTS {table} ('
+                'id INTEGER PRIMARY KEY, session_id TEXT NOT NULL REFERENCES sessions(session_id), '
+                'timestamp TEXT NOT NULL, record_json TEXT NOT NULL)')
+            self.connection.execute(f'CREATE INDEX IF NOT EXISTS {table}_session ON {table}(session_id, id)')
         self.session_id = uuid.uuid4().hex
         self.source = source
         self.last_elapsed = {}
@@ -77,6 +82,14 @@ class TelemetryStore:
 
     def close(self):
         self.connection.close()
+
+    def write_routing(self, kind, record):
+        table = {'event': 'routing_events', 'snapshot': 'routing_snapshots'}[kind]
+        payload = dict(record, session_id=self.session_id, source=self.source, schema_version=SCHEMA_VERSION)
+        encoded = json.dumps(payload, allow_nan=False)
+        with self.connection:
+            self.connection.execute(f'INSERT INTO {table}(session_id,timestamp,record_json) VALUES (?,?,?)',
+                (self.session_id, payload['timestamp'], encoded))
 
     def __enter__(self):
         return self

@@ -135,3 +135,21 @@ with presentation plots in [docs/phase3-results](docs/phase3-results).
 For a new independent experiment, use `bash scripts/run_phase3_research.sh` in an
 authenticated Ubuntu terminal. The existing verified run is
 `data/research-20261015T180515Z`; inspect its saved artifacts rather than rerunning it.
+
+## Phase 5 automatic predictive routing
+
+Automatic forwarding updates are now available with the opt-in
+`--predictive-routing --telemetry-enabled` controller flags. The controller
+uses fresh saved-model predictions, applies the existing weight equation,
+stages bidirectional versioned OpenFlow rules, and verifies flow-entry readback
+before marking a route installed. Default launches keep Phase 2 forwarding.
+The React dashboard remains a preview; actual controller routes are exposed
+through SQLite snapshots, `routing_state.py`, and read-only `/api/routing`.
+
+**Implementation and automated checks are available; live Mininet acceptance is
+pending at the user's request.** See [Phase 5 startup, safety and verification](docs/phase5.md).
+When ready for the privileged acceptance experiment:
+
+```bash
+bash scripts/run_phase5_validation.sh
+```

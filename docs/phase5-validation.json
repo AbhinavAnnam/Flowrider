@@ -1,0 +1,112 @@
+{
+  "created_timestamp": "2026-10-23T10:26:09.490715+05:30",
+  "verdict": "PARTIALLY_COMPLETE",
+  "implementation_status": "implemented_opt_in_automatic_predictive_forwarding",
+  "live_mininet": {
+    "status": "pending_at_user_request",
+    "executed": false,
+    "privilege_check": "sudo -n rejected: a password is required",
+    "acceptance_command": "bash scripts/run_phase5_validation.sh",
+    "real_phase5_packet_loss": null,
+    "real_phase5_applied_routes": null
+  },
+  "automated": {
+    "controller_python": "/home/bob_the_bob/.pyenv/versions/3.10.16/bin/python",
+    "full_suite": {
+      "command": "python -m unittest discover -s tests -v",
+      "discovered": 135,
+      "passed": 130,
+      "skipped": 5,
+      "failed": 0,
+      "seconds": 67.084
+    },
+    "system_mininet_import_tests": {
+      "command": "/usr/bin/python3 -m unittest discover -s tests -p test_mininet_topology.py -v",
+      "passed": 5,
+      "failed": 0,
+      "live_network": false
+    },
+    "socket_pipeline": {
+      "status": "passed_in_full_suite",
+      "real_osken_process": true,
+      "real_openflow_tcp_codec": true,
+      "switch_dataplane": "simulated",
+      "rf_fixture_source": "simulated_openflow",
+      "real_mininet": false,
+      "checks": [
+        "counter polling",
+        "RF inference",
+        "automatic Dijkstra reroute",
+        "VLAN staging and complete flow readback",
+        "forward/reverse simulated packet delivery",
+        "unrelated traffic preservation",
+        "model-unavailable baseline fallback"
+      ]
+    },
+    "frontend_build": {
+      "command": "npm --prefix frontend run build",
+      "status": "passed"
+    },
+    "read_only_api": "tested /api/routing; no OpenFlow mutation endpoint",
+    "cli_and_shell_syntax": "passed, including embedded Python",
+    "tdd_evidence": [
+      "new module import failures before implementation",
+      "API endpoint 404 before addition",
+      "codec-length mismatch reproduced with decoded instructions",
+      "truncated PacketIn reproduction before fix"
+    ]
+  },
+  "default_policy": {
+    "min_improvement": 0.1,
+    "cooldown_seconds": 30,
+    "consecutive_confirmations": 2,
+    "prediction_max_age_seconds": 10,
+    "operation_timeout_seconds": 3,
+    "drain_seconds": 1,
+    "audit_interval_seconds": 5,
+    "idle_timeout_seconds": 30,
+    "hard_timeout_seconds": 120
+  },
+  "forwarding": {
+    "opt_in_flag": "--predictive-routing",
+    "requires": "--telemetry-enabled",
+    "automatic_without_dashboard": true,
+    "update_protocol": "OpenFlow 1.3: stage transit/egress, barrier+readback, ingress cutover, barrier+readback, drain+exact-cookie delete/readback",
+    "network_wide_atomic": false,
+    "zero_packet_loss_claimed": false,
+    "observed_route_evidence": "flow_entry_readback_and_per_hop_counters",
+    "controller_end_to_end_delivery_verified": false
+  },
+  "changed_files": [
+    "README.md",
+    "controller.py",
+    "predictive_routing.py",
+    "telemetry_runtime.py",
+    "telemetry_store.py",
+    "routing_state.py",
+    "demo_server.py",
+    "scripts/run_phase5_validation.sh",
+    "tests/integration_phase5.py",
+    "tests/test_predictive_routing.py",
+    "tests/test_predictive_socket.py",
+    "tests/test_routing_integration.py",
+    "tests/test_openflow_socket.py",
+    "docs/phase5.md",
+    "docs/phase5-validation.json",
+    "docs/phase5-validation.txt"
+  ],
+  "existing_core_and_frontend_source_unchanged": [
+    "traffic_engine.py",
+    "prediction.py",
+    "topology_state.py",
+    "topology_config.py",
+    "mininet_topology.py",
+    "network_topology.py",
+    "frontend"
+  ],
+  "dependencies_changed": false,
+  "real_model_retrained": false,
+  "original_live_model_sha256": "90cb8af35847d617b2715a409e4c9d5a09b0cd480bf11ee6154e68708fab8be9",
+  "committed": false,
+  "pushed": false
+}

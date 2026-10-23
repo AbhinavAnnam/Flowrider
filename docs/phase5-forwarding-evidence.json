@@ -1,0 +1,1424 @@
+{
+  "evidence_directory": "/home/bob_the_bob/Flowrider/data/phase5-20261023T081009Z",
+  "files": [
+    {
+      "name": "00-h1-h4.json",
+      "bytes": 21626,
+      "sha256": "2bc2805dc1276d61e9a16cc06615b2818ed97e2f11516636c3baa6113c507d98"
+    },
+    {
+      "name": "00-h1-h4.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "00-h3-h6.json",
+      "bytes": 21510,
+      "sha256": "f22f58424cb7dc63ab5c608194060c4f63c4ad8211d75d1daace9ed6a96ccb8a"
+    },
+    {
+      "name": "00-h3-h6.stderr.log",
+      "bytes": 101,
+      "sha256": "77c77e796052c62f2a51258135f193ba1ffe857dc12f6eb0e1bcf2cbf86e4ccf"
+    },
+    {
+      "name": "acceptance.json",
+      "bytes": 148,
+      "sha256": "7d45deb53f52a44960da0149c1f5e945cc1370e9a66faafc8b0a1cd50e82c939"
+    },
+    {
+      "name": "cleanup.json",
+      "bytes": 1237,
+      "sha256": "f3d349fcf4c387ac59869acee9fabbb2ec695ca905b429e19fffbfaa367b5b48"
+    },
+    {
+      "name": "controller.log",
+      "bytes": 69581,
+      "sha256": "b75a266774d7e2dc5e75dec65ec90d6495180b364aed512a7424f04523f66dca"
+    },
+    {
+      "name": "final-routing-state.json",
+      "bytes": 24297,
+      "sha256": "63d3816eb03cccd46f04cda21a2a4565330878531844b15584a87f1171f19f9d"
+    },
+    {
+      "name": "final-routing-state.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "h1-ping.log",
+      "bytes": 14401,
+      "sha256": "7dba795505636eb9960180d5bbcbe4f7963d84336bca713c5c67d657f1309cc2"
+    },
+    {
+      "name": "h2-ping.log",
+      "bytes": 14341,
+      "sha256": "5d71bccbd7522d9425f0e4b9dff251bf61266b5166e656a448db537e197a8164"
+    },
+    {
+      "name": "h4-server.log",
+      "bytes": 3984,
+      "sha256": "7b220e13da7979d58e3b7d6c43fed80ac41fac849cbbdd95197fc57941378273"
+    },
+    {
+      "name": "h6-server.log",
+      "bytes": 4447,
+      "sha256": "f7806053a1af7e10ebadcd466e5c77f10b2d302fd8d7f9d2429d6db5919a7765"
+    },
+    {
+      "name": "mininet.log",
+      "bytes": 11586,
+      "sha256": "2d9bc92b23ecc4c147d47a54d5f3e9ed37fb4d25b716fe7935bd4bf1d50eff87"
+    },
+    {
+      "name": "telemetry.sqlite",
+      "bytes": 7110656,
+      "sha256": "c02ee77afc0fa62c9dc273bfef6418d001c8d82ebc99cfcd73b1563d74a68b44"
+    },
+    {
+      "name": "telemetry.sqlite-shm",
+      "bytes": 32768,
+      "sha256": "3624ba250b2f99c0ff942f066b1b494ba91b85c39c6a3cb90a16cdc83b22c4f2"
+    },
+    {
+      "name": "telemetry.sqlite-wal",
+      "bytes": 4152992,
+      "sha256": "4836a99f764fe1472a0f0498ed9ff6e66d83cc6906ff80ecc49373afc584d139"
+    },
+    {
+      "name": "traffic-stages.json",
+      "bytes": 65501,
+      "sha256": "e7c9a91e13863d0ebfddce12de0ec999c6508c1fb427109d2d1fdc3f629d36c8"
+    }
+  ],
+  "route_events": [
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:10:18.474635Z",
+      "sequence": 35,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229336,
+      "vlan": 12,
+      "reason": "initial_baseline",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:10:18.484294Z",
+      "sequence": 36,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229336,
+      "vlan": 12,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "baseline_recovery",
+      "timestamp": "2026-10-23T08:10:51.439940Z",
+      "sequence": 43,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "reason": "flow_expired",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_quarantined",
+      "timestamp": "2026-10-23T08:10:51.443512Z",
+      "sequence": 44,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "reason": "flow_readback_mismatch",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "baseline_recovery",
+      "timestamp": "2026-10-23T08:10:57.064817Z",
+      "sequence": 69,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "reason": "retry_cleanup",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_quarantined",
+      "timestamp": "2026-10-23T08:10:57.071335Z",
+      "sequence": 70,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "reason": "flow_readback_mismatch",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "baseline_recovery",
+      "timestamp": "2026-10-23T08:11:03.068068Z",
+      "sequence": 95,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "reason": "retry_cleanup",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_quarantined",
+      "timestamp": "2026-10-23T08:11:03.073483Z",
+      "sequence": 96,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "reason": "flow_readback_mismatch",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "baseline_recovery",
+      "timestamp": "2026-10-23T08:11:09.208470Z",
+      "sequence": 121,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "reason": "retry_cleanup",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_quarantined",
+      "timestamp": "2026-10-23T08:11:09.214477Z",
+      "sequence": 122,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "reason": "flow_readback_mismatch",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:11:12.280236Z",
+      "sequence": 124,
+      "topology_epoch": 13,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229343,
+      "vlan": 1,
+      "reason": "initial_baseline",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:11:12.291285Z",
+      "sequence": 125,
+      "topology_epoch": 13,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229343,
+      "vlan": 1,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "schema_version": 1
+    }
+  ],
+  "verified_route_snapshots": [
+    {
+      "snapshot_timestamp": "2026-10-23T08:10:18.484738Z",
+      "route": {
+        "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+        "source_mac": "00:00:00:00:00:03",
+        "destination_mac": "00:00:00:00:00:06",
+        "status": "active",
+        "baseline_path": [
+          3,
+          2,
+          5,
+          6
+        ],
+        "recommended_route": null,
+        "installed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "vlan": 12,
+          "reason": "initial_baseline",
+          "activated_timestamp": "2026-10-23T08:10:18.484253Z"
+        },
+        "observed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "method": "openflow_flow_stats",
+          "verified_timestamp": "2026-10-23T08:10:18.484281Z",
+          "counters": [
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 3
+            },
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 1
+            },
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 2
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 1
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 2
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 3
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 4
+            }
+          ],
+          "end_to_end_delivery_verified": false,
+          "all_rule_counters_positive": false
+        },
+        "transaction_phase": null,
+        "guarded": false
+      }
+    },
+    {
+      "snapshot_timestamp": "2026-10-23T08:10:23.919209Z",
+      "route": {
+        "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+        "source_mac": "00:00:00:00:00:03",
+        "destination_mac": "00:00:00:00:00:06",
+        "status": "active",
+        "baseline_path": [
+          3,
+          2,
+          5,
+          6
+        ],
+        "recommended_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "policy": "baseline_fallback",
+          "timestamp": "2026-10-23T08:10:19.896967Z",
+          "weighted_cost": null
+        },
+        "installed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "vlan": 12,
+          "reason": "initial_baseline",
+          "activated_timestamp": "2026-10-23T08:10:18.484253Z"
+        },
+        "observed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "method": "openflow_flow_stats",
+          "verified_timestamp": "2026-10-23T08:10:23.919125Z",
+          "counters": [
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 2294,
+              "byte_count": 3413231,
+              "out_port": 1
+            },
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 758,
+              "out_port": 2
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 1
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 2301,
+              "byte_count": 3414485,
+              "out_port": 2
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 2297,
+              "byte_count": 3417713,
+              "out_port": 3
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 2298,
+              "byte_count": 3419207,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 3
+            }
+          ],
+          "end_to_end_delivery_verified": false,
+          "all_rule_counters_positive": true
+        },
+        "transaction_phase": null,
+        "guarded": false
+      }
+    },
+    {
+      "snapshot_timestamp": "2026-10-23T08:10:29.924333Z",
+      "route": {
+        "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+        "source_mac": "00:00:00:00:00:03",
+        "destination_mac": "00:00:00:00:00:06",
+        "status": "active",
+        "baseline_path": [
+          3,
+          2,
+          5,
+          6
+        ],
+        "recommended_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "policy": "baseline_fallback",
+          "timestamp": "2026-10-23T08:10:29.907726Z",
+          "weighted_cost": null
+        },
+        "installed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "vlan": 12,
+          "reason": "initial_baseline",
+          "activated_timestamp": "2026-10-23T08:10:18.484253Z"
+        },
+        "observed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "method": "openflow_flow_stats",
+          "verified_timestamp": "2026-10-23T08:10:29.924294Z",
+          "counters": [
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 5926,
+              "byte_count": 8839439,
+              "out_port": 1
+            },
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 758,
+              "out_port": 2
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 1
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 5933,
+              "byte_count": 8826165,
+              "out_port": 2
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 5929,
+              "byte_count": 8843921,
+              "out_port": 3
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 5930,
+              "byte_count": 8845415,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 3
+            }
+          ],
+          "end_to_end_delivery_verified": false,
+          "all_rule_counters_positive": true
+        },
+        "transaction_phase": null,
+        "guarded": false
+      }
+    },
+    {
+      "snapshot_timestamp": "2026-10-23T08:10:37.062461Z",
+      "route": {
+        "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+        "source_mac": "00:00:00:00:00:03",
+        "destination_mac": "00:00:00:00:00:06",
+        "status": "active",
+        "baseline_path": [
+          3,
+          2,
+          5,
+          6
+        ],
+        "recommended_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "policy": "predicted",
+          "timestamp": "2026-10-23T08:10:36.064666Z",
+          "weighted_cost": 12.017548023824425
+        },
+        "installed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "vlan": 12,
+          "reason": "initial_baseline",
+          "activated_timestamp": "2026-10-23T08:10:18.484253Z"
+        },
+        "observed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "method": "openflow_flow_stats",
+          "verified_timestamp": "2026-10-23T08:10:37.062428Z",
+          "counters": [
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 9555,
+              "byte_count": 14261165,
+              "out_port": 1
+            },
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 758,
+              "out_port": 2
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 1
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 9562,
+              "byte_count": 14233375,
+              "out_port": 2
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 9558,
+              "byte_count": 14265647,
+              "out_port": 3
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 9559,
+              "byte_count": 14267141,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 3
+            }
+          ],
+          "end_to_end_delivery_verified": false,
+          "all_rule_counters_positive": true
+        },
+        "transaction_phase": null,
+        "guarded": false
+      }
+    },
+    {
+      "snapshot_timestamp": "2026-10-23T08:10:43.069727Z",
+      "route": {
+        "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+        "source_mac": "00:00:00:00:00:03",
+        "destination_mac": "00:00:00:00:00:06",
+        "status": "active",
+        "baseline_path": [
+          3,
+          2,
+          5,
+          6
+        ],
+        "recommended_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "policy": "predicted",
+          "timestamp": "2026-10-23T08:10:41.065961Z",
+          "weighted_cost": 12.132190572072782
+        },
+        "installed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "vlan": 12,
+          "reason": "initial_baseline",
+          "activated_timestamp": "2026-10-23T08:10:18.484253Z"
+        },
+        "observed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "method": "openflow_flow_stats",
+          "verified_timestamp": "2026-10-23T08:10:43.069670Z",
+          "counters": [
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 1
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 13194,
+              "byte_count": 19645055,
+              "out_port": 2
+            },
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 13187,
+              "byte_count": 19687373,
+              "out_port": 1
+            },
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 758,
+              "out_port": 2
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 13190,
+              "byte_count": 19691855,
+              "out_port": 3
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 13191,
+              "byte_count": 19693349,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 3
+            }
+          ],
+          "end_to_end_delivery_verified": false,
+          "all_rule_counters_positive": true
+        },
+        "transaction_phase": null,
+        "guarded": false
+      }
+    },
+    {
+      "snapshot_timestamp": "2026-10-23T08:10:49.099305Z",
+      "route": {
+        "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+        "source_mac": "00:00:00:00:00:03",
+        "destination_mac": "00:00:00:00:00:06",
+        "status": "active",
+        "baseline_path": [
+          3,
+          2,
+          5,
+          6
+        ],
+        "recommended_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "policy": "predicted",
+          "timestamp": "2026-10-23T08:10:46.068760Z",
+          "weighted_cost": 12.403243727752526
+        },
+        "installed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "vlan": 12,
+          "reason": "initial_baseline",
+          "activated_timestamp": "2026-10-23T08:10:18.484253Z"
+        },
+        "observed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229336,
+          "method": "openflow_flow_stats",
+          "verified_timestamp": "2026-10-23T08:10:49.099242Z",
+          "counters": [
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 16811,
+              "byte_count": 25101629,
+              "out_port": 1
+            },
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 758,
+              "out_port": 2
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 1
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 16824,
+              "byte_count": 25053755,
+              "out_port": 2
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 16818,
+              "byte_count": 25112087,
+              "out_port": 3
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 16818,
+              "byte_count": 25112087,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 11,
+              "byte_count": 802,
+              "out_port": 3
+            }
+          ],
+          "end_to_end_delivery_verified": false,
+          "all_rule_counters_positive": true
+        },
+        "transaction_phase": null,
+        "guarded": false
+      }
+    },
+    {
+      "snapshot_timestamp": "2026-10-23T08:11:12.291528Z",
+      "route": {
+        "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+        "source_mac": "00:00:00:00:00:03",
+        "destination_mac": "00:00:00:00:00:06",
+        "status": "active",
+        "baseline_path": [
+          3,
+          2,
+          5,
+          6
+        ],
+        "recommended_route": null,
+        "installed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229343,
+          "vlan": 1,
+          "reason": "initial_baseline",
+          "activated_timestamp": "2026-10-23T08:11:12.291255Z"
+        },
+        "observed_route": {
+          "path": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "cookie": 5067112530745229343,
+          "method": "openflow_flow_stats",
+          "verified_timestamp": "2026-10-23T08:11:12.291276Z",
+          "counters": [
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 1
+            },
+            {
+              "dpid": 6,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 2
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 3
+            },
+            {
+              "dpid": 5,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 4
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 1
+            },
+            {
+              "dpid": 3,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 2
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:03",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 4
+            },
+            {
+              "dpid": 2,
+              "source_mac": "00:00:00:00:00:06",
+              "packet_count": 0,
+              "byte_count": 0,
+              "out_port": 3
+            }
+          ],
+          "end_to_end_delivery_verified": false,
+          "all_rule_counters_positive": false
+        },
+        "transaction_phase": null,
+        "guarded": false
+      }
+    }
+  ],
+  "telemetry": [
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": false,
+      "status": "inactive",
+      "valid": false,
+      "utilization": null,
+      "operational_utilization": null,
+      "tx_mbps": null,
+      "rx_mbps": null,
+      "observation_timestamp": "2026-10-23T08:10:09.887199Z",
+      "monotonic_elapsed_time": 0.0,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": false,
+      "poll_id": null
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": false,
+      "status": "inactive",
+      "valid": false,
+      "utilization": null,
+      "operational_utilization": null,
+      "tx_mbps": null,
+      "rx_mbps": null,
+      "observation_timestamp": "2026-10-23T08:10:09.887262Z",
+      "monotonic_elapsed_time": 6.531999679282308e-05,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": false,
+      "poll_id": 1
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": false,
+      "status": "inactive",
+      "valid": false,
+      "utilization": null,
+      "operational_utilization": null,
+      "tx_mbps": null,
+      "rx_mbps": null,
+      "observation_timestamp": "2026-10-23T08:10:11.315212Z",
+      "monotonic_elapsed_time": 1.428014514996903,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": false,
+      "poll_id": null
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": false,
+      "status": "inactive",
+      "valid": false,
+      "utilization": null,
+      "operational_utilization": null,
+      "tx_mbps": null,
+      "rx_mbps": null,
+      "observation_timestamp": "2026-10-23T08:10:11.334790Z",
+      "monotonic_elapsed_time": 1.4475921779958298,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": false,
+      "poll_id": null
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "topology_changed",
+      "valid": false,
+      "utilization": null,
+      "operational_utilization": null,
+      "tx_mbps": null,
+      "rx_mbps": null,
+      "observation_timestamp": "2026-10-23T08:10:11.337228Z",
+      "monotonic_elapsed_time": 1.4500281920045381,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": null
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "invalid_directions",
+      "valid": false,
+      "utilization": null,
+      "operational_utilization": null,
+      "tx_mbps": null,
+      "rx_mbps": null,
+      "observation_timestamp": "2026-10-23T08:10:14.889493Z",
+      "monotonic_elapsed_time": 5.002295828002389,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 2
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 2.1725007441025257e-05,
+      "operational_utilization": 2.1725007441025257e-05,
+      "tx_mbps": 0.0021725007441025256,
+      "rx_mbps": 0.0018205492244393769,
+      "observation_timestamp": "2026-10-23T08:10:19.890375Z",
+      "monotonic_elapsed_time": 10.003178372004186,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 3
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 0.07088117989277852,
+      "operational_utilization": 0.07088117989277852,
+      "tx_mbps": 7.088117989277852,
+      "rx_mbps": 0.0011454843528160552,
+      "observation_timestamp": "2026-10-23T08:10:24.890900Z",
+      "monotonic_elapsed_time": 15.003702704998432,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 4
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 0.0720357852252159,
+      "operational_utilization": 0.0720357852252159,
+      "tx_mbps": 7.203578522521591,
+      "rx_mbps": 0.0,
+      "observation_timestamp": "2026-10-23T08:10:29.891562Z",
+      "monotonic_elapsed_time": 20.00436441099737,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 5
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 0.0720380732856793,
+      "operational_utilization": 0.0720380732856793,
+      "tx_mbps": 7.20380732856793,
+      "rx_mbps": 0.0,
+      "observation_timestamp": "2026-10-23T08:10:36.035476Z",
+      "monotonic_elapsed_time": 25.003623847995186,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 6
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 0.072044598729606,
+      "operational_utilization": 0.072044598729606,
+      "tx_mbps": 7.2044598729606,
+      "rx_mbps": 0.00011200018457647097,
+      "observation_timestamp": "2026-10-23T08:10:41.034998Z",
+      "monotonic_elapsed_time": 30.00314616599644,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 7
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 0.07201474108326039,
+      "operational_utilization": 0.07201474108326039,
+      "tx_mbps": 7.20147410832604,
+      "rx_mbps": 0.0,
+      "observation_timestamp": "2026-10-23T08:10:46.035645Z",
+      "monotonic_elapsed_time": 35.00379242400231,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 8
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 0.07202913560444821,
+      "operational_utilization": 0.07202913560444821,
+      "tx_mbps": 7.202913560444821,
+      "rx_mbps": 0.0,
+      "observation_timestamp": "2026-10-23T08:10:51.036578Z",
+      "monotonic_elapsed_time": 40.00472675499623,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 9
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 0.006008651225161789,
+      "operational_utilization": 0.006008651225161789,
+      "tx_mbps": 0.6008651225161789,
+      "rx_mbps": 0.0,
+      "observation_timestamp": "2026-10-23T08:10:56.036201Z",
+      "monotonic_elapsed_time": 45.004349137001554,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 10
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 0.0,
+      "operational_utilization": 0.0,
+      "tx_mbps": 0.0,
+      "rx_mbps": 0.0,
+      "observation_timestamp": "2026-10-23T08:11:01.037013Z",
+      "monotonic_elapsed_time": 50.00516045000404,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 11
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 0.0,
+      "operational_utilization": 0.0,
+      "tx_mbps": 0.0,
+      "rx_mbps": 0.0,
+      "observation_timestamp": "2026-10-23T08:11:07.170795Z",
+      "monotonic_elapsed_time": 55.00689483899623,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 12
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": true,
+      "status": "valid",
+      "valid": true,
+      "utilization": 2.0169130738908953e-06,
+      "operational_utilization": 2.0169130738908953e-06,
+      "tx_mbps": 0.00020169130738908951,
+      "rx_mbps": 0.00011205072632727194,
+      "observation_timestamp": "2026-10-23T08:11:12.168573Z",
+      "monotonic_elapsed_time": 60.004675807998865,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": true,
+      "poll_id": 13
+    },
+    {
+      "link_id": "s2-s3",
+      "source_dpid": 2,
+      "destination_dpid": 3,
+      "source_port": 3,
+      "destination_port": 2,
+      "capacity_mbps": 100.0,
+      "active": false,
+      "status": "inactive",
+      "valid": false,
+      "utilization": null,
+      "operational_utilization": null,
+      "tx_mbps": null,
+      "rx_mbps": null,
+      "observation_timestamp": "2026-10-23T08:11:12.440982Z",
+      "monotonic_elapsed_time": 60.27708196999447,
+      "session_id": "c31a1f833a864cd8bfc5a8ffca871932",
+      "source": "live_mininet",
+      "schema_version": 1,
+      "link_active": false,
+      "poll_id": null
+    }
+  ],
+  "raw_openflow_reply_bodies_available": false,
+  "note": "Persisted observed counters follow exact controller readback checks; raw matches/instructions and FlowRemoved bodies were not retained. Guard drop canonicalization is reproduced by regression, not a recovered raw guard reply."
+}

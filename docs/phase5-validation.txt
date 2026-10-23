@@ -1,0 +1,197 @@
+Phase 5 verification: actual executed evidence
+Live Mininet acceptance is PENDING at the user's request.
+
+$ ~/.pyenv/versions/3.10.16/bin/python -m unittest discover -s tests -v
+test_buffered_packet_out_does_not_include_data (test_controller.ControllerTests) ... ok
+test_disconnect_and_stale_connection_event (test_controller.ControllerTests) ... ok
+test_failure_deletes_owned_rules_and_waits_for_barriers (test_controller.ControllerTests) ... ok
+test_features_registers_and_serializes_table_miss (test_controller.ControllerTests) ... ok
+test_known_unicast_rule_and_packet_out (test_controller.ControllerTests) ... ok
+test_multipart_ports_are_not_activated_early (test_controller.ControllerTests) ... ok
+test_no_path_is_logged_then_recovers_after_restoration (test_controller.ControllerTests) ... ok
+test_off_path_unicast_and_wrong_tree_ingress_are_dropped (test_controller.ControllerTests) ... Unexpected host attachment: 00:00:00:00:00:01 on 2/1
+ok
+test_old_barrier_replies_do_not_release_new_update (test_controller.ControllerTests) ... ok
+test_port_delete_and_add_recover_configured_link (test_controller.ControllerTests) ... ok
+test_protocol_errors_are_logged_and_disable_forwarding (test_controller.ControllerTests) ... ok
+test_truncated_or_control_packets_do_not_install_routes (test_controller.ControllerTests) ... ok
+test_unknown_and_broadcast_do_not_use_flood_or_install_flows (test_controller.ControllerTests) ... ok
+test_unknown_switch_and_wrong_port_map_fail_closed (test_controller.ControllerTests) ... Unconfigured DPID 99; rejecting connection
+Invalid static wiring on DPID=1: expected ports [1, 2, 3], received [1]; forwarding disabled
+ok
+test_live_missing_database_is_unknown_without_replay_fallback (test_demo.DemoTests) ... ok
+test_replay_real_records_next_event_and_reset (test_demo.DemoTests) ... ok
+test_weight_equation_and_route_preview (test_demo.DemoTests) ... ok
+test_existing_bridge_is_rejected_before_any_network_creation (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_partial_startup_stops_only_owned_network (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_six_switches_hosts_and_exact_wiring (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_tc_check_validates_applied_values (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_unsupported_bandwidth_is_rejected (test_mininet_topology.MininetTopologyTests) ... skipped 'Run with /usr/bin/python3 for Ubuntu Mininet'
+test_six_real_openflow_handshakes_forwarding_failure_and_recovery (test_openflow_socket.SocketTests) ... ok
+test_original_synthetic_training_and_prediction_still_work (test_phase1_regression.SimulationTests) ... ok
+test_original_weight_equation_and_conceptual_capacity_are_preserved (test_phase1_regression.SimulationTests) ... ok
+test_matured_prediction_evaluation_matches_persistence_pairs (test_phase3_cli.CLITests) ... ok
+test_missing_database_is_an_error_and_does_not_create_data (test_phase3_cli.CLITests) ... ok
+test_training_inspection_and_export_preserve_provenance (test_phase3_cli.CLITests) ... ok
+test_alternative_horizons_use_real_future_labels_and_causal_extended_history (test_phase3_diagnostics.DiagnosticTests) ... ok
+test_missing_history_breaks_diagnostic_windows (test_phase3_diagnostics.DiagnosticTests) ... ok
+test_collection_schedule_is_reproducible_varied_and_bounded (test_phase3_research.ResearchTests) ... ok
+test_inference_audit_preserves_matured_pairs_and_checks_timestamp_and_warning (test_phase3_research.ResearchTests) ... ok
+test_overlapping_sessions_and_duplicate_records_are_rejected (test_phase3_research.ResearchTests) ... ok
+test_split_uses_whole_independent_sessions_and_purges_boundaries (test_phase3_research.ResearchTests) ... ok
+test_validation_selects_model_without_holdout_tuning_and_saves_evidence (test_phase3_research.ResearchTests) ... ok
+test_chronological_split_purges_overlapping_labels_and_windows (test_prediction.FeatureTests) ... ok
+test_irregular_alignment_and_missing_window_break (test_prediction.FeatureTests) ... ok
+test_lags_and_real_future_target (test_prediction.FeatureTests) ... ok
+test_no_future_information_and_missing_target_excluded (test_prediction.FeatureTests) ... ok
+test_regression_and_congestion_metrics_and_no_positive_events (test_prediction.FeatureTests) ... ok
+test_sessions_are_never_joined_and_out_of_order_is_rejected (test_prediction.FeatureTests) ... ok
+test_model_identifier_changes_with_warning_policy (test_prediction.ModelTests) ... ok
+test_no_labels_insufficient_samples_and_provenance_mismatch (test_prediction.ModelTests) ... ok
+test_no_model_insufficient_history_and_inference_failure (test_prediction.ModelTests) ... ok
+test_operational_clipping_preserves_raw_output_and_threshold (test_prediction.ModelTests) ... ok
+test_training_round_trip_baseline_and_reproducibility (test_prediction.ModelTests) ... ok
+test_baseline_install_waits_for_flow_entries_not_just_barriers (test_predictive_routing.RoutingTests) ... ok
+test_cleanup_failure_quarantines_only_affected_pair_then_retries (test_predictive_routing.RoutingTests) ... ok
+test_cooldown_confirmation_and_minimum_improvement_prevent_churn (test_predictive_routing.RoutingTests) ... ok
+test_disconnected_path_is_rejected_and_old_epoch_predictions_ignored (test_predictive_routing.RoutingTests) ... ok
+test_failed_obsolete_delete_keeps_tag_reserved_and_waits_before_retry (test_predictive_routing.RoutingTests) ... ok
+test_idle_expiration_deactivates_and_next_packet_reinstalls (test_predictive_routing.RoutingTests) ... ok
+test_improvement_threshold_and_policy_validation (test_predictive_routing.RoutingTests) ... ok
+test_missing_entries_wrong_actions_and_timeout_are_failures (test_predictive_routing.RoutingTests) ... ok
+test_missing_or_stale_predictions_fall_back_to_verified_baseline (test_predictive_routing.RoutingTests) ... ok
+test_no_change_when_baseline_remains_optimal (test_predictive_routing.RoutingTests) ... ok
+test_partial_install_failure_is_not_reported_active_and_recovers (test_predictive_routing.RoutingTests) ... ok
+test_periodic_audit_and_hard_timeout_refresh (test_predictive_routing.RoutingTests) ... ok
+test_predictions_expiring_during_staging_cannot_be_cut_over (test_predictive_routing.RoutingTests) ... ok
+test_repeated_frame_and_mixed_model_versions_do_not_trigger (test_predictive_routing.RoutingTests) ... ok
+test_reroutes_both_directions_with_correct_ports_and_version_tags (test_predictive_routing.RoutingTests) ... ok
+test_snapshot_distinguishes_recommendation_installation_and_verification (test_predictive_routing.RoutingTests) ... ok
+test_stats_from_old_datapath_and_duplicates_cannot_activate (test_predictive_routing.RoutingTests) ... ok
+test_unrelated_pairs_are_not_deleted_by_a_reroute (test_predictive_routing.RoutingTests) ... ok
+test_wrong_output_action_is_rejected_by_exact_readback (test_predictive_routing.RoutingTests) ... ok
+test_automatic_counter_rf_dijkstra_flowmod_readback_and_packet_delivery (test_predictive_socket.PredictiveSocketTests) ... ok
+test_buffered_packet_out_does_not_include_data (test_routing_integration.ControllerRoutingTests) ... ok
+test_disconnect_and_stale_connection_event (test_routing_integration.ControllerRoutingTests) ... ok
+test_failure_deletes_owned_rules_and_waits_for_barriers (test_routing_integration.ControllerRoutingTests) ... ok
+test_features_registers_and_serializes_table_miss (test_routing_integration.ControllerRoutingTests) ... ok
+test_known_unicast_rule_and_packet_out (test_routing_integration.ControllerRoutingTests) ... ok
+test_multipart_ports_are_not_activated_early (test_routing_integration.ControllerRoutingTests) ... ok
+test_no_path_is_logged_then_recovers_after_restoration (test_routing_integration.ControllerRoutingTests) ... ok
+test_off_path_unicast_and_wrong_tree_ingress_are_dropped (test_routing_integration.ControllerRoutingTests) ... Unexpected host attachment: 00:00:00:00:00:01 on 2/1
+ok
+test_old_barrier_replies_do_not_release_new_update (test_routing_integration.ControllerRoutingTests) ... ok
+test_opt_in_packet_stages_whole_path_and_waits_before_packetout (test_routing_integration.ControllerRoutingTests) ... ok
+test_port_delete_and_add_recover_configured_link (test_routing_integration.ControllerRoutingTests) ... ok
+test_protocol_errors_are_logged_and_disable_forwarding (test_routing_integration.ControllerRoutingTests) ... ok
+test_release_reinjects_full_unbuffered_packet_through_table (test_routing_integration.ControllerRoutingTests) ... ok
+test_telemetry_event_is_serialized_and_old_epoch_is_ignored (test_routing_integration.ControllerRoutingTests) ... ok
+test_truncated_known_packet_is_not_staged (test_routing_integration.ControllerRoutingTests) ... ok
+test_truncated_or_control_packets_do_not_install_routes (test_routing_integration.ControllerRoutingTests) ... ok
+test_unknown_and_broadcast_do_not_use_flood_or_install_flows (test_routing_integration.ControllerRoutingTests) ... ok
+test_unknown_switch_and_wrong_port_map_fail_closed (test_routing_integration.ControllerRoutingTests) ... Unconfigured DPID 99; rejecting connection
+Invalid static wiring on DPID=1: expected ports [1, 2, 3], received [1]; forwarding disabled
+ok
+test_unknown_unicast_broadcast_behavior_is_preserved_when_enabled (test_routing_integration.ControllerRoutingTests) ... ok
+test_read_only_routing_endpoint_uses_controller_database (test_routing_integration.RoutingApiTests) ... ok
+test_additive_routing_tables_and_read_only_snapshot_export (test_routing_integration.RoutingPersistenceTests) ... ok
+test_real_worker_persists_routes_without_entering_telemetry_frame_parser (test_routing_integration.RoutingPersistenceTests) ... ok
+test_committed_counter_batch_notifies_controller_with_topology_epoch (test_routing_integration.WorkerRoutingCallbackTests) ... ok
+test_above_capacity_retains_raw_values (test_telemetry.SamplingTests) ... ok
+test_aggregate_uses_maximum_tx_direction_without_double_counting (test_telemetry.SamplingTests) ... ok
+test_bytes_to_mbps_uses_elapsed_time_and_scaled_capacity (test_telemetry.SamplingTests) ... ok
+test_inactive_and_new_connection_reset_baseline (test_telemetry.SamplingTests) ... ok
+test_invalid_elapsed_stale_and_large_gap (test_telemetry.SamplingTests) ... ok
+test_nonfinite_time_and_stale_switch_duration_are_not_valid (test_telemetry.SamplingTests) ... ok
+test_openflow_unsupported_byte_sentinel_is_missing (test_telemetry.SamplingTests) ... ok
+test_optional_unsupported_counters_stay_null (test_telemetry.SamplingTests) ... ok
+test_reset_missing_and_recovery_never_become_zero_samples (test_telemetry.SamplingTests) ... ok
+test_snapshot_distinguishes_hosts_and_scaled_link_ports (test_telemetry.SamplingTests) ... ok
+test_atomic_sessions_schema_invalid_and_round_trip (test_telemetry.StorageTests) ... ok
+test_partial_batch_and_invalid_order_are_rejected (test_telemetry.StorageTests) ... ok
+test_buffered_packet_out_does_not_include_data (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_disconnect_and_stale_connection_event (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_failure_deletes_owned_rules_and_waits_for_barriers (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_features_registers_and_serializes_table_miss (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_known_unicast_rule_and_packet_out (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_multipart_ports_are_not_activated_early (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_no_path_is_logged_then_recovers_after_restoration (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_off_path_unicast_and_wrong_tree_ingress_are_dropped (test_telemetry_runtime.ForwardingIsolationTests) ... Unexpected host attachment: 00:00:00:00:00:01 on 2/1
+ok
+test_old_barrier_replies_do_not_release_new_update (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_port_delete_and_add_recover_configured_link (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_protocol_errors_are_logged_and_disable_forwarding (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_truncated_or_control_packets_do_not_install_routes (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_unknown_and_broadcast_do_not_use_flood_or_install_flows (test_telemetry_runtime.ForwardingIsolationTests) ... ok
+test_unknown_switch_and_wrong_port_map_fail_closed (test_telemetry_runtime.ForwardingIsolationTests) ... Unconfigured DPID 99; rejecting connection
+Invalid static wiring on DPID=1: expected ports [1, 2, 3], received [1]; forwarding disabled
+ok
+test_multipart_does_not_publish_incomplete_or_duplicate_ports (test_telemetry_runtime.PollTests) ... ok
+test_poll_requests_all_valid_switches_and_correlates_final_replies (test_telemetry_runtime.PollTests) ... ok
+test_stale_delayed_duplicates_missing_and_disconnect (test_telemetry_runtime.PollTests) ... ok
+test_statistics_errors_remain_separate_from_forwarding_errors (test_telemetry_runtime.PollTests) ... ok
+test_bad_model_and_storage_failure_do_not_escape_worker (test_telemetry_runtime.WorkerTests) ... ok
+test_full_synthetic_counter_to_saved_model_inference_pipeline (test_telemetry_runtime.WorkerTests) ... ok
+test_storage_and_model_not_ready_with_real_worker_thread (test_telemetry_runtime.WorkerTests) ... ok
+test_unwritable_database_disables_worker_without_raising_to_controller (test_telemetry_runtime.WorkerTests) ... ok
+test_real_polling_storage_and_disconnect_with_simulated_peers (test_telemetry_socket.TelemetrySocketTests) ... ok
+test_access_port_failure_blocks_host_delivery (test_topology_state.TopologyTests) ... ok
+test_both_endpoints_required_and_port_names_validated (test_topology_state.TopologyTests) ... ok
+test_broadcast_forest_after_partition_and_restoration (test_topology_state.TopologyTests) ... ok
+test_broadcast_has_no_duplicates_for_every_source_and_failure_combination (test_topology_state.TopologyTests) ... ok
+test_configured_graph_and_unique_port_mapping (test_topology_state.TopologyTests) ... ok
+test_delay_weighted_path_and_explicit_output (test_topology_state.TopologyTests) ... ok
+test_disconnection_removes_routes_and_ports (test_topology_state.TopologyTests) ... ok
+test_failure_reroute_partition_and_recovery (test_topology_state.TopologyTests) ... ok
+test_shared_graph_preserves_simulation_metrics_and_path (test_topology_state.TopologyTests) ... ok
+test_static_host_registration_and_access_only_learning (test_topology_state.TopologyTests) ... ok
+test_unknown_and_broadcast_traverse_tree_exactly_once (test_topology_state.TopologyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 135 tests in 67.084s
+
+OK (skipped=5)
+
+$ /usr/bin/python3 -m unittest discover -s tests -p test_mininet_topology.py -v
+test_existing_bridge_is_rejected_before_any_network_creation (test_mininet_topology.MininetTopologyTests.test_existing_bridge_is_rejected_before_any_network_creation) ... ok
+test_partial_startup_stops_only_owned_network (test_mininet_topology.MininetTopologyTests.test_partial_startup_stops_only_owned_network) ... ok
+test_six_switches_hosts_and_exact_wiring (test_mininet_topology.MininetTopologyTests.test_six_switches_hosts_and_exact_wiring) ... ok
+test_tc_check_validates_applied_values (test_mininet_topology.MininetTopologyTests.test_tc_check_validates_applied_values) ... ok
+test_unsupported_bandwidth_is_rejected (test_mininet_topology.MininetTopologyTests.test_unsupported_bandwidth_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+OK
+
+$ npm --prefix frontend run build
+
+> flowrider-dashboard@0.1.0 build
+> vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 31 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.64 kB │ gzip:  0.38 kB
+dist/assets/index-ChfVRfMS.css   21.21 kB │ gzip:  5.55 kB
+dist/assets/index-OeQNMlpB.js   243.18 kB │ gzip: 76.03 kB
+✓ built in 1.07s
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+$ bash -n scripts/run_phase5_validation.sh
+Exit status: 0
+All embedded Python blocks also parsed successfully.
+
+$ sudo -n /usr/bin/python3 tests/integration_phase5.py --database /tmp/flowrider-phase5-unexecuted.sqlite --output /tmp/flowrider-phase5-unexecuted
+sudo: a password is required
+Exit status: 1; no lab was started. User subsequently requested leaving live validation pending.
+
+$ git diff --check
+Exit status: 0
+No dependency installation, real model retraining, commit or push. Socket tests used temporary fixture models/databases and owned subprocesses.

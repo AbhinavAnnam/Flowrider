@@ -1,0 +1,6985 @@
+{
+  "evidence_directory": "/home/bob_the_bob/Flowrider/data/phase5-20261023T081916Z",
+  "stages": [
+    {
+      "stage": 0,
+      "rate": 7,
+      "start_ist": "2026-10-23T13:49:27.469511+05:30",
+      "links": {
+        "s1-s2": {
+          "measured": [
+            0.00015475422246466304,
+            0.0720929515106037
+          ],
+          "predicted": [
+            0.09404886746254451,
+            0.18478699444187693
+          ],
+          "weight": [
+            5.009779672097208,
+            5.145745656199127
+          ]
+        },
+        "s1-s6": {
+          "measured": [
+            0.0,
+            7.616896897237062e-06
+          ],
+          "predicted": [
+            0.0,
+            0.0009243321703211296
+          ],
+          "weight": [
+            5.0,
+            5.000000000091248
+          ]
+        },
+        "s2-s3": {
+          "measured": [
+            0.00014744018459994176,
+            0.0720503727463457
+          ],
+          "predicted": [
+            0.0749921078719948,
+            0.16654674451579826
+          ],
+          "weight": [
+            5.003953413641998,
+            5.096173319179682
+          ]
+        },
+        "s2-s5": {
+          "measured": [
+            0.00012657876117456123,
+            0.0720902621532426
+          ],
+          "predicted": [
+            0.12218837444043379,
+            0.2872905080365765
+          ],
+          "weight": [
+            2.0111452432806547,
+            2.3406082112762654
+          ]
+        },
+        "s3-s4": {
+          "measured": [
+            0.0,
+            6.2733694087894465e-06
+          ],
+          "predicted": [
+            7.465854571321379e-09,
+            0.0002509352959651633
+          ],
+          "weight": [
+            5.0,
+            5.000000000000496
+          ]
+        },
+        "s4-s5": {
+          "measured": [
+            6.408920051740939e-05,
+            0.07208702277622722
+          ],
+          "predicted": [
+            0.10168561624208979,
+            0.1935668958772569
+          ],
+          "weight": [
+            5.013364358363286,
+            5.175482719165472
+          ]
+        },
+        "s5-s6": {
+          "measured": [
+            5.541595540369257e-05,
+            0.07204894101032239
+          ],
+          "predicted": [
+            0.07457219054076171,
+            0.18632329506169193
+          ],
+          "weight": [
+            5.003865606254764,
+            5.150653295700226
+          ]
+        }
+      },
+      "pairs": {
+        "A": {
+          "baseline": [
+            1,
+            2,
+            5,
+            4
+          ],
+          "recommended": [
+            "1254"
+          ],
+          "installed": [
+            "1254"
+          ],
+          "decision_counts": {
+            "same_path": 5
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:19:42.625484Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 20.120758056640625,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:19:47.623126Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 25.11840009689331,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:19:52.631115Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 30.126389026641846,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:19:58.580635Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 36.07590913772583,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:03.572834Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 41.06810808181763,
+              "reason": "same_path",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        },
+        "B": {
+          "baseline": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "recommended": [
+            "3256"
+          ],
+          "installed": [
+            "3256"
+          ],
+          "decision_counts": {
+            "same_path": 5
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:19:42.626570Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 16.53407096862793,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:19:47.624256Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 21.53175687789917,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:19:52.632216Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 26.539716958999634,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:19:58.582407Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 32.48990797996521,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:03.574278Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 37.48177909851074,
+              "reason": "same_path",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        }
+      }
+    },
+    {
+      "stage": 1,
+      "rate": 45,
+      "start_ist": "2026-10-23T13:50:08.588413+05:30",
+      "links": {
+        "s1-s2": {
+          "measured": [
+            0.44839307161574693,
+            0.463181160491767
+          ],
+          "predicted": [
+            0.3306343712273316,
+            0.5285869787891577
+          ],
+          "weight": [
+            6.493832859754381,
+            14.758337963258503
+          ]
+        },
+        "s1-s6": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s2-s3": {
+          "measured": [
+            0.4484847531123624,
+            0.46310824034094117
+          ],
+          "predicted": [
+            0.29240010810257955,
+            0.5168771489606931
+          ],
+          "weight": [
+            5.913734721885602,
+            13.921940920087073
+          ]
+        },
+        "s2-s5": {
+          "measured": [
+            0.4483303704556186,
+            0.4631914948909023
+          ],
+          "predicted": [
+            0.33955268190460325,
+            0.5281182166852176
+          ],
+          "weight": [
+            2.664658655073171,
+            5.889507352583089
+          ]
+        },
+        "s3-s4": {
+          "measured": [
+            0.0,
+            1.1199541192894616e-06
+          ],
+          "predicted": [
+            6.623739100194122e-08,
+            1.1572228523270029e-07
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s4-s5": {
+          "measured": [
+            0.4478178522679346,
+            0.4632062076164006
+          ],
+          "predicted": [
+            0.3306343712273316,
+            0.5285869787891577
+          ],
+          "weight": [
+            6.493832859754381,
+            14.758337963258503
+          ]
+        },
+        "s5-s6": {
+          "measured": [
+            0.4477537836109443,
+            0.4631903962805123
+          ],
+          "predicted": [
+            0.30320394525978595,
+            0.5168771489606931
+          ],
+          "weight": [
+            6.056451112984119,
+            13.921940920087073
+          ]
+        }
+      },
+      "pairs": {
+        "A": {
+          "baseline": [
+            1,
+            2,
+            5,
+            4
+          ],
+          "recommended": [
+            "1254",
+            "1654"
+          ],
+          "installed": [
+            "1254"
+          ],
+          "decision_counts": {
+            "same_path": 5,
+            "gain_below_10%": 1
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:20:03.572834Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 41.06810808181763,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:08.600735Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 46.09600901603699,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:13.578678Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 51.073951959609985,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:18.565567Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 56.06084108352661,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:23.569229Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.04874584707844808,
+              "congested": false,
+              "seconds_since_activation": 61.06450295448303,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:28.566866Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 66.06213998794556,
+              "reason": "same_path",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        },
+        "B": {
+          "baseline": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "recommended": [
+            "3256",
+            "3456"
+          ],
+          "installed": [
+            "3256"
+          ],
+          "decision_counts": {
+            "same_path": 5,
+            "gain_below_10%": 1
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:20:03.574278Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 37.48177909851074,
+              "reason": "same_path",
+              "phase": "audit_read"
+            },
+            {
+              "timestamp": "2026-10-23T08:20:08.601843Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 42.50934410095215,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:13.579926Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 47.48742699623108,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:18.566673Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 52.47417402267456,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:23.571446Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0015744136798166875,
+              "congested": false,
+              "seconds_since_activation": 57.478946924209595,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:28.568231Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 62.47573208808899,
+              "reason": "same_path",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        }
+      }
+    },
+    {
+      "stage": 2,
+      "rate": 60,
+      "start_ist": "2026-10-23T13:50:28.755612+05:30",
+      "links": {
+        "s1-s2": {
+          "measured": [
+            0.5918462100692977,
+            0.6175983558482635
+          ],
+          "predicted": [
+            0.5456768162685872,
+            0.722272431492113
+          ],
+          "weight": [
+            16.082864502071587,
+            39.01842222438514
+          ]
+        },
+        "s1-s6": {
+          "measured": [
+            0.0,
+            1.1199607951022623e-06
+          ],
+          "predicted": [
+            2.8012348414644272e-09,
+            1.1572228523270029e-07
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s2-s3": {
+          "measured": [
+            0.5918791943920007,
+            0.6176415240725724
+          ],
+          "predicted": [
+            0.5570942754042318,
+            0.7235700048717939
+          ],
+          "weight": [
+            17.0399531231374,
+            39.26354021995464
+          ]
+        },
+        "s2-s5": {
+          "measured": [
+            0.5917874247130898,
+            0.6176116537080724
+          ],
+          "predicted": [
+            0.5437326479774977,
+            0.7169596949819033
+          ],
+          "weight": [
+            6.370303991726925,
+            15.211403946032343
+          ]
+        },
+        "s3-s4": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            4.294347060369697e-08,
+            4.992951610258502e-07
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s4-s5": {
+          "measured": [
+            0.5916212131403883,
+            0.6176015715713137
+          ],
+          "predicted": [
+            0.5456768162685872,
+            0.7216110267810556
+          ],
+          "weight": [
+            16.082864502071587,
+            38.893986862441245
+          ]
+        },
+        "s5-s6": {
+          "measured": [
+            0.5915592349016499,
+            0.617586207739033
+          ],
+          "predicted": [
+            0.5570942754042318,
+            0.7215971150616771
+          ],
+          "weight": [
+            17.0399531231374,
+            38.8913732105929
+          ]
+        }
+      },
+      "pairs": {
+        "A": {
+          "baseline": [
+            1,
+            2,
+            5,
+            4
+          ],
+          "recommended": [
+            "1254",
+            "1654"
+          ],
+          "installed": [
+            "1254"
+          ],
+          "decision_counts": {
+            "same_path": 1,
+            "gain_below_10%": 2,
+            "no_forecast_at_80%": 1
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:20:28.566866Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 66.06213998794556,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:34.869763Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.010722831037263169,
+              "congested": false,
+              "seconds_since_activation": 72.3650369644165,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:39.872710Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0462987782402296,
+              "congested": false,
+              "seconds_since_activation": 77.36798405647278,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:44.874780Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.11101835957014192,
+              "congested": false,
+              "seconds_since_activation": 82.37005400657654,
+              "reason": "no_forecast_at_80%",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        },
+        "B": {
+          "baseline": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "recommended": [
+            "3256",
+            "3456"
+          ],
+          "installed": [
+            "3256"
+          ],
+          "decision_counts": {
+            "same_path": 1,
+            "gain_below_10%": 1,
+            "no_forecast_at_80%": 2
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:20:28.568231Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 62.47573208808899,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:34.871862Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.05753721919116822,
+              "congested": false,
+              "seconds_since_activation": 68.77936291694641,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:39.874549Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.10971977512702347,
+              "congested": false,
+              "seconds_since_activation": 73.78204989433289,
+              "reason": "no_forecast_at_80%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:44.876908Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.11332734974293707,
+              "congested": false,
+              "seconds_since_activation": 78.7844090461731,
+              "reason": "no_forecast_at_80%",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        }
+      }
+    },
+    {
+      "stage": 3,
+      "rate": 70,
+      "start_ist": "2026-10-23T13:50:45.224389+05:30",
+      "links": {
+        "s1-s2": {
+          "measured": [
+            0.6892188293748106,
+            0.7204285881786204
+          ],
+          "predicted": [
+            0.8026664626820715,
+            0.8293707541268956
+          ],
+          "weight": [
+            56.88603484752676,
+            64.14320841925674
+          ]
+        },
+        "s1-s6": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            3.246215843982966e-07
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s2-s3": {
+          "measured": [
+            0.6892136915402244,
+            0.7203801949953479
+          ],
+          "predicted": [
+            0.8042153455896955,
+            0.8298426934254796
+          ],
+          "weight": [
+            57.28768765810506,
+            64.27794110653002
+          ]
+        },
+        "s2-s5": {
+          "measured": [
+            0.6893479032601603,
+            0.7203541686160689
+          ],
+          "predicted": [
+            0.8034172554043326,
+            0.8275066687267807
+          ],
+          "weight": [
+            22.832175450919255,
+            25.445311852701607
+          ]
+        },
+        "s3-s4": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s4-s5": {
+          "measured": [
+            0.6891418578006661,
+            0.7203776545303079
+          ],
+          "predicted": [
+            0.8026664523869061,
+            0.8305986702961886
+          ],
+          "weight": [
+            56.886032185522936,
+            64.49424246486868
+          ]
+        },
+        "s5-s6": {
+          "measured": [
+            0.6891026641412361,
+            0.720338455128083
+          ],
+          "predicted": [
+            0.802660622486752,
+            0.8286206561762637
+          ],
+          "weight": [
+            56.884524774365545,
+            63.929537748256294
+          ]
+        }
+      },
+      "pairs": {
+        "A": {
+          "baseline": [
+            1,
+            2,
+            5,
+            4
+          ],
+          "recommended": [
+            "1234",
+            "1654"
+          ],
+          "installed": [
+            "1254"
+          ],
+          "decision_counts": {
+            "no_forecast_at_80%": 1,
+            "eligible": 3
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:20:44.874780Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.11101835957014192,
+              "congested": false,
+              "seconds_since_activation": 82.37005400657654,
+              "reason": "no_forecast_at_80%",
+              "phase": "audit_read"
+            },
+            {
+              "timestamp": "2026-10-23T08:20:49.877620Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.13055001220897902,
+              "congested": true,
+              "seconds_since_activation": 87.3728940486908,
+              "reason": "eligible",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:54.867797Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.132656356407457,
+              "congested": true,
+              "seconds_since_activation": 92.36307096481323,
+              "reason": "eligible",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:59.871256Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.13565572214655544,
+              "congested": true,
+              "seconds_since_activation": 97.36653017997742,
+              "reason": "eligible",
+              "phase": null
+            }
+          ],
+          "candidates": [
+            {
+              "kind": "reroute_candidate",
+              "timestamp": "2026-10-23T08:20:49.877819Z",
+              "sequence": 43,
+              "topology_epoch": 12,
+              "source": "live_mininet",
+              "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+              "path": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "relative_improvement": 0.13055001220897902,
+              "confirmation_count": 1,
+              "session_id": "499bfcb566574d2aa05707034b072580",
+              "schema_version": 1
+            },
+            {
+              "kind": "reroute_candidate",
+              "timestamp": "2026-10-23T08:20:54.867959Z",
+              "sequence": 49,
+              "topology_epoch": 12,
+              "source": "live_mininet",
+              "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+              "path": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "relative_improvement": 0.132656356407457,
+              "confirmation_count": 1,
+              "session_id": "499bfcb566574d2aa05707034b072580",
+              "schema_version": 1
+            },
+            {
+              "kind": "reroute_candidate",
+              "timestamp": "2026-10-23T08:20:59.871447Z",
+              "sequence": 67,
+              "topology_epoch": 12,
+              "source": "live_mininet",
+              "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+              "path": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "relative_improvement": 0.13565572214655544,
+              "confirmation_count": 1,
+              "session_id": "499bfcb566574d2aa05707034b072580",
+              "schema_version": 1
+            }
+          ]
+        },
+        "B": {
+          "baseline": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "recommended": [
+            "3216",
+            "3456"
+          ],
+          "installed": [
+            "3256"
+          ],
+          "decision_counts": {
+            "no_forecast_at_80%": 1,
+            "eligible": 3
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:20:44.876908Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.11332734974293707,
+              "congested": false,
+              "seconds_since_activation": 78.7844090461731,
+              "reason": "no_forecast_at_80%",
+              "phase": "audit_read"
+            },
+            {
+              "timestamp": "2026-10-23T08:20:49.883572Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.1330893937427825,
+              "congested": true,
+              "seconds_since_activation": 83.79107308387756,
+              "reason": "eligible",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:54.878836Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.1302251963657521,
+              "congested": true,
+              "seconds_since_activation": 88.78633689880371,
+              "reason": "eligible",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:20:59.873244Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.13527269535160227,
+              "congested": true,
+              "seconds_since_activation": 93.78074502944946,
+              "reason": "eligible",
+              "phase": null
+            }
+          ],
+          "candidates": [
+            {
+              "kind": "reroute_candidate",
+              "timestamp": "2026-10-23T08:20:49.883739Z",
+              "sequence": 48,
+              "topology_epoch": 12,
+              "source": "live_mininet",
+              "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+              "path": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "relative_improvement": 0.1330893937427825,
+              "confirmation_count": 1,
+              "session_id": "499bfcb566574d2aa05707034b072580",
+              "schema_version": 1
+            },
+            {
+              "kind": "reroute_candidate",
+              "timestamp": "2026-10-23T08:20:54.878994Z",
+              "sequence": 58,
+              "topology_epoch": 12,
+              "source": "live_mininet",
+              "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+              "path": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "relative_improvement": 0.1302251963657521,
+              "confirmation_count": 1,
+              "session_id": "499bfcb566574d2aa05707034b072580",
+              "schema_version": 1
+            },
+            {
+              "kind": "reroute_candidate",
+              "timestamp": "2026-10-23T08:20:59.873385Z",
+              "sequence": 68,
+              "topology_epoch": 12,
+              "source": "live_mininet",
+              "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+              "path": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "relative_improvement": 0.13527269535160227,
+              "confirmation_count": 1,
+              "session_id": "499bfcb566574d2aa05707034b072580",
+              "schema_version": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "stage": 4,
+      "rate": 80,
+      "start_ist": "2026-10-23T13:51:00.391854+05:30",
+      "links": {
+        "s1-s2": {
+          "measured": [
+            0.7856990037079072,
+            0.823322783163285
+          ],
+          "predicted": [
+            0.8791630338830528,
+            0.9452418618324795
+          ],
+          "weight": [
+            79.67714211279578,
+            104.78880015761469
+          ]
+        },
+        "s1-s6": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s2-s3": {
+          "measured": [
+            0.7856496507567347,
+            0.823255221801423
+          ],
+          "predicted": [
+            0.8793910454649432,
+            0.9466481951930089
+          ],
+          "weight": [
+            79.75464254372449,
+            105.38399097270357
+          ]
+        },
+        "s2-s5": {
+          "measured": [
+            0.7856978976652111,
+            0.8232812918451127
+          ],
+          "predicted": [
+            0.8797627812542005,
+            0.9442637939901353
+          ],
+          "weight": [
+            31.952449484304662,
+            41.750569541223484
+          ]
+        },
+        "s3-s4": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s4-s5": {
+          "measured": [
+            0.785489295435282,
+            0.8233034407044051
+          ],
+          "predicted": [
+            0.8803153023822605,
+            0.9452418618324795
+          ],
+          "weight": [
+            80.06941262689138,
+            104.78880015761469
+          ]
+        },
+        "s5-s6": {
+          "measured": [
+            0.7854739058904439,
+            0.8232642408224514
+          ],
+          "predicted": [
+            0.8802050881851803,
+            0.9466481951930089
+          ],
+          "weight": [
+            80.03182536078523,
+            105.38399097270357
+          ]
+        }
+      },
+      "pairs": {
+        "A": {
+          "baseline": [
+            1,
+            2,
+            5,
+            4
+          ],
+          "recommended": [
+            "1234",
+            "1654"
+          ],
+          "installed": [
+            "1254"
+          ],
+          "decision_counts": {
+            "eligible": 3,
+            "cooldown": 3
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:20:59.871256Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.13565572214655544,
+              "congested": true,
+              "seconds_since_activation": 97.36653017997742,
+              "reason": "eligible",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:05.924938Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.14223975590197113,
+              "congested": true,
+              "seconds_since_activation": 103.42021203041077,
+              "reason": "eligible",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:05.924938Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.14223975590197113,
+              "congested": true,
+              "seconds_since_activation": 103.42021203041077,
+              "reason": "eligible",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:10.921218Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.13896321572017734,
+              "congested": true,
+              "seconds_since_activation": 3.9730968475341797,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:15.922270Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.14237528233118005,
+              "congested": true,
+              "seconds_since_activation": 8.974148988723755,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:20.921236Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.1438572474656736,
+              "congested": true,
+              "seconds_since_activation": 13.973114967346191,
+              "reason": "cooldown",
+              "phase": null
+            }
+          ],
+          "candidates": [
+            {
+              "kind": "reroute_candidate",
+              "timestamp": "2026-10-23T08:21:05.925132Z",
+              "sequence": 69,
+              "topology_epoch": 12,
+              "source": "live_mininet",
+              "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+              "path": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "relative_improvement": 0.14223975590197127,
+              "confirmation_count": 1,
+              "session_id": "499bfcb566574d2aa05707034b072580",
+              "schema_version": 1
+            }
+          ]
+        },
+        "B": {
+          "baseline": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "recommended": [
+            "3216",
+            "3456"
+          ],
+          "installed": [
+            "3256"
+          ],
+          "decision_counts": {
+            "eligible": 3,
+            "cooldown": 3
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:20:59.873244Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.13527269535160227,
+              "congested": true,
+              "seconds_since_activation": 93.78074502944946,
+              "reason": "eligible",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:05.926955Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.1424183108164724,
+              "congested": true,
+              "seconds_since_activation": 99.83445596694946,
+              "reason": "eligible",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:05.926955Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.1424183108164724,
+              "congested": true,
+              "seconds_since_activation": 99.83445596694946,
+              "reason": "eligible",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:10.922779Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.14050648081162362,
+              "congested": true,
+              "seconds_since_activation": 0.9371249675750732,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:15.923672Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.14847679148481893,
+              "congested": true,
+              "seconds_since_activation": 5.938017845153809,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:20.922792Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.14789313551994454,
+              "congested": true,
+              "seconds_since_activation": 10.937137842178345,
+              "reason": "cooldown",
+              "phase": null
+            }
+          ],
+          "candidates": [
+            {
+              "kind": "reroute_candidate",
+              "timestamp": "2026-10-23T08:21:05.927095Z",
+              "sequence": 70,
+              "topology_epoch": 12,
+              "source": "live_mininet",
+              "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+              "path": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "relative_improvement": 0.14241831081647255,
+              "confirmation_count": 1,
+              "session_id": "499bfcb566574d2aa05707034b072580",
+              "schema_version": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "stage": 5,
+      "rate": 95,
+      "start_ist": "2026-10-23T13:51:21.607453+05:30",
+      "links": {
+        "s1-s2": {
+          "measured": [
+            0.9244314338086684,
+            0.9776599178396291
+          ],
+          "predicted": [
+            0.5856940058945844,
+            0.8609840353056916
+          ],
+          "weight": [
+            19.709338102863946,
+            73.6895083201936
+          ]
+        },
+        "s1-s6": {
+          "measured": [
+            0.0,
+            1.1199385962326964e-06
+          ],
+          "predicted": [
+            4.870529435225963e-08,
+            1.4393677229756508e-07
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s2-s3": {
+          "measured": [
+            0.9243544467618483,
+            0.9776556618284726
+          ],
+          "predicted": [
+            0.5889950745592221,
+            0.8599375600877002
+          ],
+          "weight": [
+            20.043769312848767,
+            73.356164522099
+          ]
+        },
+        "s2-s5": {
+          "measured": [
+            0.9244108347321514,
+            0.9776656622556906
+          ],
+          "predicted": [
+            0.5562827851441401,
+            0.8559945442275902
+          ],
+          "weight": [
+            6.787981743956164,
+            28.8444178952291
+          ]
+        },
+        "s3-s4": {
+          "measured": [
+            0.0,
+            1.1201522614024472e-06
+          ],
+          "predicted": [
+            1.6792893872375888e-08,
+            3.6269733407507184e-07
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s4-s5": {
+          "measured": [
+            0.9243118759401893,
+            0.9776591446772818
+          ],
+          "predicted": [
+            0.5800359412286663,
+            0.8609840353056916
+          ],
+          "weight": [
+            19.14912660843129,
+            73.6895083201936
+          ]
+        },
+        "s5-s6": {
+          "measured": [
+            0.9242715659161381,
+            0.9776676249973971
+          ],
+          "predicted": [
+            0.5963032861698634,
+            0.8599375600877002
+          ],
+          "weight": [
+            20.80442951139041,
+            73.356164522099
+          ]
+        }
+      },
+      "pairs": {
+        "A": {
+          "baseline": [
+            1,
+            2,
+            5,
+            4
+          ],
+          "recommended": [
+            "1234",
+            "1654"
+          ],
+          "installed": [
+            "1254"
+          ],
+          "decision_counts": {
+            "cooldown": 4,
+            "gain_below_10%": 3,
+            "no_forecast_at_80%": 1
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:21:20.921236Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.1438572474656736,
+              "congested": true,
+              "seconds_since_activation": 13.973114967346191,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:25.924250Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.13719946928191987,
+              "congested": true,
+              "seconds_since_activation": 18.976128816604614,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:30.928279Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.06967270638194169,
+              "congested": false,
+              "seconds_since_activation": 23.98015785217285,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:35.929604Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.019570834290780017,
+              "congested": false,
+              "seconds_since_activation": 28.981482982635498,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:42.011234Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.09513522550560582,
+              "congested": false,
+              "seconds_since_activation": 35.06311297416687,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:47.007873Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.1294957717588743,
+              "congested": false,
+              "seconds_since_activation": 40.059751987457275,
+              "reason": "no_forecast_at_80%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:52.003030Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.09660012946331337,
+              "congested": false,
+              "seconds_since_activation": 45.054908990859985,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:57.004061Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.09410199436808522,
+              "congested": false,
+              "seconds_since_activation": 50.05593991279602,
+              "reason": "gain_below_10%",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        },
+        "B": {
+          "baseline": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "recommended": [
+            "3216",
+            "3456"
+          ],
+          "installed": [
+            "3256"
+          ],
+          "decision_counts": {
+            "cooldown": 4,
+            "no_forecast_at_80%": 1,
+            "gain_below_10%": 3
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:21:20.922792Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.14789313551994454,
+              "congested": true,
+              "seconds_since_activation": 10.937137842178345,
+              "reason": "cooldown",
+              "phase": "audit_read"
+            },
+            {
+              "timestamp": "2026-10-23T08:21:25.925720Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.13392293094407018,
+              "congested": true,
+              "seconds_since_activation": 15.940065860748291,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:30.929667Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.12561696653493284,
+              "congested": false,
+              "seconds_since_activation": 20.944012880325317,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:35.931184Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.06395763968614275,
+              "congested": false,
+              "seconds_since_activation": 25.94552993774414,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:42.012583Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.11938912979287149,
+              "congested": false,
+              "seconds_since_activation": 32.02692890167236,
+              "reason": "no_forecast_at_80%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:47.009243Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.09908781931756282,
+              "congested": false,
+              "seconds_since_activation": 37.02358889579773,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:52.004121Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0696352816413211,
+              "congested": false,
+              "seconds_since_activation": 42.01846694946289,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:21:57.005451Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.04881306402958396,
+              "congested": false,
+              "seconds_since_activation": 47.01979684829712,
+              "reason": "gain_below_10%",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        }
+      }
+    },
+    {
+      "stage": 6,
+      "rate": 20,
+      "start_ist": "2026-10-23T13:51:57.860626+05:30",
+      "links": {
+        "s1-s2": {
+          "measured": [
+            0.20581405413832485,
+            0.3258201603974721
+          ],
+          "predicted": [
+            0.34849939619065107,
+            0.4126052418505324
+          ],
+          "weight": [
+            6.843818350340825,
+            8.622838524434064
+          ]
+        },
+        "s1-s6": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            4.2932328212407214e-07
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s2-s3": {
+          "measured": [
+            0.20577846933991292,
+            0.3258775478991683
+          ],
+          "predicted": [
+            0.40432233494119735,
+            0.42490610550038055
+          ],
+          "weight": [
+            8.340572821742526,
+            9.074571087291917
+          ]
+        },
+        "s2-s5": {
+          "measured": [
+            0.20581718902490287,
+            0.3261771325392123
+          ],
+          "predicted": [
+            0.3223175567115683,
+            0.41641256906027335
+          ],
+          "weight": [
+            2.5396421370069184,
+            3.503368075838054
+          ]
+        },
+        "s3-s4": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s4-s5": {
+          "measured": [
+            0.205781487603834,
+            0.3270620098968296
+          ],
+          "predicted": [
+            0.3469581303609898,
+            0.41261592086131904
+          ],
+          "weight": [
+            6.811416371409439,
+            8.623213602884594
+          ]
+        },
+        "s5-s6": {
+          "measured": [
+            0.2057422960965475,
+            0.3269512786387849
+          ],
+          "predicted": [
+            0.40438932966405927,
+            0.4346181108464621
+          ],
+          "weight": [
+            8.342787454589967,
+            9.460066066269393
+          ]
+        }
+      },
+      "pairs": {
+        "A": {
+          "baseline": [
+            1,
+            2,
+            5,
+            4
+          ],
+          "recommended": [
+            "1234",
+            "1254"
+          ],
+          "installed": [
+            "1254"
+          ],
+          "decision_counts": {
+            "gain_below_10%": 1,
+            "same_path": 4
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:21:57.004061Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.09410199436808522,
+              "congested": false,
+              "seconds_since_activation": 50.05593991279602,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:02.005326Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 55.05720496177673,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:07.008631Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 60.06050992012024,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:13.112588Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 66.16446685791016,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:18.112382Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 71.16426086425781,
+              "reason": "same_path",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        },
+        "B": {
+          "baseline": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "recommended": [
+            "3216",
+            "3256"
+          ],
+          "installed": [
+            "3256"
+          ],
+          "decision_counts": {
+            "gain_below_10%": 1,
+            "same_path": 4
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:21:57.005451Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.04881306402958396,
+              "congested": false,
+              "seconds_since_activation": 47.01979684829712,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:02.007899Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 52.022244930267334,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:07.010523Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 57.024868965148926,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:13.114571Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 63.12891697883606,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:18.114552Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 68.12889790534973,
+              "reason": "same_path",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        }
+      }
+    },
+    {
+      "stage": 7,
+      "rate": 7,
+      "start_ist": "2026-10-23T13:52:19.133155+05:30",
+      "links": {
+        "s1-s2": {
+          "measured": [
+            0.0720554357987731,
+            0.09614091775064396
+          ],
+          "predicted": [
+            0.1830345664922728,
+            0.668766837796447
+          ],
+          "weight": [
+            5.1402950902886015,
+            30.003967818140516
+          ]
+        },
+        "s1-s6": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s2-s3": {
+          "measured": [
+            0.07202022415021446,
+            0.09606550135564167
+          ],
+          "predicted": [
+            0.10001730921515431,
+            0.6551308962216118
+          ],
+          "weight": [
+            5.012508656854903,
+            28.02620350559637
+          ]
+        },
+        "s2-s5": {
+          "measured": [
+            0.07205373564259275,
+            0.09618060278284445
+          ],
+          "predicted": [
+            0.26850669972121277,
+            0.6391625743740365
+          ],
+          "weight": [
+            2.2598905634652704,
+            10.34478887768807
+          ]
+        },
+        "s3-s4": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s4-s5": {
+          "measured": [
+            0.0720624889162496,
+            0.09634254317237893
+          ],
+          "predicted": [
+            0.1830345664922728,
+            0.6689802262276122
+          ],
+          "weight": [
+            5.1402950902886015,
+            30.035895906624926
+          ]
+        },
+        "s5-s6": {
+          "measured": [
+            0.07200345896666505,
+            0.09627950967369175
+          ],
+          "predicted": [
+            0.17344666163849812,
+            0.6543487348840187
+          ],
+          "weight": [
+            5.1131289598928165,
+            27.91643626182499
+          ]
+        }
+      },
+      "pairs": {
+        "A": {
+          "baseline": [
+            1,
+            2,
+            5,
+            4
+          ],
+          "recommended": [
+            "1254",
+            "1654"
+          ],
+          "installed": [
+            "1254"
+          ],
+          "decision_counts": {
+            "same_path": 4,
+            "no_forecast_at_80%": 1
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:22:18.112382Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 71.16426086425781,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:23.114563Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.10559575360814552,
+              "congested": false,
+              "seconds_since_activation": 76.16644191741943,
+              "reason": "no_forecast_at_80%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:28.113481Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 81.16535997390747,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:33.114139Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 86.16601800918579,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:38.111407Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 91.16328597068787,
+              "reason": "same_path",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        },
+        "B": {
+          "baseline": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "recommended": [
+            "3256",
+            "3456"
+          ],
+          "installed": [
+            "3256"
+          ],
+          "decision_counts": {
+            "same_path": 4,
+            "gain_below_10%": 1
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:22:18.114552Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 68.12889790534973,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:23.116003Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.05031265422158705,
+              "congested": false,
+              "seconds_since_activation": 73.13034892082214,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:28.115299Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 78.12964487075806,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:33.117576Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 83.13192176818848,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:38.113384Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 88.12772989273071,
+              "reason": "same_path",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        }
+      }
+    },
+    {
+      "stage": 8,
+      "rate": 90,
+      "start_ist": "2026-10-23T13:52:39.300953+05:30",
+      "links": {
+        "s1-s2": {
+          "measured": [
+            0.6974964878982131,
+            0.9262276231930133
+          ],
+          "predicted": [
+            0.34074988942219614,
+            0.7331290446237861
+          ],
+          "weight": [
+            6.685205653021975,
+            41.110351406465085
+          ]
+        },
+        "s1-s6": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s2-s3": {
+          "measured": [
+            0.697320085184067,
+            0.9263305930435871
+          ],
+          "predicted": [
+            0.3010137580664165,
+            0.75496805960259
+          ],
+          "weight": [
+            6.0262552604210065,
+            45.6091899378124
+          ]
+        },
+        "s2-s5": {
+          "measured": [
+            0.69712425425564,
+            0.9263237889874968
+          ],
+          "predicted": [
+            0.35702918810731654,
+            0.7165544289220611
+          ],
+          "weight": [
+            2.8124280202750427,
+            15.181557941116692
+          ]
+        },
+        "s3-s4": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s4-s5": {
+          "measured": [
+            0.6962009794639583,
+            0.9263323908802173
+          ],
+          "predicted": [
+            0.34074988942219614,
+            0.7331290446237861
+          ],
+          "weight": [
+            6.685205653021975,
+            41.110351406465085
+          ]
+        },
+        "s5-s6": {
+          "measured": [
+            0.6960187554983193,
+            0.926364713026492
+          ],
+          "predicted": [
+            0.3010137580664165,
+            0.6413332628068977
+          ],
+          "weight": [
+            6.0262552604210065,
+            26.14682025697844
+          ]
+        }
+      },
+      "pairs": {
+        "A": {
+          "baseline": [
+            1,
+            2,
+            5,
+            4
+          ],
+          "recommended": [
+            "1254",
+            "1654"
+          ],
+          "installed": [
+            "1254"
+          ],
+          "decision_counts": {
+            "same_path": 2,
+            "gain_below_10%": 2,
+            "cooldown": 4
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:22:38.111407Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 91.16328597068787,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:43.127899Z",
+              "recommended": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 96.17977786064148,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:49.227044Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.05188998377095198,
+              "congested": false,
+              "seconds_since_activation": 102.27892303466797,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:49.227044Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.05188998377095198,
+              "congested": false,
+              "seconds_since_activation": 102.27892303466797,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:54.210376Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.09651767080813758,
+              "congested": false,
+              "seconds_since_activation": 3.950432062149048,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:59.212183Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.33006891316120474,
+              "congested": false,
+              "seconds_since_activation": 8.952239036560059,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:04.214896Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.06040494162081814,
+              "congested": false,
+              "seconds_since_activation": 13.954952001571655,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:09.209574Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.09152614961140192,
+              "congested": false,
+              "seconds_since_activation": 18.94963002204895,
+              "reason": "cooldown",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        },
+        "B": {
+          "baseline": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "recommended": [
+            "3256",
+            "3456"
+          ],
+          "installed": [
+            "3256"
+          ],
+          "decision_counts": {
+            "same_path": 5,
+            "cooldown": 3
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:22:38.113384Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 88.12772989273071,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:43.132629Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 93.14697480201721,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:49.229027Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 99.2433729171753,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:54.212374Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 104.2267198562622,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:54.212374Z",
+              "recommended": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.0,
+              "congested": false,
+              "seconds_since_activation": 104.2267198562622,
+              "reason": "same_path",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:22:59.214287Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.18365831316856193,
+              "congested": false,
+              "seconds_since_activation": 4.905776023864746,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:04.216848Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.2834629537492922,
+              "congested": false,
+              "seconds_since_activation": 9.908336877822876,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:09.211293Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.225535354608297,
+              "congested": false,
+              "seconds_since_activation": 14.902781963348389,
+              "reason": "cooldown",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        }
+      }
+    },
+    {
+      "stage": 9,
+      "rate": 95,
+      "start_ist": "2026-10-23T13:53:10.564232+05:30",
+      "links": {
+        "s1-s2": {
+          "measured": [
+            0.9148379780775406,
+            0.9778287086199374
+          ],
+          "predicted": [
+            0.5818123235081057,
+            0.9029503733611075
+          ],
+          "weight": [
+            19.323253443273597,
+            88.0932107636051
+          ]
+        },
+        "s1-s6": {
+          "measured": [
+            0.0,
+            0.0
+          ],
+          "predicted": [
+            8.14303868804301e-08,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s2-s3": {
+          "measured": [
+            0.9173286373845678,
+            0.9777067217515528
+          ],
+          "predicted": [
+            0.5947653592104578,
+            0.913949390884706
+          ],
+          "weight": [
+            20.642014252870624,
+            92.21648986252121
+          ]
+        },
+        "s2-s5": {
+          "measured": [
+            0.9160787567861257,
+            0.9777374614416517
+          ],
+          "predicted": [
+            0.5919933064351854,
+            0.9100133787780129
+          ],
+          "weight": [
+            8.1409730204563,
+            36.28949691629254
+          ]
+        },
+        "s3-s4": {
+          "measured": [
+            0.0,
+            1.1200065742148412e-06
+          ],
+          "predicted": [
+            0.0,
+            8.14303868804301e-08
+          ],
+          "weight": [
+            5.0,
+            5.0
+          ]
+        },
+        "s4-s5": {
+          "measured": [
+            0.9147041289003748,
+            0.9778129546628379
+          ],
+          "predicted": [
+            0.5962733171996497,
+            0.9029503733611075
+          ],
+          "weight": [
+            20.801252559104455,
+            88.0932107636051
+          ]
+        },
+        "s5-s6": {
+          "measured": [
+            0.9173345377848983,
+            0.9776075516718774
+          ],
+          "predicted": [
+            0.5987606772337832,
+            0.913949390884706
+          ],
+          "weight": [
+            21.066567269141036,
+            92.21648986252121
+          ]
+        }
+      },
+      "pairs": {
+        "A": {
+          "baseline": [
+            1,
+            2,
+            5,
+            4
+          ],
+          "recommended": [
+            "1234",
+            "1654"
+          ],
+          "installed": [
+            "1254"
+          ],
+          "decision_counts": {
+            "cooldown": 2,
+            "no_forecast_at_80%": 2,
+            "gain_below_10%": 4
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:23:09.209574Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.09152614961140192,
+              "congested": false,
+              "seconds_since_activation": 18.94963002204895,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:14.226259Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.1278555142454881,
+              "congested": true,
+              "seconds_since_activation": 23.966315031051636,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:20.328527Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.11728259997786528,
+              "congested": false,
+              "seconds_since_activation": 30.068583011627197,
+              "reason": "no_forecast_at_80%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:25.318278Z",
+              "recommended": [
+                1,
+                6,
+                5,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.09686675158611394,
+              "congested": false,
+              "seconds_since_activation": 35.05833411216736,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:30.305650Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.09652616090997762,
+              "congested": false,
+              "seconds_since_activation": 40.045706033706665,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:35.306797Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.0676866636809168,
+              "congested": false,
+              "seconds_since_activation": 45.04685306549072,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:40.309625Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.12486673479049584,
+              "congested": false,
+              "seconds_since_activation": 50.049680948257446,
+              "reason": "no_forecast_at_80%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:45.308591Z",
+              "recommended": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "installed": [
+                1,
+                2,
+                5,
+                4
+              ],
+              "gain": 0.06837622651851864,
+              "congested": false,
+              "seconds_since_activation": 55.04864692687988,
+              "reason": "gain_below_10%",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        },
+        "B": {
+          "baseline": [
+            3,
+            2,
+            5,
+            6
+          ],
+          "recommended": [
+            "3216",
+            "3456"
+          ],
+          "installed": [
+            "3256"
+          ],
+          "decision_counts": {
+            "cooldown": 3,
+            "no_forecast_at_80%": 2,
+            "gain_below_10%": 3
+          },
+          "decisions": [
+            {
+              "timestamp": "2026-10-23T08:23:09.211293Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.225535354608297,
+              "congested": false,
+              "seconds_since_activation": 14.902781963348389,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:14.228335Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.1604402802744597,
+              "congested": true,
+              "seconds_since_activation": 19.91982388496399,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:20.329941Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.1308847066936998,
+              "congested": false,
+              "seconds_since_activation": 26.021430015563965,
+              "reason": "cooldown",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:25.321544Z",
+              "recommended": [
+                3,
+                4,
+                5,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.10973836849643646,
+              "congested": false,
+              "seconds_since_activation": 31.013032913208008,
+              "reason": "no_forecast_at_80%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:30.307134Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.115338186904083,
+              "congested": false,
+              "seconds_since_activation": 35.99862289428711,
+              "reason": "no_forecast_at_80%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:35.308180Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.07843293503705984,
+              "congested": false,
+              "seconds_since_activation": 40.99966907501221,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:40.311145Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.048953939008905746,
+              "congested": false,
+              "seconds_since_activation": 46.002634048461914,
+              "reason": "gain_below_10%",
+              "phase": null
+            },
+            {
+              "timestamp": "2026-10-23T08:23:45.309944Z",
+              "recommended": [
+                3,
+                2,
+                1,
+                6
+              ],
+              "installed": [
+                3,
+                2,
+                5,
+                6
+              ],
+              "gain": 0.09798055150448132,
+              "congested": false,
+              "seconds_since_activation": 51.0014328956604,
+              "reason": "gain_below_10%",
+              "phase": null
+            }
+          ],
+          "candidates": []
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.880036Z",
+      "sequence": 1,
+      "topology_epoch": 1,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        4
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.882743Z",
+      "sequence": 2,
+      "topology_epoch": 2,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        4
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.883775Z",
+      "sequence": 3,
+      "topology_epoch": 3,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        4
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.885398Z",
+      "sequence": 4,
+      "topology_epoch": 4,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        4
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.887057Z",
+      "sequence": 5,
+      "topology_epoch": 5,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        4,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.889324Z",
+      "sequence": 6,
+      "topology_epoch": 6,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.891373Z",
+      "sequence": 7,
+      "topology_epoch": 7,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.893136Z",
+      "sequence": 8,
+      "topology_epoch": 8,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.896231Z",
+      "sequence": 9,
+      "topology_epoch": 9,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.899995Z",
+      "sequence": 10,
+      "topology_epoch": 10,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.902853Z",
+      "sequence": 11,
+      "topology_epoch": 11,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:19:17.905173Z",
+      "sequence": 12,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:22.494480Z",
+      "sequence": 13,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "path": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "cookie": 5067112530745229314,
+      "vlan": 1,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:22.504726Z",
+      "sequence": 14,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "path": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229314,
+      "vlan": 1,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:25.534572Z",
+      "sequence": 15,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:02",
+      "path": [
+        1,
+        2
+      ],
+      "cookie": 5067112530745229316,
+      "vlan": 2,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:25.543130Z",
+      "sequence": 16,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:02",
+      "path": [
+        1,
+        2
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229316,
+      "vlan": 2,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:25.581690Z",
+      "sequence": 17,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:03",
+      "path": [
+        1,
+        2,
+        3
+      ],
+      "cookie": 5067112530745229318,
+      "vlan": 3,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:25.590321Z",
+      "sequence": 18,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:03",
+      "path": [
+        1,
+        2,
+        3
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229318,
+      "vlan": 3,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:25.666300Z",
+      "sequence": 19,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:05",
+      "path": [
+        1,
+        2,
+        5
+      ],
+      "cookie": 5067112530745229320,
+      "vlan": 4,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:25.713282Z",
+      "sequence": 20,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:05",
+      "path": [
+        1,
+        2,
+        5
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229320,
+      "vlan": 4,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:25.747052Z",
+      "sequence": 21,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:06",
+      "path": [
+        1,
+        6
+      ],
+      "cookie": 5067112530745229322,
+      "vlan": 5,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:25.756246Z",
+      "sequence": 22,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:06",
+      "path": [
+        1,
+        6
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229322,
+      "vlan": 5,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:25.800251Z",
+      "sequence": 23,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:03",
+      "path": [
+        2,
+        3
+      ],
+      "cookie": 5067112530745229324,
+      "vlan": 6,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:25.806194Z",
+      "sequence": 24,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:03",
+      "path": [
+        2,
+        3
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229324,
+      "vlan": 6,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:25.837881Z",
+      "sequence": 25,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:04",
+      "path": [
+        2,
+        5,
+        4
+      ],
+      "cookie": 5067112530745229326,
+      "vlan": 7,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:25.847837Z",
+      "sequence": 26,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:04",
+      "path": [
+        2,
+        5,
+        4
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229326,
+      "vlan": 7,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:25.881024Z",
+      "sequence": 27,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:05",
+      "path": [
+        2,
+        5
+      ],
+      "cookie": 5067112530745229328,
+      "vlan": 8,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:25.888186Z",
+      "sequence": 28,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:05",
+      "path": [
+        2,
+        5
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229328,
+      "vlan": 8,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:25.910664Z",
+      "sequence": 29,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:06",
+      "path": [
+        2,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229330,
+      "vlan": 9,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:25.917494Z",
+      "sequence": 30,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:06",
+      "path": [
+        2,
+        5,
+        6
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229330,
+      "vlan": 9,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:25.990155Z",
+      "sequence": 31,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:04",
+      "path": [
+        3,
+        4
+      ],
+      "cookie": 5067112530745229332,
+      "vlan": 10,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:25.996467Z",
+      "sequence": 32,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:04",
+      "path": [
+        3,
+        4
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229332,
+      "vlan": 10,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:26.029791Z",
+      "sequence": 33,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:05",
+      "path": [
+        3,
+        2,
+        5
+      ],
+      "cookie": 5067112530745229334,
+      "vlan": 11,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:26.038861Z",
+      "sequence": 34,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:05",
+      "path": [
+        3,
+        2,
+        5
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229334,
+      "vlan": 11,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:26.082919Z",
+      "sequence": 35,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229336,
+      "vlan": 12,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:26.092499Z",
+      "sequence": 36,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229336,
+      "vlan": 12,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:26.201139Z",
+      "sequence": 37,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:05",
+      "path": [
+        4,
+        5
+      ],
+      "cookie": 5067112530745229338,
+      "vlan": 13,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:26.207157Z",
+      "sequence": 38,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:05",
+      "path": [
+        4,
+        5
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229338,
+      "vlan": 13,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:26.241815Z",
+      "sequence": 39,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:06",
+      "path": [
+        4,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229340,
+      "vlan": 14,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:26.250591Z",
+      "sequence": 40,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:06",
+      "path": [
+        4,
+        5,
+        6
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229340,
+      "vlan": 14,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:19:26.349256Z",
+      "sequence": 41,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:05:00:00:00:00:00:06",
+      "path": [
+        5,
+        6
+      ],
+      "cookie": 5067112530745229342,
+      "vlan": 15,
+      "reason": "initial_baseline",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:19:26.355676Z",
+      "sequence": 42,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:05:00:00:00:00:00:06",
+      "path": [
+        5,
+        6
+      ],
+      "previous_path": null,
+      "cookie": 5067112530745229342,
+      "vlan": 15,
+      "reason": "initial_baseline",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:49.877819Z",
+      "sequence": 43,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "path": [
+        1,
+        6,
+        5,
+        4
+      ],
+      "relative_improvement": 0.13055001220897902,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:49.878667Z",
+      "sequence": 44,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:05",
+      "path": [
+        1,
+        6,
+        5
+      ],
+      "relative_improvement": 0.22370905540045857,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:49.880251Z",
+      "sequence": 45,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:04",
+      "path": [
+        2,
+        3,
+        4
+      ],
+      "relative_improvement": 0.2186516793983836,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:49.881417Z",
+      "sequence": 46,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:06",
+      "path": [
+        2,
+        1,
+        6
+      ],
+      "relative_improvement": 0.22367540712758266,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:49.882430Z",
+      "sequence": 47,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:05",
+      "path": [
+        3,
+        4,
+        5
+      ],
+      "relative_improvement": 0.2275819031129573,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:49.883739Z",
+      "sequence": 48,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "relative_improvement": 0.1330893937427825,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:54.867959Z",
+      "sequence": 49,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "path": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relative_improvement": 0.132656356407457,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:54.868638Z",
+      "sequence": 50,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:05",
+      "path": [
+        1,
+        6,
+        5
+      ],
+      "relative_improvement": 0.22839850050878963,
+      "confirmation_count": 2,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:20:54.869344Z",
+      "sequence": 51,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:05",
+      "path": [
+        1,
+        6,
+        5
+      ],
+      "cookie": 5067112530745229343,
+      "vlan": 16,
+      "reason": "predicted_congestion",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:54.871884Z",
+      "sequence": 52,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:04",
+      "path": [
+        2,
+        3,
+        4
+      ],
+      "relative_improvement": 0.22753385503668225,
+      "confirmation_count": 2,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:20:54.872272Z",
+      "sequence": 53,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:04",
+      "path": [
+        2,
+        3,
+        4
+      ],
+      "cookie": 5067112530745229344,
+      "vlan": 17,
+      "reason": "predicted_congestion",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:54.873456Z",
+      "sequence": 54,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:06",
+      "path": [
+        2,
+        1,
+        6
+      ],
+      "relative_improvement": 0.22415094895933635,
+      "confirmation_count": 2,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:20:54.874614Z",
+      "sequence": 55,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:06",
+      "path": [
+        2,
+        1,
+        6
+      ],
+      "cookie": 5067112530745229345,
+      "vlan": 18,
+      "reason": "predicted_congestion",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:54.875879Z",
+      "sequence": 56,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:05",
+      "path": [
+        3,
+        4,
+        5
+      ],
+      "relative_improvement": 0.22324866210164518,
+      "confirmation_count": 2,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:20:54.877331Z",
+      "sequence": 57,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:05",
+      "path": [
+        3,
+        4,
+        5
+      ],
+      "cookie": 5067112530745229346,
+      "vlan": 19,
+      "reason": "predicted_congestion",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:54.878994Z",
+      "sequence": 58,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        1,
+        6
+      ],
+      "relative_improvement": 0.1302251963657521,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:20:54.899527Z",
+      "sequence": 59,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:05",
+      "path": [
+        1,
+        6,
+        5
+      ],
+      "previous_path": [
+        1,
+        2,
+        5
+      ],
+      "cookie": 5067112530745229343,
+      "vlan": 16,
+      "reason": "predicted_congestion",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:20:54.902810Z",
+      "sequence": 60,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:06",
+      "path": [
+        2,
+        1,
+        6
+      ],
+      "previous_path": [
+        2,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229345,
+      "vlan": 18,
+      "reason": "predicted_congestion",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:20:54.903357Z",
+      "sequence": 61,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:05",
+      "path": [
+        3,
+        4,
+        5
+      ],
+      "previous_path": [
+        3,
+        2,
+        5
+      ],
+      "cookie": 5067112530745229346,
+      "vlan": 19,
+      "reason": "predicted_congestion",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:20:54.903837Z",
+      "sequence": 62,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:04",
+      "path": [
+        2,
+        3,
+        4
+      ],
+      "previous_path": [
+        2,
+        5,
+        4
+      ],
+      "cookie": 5067112530745229344,
+      "vlan": 17,
+      "reason": "predicted_congestion",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:20:56.898008Z",
+      "sequence": 63,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:05",
+      "cookie": 5067112530745229320,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:20:56.899524Z",
+      "sequence": 64,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:06",
+      "cookie": 5067112530745229330,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:20:56.900825Z",
+      "sequence": 65,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:05",
+      "cookie": 5067112530745229334,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:20:56.901207Z",
+      "sequence": 66,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:04",
+      "cookie": 5067112530745229326,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:59.871447Z",
+      "sequence": 67,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "path": [
+        1,
+        6,
+        5,
+        4
+      ],
+      "relative_improvement": 0.13565572214655544,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:20:59.873385Z",
+      "sequence": 68,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "relative_improvement": 0.13527269535160227,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:21:05.925132Z",
+      "sequence": 69,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "path": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "relative_improvement": 0.14223975590197127,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "reroute_candidate",
+      "timestamp": "2026-10-23T08:21:05.927095Z",
+      "sequence": 70,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        1,
+        6
+      ],
+      "relative_improvement": 0.14241831081647255,
+      "confirmation_count": 1,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:06.937188Z",
+      "sequence": 71,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "path": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "cookie": 5067112530745229347,
+      "vlan": 4,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:06.948121Z",
+      "sequence": 72,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "path": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "previous_path": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "cookie": 5067112530745229347,
+      "vlan": 4,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:08.938354Z",
+      "sequence": 73,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:02",
+      "path": [
+        1,
+        2
+      ],
+      "cookie": 5067112530745229348,
+      "vlan": 7,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:08.939852Z",
+      "sequence": 74,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:03",
+      "path": [
+        1,
+        2,
+        3
+      ],
+      "cookie": 5067112530745229349,
+      "vlan": 9,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:08.948620Z",
+      "sequence": 75,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "cookie": 5067112530745229314,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:08.956187Z",
+      "sequence": 76,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:02",
+      "path": [
+        1,
+        2
+      ],
+      "previous_path": [
+        1,
+        2
+      ],
+      "cookie": 5067112530745229348,
+      "vlan": 7,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:08.959451Z",
+      "sequence": 77,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:03",
+      "path": [
+        1,
+        2,
+        3
+      ],
+      "previous_path": [
+        1,
+        2,
+        3
+      ],
+      "cookie": 5067112530745229349,
+      "vlan": 9,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:09.938131Z",
+      "sequence": 78,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:06",
+      "path": [
+        1,
+        6
+      ],
+      "cookie": 5067112530745229350,
+      "vlan": 1,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:09.939425Z",
+      "sequence": 79,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:03",
+      "path": [
+        2,
+        3
+      ],
+      "cookie": 5067112530745229351,
+      "vlan": 11,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:09.940762Z",
+      "sequence": 80,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:05",
+      "path": [
+        2,
+        5
+      ],
+      "cookie": 5067112530745229352,
+      "vlan": 20,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:09.942172Z",
+      "sequence": 81,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:04",
+      "path": [
+        3,
+        4
+      ],
+      "cookie": 5067112530745229353,
+      "vlan": 21,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:09.943473Z",
+      "sequence": 82,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229354,
+      "vlan": 22,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:09.945620Z",
+      "sequence": 83,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:05",
+      "path": [
+        4,
+        5
+      ],
+      "cookie": 5067112530745229355,
+      "vlan": 23,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:09.946419Z",
+      "sequence": 84,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:06",
+      "path": [
+        4,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229356,
+      "vlan": 24,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:21:09.947446Z",
+      "sequence": 85,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:05:00:00:00:00:00:06",
+      "path": [
+        5,
+        6
+      ],
+      "cookie": 5067112530745229357,
+      "vlan": 25,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:09.972524Z",
+      "sequence": 86,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:04",
+      "path": [
+        3,
+        4
+      ],
+      "previous_path": [
+        3,
+        4
+      ],
+      "cookie": 5067112530745229353,
+      "vlan": 21,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:09.979559Z",
+      "sequence": 87,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:03",
+      "path": [
+        2,
+        3
+      ],
+      "previous_path": [
+        2,
+        3
+      ],
+      "cookie": 5067112530745229351,
+      "vlan": 11,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:09.982875Z",
+      "sequence": 88,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:06",
+      "path": [
+        1,
+        6
+      ],
+      "previous_path": [
+        1,
+        6
+      ],
+      "cookie": 5067112530745229350,
+      "vlan": 1,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:09.984653Z",
+      "sequence": 89,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:05",
+      "path": [
+        2,
+        5
+      ],
+      "previous_path": [
+        2,
+        5
+      ],
+      "cookie": 5067112530745229352,
+      "vlan": 20,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:09.985654Z",
+      "sequence": 90,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "previous_path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229354,
+      "vlan": 22,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:09.987334Z",
+      "sequence": 91,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:05",
+      "path": [
+        4,
+        5
+      ],
+      "previous_path": [
+        4,
+        5
+      ],
+      "cookie": 5067112530745229355,
+      "vlan": 23,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:09.988043Z",
+      "sequence": 92,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:06",
+      "path": [
+        4,
+        5,
+        6
+      ],
+      "previous_path": [
+        4,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229356,
+      "vlan": 24,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:21:09.990359Z",
+      "sequence": 93,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:05:00:00:00:00:00:06",
+      "path": [
+        5,
+        6
+      ],
+      "previous_path": [
+        5,
+        6
+      ],
+      "cookie": 5067112530745229357,
+      "vlan": 25,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:10.944778Z",
+      "sequence": 94,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:02",
+      "cookie": 5067112530745229316,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:10.945214Z",
+      "sequence": 95,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:03",
+      "cookie": 5067112530745229318,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:11.956012Z",
+      "sequence": 96,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:03",
+      "cookie": 5067112530745229324,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:11.956679Z",
+      "sequence": 97,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:06",
+      "cookie": 5067112530745229322,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:11.958251Z",
+      "sequence": 98,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:05",
+      "cookie": 5067112530745229328,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:11.958489Z",
+      "sequence": 99,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:04",
+      "cookie": 5067112530745229332,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:11.958712Z",
+      "sequence": 100,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "cookie": 5067112530745229336,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:11.959598Z",
+      "sequence": 101,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:05",
+      "cookie": 5067112530745229338,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:11.960310Z",
+      "sequence": 102,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:06",
+      "cookie": 5067112530745229340,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:21:11.960521Z",
+      "sequence": 103,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:05:00:00:00:00:00:06",
+      "cookie": 5067112530745229342,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:38.150769Z",
+      "sequence": 104,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:05",
+      "path": [
+        1,
+        6,
+        5
+      ],
+      "cookie": 5067112530745229358,
+      "vlan": 2,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:38.152338Z",
+      "sequence": 105,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:04",
+      "path": [
+        2,
+        3,
+        4
+      ],
+      "cookie": 5067112530745229359,
+      "vlan": 3,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:38.153586Z",
+      "sequence": 106,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:06",
+      "path": [
+        2,
+        1,
+        6
+      ],
+      "cookie": 5067112530745229360,
+      "vlan": 5,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:38.155082Z",
+      "sequence": 107,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:05",
+      "path": [
+        3,
+        4,
+        5
+      ],
+      "cookie": 5067112530745229361,
+      "vlan": 6,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:38.177195Z",
+      "sequence": 108,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:05",
+      "path": [
+        1,
+        6,
+        5
+      ],
+      "previous_path": [
+        1,
+        6,
+        5
+      ],
+      "cookie": 5067112530745229358,
+      "vlan": 2,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:38.178989Z",
+      "sequence": 109,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:04",
+      "path": [
+        2,
+        3,
+        4
+      ],
+      "previous_path": [
+        2,
+        3,
+        4
+      ],
+      "cookie": 5067112530745229359,
+      "vlan": 3,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:38.180287Z",
+      "sequence": 110,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:06",
+      "path": [
+        2,
+        1,
+        6
+      ],
+      "previous_path": [
+        2,
+        1,
+        6
+      ],
+      "cookie": 5067112530745229360,
+      "vlan": 5,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:38.180673Z",
+      "sequence": 111,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:05",
+      "path": [
+        3,
+        4,
+        5
+      ],
+      "previous_path": [
+        3,
+        4,
+        5
+      ],
+      "cookie": 5067112530745229361,
+      "vlan": 6,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:40.164487Z",
+      "sequence": 112,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:05",
+      "cookie": 5067112530745229346,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:40.165264Z",
+      "sequence": 113,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:04",
+      "cookie": 5067112530745229344,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:40.165768Z",
+      "sequence": 114,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:05",
+      "cookie": 5067112530745229343,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:40.166961Z",
+      "sequence": 115,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:06",
+      "cookie": 5067112530745229345,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:50.247433Z",
+      "sequence": 116,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "path": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "cookie": 5067112530745229362,
+      "vlan": 8,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:50.259944Z",
+      "sequence": 117,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "path": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "previous_path": [
+        1,
+        2,
+        5,
+        4
+      ],
+      "cookie": 5067112530745229362,
+      "vlan": 8,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:52.248244Z",
+      "sequence": 118,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:02",
+      "path": [
+        1,
+        2
+      ],
+      "cookie": 5067112530745229363,
+      "vlan": 10,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:52.249390Z",
+      "sequence": 119,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:03",
+      "path": [
+        1,
+        2,
+        3
+      ],
+      "cookie": 5067112530745229364,
+      "vlan": 12,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:52.258245Z",
+      "sequence": 120,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:04",
+      "cookie": 5067112530745229347,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:52.268574Z",
+      "sequence": 121,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:02",
+      "path": [
+        1,
+        2
+      ],
+      "previous_path": [
+        1,
+        2
+      ],
+      "cookie": 5067112530745229363,
+      "vlan": 10,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:52.269305Z",
+      "sequence": 122,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:03",
+      "path": [
+        1,
+        2,
+        3
+      ],
+      "previous_path": [
+        1,
+        2,
+        3
+      ],
+      "cookie": 5067112530745229364,
+      "vlan": 12,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:54.248631Z",
+      "sequence": 123,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:06",
+      "path": [
+        1,
+        6
+      ],
+      "cookie": 5067112530745229365,
+      "vlan": 4,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:54.250028Z",
+      "sequence": 124,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:03",
+      "path": [
+        2,
+        3
+      ],
+      "cookie": 5067112530745229366,
+      "vlan": 13,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:54.250820Z",
+      "sequence": 125,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:05",
+      "path": [
+        2,
+        5
+      ],
+      "cookie": 5067112530745229367,
+      "vlan": 14,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:54.251789Z",
+      "sequence": 126,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:04",
+      "path": [
+        3,
+        4
+      ],
+      "cookie": 5067112530745229368,
+      "vlan": 15,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:54.253784Z",
+      "sequence": 127,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229369,
+      "vlan": 16,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:54.254971Z",
+      "sequence": 128,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:05",
+      "path": [
+        4,
+        5
+      ],
+      "cookie": 5067112530745229370,
+      "vlan": 17,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:54.256082Z",
+      "sequence": 129,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:06",
+      "path": [
+        4,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229371,
+      "vlan": 18,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "installation_started",
+      "timestamp": "2026-10-23T08:22:54.258252Z",
+      "sequence": 130,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:05:00:00:00:00:00:06",
+      "path": [
+        5,
+        6
+      ],
+      "cookie": 5067112530745229372,
+      "vlan": 19,
+      "reason": "refresh_hard_timeout",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:54.280174Z",
+      "sequence": 131,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:02",
+      "cookie": 5067112530745229348,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:54.281290Z",
+      "sequence": 132,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:03",
+      "cookie": 5067112530745229349,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:54.292244Z",
+      "sequence": 133,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:06",
+      "path": [
+        1,
+        6
+      ],
+      "previous_path": [
+        1,
+        6
+      ],
+      "cookie": 5067112530745229365,
+      "vlan": 4,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:54.294947Z",
+      "sequence": 134,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:04",
+      "path": [
+        3,
+        4
+      ],
+      "previous_path": [
+        3,
+        4
+      ],
+      "cookie": 5067112530745229368,
+      "vlan": 15,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:54.298438Z",
+      "sequence": 135,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:05",
+      "path": [
+        4,
+        5
+      ],
+      "previous_path": [
+        4,
+        5
+      ],
+      "cookie": 5067112530745229370,
+      "vlan": 17,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:54.301366Z",
+      "sequence": 136,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:06",
+      "path": [
+        4,
+        5,
+        6
+      ],
+      "previous_path": [
+        4,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229371,
+      "vlan": 18,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:54.302382Z",
+      "sequence": 137,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:03",
+      "path": [
+        2,
+        3
+      ],
+      "previous_path": [
+        2,
+        3
+      ],
+      "cookie": 5067112530745229366,
+      "vlan": 13,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:54.305463Z",
+      "sequence": 138,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:05:00:00:00:00:00:06",
+      "path": [
+        5,
+        6
+      ],
+      "previous_path": [
+        5,
+        6
+      ],
+      "cookie": 5067112530745229372,
+      "vlan": 19,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:54.306836Z",
+      "sequence": 139,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:05",
+      "path": [
+        2,
+        5
+      ],
+      "previous_path": [
+        2,
+        5
+      ],
+      "cookie": 5067112530745229367,
+      "vlan": 14,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "route_activated",
+      "timestamp": "2026-10-23T08:22:54.308511Z",
+      "sequence": 140,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "previous_path": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "cookie": 5067112530745229369,
+      "vlan": 16,
+      "reason": "refresh_hard_timeout",
+      "verification": "openflow_flow_stats",
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:56.268493Z",
+      "sequence": 141,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:03",
+      "cookie": 5067112530745229351,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:56.269448Z",
+      "sequence": 142,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:04",
+      "cookie": 5067112530745229353,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:56.270154Z",
+      "sequence": 143,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:01:00:00:00:00:00:06",
+      "cookie": 5067112530745229350,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:56.273889Z",
+      "sequence": 144,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:05",
+      "cookie": 5067112530745229355,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:56.274741Z",
+      "sequence": 145,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:04:00:00:00:00:00:06",
+      "cookie": 5067112530745229356,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:56.275283Z",
+      "sequence": 146,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:05:00:00:00:00:00:06",
+      "cookie": 5067112530745229357,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:56.275597Z",
+      "sequence": 147,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:02:00:00:00:00:00:05",
+      "cookie": 5067112530745229352,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "obsolete_rules_removed",
+      "timestamp": "2026-10-23T08:22:56.277193Z",
+      "sequence": 148,
+      "topology_epoch": 12,
+      "source": "live_mininet",
+      "route_id": "pair:00:00:00:00:00:03:00:00:00:00:00:06",
+      "cookie": 5067112530745229354,
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:46.886234Z",
+      "sequence": 149,
+      "topology_epoch": 13,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:46.954982Z",
+      "sequence": 150,
+      "topology_epoch": 14,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:46.958770Z",
+      "sequence": 151,
+      "topology_epoch": 15,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.008608Z",
+      "sequence": 152,
+      "topology_epoch": 16,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.077277Z",
+      "sequence": 153,
+      "topology_epoch": 17,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.079542Z",
+      "sequence": 154,
+      "topology_epoch": 18,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.126955Z",
+      "sequence": 155,
+      "topology_epoch": 19,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.129510Z",
+      "sequence": 156,
+      "topology_epoch": 20,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.197622Z",
+      "sequence": 157,
+      "topology_epoch": 21,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.268978Z",
+      "sequence": 158,
+      "topology_epoch": 22,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.270858Z",
+      "sequence": 159,
+      "topology_epoch": 23,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.329104Z",
+      "sequence": 160,
+      "topology_epoch": 24,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.360853Z",
+      "sequence": 161,
+      "topology_epoch": 25,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.364023Z",
+      "sequence": 162,
+      "topology_epoch": 26,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.455248Z",
+      "sequence": 163,
+      "topology_epoch": 27,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.497697Z",
+      "sequence": 164,
+      "topology_epoch": 28,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.499321Z",
+      "sequence": 165,
+      "topology_epoch": 29,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.541996Z",
+      "sequence": 166,
+      "topology_epoch": 30,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.631716Z",
+      "sequence": 167,
+      "topology_epoch": 31,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    },
+    {
+      "kind": "topology_changed",
+      "timestamp": "2026-10-23T08:23:47.633394Z",
+      "sequence": 168,
+      "topology_epoch": 32,
+      "source": "live_mininet",
+      "route_id": null,
+      "connected_switches": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "session_id": "499bfcb566574d2aa05707034b072580",
+      "schema_version": 1
+    }
+  ],
+  "decision_reasons_note": "Retrospective calculations from snapshots, not controller rejection events; repeated/cross-boundary snapshots can repeat a recommendation. Consult logged candidate/activation events for confirmation counts."
+}

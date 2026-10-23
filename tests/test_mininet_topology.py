@@ -55,6 +55,18 @@ class MininetTopologyTests(unittest.TestCase):
                 run_network(args)
             network.stop.assert_called_once_with()
 
+    def test_failed_live_checks_still_stop_owned_network(self):
+        args = SimpleNamespace(controller_ip='127.0.0.1', controller_port=6653, bandwidth_scale=0.1)
+        with patch('mininet_topology.preflight'), patch('mininet_topology.verify_tc'), \
+             patch('mininet_topology.Mininet') as constructor:
+            network = constructor.return_value
+            def failed_stage(net):
+                self.assertIs(net, network)
+                raise RuntimeError('iperf3 traffic stage 0 failed')
+            with self.assertRaisesRegex(RuntimeError, 'traffic stage 0 failed'):
+                run_network(args, checks=failed_stage)
+            network.stop.assert_called_once_with()
+
 
 if __name__ == '__main__':
     unittest.main()

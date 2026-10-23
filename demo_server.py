@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 from demo_data import DemoData
+from routing_state import read_routing_state
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_REPLAY = (ROOT/'data/demo-replay.sqlite' if (ROOT/'data/demo-replay.sqlite').exists()
@@ -40,6 +41,10 @@ def handler_for(demo, assets):
                 return self.send_json(403, {'error': 'Local demo only'})
             path = urlparse(self.path).path
             if path.startswith('/api/'):
+                if path == '/api/routing':
+                    # Actual persisted controller state; never a replay route
+                    # preview, and never permission to issue OpenFlow updates.
+                    return self.send_json(200, dict(read_routing_state(demo.live_db), view_mode=demo.mode))
                 state = demo.snapshot()
                 fields = {'/api/state': None, '/api/health': 'health', '/api/topology': 'topology',
                     '/api/telemetry': 'topology', '/api/predictions': 'topology', '/api/routes': 'routes', '/api/events': 'events'}

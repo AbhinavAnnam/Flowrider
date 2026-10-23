@@ -13,7 +13,7 @@ from telemetry_store import TelemetryStore, utc_now
 
 class PollCollector:
     """Called only from the controller's serialized event handlers."""
-    def __init__(self, worker, scale=0.1, clock=time.monotonic):
+    def __init__(self, worker, scale=0.1, clock=time.monotonic, routing_epoch=lambda: None):
         self.worker, self.scale, self.clock = worker, scale, clock
         self.pending = {}
         self.frame = None
@@ -21,6 +21,7 @@ class PollCollector:
         self.poll_id = 0
         self.rejected_replies = 0
         self.statistics_requests = deque(maxlen=256)
+        self.routing_epoch = routing_epoch
 
     def topology_changed(self, topology, datapaths):
         links, ports = link_snapshot(topology, datapaths, self.scale)
@@ -30,7 +31,7 @@ class PollCollector:
                 self._finish('topology_changed')
             self.fingerprint = fingerprint
             self.worker.submit('topology', dict(links=links, ports=ports,
-                monotonic_time=self.clock(), observation_timestamp=utc_now()))
+                monotonic_time=self.clock(), observation_timestamp=utc_now(), routing_epoch=self.routing_epoch()))
 
     def poll(self, topology, datapaths):
         self.topology_changed(topology, datapaths)
@@ -40,7 +41,7 @@ class PollCollector:
         links, ports = link_snapshot(topology, datapaths, self.scale)
         now = self.clock()
         self.frame = dict(poll_id=self.poll_id, links=links, ports=ports, samples={}, failures={},
-                          monotonic_time=now, observation_timestamp=utc_now())
+                          monotonic_time=now, observation_timestamp=utc_now(), routing_epoch=self.routing_epoch())
         self.pending = {}
         # Register all XIDs before requests can yield control to socket threads.
         requests = []
@@ -114,11 +115,13 @@ class PollCollector:
 
 class TelemetryWorker:
     """Single writer and single inference thread; the controller only puts_nowait."""
-    def __init__(self, path, source='live_mininet', model_path=None, logger=None, scale=0.1, clock=time.monotonic):
+    def __init__(self, path, source='live_mininet', model_path=None, logger=None, scale=0.1, clock=time.monotonic,
+                 on_batch=None):
         self.path, self.source, self.model_path = Path(path), source, Path(model_path) if model_path else None
         self.logger = logger or logging.getLogger(__name__)
         self.scale = scale
         self.clock = clock
+        self.on_batch = on_batch
         self.queue = queue.Queue(maxsize=64)
         self.closed = False
         self.dropped_batches = 0
@@ -165,6 +168,9 @@ class TelemetryWorker:
                     if message is None:
                         break
                     kind, frame = message
+                    if kind == 'routing':
+                        store.write_routing(frame['kind'], frame['record'])
+                        continue
                     origin = frame['monotonic_time'] if origin is None else origin
                     if self.model_path:
                         try:
@@ -242,6 +248,13 @@ class TelemetryWorker:
                         else:
                             self.logger.info('[FlowRider ML] Link: %s status=%s', link['link_id'], prediction['status'])
                     store.write_batch(raw, directions, observations, predictions)
+                    if self.on_batch and kind == 'sample':
+                        try:
+                            self.on_batch(dict(epoch=frame.get('routing_epoch'), source=self.source,
+                                monotonic_time=frame['monotonic_time'], observations=observations,
+                                predictions=predictions))
+                        except Exception:
+                            self.logger.exception('Routing notification failed; telemetry continues')
         except Exception as error:
             self.failure = str(error)
             self.logger.exception('Telemetry worker disabled; forwarding continues')
