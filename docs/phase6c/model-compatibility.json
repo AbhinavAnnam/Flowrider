@@ -1,0 +1,353 @@
+{
+  "status": "schema_compatible_generalization_unverified",
+  "source": "synthetic_diagnostic_not_live_measurements",
+  "model_sha256": "90cb8af35847d617b2715a409e4c9d5a09b0cd480bf11ee6154e68708fab8be9",
+  "metadata": {
+    "schema_version": 1,
+    "model_version": "rf-b6f2c2909490",
+    "dataset_sha256": "e337d4ce4a198ba44106eb4e7d5a77a79d60e31ac0274c5524d1c902a7d079e3",
+    "trained_timestamp": "2026-10-15T18:37:07.130617Z",
+    "source": "live_mininet",
+    "features": [
+      "utilization",
+      "lag_5s",
+      "lag_10s",
+      "lag_15s",
+      "mean_15s",
+      "slope_per_second",
+      "std_15s",
+      "tx_mbps",
+      "rx_mbps",
+      "capacity_mbps"
+    ],
+    "horizon_seconds": 15,
+    "lookback_seconds": 15,
+    "tolerance_seconds": 2,
+    "threshold": 0.8,
+    "sklearn_version": "1.7.2",
+    "numpy_version": "1.26.4",
+    "hyperparameters": {
+      "bootstrap": true,
+      "ccp_alpha": 0.0,
+      "criterion": "squared_error",
+      "max_depth": null,
+      "max_features": 0.6,
+      "max_leaf_nodes": null,
+      "max_samples": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 2,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "n_estimators": 100,
+      "n_jobs": 1,
+      "oob_score": false,
+      "random_state": 42,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "train_count": 1666,
+    "test_count": 826,
+    "train_latest_label_time": 1792088786.298496,
+    "test_earliest_feature_time": 1792088815.685181,
+    "test_fraction": 0.2,
+    "holdout_session": "ff642af003f8499f91fa6883284c1fcd",
+    "train_sessions": [
+      "ab02c31cde7f4b02b9cdf573f3dd4cab",
+      "eb78ab1846e545b38236c4a1ace61aa8"
+    ],
+    "test_sessions": [
+      "ff642af003f8499f91fa6883284c1fcd"
+    ],
+    "train_positive_count": 445,
+    "evaluation": {
+      "random_forest": {
+        "sample_count": 826,
+        "mae": 0.1442586831669012,
+        "rmse": 0.2585600142801378,
+        "r2": 0.5394361377325552,
+        "positive_event_count": 215,
+        "negative_event_count": 611,
+        "predicted_positive_count": 126,
+        "congestion_precision": 0.7619047619047619,
+        "congestion_recall": 0.44651162790697674,
+        "congestion_f1": 0.563049853372434,
+        "false_alarm_rate": 0.049099836333878884,
+        "congestion_metrics_status": "available"
+      },
+      "persistence": {
+        "sample_count": 826,
+        "mae": 0.18380579144367803,
+        "rmse": 0.3356349958323828,
+        "r2": 0.2239287287552667,
+        "positive_event_count": 215,
+        "negative_event_count": 611,
+        "predicted_positive_count": 215,
+        "congestion_precision": 0.6046511627906976,
+        "congestion_recall": 0.6046511627906976,
+        "congestion_f1": 0.6046511627906976,
+        "false_alarm_rate": 0.13911620294599017,
+        "congestion_metrics_status": "available"
+      }
+    }
+  },
+  "training_feature_ranges": {
+    "utilization": {
+      "minimum": 0.0,
+      "maximum": 0.9780065895626364
+    },
+    "lag_5s": {
+      "minimum": 0.0,
+      "maximum": 0.9780065895626364
+    },
+    "lag_10s": {
+      "minimum": 0.0,
+      "maximum": 0.9780065895626364
+    },
+    "lag_15s": {
+      "minimum": 0.0,
+      "maximum": 0.9780065895626364
+    },
+    "mean_15s": {
+      "minimum": 0.0,
+      "maximum": 0.9673533044088078
+    },
+    "slope_per_second": {
+      "minimum": -0.06186826051192419,
+      "maximum": 0.06013316895557117
+    },
+    "std_15s": {
+      "minimum": 0.0,
+      "maximum": 0.43984551550253215
+    },
+    "tx_mbps": {
+      "minimum": 0.0,
+      "maximum": 195.55556084735898
+    },
+    "rx_mbps": {
+      "minimum": 0.0,
+      "maximum": 2.974272296045591
+    },
+    "capacity_mbps": {
+      "minimum": 100.0,
+      "maximum": 200.0
+    }
+  },
+  "probes": [
+    {
+      "capacity_mbps": 20,
+      "regime": "idle",
+      "features": [
+        0.02,
+        0.02,
+        0.02,
+        0.02,
+        0.02,
+        0.0,
+        0.0,
+        0.4,
+        0,
+        20
+      ],
+      "predicted_utilization": 0.010050628737052847,
+      "congestion_predicted": false,
+      "outside_training_features": [
+        "capacity_mbps"
+      ]
+    },
+    {
+      "capacity_mbps": 20,
+      "regime": "low",
+      "features": [
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.0,
+        0.0,
+        2.0,
+        0,
+        20
+      ],
+      "predicted_utilization": 0.7296568441399748,
+      "congestion_predicted": false,
+      "outside_training_features": [
+        "capacity_mbps"
+      ]
+    },
+    {
+      "capacity_mbps": 20,
+      "regime": "rising",
+      "features": [
+        0.95,
+        0.6,
+        0.3,
+        0.1,
+        0.4875,
+        0.056666666666666664,
+        0.3208874413248359,
+        19.0,
+        0,
+        20
+      ],
+      "predicted_utilization": 0.5754032959120114,
+      "congestion_predicted": false,
+      "outside_training_features": [
+        "capacity_mbps"
+      ]
+    },
+    {
+      "capacity_mbps": 20,
+      "regime": "saturated",
+      "features": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        20.0,
+        0,
+        20
+      ],
+      "predicted_utilization": 0.60297211315547,
+      "congestion_predicted": false,
+      "outside_training_features": [
+        "utilization",
+        "lag_5s",
+        "lag_10s",
+        "lag_15s",
+        "mean_15s",
+        "capacity_mbps"
+      ]
+    },
+    {
+      "capacity_mbps": 20,
+      "regime": "recovery",
+      "features": [
+        0.1,
+        0.3,
+        0.6,
+        1.0,
+        0.5,
+        -0.060000000000000005,
+        0.3391164991562634,
+        2.0,
+        0,
+        20
+      ],
+      "predicted_utilization": 0.27528549387808116,
+      "congestion_predicted": false,
+      "outside_training_features": [
+        "lag_15s",
+        "capacity_mbps"
+      ]
+    },
+    {
+      "capacity_mbps": 100,
+      "regime": "idle",
+      "features": [
+        0.02,
+        0.02,
+        0.02,
+        0.02,
+        0.02,
+        0.0,
+        0.0,
+        2.0,
+        0,
+        100
+      ],
+      "predicted_utilization": 0.010050628737052847,
+      "congestion_predicted": false,
+      "outside_training_features": []
+    },
+    {
+      "capacity_mbps": 100,
+      "regime": "low",
+      "features": [
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.0,
+        0.0,
+        10.0,
+        0,
+        100
+      ],
+      "predicted_utilization": 0.877594875022097,
+      "congestion_predicted": true,
+      "outside_training_features": []
+    },
+    {
+      "capacity_mbps": 100,
+      "regime": "rising",
+      "features": [
+        0.95,
+        0.6,
+        0.3,
+        0.1,
+        0.4875,
+        0.056666666666666664,
+        0.3208874413248359,
+        95.0,
+        0,
+        100
+      ],
+      "predicted_utilization": 0.5561939035356,
+      "congestion_predicted": false,
+      "outside_training_features": []
+    },
+    {
+      "capacity_mbps": 100,
+      "regime": "saturated",
+      "features": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        100.0,
+        0,
+        100
+      ],
+      "predicted_utilization": 0.5890458981376617,
+      "congestion_predicted": false,
+      "outside_training_features": [
+        "utilization",
+        "lag_5s",
+        "lag_10s",
+        "lag_15s",
+        "mean_15s"
+      ]
+    },
+    {
+      "capacity_mbps": 100,
+      "regime": "recovery",
+      "features": [
+        0.1,
+        0.3,
+        0.6,
+        1.0,
+        0.5,
+        -0.060000000000000005,
+        0.3391164991562634,
+        10.0,
+        0,
+        100
+      ],
+      "predicted_utilization": 0.33656999965900875,
+      "congestion_predicted": false,
+      "outside_training_features": [
+        "lag_15s"
+      ]
+    }
+  ],
+  "explanation": "No switch IDs or topology size are model features. Utilization uses actual physical Mbps. Capacity and absolute TX/RX Mbps are features, so changing capacity can shift the input distribution. Finite predictions establish schema compatibility only. The unchanged 80% congestion gate, two confirmations and 30s cooldown may prevent rerouting even when dynamic Dijkstra recommends a detour. Live target-matched accuracy and verified route activations decide generalization; no retraining or reactive substitution."
+}

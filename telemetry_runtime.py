@@ -116,12 +116,13 @@ class PollCollector:
 class TelemetryWorker:
     """Single writer and single inference thread; the controller only puts_nowait."""
     def __init__(self, path, source='live_mininet', model_path=None, logger=None, scale=0.1, clock=time.monotonic,
-                 on_batch=None):
+                 on_batch=None,experiment_config=None):
         self.path, self.source, self.model_path = Path(path), source, Path(model_path) if model_path else None
         self.logger = logger or logging.getLogger(__name__)
         self.scale = scale
         self.clock = clock
         self.on_batch = on_batch
+        self.experiment_config = dict(experiment_config or {})
         self.queue = queue.Queue(maxsize=64)
         self.closed = False
         self.dropped_batches = 0
@@ -158,7 +159,7 @@ class TelemetryWorker:
         predictor, model_stamp = Predictor(), None
         origin = None
         try:
-            with TelemetryStore(self.path, self.source, dict(interval_seconds=5, horizon_seconds=15,
+            with TelemetryStore(self.path, self.source, dict(self.experiment_config,interval_seconds=5, horizon_seconds=15,
                                     bandwidth_scale=self.scale, utilization_policy='max_direction_tx',
                                     model_path=str(self.model_path) if self.model_path else None)) as store:
                 self.logger.info('Telemetry session=%s source=%s database=%s',

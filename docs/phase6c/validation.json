@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-28",
+  "status": "automated_checks_passed_live_blocked",
+  "controller_suite": {
+    "discovered": 209,
+    "passed": 186,
+    "skipped": 23,
+    "failed": 0,
+    "seconds": 87.837
+  },
+  "system_python": {
+    "phase5_lifecycle_and_launcher": 18,
+    "topology": 7,
+    "phase6_smoke": 2,
+    "phase6c_harness": 8
+  },
+  "phase6b_analysis_tests_passed": 5,
+  "phase6c_cases_in_full_suite": 36,
+  "live_trials_executed": 0,
+  "live_rf_rerouting": "unverified",
+  "performance_results": null,
+  "blocker": "sudo requires interactive authentication",
+  "command": "sudo /usr/bin/python3 scripts/run_phase6c.py --trials 4",
+  "historical_topology_version": "e279097186c5af01",
+  "model_sha256": "90cb8af35847d617b2715a409e4c9d5a09b0cd480bf11ee6154e68708fab8be9"
+}

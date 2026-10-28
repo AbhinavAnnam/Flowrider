@@ -47,12 +47,22 @@ def traffic_schedule(seconds, seed):
     return schedule
 
 
+def validate_traffic_configuration(config,args):
+    plan=config.get('traffic_configuration')
+    if plan and plan.get('generator')=='collect_phase3':
+        expected=dict(generator='collect_phase3',seconds=args.seconds,seed=args.seed,
+            bandwidth_scale=args.bandwidth_scale,stages=traffic_schedule(args.seconds,args.seed),
+            flow_pairs=[['h1','h4'],['h3','h6']],measurement_interval_seconds=5)
+        require(plan==expected,'Traffic configuration differs from the recorded trial plan')
+
+
 def collect(net, args):
     from phase3 import sessions
     available = sessions(args.database)
     require(len(available) == 1, 'Use a fresh database and controller for each independent session')
     session = available[0]
     config = json.loads(session['config_json'])
+    validate_traffic_configuration(config,args)
     require(session['source'] == 'live_mininet', 'Controller must declare live_mininet provenance')
     require(config['bandwidth_scale'] == args.bandwidth_scale, 'Controller/Mininet capacities disagree')
     require(net.pingAll(timeout='2') == 0, 'Initial pingall failed')
@@ -107,6 +117,8 @@ def collect(net, args):
             handle.close()
         (args.output / 'traffic.json').write_text(json.dumps(dict(
             source='live_mininet', session_id=session['session_id'], seed=args.seed,
+            routing_mode=config.get('routing_mode','legacy'),trial_id=config.get('trial_id',session['session_id']),
+            topology_version=config.get('topology_version'),
             requested_traffic_seconds=args.seconds, elapsed_seconds=time.monotonic() - start,
             bandwidth_scale=args.bandwidth_scale, stages=stages), indent=2) + '\n')
     rows = read_rows(args.database, 'observations', session['session_id'])

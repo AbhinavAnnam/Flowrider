@@ -12,6 +12,9 @@ from os_ken import cfg
 from os_ken.controller import event
 from os_ken.lib import hub
 import threading
+import json
+from pathlib import Path
+import uuid
 
 from topology_state import TopologyState
 
@@ -40,6 +43,23 @@ if 'predictive_routing' not in cfg.CONF:
         cfg.FloatOpt('routing-drain-seconds', default=1),
     ])
 
+if 'routing_mode' not in cfg.CONF:
+    cfg.CONF.register_cli_opts([
+        cfg.StrOpt('routing-mode',default=None,choices=['baseline','predictive_ml']),
+        cfg.StrOpt('topology',default='six',choices=['six','phase6c']),
+        cfg.StrOpt('trial-id',default=None),
+        cfg.StrOpt('traffic-config',default=None,help='JSON trial configuration to record with telemetry'),
+        cfg.StrOpt('experiment-link-capacities',default=None,
+                   help='Opt-in JSON mapping of link IDs to applied physical Mbps for experiments'),
+    ])
+
+
+def resolve_routing_mode(predictive_flag,requested):
+    if requested not in (None,'baseline','predictive_ml'):raise ValueError('Unknown routing mode')
+    if predictive_flag and requested=='baseline':
+        raise ValueError('--predictive-routing conflicts with --routing-mode baseline')
+    return requested or ('predictive_ml' if predictive_flag else None)
+
 
 class EventTelemetryPoll(event.EventBase):
     pass
@@ -60,7 +80,7 @@ class FlowRiderController(app_manager.OSKenApp):
 
     def __init__(self, *args, **kwargs):
         super(FlowRiderController, self).__init__(*args, **kwargs)
-        self.topology = TopologyState()
+        self.topology = TopologyState(self.CONF.topology)
         self.datapaths = {}
         self.mac_to_port = {}
         self.pending_barriers = {}
@@ -74,9 +94,22 @@ class FlowRiderController(app_manager.OSKenApp):
         self.routing = None
 
     def start(self):
-        if self.CONF.predictive_routing:
+        mode=resolve_routing_mode(self.CONF.predictive_routing,self.CONF.routing_mode)
+        trial_id=self.CONF.trial_id or uuid.uuid4().hex
+        traffic=json.loads(Path(self.CONF.traffic_config).read_text()) if self.CONF.traffic_config else None
+        if traffic is not None and not isinstance(traffic,dict):raise ValueError('Traffic configuration must be a JSON object')
+        capacities=json.loads(self.CONF.experiment_link_capacities) if self.CONF.experiment_link_capacities else {}
+        if capacities:
+            if not mode or not self.CONF.telemetry_enabled:
+                raise ValueError('Experiment capacities require an explicit telemetry-enabled routing mode')
+            from phase6c import apply_capacities
+            apply_capacities(self.topology,capacities,self.CONF.telemetry_bandwidth_scale)
+        experiment=dict(routing_mode=mode or 'legacy',trial_id=trial_id,
+                        topology_version=self.topology.topology_version,traffic_configuration=traffic,
+                        experiment_link_capacities_mbps=capacities)
+        if mode:
             if not self.CONF.telemetry_enabled:
-                raise ValueError('--predictive-routing requires --telemetry-enabled')
+                raise ValueError('Explicit routing modes and --predictive-routing require --telemetry-enabled')
             from predictive_routing import RoutingManager, RoutingPolicy
             self.routing = RoutingManager(self.topology, self.datapaths,
                 policy=RoutingPolicy(min_improvement=self.CONF.routing_min_improvement,
@@ -85,7 +118,8 @@ class FlowRiderController(app_manager.OSKenApp):
                     operation_timeout=self.CONF.routing_operation_timeout,
                     drain_seconds=self.CONF.routing_drain_seconds),
                 record=self._record_routing, release=self._release_routing_packet,
-                source=self.CONF.telemetry_source, scale=self.CONF.telemetry_bandwidth_scale)
+                source=self.CONF.telemetry_source, scale=self.CONF.telemetry_bandwidth_scale,
+                routing_mode=mode,trial_id=trial_id)
         super().start()
         if self.CONF.telemetry_enabled:
             try:
@@ -94,7 +128,7 @@ class FlowRiderController(app_manager.OSKenApp):
                     self.CONF.telemetry_db, source=self.CONF.telemetry_source,
                     model_path=self.CONF.telemetry_model, logger=self.logger,
                     scale=self.CONF.telemetry_bandwidth_scale,
-                    on_batch=self._routing_batch if self.routing else None)
+                    on_batch=self._routing_batch if self.routing else None,experiment_config=experiment)
                 self.telemetry = PollCollector(self.telemetry_worker,
                     scale=self.CONF.telemetry_bandwidth_scale,
                     routing_epoch=lambda: self.routing.epoch if self.routing else None)

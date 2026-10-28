@@ -3,24 +3,26 @@
 import networkx as nx
 
 from network_topology import calculate_shortest_path
-from topology_config import HOSTS, SWITCHES, wired_links
+from topology_config import topology_definition, wired_links
 
 
 class TopologyState:
-    def __init__(self):
+    def __init__(self, profile='six'):
+        switches, hosts, self.topology_version = topology_definition(profile)
+        self.profile, self.configured_switches = profile, switches
         self.graph = nx.Graph()
         self.graph.add_nodes_from(
             (i, dict(switch=name, router=f'Router_{i}'))
-            for i, name in SWITCHES.items()
+            for i, name in switches.items()
         )
         self.switches = set()
         self.routing_weight = 'base_delay'
         self.ports = {}
         self.link_ports = {}
-        self.access_ports = {(h['switch'], h['port']) for h in HOSTS.values()}
-        self.static_hosts = {h['mac']: (h['switch'], h['port']) for h in HOSTS.values()}
+        self.access_ports = {(h['switch'], h['port']) for h in hosts.values()}
+        self.static_hosts = {h['mac']: (h['switch'], h['port']) for h in hosts.values()}
         self.hosts = self.static_hosts.copy()
-        for link in wired_links():
+        for link in wired_links(profile):
             u, v = link['src'], link['dst']
             p, q = link['src_port'], link['dst_port']
             self.link_ports[u, p] = (v, q)
@@ -36,7 +38,7 @@ class TopologyState:
                 if switch == dpid}
 
     def register_switch(self, dpid):
-        if dpid not in SWITCHES:
+        if dpid not in self.configured_switches:
             raise ValueError(f'Unconfigured DPID {dpid}')
         self.switches.add(dpid)
 
@@ -46,7 +48,7 @@ class TopologyState:
         self._refresh_links()
 
     def _validate_port(self, dpid, port, name):
-        if port not in self.expected_ports(dpid) or name != f'{SWITCHES[dpid]}-eth{port}':
+        if port not in self.expected_ports(dpid) or name != f'{self.configured_switches[dpid]}-eth{port}':
             raise ValueError(f'Unexpected port {dpid}/{port}: {name!r}')
 
     def replace_ports(self, dpid, ports):

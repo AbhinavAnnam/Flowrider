@@ -1,4 +1,4 @@
-"""Controller-owned predictive routing. All methods run on the OS-Ken app queue.
+"""Verified static/predictive routing. All methods run on the OS-Ken app queue.
 
 Two-version VLAN forwarding stages transit/egress entries before host ingress
 cutover. Barriers order operations; exact flow-stat readback verifies entries.
@@ -38,7 +38,9 @@ class RoutingPolicy:
 
 class RoutingManager:
     def __init__(self,topology,datapaths,policy=None,clock=time.monotonic,record=None,
-                 release=None,source='live_mininet',scale=.1):
+                 release=None,source='live_mininet',scale=.1,routing_mode='predictive_ml',trial_id=None):
+        if routing_mode not in ('baseline','predictive_ml'):raise ValueError('Unknown routing mode')
+        self.routing_mode,self.trial_id=routing_mode,trial_id
         self.topology,self.datapaths=topology,datapaths
         self.policy,self.clock=policy or RoutingPolicy(),clock
         self.record,self.release=record or (lambda *a:None),release or (lambda *a:None)
@@ -59,7 +61,8 @@ class RoutingManager:
     def _event(self,kind,pair=None,**fields):
         self.updated=utc_now();self.event_sequence+=1
         row=dict(kind=kind,timestamp=self.updated,sequence=self.event_sequence,topology_epoch=self.epoch,
-                 source=self.source,route_id=pair['route_id'] if pair else None,**fields)
+                 source=self.source,routing_mode=self.routing_mode,trial_id=self.trial_id,
+                 topology_version=self.topology.topology_version,route_id=pair['route_id'] if pair else None,**fields)
         try:self.record('event',row)
         except Exception:pass  # Recording failure cannot alter forwarding state.
         self.publish()
@@ -415,6 +418,10 @@ class RoutingManager:
         self._evaluate();self.publish();return True
 
     def _weighted(self):
+        if self.routing_mode=='baseline':
+            graph=self.topology.active_graph()
+            for _,_,edge in graph.edges(data=True):edge['ml_weight']=edge['base_delay']
+            return graph
         if self.telemetry_time is None or not 0<=self.clock()-self.telemetry_time<=self.policy.prediction_max_age:return None
         graph=self.topology.active_graph()
         versions=set()
@@ -445,8 +452,10 @@ class RoutingManager:
             if not baseline:continue
             result=calculate_shortest_path(graph,baseline[0],baseline[-1],'ml_weight') if graph is not None else None
             path=result['path'] if result else baseline
-            pair['recommended']=dict(path=path,policy='predicted' if result else 'baseline_fallback',timestamp=utc_now(),
+            pair['recommended']=dict(path=path,policy='baseline' if self.routing_mode=='baseline' else
+                'predicted' if result else 'baseline_fallback',timestamp=utc_now(),
                 weighted_cost=self._cost(graph,path) if result else None)
+            if self.routing_mode=='baseline':continue
             if pair['transaction'] or not pair['installed']:continue
             installed=pair['installed']['path']
             if graph is None:
@@ -491,11 +500,12 @@ class RoutingManager:
         self.publish()
 
     def snapshot(self):
-        now=self.clock();links=[]
+        now=self.clock();links=[];weighted=self._weighted()
         for u,v,edge in sorted(self.topology.graph.edges(data=True)):
             link=f's{min(u,v)}-s{max(u,v)}';p=self.predictions.get(link);o=self.measurements.get(link)
             links.append(dict(link_id=link,source_dpid=u,destination_dpid=v,ports={str(d):port for d,port in edge['ports'].items()},
                 active=edge['active'],capacity_mbps=edge['capacity']*self.scale,base_delay_ms=edge['base_delay'],
+                routing_weight=weighted[u][v]['ml_weight'] if weighted is not None and weighted.has_edge(u,v) else None,
                 measurement=o,prediction=p,fresh=self.telemetry_time is not None and 0<=now-self.telemetry_time<=self.policy.prediction_max_age))
         routes=[]
         for pair in self.pairs.values():
@@ -505,7 +515,9 @@ class RoutingManager:
                 status=pair['status'],baseline_path=pair['baseline'],recommended_route=pair['recommended'],
                 installed_route=public,observed_route=pair['observed'],
                 transaction_phase=tx['phase'] if tx else None,guarded=pair['guarded']))
-        return dict(schema_version=1,timestamp=utc_now(),source=self.source,automatic_rerouting=True,
+        return dict(schema_version=1,timestamp=utc_now(),source=self.source,
+            routing_mode=self.routing_mode,trial_id=self.trial_id,topology_version=self.topology.topology_version,
+            automatic_rerouting=self.routing_mode=='predictive_ml',
             topology_epoch=self.epoch,topology_updated_timestamp=self.topology_updated,route_updated_timestamp=self.updated,
             policy=asdict(self.policy),topology=dict(connected_switches=sorted(self.topology.switches),
                 switches=[dict(dpid=i,ports=[dict(port=p,up=up) for (d,p),up in sorted(self.topology.ports.items()) if d==i]) for i in sorted(self.topology.switches)],

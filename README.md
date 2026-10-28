@@ -151,8 +151,9 @@ read-only `/api/routing` expose the same controller evidence.
 **Targeted Phase 5 live acceptance passed**, including real RF-selected h1→h4
 forwarding, initial/final 30/30 connectivity, 0% continuous ping loss, low-load
 recovery and scoped cleanup. Evidence: `data/phase5-20261023T091240Z/acceptance.json`.
-The full ten-stage/backbone-failure acceptance remains unpassed; it was not run
-in the latest review because interactive sudo authentication is required.
+Saved full ten-stage acceptance also passed in
+`data/phase5-20261023T092150Z/acceptance.json`, including backbone recovery and
+scoped cleanup. These are preserved Phase 5 results, not live Phase 6 validation.
 See the [verification report, safety review and limitations](docs/phase5-manual-verification.md)
 and [Phase 5 routing details](docs/phase5.md). The next full validation command
 (in an authenticated terminal, with no conflicting lab names) is:
@@ -165,3 +166,32 @@ FLOWRIDER_SCENARIO=full bash scripts/run_phase5_validation.sh \
 Use `FLOWRIDER_SCENARIO=targeted` only when repeating the already-passed shorter
 demonstration is needed. No matched latency, throughput or packet-loss improvement
 over baseline routing has been established.
+
+## Phase 6 static Dijkstra control mode
+
+Explicit `--routing-mode baseline` uses fixed `base_delay` weights through the
+same verified bidirectional forwarding engine as `--routing-mode predictive_ml`.
+Both collect telemetry and record trial/mode/topology metadata. Baseline ignores
+predictions for route selection while retaining audits, rule verification and
+topology recovery. No-mode launches and `--predictive-routing` remain compatible.
+
+See [exact controller/smoke commands, fair traffic plans and validation limits](docs/phase6-baseline.md).
+Live baseline validation still requires interactive sudo; no matched performance
+improvement is claimed and no model/topology/ML formula was changed.
+
+## Phase 6C controlled four-switch comparison
+
+Run the feasibility pair followed by the complete baseline/ML/ML/baseline
+benchmark, including collection, validation and graphs:
+
+```bash
+sudo /usr/bin/python3 scripts/run_phase6c.py --trials 4
+```
+
+The separately selected four-switch topology has 4 ms and 10 ms paths, a shared
+20 Mbps bottleneck, and a 100 Mbps alternative. Ordinary launches retain the
+six-switch topology. The saved RF and routing safety policy are unchanged.
+Live Phase 6C measurements are pending authenticated sudo; the 20 Mbps capacity
+is outside the model's recorded training range. No performance benefit is
+claimed. See [commands, methodology and output files](docs/phase6c/README.md),
+[current evidence](docs/phase6c/report.md), and [automated verification](docs/phase6c/validation.md).

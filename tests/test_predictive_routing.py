@@ -11,6 +11,7 @@ from topology_state import TopologyState
 from test_topology_state import activate
 from test_controller import Datapath, event
 from predictive_routing import RoutingManager, RoutingPolicy
+from unittest.mock import patch
 
 
 class RoutingTests(unittest.TestCase):
@@ -53,6 +54,76 @@ class RoutingTests(unittest.TestCase):
         self.router.ensure(self.a,self.b)
         self.finish()
         self.assertEqual(self.pair()['installed']['path'],[1,2,5,4])
+
+    def baseline_mode(self):
+        self.router=RoutingManager(self.topology,self.dps,clock=lambda:self.now,
+            record=lambda kind,row:self.records.append((kind,row)),routing_mode='baseline',trial_id='baseline-trial')
+
+    def test_static_mode_weights_are_base_delays_without_forecasts(self):
+        self.baseline_mode()
+        graph=self.router._weighted()
+        self.assertEqual(len(graph.edges),7)
+        for _,_,edge in graph.edges(data=True):self.assertEqual(edge['ml_weight'],edge['base_delay'])
+        self.telemetry(['s1-s2','s2-s5'])
+        for _,_,edge in self.router._weighted().edges(data=True):self.assertEqual(edge['ml_weight'],edge['base_delay'])
+
+    def test_baseline_installs_verified_rules_and_ignores_congested_predictions(self):
+        self.baseline_mode();self.router.ensure(self.a,self.b)
+        self.assertIsNone(self.pair()['installed'])
+        self.finish();cookie=self.pair()['installed']['cookie']
+        self.now+=31;self.telemetry(['s1-s2','s2-s5']);self.now+=5
+        self.telemetry(['s1-s2','s2-s5']);self.router.tick();self.finish()
+        self.assertEqual(self.pair()['installed']['path'],[1,2,5,4])
+        self.assertEqual(self.pair()['installed']['cookie'],cookie)
+        self.assertEqual(self.pair()['observed']['cookie'],cookie)
+        self.assertTrue(any(isinstance(m,parser.OFPFlowMod) and m.priority==20 for dp in self.dps.values() for m in dp.messages))
+        self.assertFalse(any(r['kind']=='reroute_candidate' or r.get('reason')=='predicted_congestion' for k,r in self.records if k=='event'))
+        snapshot=self.router.snapshot()
+        self.assertEqual(snapshot['routing_mode'],'baseline');self.assertFalse(snapshot['automatic_rerouting'])
+        self.assertEqual(snapshot['trial_id'],'baseline-trial');self.assertTrue(snapshot['topology_version'])
+
+    def test_baseline_topology_failure_and_restoration_reinstall_shortest_path(self):
+        self.baseline_mode();self.initial()
+        self.topology.set_port(2,4,'s2-eth4',False);self.router.topology_changed()
+        self.assertIsNone(self.pair()['installed'])
+        self.router.ensure(self.a,self.b);self.finish()
+        self.assertNotEqual(self.pair()['installed']['path'],[1,2,5,4])
+        self.assertEqual(self.pair()['installed']['path'],self.topology.path(1,4))
+        self.topology.set_port(2,4,'s2-eth4',True);self.router.topology_changed()
+        self.router.ensure(self.a,self.b);self.finish()
+        self.assertEqual(self.pair()['installed']['path'],[1,2,5,4])
+
+    def test_baseline_retains_audits_and_hard_timeout_refresh(self):
+        self.baseline_mode();self.initial();cookie=self.pair()['installed']['cookie']
+        self.now+=6;self.router.tick();self.finish()
+        self.assertEqual(self.pair()['observed']['cookie'],cookie)
+        self.now+=95;self.router.tick();self.finish()
+        self.assertNotEqual(self.pair()['installed']['cookie'],cookie)
+        self.assertEqual(self.pair()['installed']['path'],[1,2,5,4])
+
+    def test_baseline_rejects_missing_readback_instead_of_claiming_installation(self):
+        self.baseline_mode();self.router.ensure(self.a,self.b)
+        for (dpid,xid),request in list(self.router.requests.items()):
+            self.router.barrier_reply(event(self.dps[dpid],xid=xid).msg)
+        (dpid,xid),request=next(iter(self.router.requests.items()))
+        self.router.stats_reply(event(self.dps[dpid],xid=xid,flags=0,body=[]).msg)
+        self.assertIsNone(self.pair()['installed'])
+        self.assertTrue(any(r.get('reason')=='missing_flow_entries' for kind,r in self.records if kind=='event'))
+        self.finish();self.assertEqual(self.pair()['installed']['path'],[1,2,5,4])
+
+    def test_both_modes_use_existing_dijkstra_with_expected_weights(self):
+        from network_topology import calculate_shortest_path
+        for mode in ('baseline','predictive_ml'):
+            with self.subTest(mode=mode):
+                self.setUp();self.router=RoutingManager(self.topology,self.dps,clock=lambda:self.now,routing_mode=mode)
+                self.initial();self.now+=31
+                with patch('predictive_routing.calculate_shortest_path',wraps=calculate_shortest_path) as shortest:
+                    self.telemetry(['s1-s2','s2-s5'])
+                    graph,src,dst,weight=shortest.call_args.args
+                    self.assertEqual((src,dst,weight),(1,4,'ml_weight'))
+                    self.assertEqual(graph[1][2]['ml_weight'],5 if mode=='baseline' else 5*(1+25*.95**4))
+                self.now+=5;self.telemetry(['s1-s2','s2-s5']);self.finish()
+                self.assertEqual(self.pair()['installed']['path'],[1,2,5,4] if mode=='baseline' else [1,6,5,4])
 
     def test_ovs_drop_readback_allows_recovery_after_missing_rule(self):
         self.initial();self.ovs_drop=True

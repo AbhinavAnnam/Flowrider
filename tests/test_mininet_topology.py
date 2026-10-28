@@ -70,3 +70,18 @@ class MininetTopologyTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+@unittest.skipIf(FlowRiderTopo is None, 'Ubuntu Mininet Python required')
+class ExperimentalTopologyTests(unittest.TestCase):
+    def test_separate_profile_ports_and_all_capacities(self):
+        topo=FlowRiderTopo(profile='phase6c')
+        self.assertEqual(topo.switches(),['s1','s2','s3','s4'])
+        self.assertEqual(topo.hosts(),['h1','h2','h3','h4'])
+        self.assertEqual(len(topo.links()),8)
+        self.assertEqual(topo.port('s4','h4'),(4,0))
+        self.assertEqual(topo.linkInfo('s2','s4')['bw'],20)
+        self.assertEqual(topo.linkInfo('s2','s4')['max_queue_size'],100)
+        self.assertEqual(topo.linkInfo('s1','s2')['delay'],'2ms')
+        self.assertEqual(topo.linkInfo('s1','s3')['delay'],'5ms')
+        for host,switch in [('h1','s1'),('h2','s4'),('h3','s2'),('h4','s4')]:
+            self.assertEqual(topo.linkInfo(switch,host)['bw'],100)

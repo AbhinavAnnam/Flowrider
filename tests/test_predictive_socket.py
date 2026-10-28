@@ -19,15 +19,17 @@ from os_ken.lib.packet import ethernet,packet
 from os_ken.ofproto import ofproto_v1_3 as ofp,ofproto_v1_3_parser as parser
 from prediction import FEATURES
 from routing_state import read_routing_state
-from topology_config import HOSTS,wired_links
+from topology_config import HOSTS,wired_links,topology_definition
 from test_openflow_socket import SwitchPeer
 
 
 class Fabric:
-    def __init__(self):
+    def __init__(self,profile='six'):
         self.peers={};self.lock=threading.RLock();self.deliveries=[];self.errors=[]
+        hosts=topology_definition(profile)[1]
+        self.access={(h['switch'],h['port']):h['mac'] for h in hosts.values()}
         self.ports={}
-        for l in wired_links():
+        for l in wired_links(profile):
             self.ports[l['src'],l['src_port']]=(l['dst'],l['dst_port'])
             self.ports[l['dst'],l['dst_port']]=(l['src'],l['src_port'])
 
@@ -47,8 +49,8 @@ class Fabric:
                     elif isinstance(action,parser.OFPActionSetField):tag=action.value
                     elif isinstance(action,parser.OFPActionPopVlan):tag=0
                     elif isinstance(action,parser.OFPActionOutput):out=action.port
-                if out==1:
-                    if tag or HOSTS[dpid]['mac']!=dst:self.errors.append('wrong host/tag leak');return None
+                if (dpid,out) in self.access:
+                    if tag or self.access[dpid,out]!=dst:self.errors.append('wrong host/tag leak');return None
                     self.deliveries.append(path);return path
                 if (dpid,out) not in self.ports:return None
                 dpid,ingress=self.ports[dpid,out]
@@ -127,7 +129,7 @@ class PredictiveSocketTests(unittest.TestCase):
             with tempfile.TemporaryFile(mode='w+') as log:
                 process=subprocess.Popen([sys.executable,'-u','controller.py','--ofp-listen-host','127.0.0.1',
                     '--ofp-tcp-listen-port',str(port),'--telemetry-enabled','--telemetry-source','simulated_openflow',
-                    '--telemetry-db',str(db),'--telemetry-model',str(model),'--predictive-routing',
+                    '--telemetry-db',str(db),'--telemetry-model',str(model),'--routing-mode','predictive_ml',
                     '--routing-cooldown','0'],stdout=log,stderr=subprocess.STDOUT)
                 def wait(check,message,seconds=10):
                     end=time.monotonic()+seconds

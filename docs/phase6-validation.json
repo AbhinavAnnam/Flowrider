@@ -1,0 +1,54 @@
+{
+  "objective": "Phase 6 static-weight Dijkstra baseline",
+  "topology_version": "e279097186c5af01",
+  "modes": [
+    "baseline",
+    "predictive_ml"
+  ],
+  "default_behavior": "Unchanged; no explicit mode retains legacy forwarding; --predictive-routing aliases predictive_ml",
+  "complete_suite": {
+    "command": "~/.pyenv/versions/3.10.16/bin/python -m unittest discover -s tests -v",
+    "discovered": 172,
+    "passed": 150,
+    "skipped": 22,
+    "seconds": 76.503,
+    "status": "passed"
+  },
+  "focused": {
+    "routing": 31,
+    "mode_metadata_traffic_plan": 3,
+    "baseline_tcp_simulated_switches": 1
+  },
+  "system_python": {
+    "phase5_lifecycle_launcher": 18,
+    "topology_teardown": 6,
+    "phase6_smoke_guards": 2,
+    "status": "passed"
+  },
+  "baseline_live_smoke": {
+    "status": "NOT RUN",
+    "reason": "Mininet imports available; sudo -n true requires a password",
+    "command": "sudo /usr/bin/python3 tests/integration_phase6.py --routing-mode baseline --database \"$PWD/data/phase6-baseline-001/telemetry.sqlite\" --output \"$PWD/data/phase6-baseline-001/smoke\" --controller-port 16653 --bandwidth-scale .1"
+  },
+  "historical_phase5": {
+    "path": "data/phase5-20261023T092150Z/acceptance.json",
+    "status": "passed_live_mininet",
+    "scenario": "full",
+    "backbone_failure_recovery": true,
+    "scoped_cleanup_verified": true,
+    "sha256": "40f1a88f3ce2bdf333822ddc2bc0143b99b6e829ac1bc73131c1d00399816e12",
+    "note": "Preserved historical live run; not re-executed during Phase 6 work"
+  },
+  "other_checks": [
+    "git diff --check",
+    "Python compilation",
+    "controller mode CLI help",
+    "mode smoke CLI help"
+  ],
+  "limitations": [
+    "No live baseline acceptance executed",
+    "No matched performance measurements or improvements claimed",
+    "No model retraining or topology/formula/dashboard change"
+  ],
+  "evidence_kind": "Automated routing/codec/controller tests; socket peers explicitly simulated"
+}
