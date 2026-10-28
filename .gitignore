@@ -1,28 +1,81 @@
-flowrider-env/
-# Python cache & bytecode
-__pycache__/
-*.py[cod]
-*$py.class
 
-# Environments
+# Python virtual environments
 .venv/
 venv/
+env/
 ENV/
+flowrider-env/
 
-# IDE settings
+# Python caches and test artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Editor and OS files
 .vscode/
 .idea/
+.DS_Store
+Thumbs.db
+*~
 
-# Generated output files
-*.pdf
-*.html
+# Environment variables and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
 
-# Local Phase 3 experiments and trusted model artifacts
-data/
-models/
-
-# Demo frontend build and local browser checks
+# Frontend generated dependencies and builds
 frontend/node_modules/
 frontend/dist/
 frontend/test-results/
+frontend/playwright-report/
+frontend/coverage/
+
+# Keep frontend source and HTML
 !frontend/index.html
+
+# Ignore generated experiment data
+/data/*
+!/data/demo-dashboard/
+!/data/demo-dashboard/six-switch.json
+!/data/demo-replay.sqlite
+
+# Local trained model artifacts
+/models/
+
+# Local databases, temporary database journals
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+*.db-shm
+*.db-wal
+
+# Explicitly retain portable demo database
+!/data/demo-replay.sqlite
+
+# Logs, temporary outputs and local measurements
+*.log
+*.tmp
+*.temp
+*.bak
+*.pid
+/tmp/
+logs/
+
+# Generated reports and plots
+*.pdf
+*.png
+*.svg
+
+# Preserve tracked frontend and documentation assets
+!frontend/public/
+!frontend/src/
+!docs/

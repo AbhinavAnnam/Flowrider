@@ -117,7 +117,7 @@ def load_run(root,expected_mode,flow_pattern='[0-9][0-9][0-9]-*.json'):
         for flow in stage['flows']:
             file=root/'traffic'/Path(flow['iperf_json']).name
             data=json.loads(file.read_text());metric=flow_metrics(data);start=data['start']['test_start']
-            if start['duration']!=stage['seconds'] or start['target_bitrate']!=stage['rate_mbps']*1e6:
+            if start['duration']!=stage['seconds'] or start['target_bitrate']!=flow.get('rate_mbps',stage['rate_mbps'])*1e6:
                 raise ValueError(f'iperf settings differ from traffic stage: {file}')
             connection=data['start']['connected'][0]
             if (connection['local_host']!='10.0.0.'+flow['source'][1:] or
@@ -125,14 +125,15 @@ def load_run(root,expected_mode,flow_pattern='[0-9][0-9][0-9]-*.json'):
                 raise ValueError(f'iperf endpoints differ from traffic stage: {file}')
             if min(metric['sender_seconds'],metric['receiver_seconds'])<stage['seconds']-.1:raise ValueError(f'Shortened transfer: {file}')
             metric.update(stage=index,source=flow['source'],destination=flow['destination'],file=str(file),
-                version=data['start']['version'],system=data['start']['system_info'])
+                version=data['start']['version'],system=data['start']['system_info'],offered_mbps=start['target_bitrate']/1e6)
             flows.append(metric);stage_flows.append(metric)
         stages.append(dict(index=index,scenario=stage['scenario'],rate_mbps=stage['rate_mbps'],seconds=stage['seconds'],
             reverse=stage['reverse'],planned_elapsed_seconds=stage['planned_elapsed_seconds'],
             start=timestamp(stage['started_timestamp']),end=timestamp(stage['finished_timestamp']),
             actual_elapsed_seconds=stage['actual_elapsed_seconds'],
             wall_seconds=timestamp(stage['finished_timestamp'])-timestamp(stage['started_timestamp']),
-            host_pairs=[(f['source'],f['destination']) for f in stage['flows']],metrics=aggregate_flows(stage_flows)))
+            host_pairs=[(f['source'],f['destination']) for f in stage['flows']],
+            offered_mbps=[f['offered_mbps'] for f in stage_flows],metrics=aggregate_flows(stage_flows)))
     expected_files={Path(f['file']).resolve() for f in flows}
     if expected_files!={f.resolve() for f in (root/'traffic').glob(flow_pattern)}:
         raise ValueError('Unexpected/missing stage iperf JSON files')
@@ -152,6 +153,8 @@ def load_run(root,expected_mode,flow_pattern='[0-9][0-9][0-9]-*.json'):
         for stage in stages:
             pairs=[list(reversed(pair)) if stage['reverse'] else pair for pair in config['traffic_configuration']['flow_pairs']]
             if [list(pair) for pair in stage['host_pairs']]!=pairs:raise ValueError('Traffic endpoints differ from recorded plan')
+            rates=config['traffic_configuration'].get('flow_rates_mbps',{}).get(stage['scenario'],[stage['rate_mbps']]*len(pairs))
+            if stage['offered_mbps']!=rates:raise ValueError('Per-flow traffic rates differ from recorded plan')
         events=list(rows(c,'routing_events'));observations=list(rows(c,'observations'));predictions=list(rows(c,'predictions'))
         window_events=[e for e in events if start<=timestamp(e['timestamp'])<=end]
         actual_pairs={tuple(sorted((int(f['source'][1:]),int(f['destination'][1:])))):int(f['source'][1:]) for f in flows}

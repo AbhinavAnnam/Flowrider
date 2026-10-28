@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {timeLabel} from './UtilChart.jsx';
+import {positiveProof,pathText,activeInstalledPath} from './routeEvidence.js';
 
 const mac = host => `00:00:00:00:00:${host.toString(16).padStart(2,'0')}`;
 
-export default function RoutingPanel({mode, source, destination}) {
+export default function RoutingPanel({mode, source, destination, recordedState}) {
   const [state,setState]=useState(null),[error,setError]=useState(''),[now,setNow]=useState(Date.now());
   useEffect(()=>{
     setState(null);setError('');
@@ -22,6 +23,22 @@ export default function RoutingPanel({mode, source, destination}) {
     refresh();const timer=setInterval(refresh,2000);
     return()=>{active=false;abort.abort();clearInterval(timer);};
   },[mode]);
+  if(recordedState){
+    const [a,b]=[mac(source),mac(destination)].sort();
+    const route=recordedState.routes.find(r=>r.source_mac===a&&r.destination_mac===b);
+    const path=nodes=>pathText(source>destination&&nodes?[...nodes].reverse():nodes);
+    const positive=positiveProof(route,source)&&activeInstalledPath(recordedState,route);
+    return <section className="controller-routing" aria-label="Recorded controller forwarding"><h3>Recorded controller forwarding · h{source} → h{destination}</h3>
+      <p>Snapshot: <time dateTime={recordedState.timestamp} title={recordedState.timestamp}>{timeLabel(recordedState.timestamp)} IST</time>. Historical evidence, not current switch state.</p>
+      <dl className="routing-records"><dt>Static Dijkstra baseline</dt><dd>{path(route?.baseline_path)}</dd>
+        <dt>ML recommendation only</dt><dd data-testid="recorded-recommended">{path(route?.recommended_route?.path)}</dd>
+        <dt>Installed rule version</dt><dd data-testid="recorded-installed">{path(route?.installed_route?.path)}</dd>
+        <dt>OpenFlow readback</dt><dd>{path(route?.observed_route?.path)}</dd></dl>
+      <p>{positive?'Positive counters on every hop for this installed cookie.':route?.installed_route?'Installed rules reported; positive forwarding evidence is incomplete.':'No installed route in this snapshot; a recommendation does not establish forwarding.'}</p>
+      <p>Cookie: <code>{route?.installed_route?.cookie_hex||'Not recorded'}</code> · {route?.installed_route?.reason||'No installation reason recorded'}</p>
+      {route?.observed_route?.verified_timestamp&&<p>Readback timestamp: <code>{route.observed_route.verified_timestamp}</code></p>}
+    </section>;
+  }
   if(mode!=='live') return <section className="controller-routing" aria-label="Controller forwarding"><h3>Controller forwarding</h3><p>Replay shows calculated routes. Select Live to inspect actual controller forwarding.</p></section>;
   const [a,b]=[mac(source),mac(destination)].sort();
   const route=state?.snapshot?.routes?.find(r=>r.source_mac===a&&r.destination_mac===b);
@@ -30,7 +47,7 @@ export default function RoutingPanel({mode, source, destination}) {
   const installed=route?.installed_route,observed=route?.observed_route;
   const exact=Boolean(installed?.cookie_hex&&observed?.cookie_hex&&installed.cookie_hex===observed.cookie_hex);
   const counts=exact?(observed.counters||[]).filter(c=>c.source_mac===mac(source)):[];
-  const positive=exact&&counts.length===installed.path.length&&counts.every(c=>c.packet_count>0);
+  const positive=positiveProof(route,source);
   const path=nodes=>nodes?(source>destination?[...nodes].reverse():nodes).map(n=>`s${n}`).join(' → '):'Not reported';
   return <section className="controller-routing" aria-label="Controller forwarding">
     <h3>Controller forwarding · h{source} → h{destination}</h3>

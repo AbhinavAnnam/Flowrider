@@ -1,0 +1,1647 @@
+{
+  "model_sha256": "90cb8af35847d617b2715a409e4c9d5a09b0cd480bf11ee6154e68708fab8be9",
+  "capacity_split_thresholds": [
+    150.0
+  ],
+  "feature_importances": {
+    "utilization": 0.3738171043192642,
+    "lag_5s": 0.17254446436928894,
+    "lag_10s": 0.09773460895457493,
+    "lag_15s": 0.09050611428471485,
+    "mean_15s": 0.04178486757964878,
+    "slope_per_second": 0.06779899411497864,
+    "std_15s": 0.06451670090738337,
+    "tx_mbps": 0.08414501511610088,
+    "rx_mbps": 0.007027695149096317,
+    "capacity_mbps": 0.00012443520494920054
+  },
+  "trials": [
+    {
+      "trial_id": "trials-8215a9cf-01-baseline",
+      "routing_mode": "baseline",
+      "rtt": {
+        "sample_count": 1396,
+        "average_ms": 25.04616045845272,
+        "median_ms": 8.12,
+        "p95_ms": 65.6,
+        "maximum_ms": 1392.0
+      },
+      "icmp_loss_percent": 24.54054054054054,
+      "loss_percent": 34.96855707933401,
+      "congestion_link_seconds": 85.00496554374695,
+      "queue_drops": {
+        "s2-eth3": {
+          "samples": [
+            {
+              "timestamp": "2026-10-28T12:26:56.259641+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:02.754118+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:07.785092+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:12.814245+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:17.844371+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:22.806815+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:22.833216+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:27.863121+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:34.222873+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:39.250681+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:39.274449+00:00",
+              "stage": 2,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:44.299438+00:00",
+              "stage": 2,
+              "drops": 1892
+            },
+            {
+              "timestamp": "2026-10-28T12:27:49.329871+00:00",
+              "stage": 2,
+              "drops": 3903
+            },
+            {
+              "timestamp": "2026-10-28T12:27:54.402605+00:00",
+              "stage": 2,
+              "drops": 5884
+            },
+            {
+              "timestamp": "2026-10-28T12:27:54.432367+00:00",
+              "stage": 3,
+              "drops": 5884
+            },
+            {
+              "timestamp": "2026-10-28T12:27:59.459672+00:00",
+              "stage": 3,
+              "drops": 11213
+            },
+            {
+              "timestamp": "2026-10-28T12:28:04.484049+00:00",
+              "stage": 3,
+              "drops": 16691
+            },
+            {
+              "timestamp": "2026-10-28T12:28:10.845782+00:00",
+              "stage": 3,
+              "drops": 22188
+            },
+            {
+              "timestamp": "2026-10-28T12:28:15.869342+00:00",
+              "stage": 3,
+              "drops": 27666
+            },
+            {
+              "timestamp": "2026-10-28T12:28:20.896861+00:00",
+              "stage": 3,
+              "drops": 33142
+            },
+            {
+              "timestamp": "2026-10-28T12:28:25.922371+00:00",
+              "stage": 3,
+              "drops": 38622
+            },
+            {
+              "timestamp": "2026-10-28T12:28:30.955525+00:00",
+              "stage": 3,
+              "drops": 44106
+            },
+            {
+              "timestamp": "2026-10-28T12:28:35.983745+00:00",
+              "stage": 3,
+              "drops": 49587
+            },
+            {
+              "timestamp": "2026-10-28T12:28:42.225304+00:00",
+              "stage": 3,
+              "drops": 54832
+            },
+            {
+              "timestamp": "2026-10-28T12:28:44.723984+00:00",
+              "stage": 4,
+              "drops": 54832
+            },
+            {
+              "timestamp": "2026-10-28T12:28:49.749775+00:00",
+              "stage": 4,
+              "drops": 61887
+            },
+            {
+              "timestamp": "2026-10-28T12:28:54.775704+00:00",
+              "stage": 4,
+              "drops": 69107
+            },
+            {
+              "timestamp": "2026-10-28T12:29:00.016251+00:00",
+              "stage": 4,
+              "drops": 76269
+            },
+            {
+              "timestamp": "2026-10-28T12:29:00.041211+00:00",
+              "stage": 5,
+              "drops": 76269
+            },
+            {
+              "timestamp": "2026-10-28T12:29:05.065336+00:00",
+              "stage": 5,
+              "drops": 76269
+            },
+            {
+              "timestamp": "2026-10-28T12:29:10.093078+00:00",
+              "stage": 5,
+              "drops": 76269
+            },
+            {
+              "timestamp": "2026-10-28T12:29:16.460758+00:00",
+              "stage": 5,
+              "drops": 76269
+            },
+            {
+              "timestamp": "2026-10-28T12:29:16.499615+00:00",
+              "stage": 6,
+              "drops": 76269
+            },
+            {
+              "timestamp": "2026-10-28T12:29:21.527698+00:00",
+              "stage": 6,
+              "drops": 83313
+            },
+            {
+              "timestamp": "2026-10-28T12:29:26.552075+00:00",
+              "stage": 6,
+              "drops": 90518
+            },
+            {
+              "timestamp": "2026-10-28T12:29:31.631170+00:00",
+              "stage": 6,
+              "drops": 97658
+            },
+            {
+              "timestamp": "2026-10-28T12:29:31.670675+00:00",
+              "stage": 7,
+              "drops": 97658
+            },
+            {
+              "timestamp": "2026-10-28T12:29:36.697277+00:00",
+              "stage": 7,
+              "drops": 97658
+            },
+            {
+              "timestamp": "2026-10-28T12:29:41.723767+00:00",
+              "stage": 7,
+              "drops": 97658
+            },
+            {
+              "timestamp": "2026-10-28T12:29:48.094270+00:00",
+              "stage": 7,
+              "drops": 97658
+            },
+            {
+              "timestamp": "2026-10-28T12:29:48.135266+00:00",
+              "stage": 8,
+              "drops": 97658
+            },
+            {
+              "timestamp": "2026-10-28T12:29:53.166346+00:00",
+              "stage": 8,
+              "drops": 97658
+            },
+            {
+              "timestamp": "2026-10-28T12:29:58.197283+00:00",
+              "stage": 8,
+              "drops": 97658
+            },
+            {
+              "timestamp": "2026-10-28T12:30:03.221776+00:00",
+              "stage": 8,
+              "drops": 97658
+            },
+            {
+              "timestamp": "2026-10-28T12:30:08.249187+00:00",
+              "stage": 8,
+              "drops": 97658
+            },
+            {
+              "timestamp": "2026-10-28T12:30:13.215888+00:00",
+              "stage": 8,
+              "drops": 97658
+            }
+          ],
+          "delta": 97658
+        },
+        "s4-eth2": {
+          "samples": [
+            {
+              "timestamp": "2026-10-28T12:26:56.259641+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:02.754118+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:07.785092+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:12.814245+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:17.844371+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:22.806815+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:22.833216+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:27.863121+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:34.222873+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:39.250681+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:39.274449+00:00",
+              "stage": 2,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:44.299438+00:00",
+              "stage": 2,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:49.329871+00:00",
+              "stage": 2,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:54.402605+00:00",
+              "stage": 2,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:54.432367+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:27:59.459672+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:04.484049+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:10.845782+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:15.869342+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:20.896861+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:25.922371+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:30.955525+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:35.983745+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:42.225304+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:44.723984+00:00",
+              "stage": 4,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:49.749775+00:00",
+              "stage": 4,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:28:54.775704+00:00",
+              "stage": 4,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:00.016251+00:00",
+              "stage": 4,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:00.041211+00:00",
+              "stage": 5,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:05.065336+00:00",
+              "stage": 5,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:10.093078+00:00",
+              "stage": 5,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:16.460758+00:00",
+              "stage": 5,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:16.499615+00:00",
+              "stage": 6,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:21.527698+00:00",
+              "stage": 6,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:26.552075+00:00",
+              "stage": 6,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:31.631170+00:00",
+              "stage": 6,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:31.670675+00:00",
+              "stage": 7,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:36.697277+00:00",
+              "stage": 7,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:41.723767+00:00",
+              "stage": 7,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:48.094270+00:00",
+              "stage": 7,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:48.135266+00:00",
+              "stage": 8,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:53.166346+00:00",
+              "stage": 8,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:29:58.197283+00:00",
+              "stage": 8,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:30:03.221776+00:00",
+              "stage": 8,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:30:08.249187+00:00",
+              "stage": 8,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:30:13.215888+00:00",
+              "stage": 8,
+              "drops": 0
+            }
+          ],
+          "delta": 0
+        }
+      },
+      "alternative_path_utilization": {
+        "s1-s3": {
+          "coverage_seconds": 190.30000019073486,
+          "mean_utilization": 2.3002582219867556e-07,
+          "congested_link_seconds": 0.0,
+          "excess_utilization_seconds": 0.0,
+          "p95_utilization": 1.1200513984865524e-06,
+          "peak_utilization": 1.120124414234487e-06
+        },
+        "s3-s4": {
+          "coverage_seconds": 190.29999995231628,
+          "mean_utilization": 1.4175682321440687e-07,
+          "congested_link_seconds": 0.0,
+          "excess_utilization_seconds": 0.0,
+          "p95_utilization": 1.1200442412996232e-06,
+          "peak_utilization": 1.1204221549006362e-06
+        }
+      },
+      "forecast_accuracy": {
+        "status": "available",
+        "matched_count": 144,
+        "mae": 0.13201878503700398,
+        "rmse": 0.23143760687823678,
+        "measured_rising_crossings": 3,
+        "anticipated_crossings": 0,
+        "lead_times_seconds": [],
+        "mean_lead_seconds": null,
+        "existing_phase3_evaluation": [
+          {
+            "source": "live_mininet",
+            "model_version": "rf-b6f2c2909490",
+            "threshold": 0.8,
+            "random_forest": {
+              "sample_count": 144,
+              "mae": 0.13201878503700393,
+              "rmse": 0.2314376068782366,
+              "r2": 0.48260137591033514,
+              "positive_event_count": 17,
+              "negative_event_count": 127,
+              "predicted_positive_count": 0,
+              "congestion_precision": 0.0,
+              "congestion_recall": 0.0,
+              "congestion_f1": 0.0,
+              "false_alarm_rate": 0.0,
+              "congestion_metrics_status": "available"
+            },
+            "persistence": {
+              "sample_count": 144,
+              "mae": 0.09428624966357288,
+              "rmse": 0.23459576208246244,
+              "r2": 0.4683843782187158,
+              "positive_event_count": 17,
+              "negative_event_count": 127,
+              "predicted_positive_count": 17,
+              "congestion_precision": 0.5882352941176471,
+              "congestion_recall": 0.5882352941176471,
+              "congestion_f1": 0.5882352941176471,
+              "false_alarm_rate": 0.05511811023622047,
+              "congestion_metrics_status": "available"
+            }
+          }
+        ]
+      },
+      "routing": {
+        "path_changes": 0,
+        "predictive_changes": 0,
+        "refreshes": 6,
+        "initial_installs": 0,
+        "recommended_changes": 0,
+        "recommended_changes_tracked": 0,
+        "candidate_events": 0,
+        "tracked_changes": 0,
+        "nonbaseline_activations": 0,
+        "returns_to_baseline": 0,
+        "tracked_nonbaseline_activations": 0,
+        "tracked_returns_to_baseline": 0,
+        "tracked_changes_positive_hops": 0,
+        "verified_path_changes": 0,
+        "failures": 0,
+        "minimum_same_pair_switch_interval_seconds": null,
+        "accepted_transition_attempts": 0
+      },
+      "comparability": {
+        "topology": [
+          "{\"connected_switches\": [1, 2, 3, 4], \"hosts\": [{\"active\": true, \"dpid\": 1, \"mac\": \"00:00:00:00:00:01\", \"port\": 1}, {\"active\": true, \"dpid\": 4, \"mac\": \"00:00:00:00:00:02\", \"port\": 1}, {\"active\": true, \"dpid\": 2, \"mac\": \"00:00:00:00:00:03\", \"port\": 1}, {\"active\": true, \"dpid\": 4, \"mac\": \"00:00:00:00:00:04\", \"port\": 4}], \"links\": [{\"active\": true, \"base_delay_ms\": 2, \"capacity_mbps\": 100.0, \"destination_dpid\": 2, \"link_id\": \"s1-s2\", \"ports\": {\"1\": 2, \"2\": 2}, \"source_dpid\": 1}, {\"active\": true, \"base_delay_ms\": 5, \"capacity_mbps\": 100.0, \"destination_dpid\": 3, \"link_id\": \"s1-s3\", \"ports\": {\"1\": 3, \"3\": 2}, \"source_dpid\": 1}, {\"active\": true, \"base_delay_ms\": 2, \"capacity_mbps\": 20.0, \"destination_dpid\": 4, \"link_id\": \"s2-s4\", \"ports\": {\"2\": 3, \"4\": 2}, \"source_dpid\": 2}, {\"active\": true, \"base_delay_ms\": 5, \"capacity_mbps\": 100.0, \"destination_dpid\": 4, \"link_id\": \"s3-s4\", \"ports\": {\"3\": 3, \"4\": 3}, \"source_dpid\": 3}], \"switches\": [{\"dpid\": 1, \"ports\": [{\"port\": 1, \"up\": true}, {\"port\": 2, \"up\": true}, {\"port\": 3, \"up\": true}]}, {\"dpid\": 2, \"ports\": [{\"port\": 1, \"up\": true}, {\"port\": 2, \"up\": true}, {\"port\": 3, \"up\": true}]}, {\"dpid\": 3, \"ports\": [{\"port\": 2, \"up\": true}, {\"port\": 3, \"up\": true}]}, {\"dpid\": 4, \"ports\": [{\"port\": 1, \"up\": true}, {\"port\": 2, \"up\": true}, {\"port\": 3, \"up\": true}, {\"port\": 4, \"up\": true}]}]}"
+        ],
+        "policy": [
+          "{\"audit_interval\": 5, \"confirmations\": 2, \"cooldown\": 30.0, \"drain_seconds\": 1.0, \"max_pairs\": 64, \"min_improvement\": 0.1, \"operation_timeout\": 3.0, \"prediction_max_age\": 10.0}"
+        ],
+        "model_versions": [
+          "rf-b6f2c2909490"
+        ],
+        "model_path": "/home/bob_the_bob/Flowrider/data/research-20261015T180515Z/evaluation/model.pkl",
+        "flow_platform": [
+          [
+            "iperf 3.16",
+            "Linux Ananth 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64"
+          ]
+        ]
+      },
+      "per_link_forecasts": {
+        "s1-s2": {
+          "measured": {
+            "n": 38,
+            "minimum": 0.005305501291576341,
+            "mean": 0.08716857436280627,
+            "maximum": 0.1852836145612615
+          },
+          "predicted": {
+            "n": 36,
+            "minimum": 0.009698369280158877,
+            "mean": 0.21814495440888032,
+            "maximum": 0.6636978772794465
+          },
+          "predicted_congestion_count": 0,
+          "measured_congested_count": 0,
+          "forecast_during_measured_congestion": {
+            "n": 0,
+            "minimum": null,
+            "mean": null,
+            "maximum": null
+          },
+          "matured_accuracy": {
+            "sample_count": 36,
+            "mae": 0.16332672589846747,
+            "rmse": 0.22848788700997805,
+            "r2": -8.993258117605189,
+            "positive_event_count": 0,
+            "negative_event_count": 36,
+            "predicted_positive_count": 0,
+            "congestion_precision": null,
+            "congestion_recall": null,
+            "congestion_f1": null,
+            "false_alarm_rate": null,
+            "congestion_metrics_status": "unavailable_no_positive_events"
+          },
+          "actual_horizon_seconds": {
+            "n": 36,
+            "minimum": 14.989960055998381,
+            "mean": 15.000666542083309,
+            "maximum": 15.01070046300083
+          }
+        },
+        "s1-s3": {
+          "measured": {
+            "n": 38,
+            "minimum": 0.0,
+            "mean": 2.3577762659359812e-07,
+            "maximum": 1.120124414234487e-06
+          },
+          "predicted": {
+            "n": 36,
+            "minimum": 0.0,
+            "mean": 1.065510909311133e-07,
+            "maximum": 5.250585973677563e-07
+          },
+          "predicted_congestion_count": 0,
+          "measured_congested_count": 0,
+          "forecast_during_measured_congestion": {
+            "n": 0,
+            "minimum": null,
+            "mean": null,
+            "maximum": null
+          },
+          "matured_accuracy": {
+            "sample_count": 36,
+            "mae": 1.8368003140613427e-07,
+            "rmse": 3.2799467335519175e-07,
+            "r2": 0.13150620825687986,
+            "positive_event_count": 0,
+            "negative_event_count": 36,
+            "predicted_positive_count": 0,
+            "congestion_precision": null,
+            "congestion_recall": null,
+            "congestion_f1": null,
+            "false_alarm_rate": null,
+            "congestion_metrics_status": "unavailable_no_positive_events"
+          },
+          "actual_horizon_seconds": {
+            "n": 36,
+            "minimum": 14.989757068000472,
+            "mean": 15.000682676250007,
+            "maximum": 15.010916135001025
+          }
+        },
+        "s2-s4": {
+          "measured": {
+            "n": 38,
+            "minimum": 0.053295537097259905,
+            "mean": 0.5667063394947226,
+            "maximum": 1.0000393553126246
+          },
+          "predicted": {
+            "n": 36,
+            "minimum": 0.17821081416909348,
+            "mean": 0.4961080653270624,
+            "maximum": 0.7387241063492489
+          },
+          "predicted_congestion_count": 0,
+          "measured_congested_count": 17,
+          "forecast_during_measured_congestion": {
+            "n": 17,
+            "minimum": 0.34543085877855284,
+            "mean": 0.5590204592742704,
+            "maximum": 0.7387241063492489
+          },
+          "matured_accuracy": {
+            "sample_count": 36,
+            "mae": 0.3647480710474528,
+            "rmse": 0.40255030617254994,
+            "r2": 0.05689393743916171,
+            "positive_event_count": 17,
+            "negative_event_count": 19,
+            "predicted_positive_count": 0,
+            "congestion_precision": 0.0,
+            "congestion_recall": 0.0,
+            "congestion_f1": 0.0,
+            "false_alarm_rate": 0.0,
+            "congestion_metrics_status": "available"
+          },
+          "actual_horizon_seconds": {
+            "n": 36,
+            "minimum": 14.989960055998381,
+            "mean": 15.000666542083309,
+            "maximum": 15.01070046300083
+          }
+        },
+        "s3-s4": {
+          "measured": {
+            "n": 38,
+            "minimum": 0.0,
+            "mean": 1.473812264637119e-07,
+            "maximum": 1.1204221549006362e-06
+          },
+          "predicted": {
+            "n": 36,
+            "minimum": 0.0,
+            "mean": 8.295909451475082e-08,
+            "maximum": 2.2047381248276037e-07
+          },
+          "predicted_congestion_count": 0,
+          "measured_congested_count": 0,
+          "forecast_during_measured_congestion": {
+            "n": 0,
+            "minimum": null,
+            "mean": null,
+            "maximum": null
+          },
+          "matured_accuracy": {
+            "sample_count": 36,
+            "mae": 1.5952206420765564e-07,
+            "rmse": 3.086841180930341e-07,
+            "r2": 0.005641788094555178,
+            "positive_event_count": 0,
+            "negative_event_count": 36,
+            "predicted_positive_count": 0,
+            "congestion_precision": null,
+            "congestion_recall": null,
+            "congestion_f1": null,
+            "false_alarm_rate": null,
+            "congestion_metrics_status": "unavailable_no_positive_events"
+          },
+          "actual_horizon_seconds": {
+            "n": 36,
+            "minimum": 14.989757068000472,
+            "mean": 15.000682676250007,
+            "maximum": 15.010916135001025
+          }
+        }
+      },
+      "decision_counts": {
+        "h1-h2": {
+          "frames": 38,
+          "alternative_frames": 0,
+          "reasons": {
+            "baseline_static": 38
+          }
+        },
+        "h3-h4": {
+          "frames": 38,
+          "alternative_frames": 0,
+          "reasons": {
+            "baseline_static": 38
+          }
+        }
+      },
+      "events": {
+        "installation_started:refresh_hard_timeout": 6,
+        "route_activated:refresh_hard_timeout": 6,
+        "obsolete_rules_removed:None": 6
+      },
+      "forecast_audit": {
+        "random_forest": {
+          "sample_count": 144,
+          "mae": 0.13201878503700393,
+          "rmse": 0.2314376068782366,
+          "r2": 0.48260137591033514,
+          "positive_event_count": 17,
+          "negative_event_count": 127,
+          "predicted_positive_count": 0,
+          "congestion_precision": 0.0,
+          "congestion_recall": 0.0,
+          "congestion_f1": 0.0,
+          "false_alarm_rate": 0.0,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 144,
+          "mae": 0.09428624966357288,
+          "rmse": 0.23459576208246244,
+          "r2": 0.4683843782187158,
+          "positive_event_count": 17,
+          "negative_event_count": 127,
+          "predicted_positive_count": 17,
+          "congestion_precision": 0.5882352941176471,
+          "congestion_recall": 0.5882352941176471,
+          "congestion_f1": 0.5882352941176471,
+          "false_alarm_rate": 0.05511811023622047,
+          "congestion_metrics_status": "available"
+        },
+        "error_reduction_percent": {
+          "mae": -40.019128460476736,
+          "rmse": 1.3462115326344675
+        }
+      }
+    },
+    {
+      "trial_id": "trials-8215a9cf-02-predictive_ml",
+      "routing_mode": "predictive_ml",
+      "rtt": {
+        "sample_count": 1431,
+        "average_ms": 25.01598881900769,
+        "median_ms": 8.12,
+        "p95_ms": 65.6,
+        "maximum_ms": 69.6
+      },
+      "icmp_loss_percent": 22.64864864864865,
+      "loss_percent": 34.969887970298096,
+      "congestion_link_seconds": 90.00479483604431,
+      "queue_drops": {
+        "s2-eth3": {
+          "samples": [
+            {
+              "timestamp": "2026-10-28T12:30:45.735198+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:30:50.762348+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:30:57.149780+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:02.173609+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:07.198969+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:12.176246+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:12.195370+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:17.218121+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:22.244347+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:28.671766+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:28.693366+00:00",
+              "stage": 2,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:33.719720+00:00",
+              "stage": 2,
+              "drops": 1891
+            },
+            {
+              "timestamp": "2026-10-28T12:31:38.741412+00:00",
+              "stage": 2,
+              "drops": 3906
+            },
+            {
+              "timestamp": "2026-10-28T12:31:43.823931+00:00",
+              "stage": 2,
+              "drops": 5903
+            },
+            {
+              "timestamp": "2026-10-28T12:31:43.848182+00:00",
+              "stage": 3,
+              "drops": 5903
+            },
+            {
+              "timestamp": "2026-10-28T12:31:48.873426+00:00",
+              "stage": 3,
+              "drops": 11228
+            },
+            {
+              "timestamp": "2026-10-28T12:31:53.895869+00:00",
+              "stage": 3,
+              "drops": 16705
+            },
+            {
+              "timestamp": "2026-10-28T12:31:58.918579+00:00",
+              "stage": 3,
+              "drops": 22184
+            },
+            {
+              "timestamp": "2026-10-28T12:32:05.278116+00:00",
+              "stage": 3,
+              "drops": 27664
+            },
+            {
+              "timestamp": "2026-10-28T12:32:10.306086+00:00",
+              "stage": 3,
+              "drops": 33147
+            },
+            {
+              "timestamp": "2026-10-28T12:32:15.330569+00:00",
+              "stage": 3,
+              "drops": 38624
+            },
+            {
+              "timestamp": "2026-10-28T12:32:20.362199+00:00",
+              "stage": 3,
+              "drops": 44106
+            },
+            {
+              "timestamp": "2026-10-28T12:32:25.388025+00:00",
+              "stage": 3,
+              "drops": 49585
+            },
+            {
+              "timestamp": "2026-10-28T12:32:30.313358+00:00",
+              "stage": 3,
+              "drops": 54849
+            },
+            {
+              "timestamp": "2026-10-28T12:32:30.339867+00:00",
+              "stage": 4,
+              "drops": 54849
+            },
+            {
+              "timestamp": "2026-10-28T12:32:36.746954+00:00",
+              "stage": 4,
+              "drops": 61888
+            },
+            {
+              "timestamp": "2026-10-28T12:32:41.771161+00:00",
+              "stage": 4,
+              "drops": 69094
+            },
+            {
+              "timestamp": "2026-10-28T12:32:47.015135+00:00",
+              "stage": 4,
+              "drops": 76239
+            },
+            {
+              "timestamp": "2026-10-28T12:32:47.039170+00:00",
+              "stage": 5,
+              "drops": 76239
+            },
+            {
+              "timestamp": "2026-10-28T12:32:52.063645+00:00",
+              "stage": 5,
+              "drops": 76239
+            },
+            {
+              "timestamp": "2026-10-28T12:32:57.085806+00:00",
+              "stage": 5,
+              "drops": 76239
+            },
+            {
+              "timestamp": "2026-10-28T12:33:02.117442+00:00",
+              "stage": 5,
+              "drops": 76239
+            },
+            {
+              "timestamp": "2026-10-28T12:33:02.147887+00:00",
+              "stage": 6,
+              "drops": 76239
+            },
+            {
+              "timestamp": "2026-10-28T12:33:08.472451+00:00",
+              "stage": 6,
+              "drops": 83275
+            },
+            {
+              "timestamp": "2026-10-28T12:33:13.497260+00:00",
+              "stage": 6,
+              "drops": 90494
+            },
+            {
+              "timestamp": "2026-10-28T12:33:18.739365+00:00",
+              "stage": 6,
+              "drops": 97633
+            },
+            {
+              "timestamp": "2026-10-28T12:33:18.776450+00:00",
+              "stage": 7,
+              "drops": 97633
+            },
+            {
+              "timestamp": "2026-10-28T12:33:23.808413+00:00",
+              "stage": 7,
+              "drops": 97633
+            },
+            {
+              "timestamp": "2026-10-28T12:33:28.836124+00:00",
+              "stage": 7,
+              "drops": 97633
+            },
+            {
+              "timestamp": "2026-10-28T12:33:33.861455+00:00",
+              "stage": 7,
+              "drops": 97633
+            },
+            {
+              "timestamp": "2026-10-28T12:33:33.896104+00:00",
+              "stage": 8,
+              "drops": 97633
+            },
+            {
+              "timestamp": "2026-10-28T12:33:38.926149+00:00",
+              "stage": 8,
+              "drops": 97633
+            },
+            {
+              "timestamp": "2026-10-28T12:33:45.424405+00:00",
+              "stage": 8,
+              "drops": 97633
+            },
+            {
+              "timestamp": "2026-10-28T12:33:50.458668+00:00",
+              "stage": 8,
+              "drops": 97633
+            },
+            {
+              "timestamp": "2026-10-28T12:33:55.486074+00:00",
+              "stage": 8,
+              "drops": 97633
+            },
+            {
+              "timestamp": "2026-10-28T12:34:00.442098+00:00",
+              "stage": 8,
+              "drops": 97633
+            }
+          ],
+          "delta": 97633
+        },
+        "s4-eth2": {
+          "samples": [
+            {
+              "timestamp": "2026-10-28T12:30:45.735198+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:30:50.762348+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:30:57.149780+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:02.173609+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:07.198969+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:12.176246+00:00",
+              "stage": 0,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:12.195370+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:17.218121+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:22.244347+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:28.671766+00:00",
+              "stage": 1,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:28.693366+00:00",
+              "stage": 2,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:33.719720+00:00",
+              "stage": 2,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:38.741412+00:00",
+              "stage": 2,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:43.823931+00:00",
+              "stage": 2,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:43.848182+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:48.873426+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:53.895869+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:31:58.918579+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:05.278116+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:10.306086+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:15.330569+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:20.362199+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:25.388025+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:30.313358+00:00",
+              "stage": 3,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:30.339867+00:00",
+              "stage": 4,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:36.746954+00:00",
+              "stage": 4,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:41.771161+00:00",
+              "stage": 4,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:47.015135+00:00",
+              "stage": 4,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:47.039170+00:00",
+              "stage": 5,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:52.063645+00:00",
+              "stage": 5,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:32:57.085806+00:00",
+              "stage": 5,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:02.117442+00:00",
+              "stage": 5,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:02.147887+00:00",
+              "stage": 6,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:08.472451+00:00",
+              "stage": 6,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:13.497260+00:00",
+              "stage": 6,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:18.739365+00:00",
+              "stage": 6,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:18.776450+00:00",
+              "stage": 7,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:23.808413+00:00",
+              "stage": 7,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:28.836124+00:00",
+              "stage": 7,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:33.861455+00:00",
+              "stage": 7,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:33.896104+00:00",
+              "stage": 8,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:38.926149+00:00",
+              "stage": 8,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:45.424405+00:00",
+              "stage": 8,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:50.458668+00:00",
+              "stage": 8,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:33:55.486074+00:00",
+              "stage": 8,
+              "drops": 0
+            },
+            {
+              "timestamp": "2026-10-28T12:34:00.442098+00:00",
+              "stage": 8,
+              "drops": 0
+            }
+          ],
+          "delta": 0
+        }
+      },
+      "alternative_path_utilization": {
+        "s1-s3": {
+          "coverage_seconds": 185.78719782829285,
+          "mean_utilization": 1.6879294791545835e-07,
+          "congested_link_seconds": 0.0,
+          "excess_utilization_seconds": 0.0,
+          "p95_utilization": 1.1200157933428411e-06,
+          "peak_utilization": 1.120019380814951e-06
+        },
+        "s3-s4": {
+          "coverage_seconds": 185.78739500045776,
+          "mean_utilization": 1.507250954746097e-07,
+          "congested_link_seconds": 0.0,
+          "excess_utilization_seconds": 0.0,
+          "p95_utilization": 1.1201011702256844e-06,
+          "peak_utilization": 1.1201528919082184e-06
+        }
+      },
+      "forecast_accuracy": {
+        "status": "available",
+        "matched_count": 140,
+        "mae": 0.1444802801627067,
+        "rmse": 0.2506618168853652,
+        "measured_rising_crossings": 2,
+        "anticipated_crossings": 0,
+        "lead_times_seconds": [],
+        "mean_lead_seconds": null,
+        "existing_phase3_evaluation": [
+          {
+            "source": "live_mininet",
+            "model_version": "rf-b6f2c2909490",
+            "threshold": 0.8,
+            "random_forest": {
+              "sample_count": 140,
+              "mae": 0.14448028016270664,
+              "rmse": 0.25066181688536515,
+              "r2": 0.4290386704305621,
+              "positive_event_count": 18,
+              "negative_event_count": 122,
+              "predicted_positive_count": 0,
+              "congestion_precision": 0.0,
+              "congestion_recall": 0.0,
+              "congestion_f1": 0.0,
+              "false_alarm_rate": 0.0,
+              "congestion_metrics_status": "available"
+            },
+            "persistence": {
+              "sample_count": 140,
+              "mae": 0.09291913246885464,
+              "rmse": 0.24547072211276943,
+              "r2": 0.45244250381321616,
+              "positive_event_count": 18,
+              "negative_event_count": 122,
+              "predicted_positive_count": 18,
+              "congestion_precision": 0.6666666666666666,
+              "congestion_recall": 0.6666666666666666,
+              "congestion_f1": 0.6666666666666666,
+              "false_alarm_rate": 0.04918032786885246,
+              "congestion_metrics_status": "available"
+            }
+          }
+        ]
+      },
+      "routing": {
+        "path_changes": 0,
+        "predictive_changes": 0,
+        "refreshes": 6,
+        "initial_installs": 0,
+        "recommended_changes": 36,
+        "recommended_changes_tracked": 18,
+        "candidate_events": 0,
+        "tracked_changes": 0,
+        "nonbaseline_activations": 0,
+        "returns_to_baseline": 0,
+        "tracked_nonbaseline_activations": 0,
+        "tracked_returns_to_baseline": 0,
+        "tracked_changes_positive_hops": 0,
+        "verified_path_changes": 0,
+        "failures": 0,
+        "minimum_same_pair_switch_interval_seconds": null,
+        "accepted_transition_attempts": 0
+      },
+      "comparability": {
+        "topology": [
+          "{\"connected_switches\": [1, 2, 3, 4], \"hosts\": [{\"active\": true, \"dpid\": 1, \"mac\": \"00:00:00:00:00:01\", \"port\": 1}, {\"active\": true, \"dpid\": 4, \"mac\": \"00:00:00:00:00:02\", \"port\": 1}, {\"active\": true, \"dpid\": 2, \"mac\": \"00:00:00:00:00:03\", \"port\": 1}, {\"active\": true, \"dpid\": 4, \"mac\": \"00:00:00:00:00:04\", \"port\": 4}], \"links\": [{\"active\": true, \"base_delay_ms\": 2, \"capacity_mbps\": 100.0, \"destination_dpid\": 2, \"link_id\": \"s1-s2\", \"ports\": {\"1\": 2, \"2\": 2}, \"source_dpid\": 1}, {\"active\": true, \"base_delay_ms\": 5, \"capacity_mbps\": 100.0, \"destination_dpid\": 3, \"link_id\": \"s1-s3\", \"ports\": {\"1\": 3, \"3\": 2}, \"source_dpid\": 1}, {\"active\": true, \"base_delay_ms\": 2, \"capacity_mbps\": 20.0, \"destination_dpid\": 4, \"link_id\": \"s2-s4\", \"ports\": {\"2\": 3, \"4\": 2}, \"source_dpid\": 2}, {\"active\": true, \"base_delay_ms\": 5, \"capacity_mbps\": 100.0, \"destination_dpid\": 4, \"link_id\": \"s3-s4\", \"ports\": {\"3\": 3, \"4\": 3}, \"source_dpid\": 3}], \"switches\": [{\"dpid\": 1, \"ports\": [{\"port\": 1, \"up\": true}, {\"port\": 2, \"up\": true}, {\"port\": 3, \"up\": true}]}, {\"dpid\": 2, \"ports\": [{\"port\": 1, \"up\": true}, {\"port\": 2, \"up\": true}, {\"port\": 3, \"up\": true}]}, {\"dpid\": 3, \"ports\": [{\"port\": 2, \"up\": true}, {\"port\": 3, \"up\": true}]}, {\"dpid\": 4, \"ports\": [{\"port\": 1, \"up\": true}, {\"port\": 2, \"up\": true}, {\"port\": 3, \"up\": true}, {\"port\": 4, \"up\": true}]}]}"
+        ],
+        "policy": [
+          "{\"audit_interval\": 5, \"confirmations\": 2, \"cooldown\": 30.0, \"drain_seconds\": 1.0, \"max_pairs\": 64, \"min_improvement\": 0.1, \"operation_timeout\": 3.0, \"prediction_max_age\": 10.0}"
+        ],
+        "model_versions": [
+          "rf-b6f2c2909490"
+        ],
+        "model_path": "/home/bob_the_bob/Flowrider/data/research-20261015T180515Z/evaluation/model.pkl",
+        "flow_platform": [
+          [
+            "iperf 3.16",
+            "Linux Ananth 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64"
+          ]
+        ]
+      },
+      "per_link_forecasts": {
+        "s1-s2": {
+          "measured": {
+            "n": 38,
+            "minimum": 0.0013553709601617906,
+            "mean": 0.08719260436538824,
+            "maximum": 0.18530083362018895
+          },
+          "predicted": {
+            "n": 35,
+            "minimum": 0.009698369280158877,
+            "mean": 0.2146439346901395,
+            "maximum": 0.6123560129512171
+          },
+          "predicted_congestion_count": 0,
+          "measured_congested_count": 0,
+          "forecast_during_measured_congestion": {
+            "n": 0,
+            "minimum": null,
+            "mean": null,
+            "maximum": null
+          },
+          "matured_accuracy": {
+            "sample_count": 35,
+            "mae": 0.16163270204893979,
+            "rmse": 0.229026488505249,
+            "r2": -8.233263377299103,
+            "positive_event_count": 0,
+            "negative_event_count": 35,
+            "predicted_positive_count": 0,
+            "congestion_precision": null,
+            "congestion_recall": null,
+            "congestion_f1": null,
+            "false_alarm_rate": null,
+            "congestion_metrics_status": "unavailable_no_positive_events"
+          },
+          "actual_horizon_seconds": {
+            "n": 35,
+            "minimum": 14.998693790999823,
+            "mean": 15.000809055485712,
+            "maximum": 15.002641211001901
+          }
+        },
+        "s1-s3": {
+          "measured": {
+            "n": 38,
+            "minimum": 0.0,
+            "mean": 1.9452138357559813e-07,
+            "maximum": 1.120019380814951e-06
+          },
+          "predicted": {
+            "n": 35,
+            "minimum": 4.5354280863432576e-10,
+            "mean": 9.726306911413222e-08,
+            "maximum": 4.824950611980569e-07
+          },
+          "predicted_congestion_count": 0,
+          "measured_congested_count": 0,
+          "forecast_during_measured_congestion": {
+            "n": 0,
+            "minimum": null,
+            "mean": null,
+            "maximum": null
+          },
+          "matured_accuracy": {
+            "sample_count": 35,
+            "mae": 1.7571736643358604e-07,
+            "rmse": 3.1590953976434003e-07,
+            "r2": 0.06852561764653242,
+            "positive_event_count": 0,
+            "negative_event_count": 35,
+            "predicted_positive_count": 0,
+            "congestion_precision": null,
+            "congestion_recall": null,
+            "congestion_f1": null,
+            "false_alarm_rate": null,
+            "congestion_metrics_status": "unavailable_no_positive_events"
+          },
+          "actual_horizon_seconds": {
+            "n": 35,
+            "minimum": 14.998802501999307,
+            "mean": 15.000806940142917,
+            "maximum": 15.002692459001992
+          }
+        },
+        "s2-s4": {
+          "measured": {
+            "n": 38,
+            "minimum": 0.013664215404237855,
+            "mean": 0.5669351051143506,
+            "maximum": 1.0001003523481655
+          },
+          "predicted": {
+            "n": 35,
+            "minimum": 0.18184111169941844,
+            "mean": 0.5279982687527451,
+            "maximum": 0.7369706775695964
+          },
+          "predicted_congestion_count": 0,
+          "measured_congested_count": 18,
+          "forecast_during_measured_congestion": {
+            "n": 18,
+            "minimum": 0.35928926911596176,
+            "mean": 0.6105823237469397,
+            "maximum": 0.7369706775695964
+          },
+          "matured_accuracy": {
+            "sample_count": 35,
+            "mae": 0.41628809326074034,
+            "rmse": 0.44595095396228335,
+            "r2": -0.06591363843642828,
+            "positive_event_count": 18,
+            "negative_event_count": 17,
+            "predicted_positive_count": 0,
+            "congestion_precision": 0.0,
+            "congestion_recall": 0.0,
+            "congestion_f1": 0.0,
+            "false_alarm_rate": 0.0,
+            "congestion_metrics_status": "available"
+          },
+          "actual_horizon_seconds": {
+            "n": 35,
+            "minimum": 14.998693790999823,
+            "mean": 15.000805454228663,
+            "maximum": 15.002667312000995
+          }
+        },
+        "s3-s4": {
+          "measured": {
+            "n": 38,
+            "minimum": 0.0,
+            "mean": 1.7684996983537274e-07,
+            "maximum": 1.1201528919082184e-06
+          },
+          "predicted": {
+            "n": 35,
+            "minimum": 0.0,
+            "mean": 9.492457406075636e-08,
+            "maximum": 3.6269733407507184e-07
+          },
+          "predicted_congestion_count": 0,
+          "measured_congested_count": 0,
+          "forecast_during_measured_congestion": {
+            "n": 0,
+            "minimum": null,
+            "mean": null,
+            "maximum": null
+          },
+          "matured_accuracy": {
+            "sample_count": 35,
+            "mae": 1.496237802520131e-07,
+            "rmse": 2.720939555263905e-07,
+            "r2": -0.09526387524976832,
+            "positive_event_count": 0,
+            "negative_event_count": 35,
+            "predicted_positive_count": 0,
+            "congestion_precision": null,
+            "congestion_recall": null,
+            "congestion_f1": null,
+            "false_alarm_rate": null,
+            "congestion_metrics_status": "unavailable_no_positive_events"
+          },
+          "actual_horizon_seconds": {
+            "n": 35,
+            "minimum": 14.998759826998139,
+            "mean": 15.000814093485886,
+            "maximum": 15.003005517999554
+          }
+        }
+      },
+      "decision_counts": {
+        "h1-h2": {
+          "frames": 38,
+          "alternative_frames": 15,
+          "reasons": {
+            "forecast_unavailable": 3,
+            "recommended_installed_path": 20,
+            "forecast_below_80": 15
+          }
+        },
+        "h3-h4": {
+          "frames": 38,
+          "alternative_frames": 9,
+          "reasons": {
+            "forecast_unavailable": 3,
+            "recommended_installed_path": 26,
+            "gain_below_10_and_forecast_below_80": 2,
+            "forecast_below_80": 7
+          }
+        }
+      },
+      "events": {
+        "installation_started:refresh_hard_timeout": 6,
+        "route_activated:refresh_hard_timeout": 6,
+        "obsolete_rules_removed:None": 6
+      },
+      "forecast_audit": {
+        "random_forest": {
+          "sample_count": 140,
+          "mae": 0.14448028016270664,
+          "rmse": 0.25066181688536515,
+          "r2": 0.4290386704305621,
+          "positive_event_count": 18,
+          "negative_event_count": 122,
+          "predicted_positive_count": 0,
+          "congestion_precision": 0.0,
+          "congestion_recall": 0.0,
+          "congestion_f1": 0.0,
+          "false_alarm_rate": 0.0,
+          "congestion_metrics_status": "available"
+        },
+        "persistence": {
+          "sample_count": 140,
+          "mae": 0.09291913246885464,
+          "rmse": 0.24547072211276943,
+          "r2": 0.45244250381321616,
+          "positive_event_count": 18,
+          "negative_event_count": 122,
+          "predicted_positive_count": 18,
+          "congestion_precision": 0.6666666666666666,
+          "congestion_recall": 0.6666666666666666,
+          "congestion_f1": 0.6666666666666666,
+          "false_alarm_rate": 0.04918032786885246,
+          "congestion_metrics_status": "available"
+        },
+        "error_reduction_percent": {
+          "mae": -55.490345555189805,
+          "rmse": -2.11475109044203
+        }
+      }
+    }
+  ]
+}

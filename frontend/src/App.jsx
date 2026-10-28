@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import Topology, {percent} from './Topology.jsx';
 import UtilChart, {timeLabel} from './UtilChart.jsx';
 import RoutingPanel from './RoutingPanel.jsx';
+import EvidenceWorkspace from './EvidenceWorkspace.jsx';
 
 const paths={play:'m9 5 11 7-11 7V5Z',pause:'M8 5v14M16 5v14',reset:'M3 10a9 9 0 1 1 2 9M3 3v7h7',next:'m5 5 10 7L5 19V5ZM19 5v14',route:'M4 5h5v14h11M4 5l3-3m-3 3 3 3m13 11-3-3m3 3-3 3',grid:'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',activity:'M2 12h4l3-8 6 16 3-8h4',network:'M12 8V3M5 17H2v4h6v-4H5v-5h14v5m-7-9H9V3h6v5h-3v4m4 5h6v4h-6z',clock:'M12 8v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0',arrow:'M5 12h14m-5-5 5 5-5 5',alert:'M12 8v5m0 3v1M2 20h20L12 2 2 20Z',check:'m5 12 4 4L19 6',book:'M4 4h7l1 2 1-2h7v16h-7l-1 1-1-1H4V4Zm8 2v15'};
 function Icon({name, size=18}) {return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[name]||paths.activity}/></svg>;}
@@ -9,7 +10,12 @@ function Status({label,value,good}) {return <span className="status-item"><i cla
 function PathRow({label,route,proposed}) {return <div className={`path-row ${proposed?'proposed':''}`}><span className="eyebrow">{label}</span><div className="path-nodes">{route ? route.path.map((node,i)=><React.Fragment key={node}>{i>0&&<Icon name="arrow" size={13}/>}<span>{node}</span></React.Fragment>) : <span className="empty-copy">Awaiting valid data</span>}</div>{route&&<div className="route-meta">{route.hops} hops <span>·</span> {proposed?`${route.cost.toFixed(2)} weighted cost`:`${route.base_delay_ms} ms configured delay`}</div>}</div>;}
 const duration = value => `${Math.floor(value/60)}:${String(Math.floor(value%60)).padStart(2,'0')}`;
 
-export default function App() {
+export default function App(){
+  const [mode,setMode]=useState('benchmark');
+  return mode==='benchmark'?<EvidenceWorkspace onMode={setMode}/>:<TelemetryApp initialMode={mode} onBenchmark={()=>setMode('benchmark')}/>;
+}
+
+function TelemetryApp({initialMode,onBenchmark}) {
   const [data,setData]=useState(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);
   const [selected,setSelected]=useState('s2-s5'),[source,setSource]=useState(1),[destination,setDestination]=useState(4),[seek,setSeek]=useState(null);
   const sequence=useRef(0);
@@ -22,7 +28,7 @@ export default function App() {
       if(version===sequence.current){setData(value);setError('');}
     } catch(e) {if(version===sequence.current)setError(e.message);}
   }
-  useEffect(()=>{request();const interval=setInterval(()=>request(),2000);return()=>clearInterval(interval);},[]);
+  useEffect(()=>{request({action:'mode',mode:initialMode});const interval=setInterval(()=>request(),2000);return()=>clearInterval(interval);},[]);
   async function control(body){setBusy(true);await request(body);setBusy(false);}
   if(!data) return <main className="loading-screen"><div className="brand-mark"><Icon name="activity" size={30}/></div><h1>FlowRider</h1><p>{error||'Connecting to the network observatory…'}</p>{error&&<button onClick={()=>request()}>Retry connection</button>}</main>;
   const replay=data.mode==='replay', health=data.health;
@@ -38,13 +44,13 @@ export default function App() {
       <a className="brand" href="#overview"><span className="brand-mark"><Icon name="activity" size={26}/></span><span>FlowRider<small>NETWORK INTELLIGENCE</small></span></a>
       <div className="nav-section">WORKSPACE</div>
       <nav><a href="#overview" className="nav-active"><Icon name="grid"/>Overview<span className="nav-dot"/></a><a href="#network"><Icon name="network"/>Network topology</a><a href="#forecast"><Icon name="activity"/>Link forecasts</a><a href="#routing"><Icon name="route"/>Route analysis</a><a href="#events"><Icon name="clock"/>Event timeline</a></nav>
-      <div className="sidebar-note"><span className="eyebrow">RESEARCH DEMONSTRATOR</span><h3>See congestion.<br/>Before the next hop.</h3><p>Real measurements.<br/>Interpretable forecasts.<br/>Calculated route alternatives.</p><span className="phase-tag">PHASE 5 · PREDICTIVE ROUTING</span></div>
-      <div className="sidebar-bottom"><span className="dot good"/> OS-Ken / OpenFlow 1.3<small>Local lab · Six-switch fabric</small></div>
+      <div className="sidebar-note"><span className="eyebrow">RESEARCH DEMONSTRATOR</span><h3>See congestion.<br/>Before the next hop.</h3><p>Real measurements.<br/>Interpretable forecasts.<br/>Calculated route alternatives.</p><span className="phase-tag">{replay?'PHASE 3 · HISTORICAL REPLAY':'LIVE · CONTROLLER READBACK'}</span></div>
+      <div className="sidebar-bottom"> OS-Ken / OpenFlow 1.3<small>Local lab · Six-switch fabric</small></div>
     </aside>
     <main className="workspace" id="overview">
-      <header className="topbar"><div><div className="eyebrow breadcrumb">FLOWRIDER <span>/</span> NETWORK OBSERVATORY</div><h1>A clearer view of your network<span className="title-dot">.</span></h1><p>Link telemetry, near-future forecasts, and the paths they suggest.</p></div><div className="header-right"><div className="mode-switch" aria-label="Operating mode">{['replay','live'].map(mode=><button key={mode} disabled={busy} aria-pressed={data.mode===mode} className={data.mode===mode?'active':''} onClick={()=>control({action:'mode',mode})}><span className={`dot ${mode==='live'?'good':'amber'}`}/>{mode.toUpperCase()}</button>)}</div><span className="header-clock"><Icon name="clock" size={14}/>{recordedDate} · {timeLabel(data.observation_clock)} IST</span></div></header>
-      {error&&<div className="error-banner" role="alert">API connection issue: {error}. Last snapshot only. <button onClick={()=>request()}>Retry</button></div>}
-      <div className={`mode-banner ${replay?'recorded':'live'}`}><Icon name={replay?'clock':'activity'}/><strong>{replay?'REPLAY · RECORDED MININET DATA':'LIVE · READ-ONLY NETWORK VIEW'}</strong><span>{replay?'Original measurements and forecast timestamps. No traffic is generated.':'Fresh controller telemetry is required. This dashboard does not start Mininet.'}</span><span className="read-only">{replay?'RECORDED PREVIEW':'CONTROLLER READBACK'}</span></div>
+      <header className="topbar"><div><div className="eyebrow breadcrumb">FLOWRIDER <span>/</span> NETWORK OBSERVATORY</div><h1>A clearer view of your network<span className="title-dot">.</span></h1><p>Link telemetry, near-future forecasts, and the paths they suggest.</p></div><div className="header-right"><div className="mode-switch" aria-label="Operating mode"><button onClick={onBenchmark}>Benchmark</button>{['replay','live'].map(mode=><button key={mode} disabled={busy} aria-pressed={data.mode===mode} className={data.mode===mode?'active':''} onClick={()=>control({action:'mode',mode})}><span className={`dot ${mode==='live'?'good':'amber'}`}/>{mode.toUpperCase()}</button>)}</div><span className="header-clock"><Icon name="clock" size={14}/>{recordedDate} · {timeLabel(data.observation_clock)} IST</span></div></header>
+      {data.health.error&&<div className="error-banner" role="status">{data.health.error} · No measurements substituted.</div>}{error&&<div className="error-banner" role="alert">API connection issue: {error}. Last snapshot only. <button onClick={()=>request()}>Retry</button></div>}
+      <div className={`mode-banner ${replay?'recorded':'live'}`}><Icon name={replay?'clock':'activity'}/><strong>{replay?'REPLAY · RECORDED MININET DATA':'LIVE · READ-ONLY NETWORK VIEW'}</strong><span>{replay?'Original measurements and forecast timestamps. No traffic is generated.':'Fresh controller telemetry is required. This dashboard does not start Mininet.'}</span><span className="read-only">{replay?'PHASE 3 RECORDING':'CONTROLLER READBACK'}</span></div>
       <div className="status-bar"><Status label="API" value={error?'unreachable':'connected'} good={!error}/><Status label="Controller" value={replay?'recorded session':health.controller==='telemetry_observed'?'telemetry observed':'not observed'} good={!error&&!replay&&health.controller==='telemetry_observed'}/><Status label="Telemetry" value={health.telemetry} good={!error&&health.telemetry==='fresh'}/><Status label="ML model" value={health.predicted_links?replay?'saved forecasts':'ready':'not ready'} good={!error&&health.predicted_links>0}/></div>
       <section className="metrics-grid" aria-label="Network summary">
         <div className="metric"><span className="metric-label">Observed fabric<Icon name="network"/></span><div className="metric-value">{nodesObserved}<small>/ 6</small><span className="metric-unit">switches</span></div><p>{health.recent_links} of 7 links have valid telemetry</p></div>
@@ -60,7 +66,7 @@ export default function App() {
         <section className="panel forecast-panel" id="forecast"><div className="panel-heading"><div><span className="eyebrow">LINK INSPECTOR</span><h2>{link.id}<span className="inline-muted"> / {link.capacity_mbps} Mbps</span></h2></div><select aria-label="Inspect link" value={selected} onChange={e=>setSelected(e.target.value)}>{data.topology.links.map(l=><option key={l.id} value={l.id}>{l.id}</option>)}</select></div><div className="forecast-stats"><div><span>Current utilization</span><strong className={link.congested?'text-danger':'text-cyan'}>{percent(link.current_utilization)}</strong></div><div><span>Predicted at +15s</span><strong className={link.congestion_predicted?'text-amber':''}>{percent(link.predicted_utilization)}</strong></div><div><span>Forecast target · IST</span><strong className="target-clock">{timeLabel(link.target_timestamp)}</strong><small>{link.predicted_utilization==null?'Model not ready / data unavailable':link.congestion_predicted?'CONGESTION WARNING':'Below warning threshold'}</small></div></div><div className="chart-legend"><span><i className="legend-line cyan"/>Measured</span><span><i className="legend-line amber dashed"/>Forecast at target time</span><span className="chart-tz">Original timeline · IST</span></div><UtilChart history={data.history[link.id]||[]} clock={data.observation_clock}/></section>
         <section className="panel events-panel" id="events"><div className="panel-heading"><div><span className="eyebrow">WHAT CHANGED</span><h2>Event timeline</h2></div><span className="chip">{replay?'RECORDED + PREVIEW':'LIVE + PREVIEW'}</span></div><div className="events-list">{data.events.length?data.events.map((event,i)=><div className={`event-row ${event.kind}`} key={`${event.timestamp}-${i}`}><span className="event-icon"><Icon name={event.kind==='control'?'route':event.kind==='topology'?'network':'alert'} size={15}/></span><div><p>{event.message}</p><span>{event.origin}</span></div><time>{timeLabel(event.timestamp)}</time></div>):<p className="empty-copy">No events at this point in the selected data.</p>}</div></section>
       </div>
-      <footer><span><i className="dot good"/>{health.model_version||'Awaiting a valid model forecast'}<span className="footer-separator">/</span> {replay?'Original recorded data':'Freshness checked on every update'}</span><span>Manual rerouting demonstrated · Full live acceptance remains separate</span></footer>
+      <footer><span><i className={`dot ${health.predicted_links>0?'good':''}`}/>{health.model_version||'Awaiting a valid model forecast'}<span className="footer-separator">/</span> {replay?'Original recorded data':'Freshness checked on every update'}</span><span>Phase 3 preview and live controller readback · Benchmark evidence available separately</span></footer>
     </main>
   </div>;
 }

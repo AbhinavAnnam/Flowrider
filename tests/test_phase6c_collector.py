@@ -11,7 +11,7 @@ import unittest
 from unittest.mock import patch
 
 import collect_phase6c as collector
-from phase6c import make_four_switch_plan,validate_collection
+from phase6c import make_four_switch_plan,make_six_switch_plan,validate_collection
 
 
 @unittest.skipUnless(importlib.util.find_spec('mininet'),'Ubuntu Mininet Python required')
@@ -19,9 +19,10 @@ class CollectorPlanRegressionTests(unittest.TestCase):
     def test_wall_clock_jump_does_not_truncate_probes_or_the_recorded_plan_in_either_mode(self):
         import integration_phase5 as live
         from test_phase5_lifecycle import Clock,Process
-        for mode,probe_lag in product(('baseline','predictive_ml'),(.5,10)):
-            with self.subTest(mode=mode,probe_lag=probe_lag),tempfile.TemporaryDirectory() as directory:
-                output=Path(directory);plan=make_four_switch_plan(profile='feasibility');clock=Clock()
+        for mode,probe_lag,preset in product(('baseline','predictive_ml'),(.5,10),('phase6c','six-switch')):
+            with self.subTest(mode=mode,probe_lag=probe_lag,preset=preset),tempfile.TemporaryDirectory() as directory:
+                output=Path(directory);plan=make_six_switch_plan() if preset=='six-switch' else make_four_switch_plan(profile='feasibility');clock=Clock()
+                native=preset=='six-switch';wiring=((1,4,[1,2,5,4]),(2,5,[2,5]),(3,6,[3,2,5,6])) if native else ((1,2,[1,2,4]),(3,4,[2,4]))
                 def wall(at=None):
                     at=clock.now if at is None else at
                     return 1700000000+at+(3 if at>=70 else 0)
@@ -49,12 +50,12 @@ class CollectorPlanRegressionTests(unittest.TestCase):
                             finish=clock.now+seconds
                         process=Process(clock,command,finish);processes.append(process);return process
                 class Network(dict):
-                    switches=[SimpleNamespace(name=f's{i}') for i in range(1,5)]
+                    switches=[SimpleNamespace(name=f's{i}') for i in (range(1,7) if native else range(1,5))]
                     def pingAll(self,**kwargs):return 0
-                net=Network({f'h{i}':Host(f'h{i}') for i in range(1,5)})
+                net=Network({f'h{i}':Host(f'h{i}') for i in (range(1,7) if native else range(1,5))})
                 def state(*args,**kwargs):
                     routes=[]
-                    for src,dst,path in ((1,2,[1,2,4]),(3,4,[2,4])):
+                    for src,dst,path in wiring:
                         routes.append(dict(source_mac=f'00:00:00:00:00:{src:02x}',destination_mac=f'00:00:00:00:00:{dst:02x}',
                             baseline_path=path,installed_route=dict(path=path,cookie=src),observed_route=dict(cookie=src,
                                 counters=[dict(dpid=d,source_mac=f'00:00:00:00:00:{h:02x}',packet_count=1+int(clock.now*100))
@@ -82,7 +83,10 @@ class CollectorPlanRegressionTests(unittest.TestCase):
                     continue
                 fields=('scenario','rate_mbps','seconds','reverse','planned_elapsed_seconds')
                 self.assertEqual([{k:s[k] for k in fields} for s in traffic['stages']],plan['stages'])
-                self.assertEqual(len(traffic['stages']),9)  # the 20s tail is not a traffic stage
+                self.assertEqual(len(traffic['stages']),4 if native else 9)  # the 20s tail is not a traffic stage
+                if native:
+                    self.assertEqual([c['rate_mbps'] for c in traffic['stages'][2]['clients']],[60,80,80])
+                    self.assertEqual([f['rate_mbps'] for f in traffic['stages'][2]['flows']],[60,80,80])
                 self.assertEqual(traffic['seed'],plan['seed'])
                 self.assertEqual(traffic['requested_traffic_seconds'],plan['seconds'])
                 self.assertEqual(validate_collection(plan,result),[])

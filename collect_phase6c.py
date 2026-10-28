@@ -11,7 +11,7 @@ import time
 from types import SimpleNamespace
 
 from phase6c import (check_queue, forwarding_proof, parse_ping,
-                    validate_collection, validate_plan, write_json, expected_tc, bottleneck_interfaces)
+                    validate_collection, validate_plan, write_json, expected_tc, bottleneck_interfaces,stage_flows)
 
 
 def utc():
@@ -86,7 +86,7 @@ def collect(net,args,result,plan):
     require(config['trial_id']==args.trial_id and config['traffic_configuration']==plan,'Controller/collector trial plan mismatch')
     require(config.get('experiment_link_capacities_mbps')==plan['link_capacities_mbps'],'Telemetry capacity override missing')
     result['session_id']=session['session_id']
-    tc=capture_tc(net,plan,apply=True)
+    tc=capture_tc(net,plan,apply=plan.get('profile')!='six-switch')
     write_json(args.output/'applied-tc.json',tc);result['tc_verified']=True
     require(net.pingAll(timeout='2')==0,'Initial connectivity loss')
     def initialized():
@@ -109,7 +109,7 @@ def collect(net,args,result,plan):
         require(all(p.poll() is None for p in servers),'iperf server startup failed')
         for index,planned in enumerate(plan['stages']):
             stage=dict(planned,index=index,duration_seconds=planned['seconds'],probes=[],forwarding={},
-                bidirectional_forwarding={},flows=[(src,dst,planned['rate_mbps']) for src,dst in pairs],
+                bidirectional_forwarding={},flows=stage_flows(plan,planned),
                 started_timestamp=utc(),actual_elapsed_seconds=time.monotonic()-start)
             stages.append(stage);probes=[]
             stage['traffic_started']=time.time()
@@ -176,7 +176,7 @@ def collect(net,args,result,plan):
                             probe['complete']='error' not in probe and probe['exit_code'] in (0,1)
                         except (ValueError,KeyError) as error:probe['error']=str(error)
                 stage['finished_timestamp']=utc()
-                stage['flows']=[dict(source=c['source'],destination=c['destination'],iperf_json=c['stdout'])
+                stage['flows']=[dict(source=c['source'],destination=c['destination'],rate_mbps=c['rate_mbps'],iperf_json=c['stdout'])
                     for c in stage.get('clients',[])]
                 write_json(args.output/'collection.json',result)
                 write_json(traffic/'traffic.json',dict(source='live_mininet',session_id=session['session_id'],

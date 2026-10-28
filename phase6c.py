@@ -40,6 +40,9 @@ def make_plan(seed=42, bandwidth_mbps=50, queue_packets=100):
 def validate_plan(plan):
     def need(ok,message):
         if not ok:raise ValueError(message)
+    if plan.get('profile')=='six-switch':
+        need(plan==make_six_switch_plan(plan['seed']),'Six-switch traffic/TC configuration differs from fixed preset')
+        return
     if plan.get('topology')=='phase6c':
         queue=plan['bottleneck']['queue_packets']
         need(type(queue) is int and 0<queue<=1000,'Queue must contain 1..1000 packets')
@@ -200,6 +203,28 @@ def make_four_switch_plan(seed=42, queue_packets=100, profile='full', contract_v
         link_capacities_mbps={'s2-s4':20})
     if contract_version==2:plan.update(measurement_contract_version=2,telemetry_tail_seconds=20)
     return plan
+
+
+def make_six_switch_plan(seed=42):
+    """Existing lab, native queues/capacities; one short three-flow comparison."""
+    stages=[];elapsed=0
+    rates=dict(low=[6,8,8],buildup=[30,40,40],sustained=[60,80,80],recovery=[6,8,8])
+    for name,seconds in [('low',30),('buildup',30),('sustained',120),('recovery',30)]:
+        stages.append(dict(scenario=name,rate_mbps=rates[name][0],seconds=seconds,
+                           reverse=False,planned_elapsed_seconds=elapsed));elapsed+=seconds
+    return dict(generator='phase6c',topology='six',profile='six-switch',seed=seed,
+        seconds=elapsed,bandwidth_scale=.1,stages=stages,
+        flow_pairs=[['h1','h4'],['h2','h5'],['h3','h6']],flow_rates_mbps=rates,
+        measurement_interval_seconds=5,probe_interval_seconds=.2,probe_timeout_seconds=1,
+        topology_version=TOPOLOGY_VERSION,telemetry_tail_seconds=20,
+        bottleneck=dict(link_id='s2-s5',bandwidth_mbps=200,delay_ms=2,queue_packets=1000),
+        link_capacities_mbps={})
+
+
+def stage_flows(plan,stage):
+    rates=plan.get('flow_rates_mbps',{}).get(stage['scenario'],[stage['rate_mbps']]*len(plan['flow_pairs']))
+    if len(rates)!=len(plan['flow_pairs']):raise ValueError('Missing per-flow traffic rates')
+    return [(src,dst,rate) for (src,dst),rate in zip(plan['flow_pairs'],rates)]
 
 
 def expected_tc(plan):

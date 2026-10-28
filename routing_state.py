@@ -6,6 +6,16 @@ from pathlib import Path
 import sqlite3
 
 
+def routing_json(value):
+    """Keep lossless version cookies alongside numeric fields for JS clients."""
+    if isinstance(value,list):return [routing_json(item) for item in value]
+    if isinstance(value,dict):
+        result={key:routing_json(item) for key,item in value.items()}
+        if isinstance(value.get('cookie'),int):result['cookie_hex']=hex(value['cookie'])
+        return result
+    return value
+
+
 def read_routing_state(path, event_limit=30):
     if not 0<=event_limit<=500:raise ValueError('event_limit must be between 0 and 500')
     try:

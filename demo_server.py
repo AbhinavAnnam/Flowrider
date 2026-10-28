@@ -8,24 +8,15 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 from demo_data import DemoData
-from routing_state import read_routing_state
+from routing_state import read_routing_state,routing_json
+from dashboard_evidence import load_package
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_REPLAY = (ROOT/'data/demo-replay.sqlite' if (ROOT/'data/demo-replay.sqlite').exists()
                   else ROOT/'data/research-20261015T180515Z/inference-71.sqlite')
 
 
-def routing_json(value):
-    """Keep numeric API fields; add lossless cookies for JavaScript clients."""
-    if isinstance(value,list):return [routing_json(item) for item in value]
-    if isinstance(value,dict):
-        result={key:routing_json(item) for key,item in value.items()}
-        if isinstance(value.get('cookie'),int):result['cookie_hex']=hex(value['cookie'])
-        return result
-    return value
-
-
-def handler_for(demo, assets):
+def handler_for(demo, assets, evidence=None):
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, format, *args):
             if self.path.startswith('/api/') and args and str(args[1] if len(args) > 1 else '') == '200':
@@ -51,6 +42,8 @@ def handler_for(demo, assets):
                 return self.send_json(403, {'error': 'Local demo only'})
             path = urlparse(self.path).path
             if path.startswith('/api/'):
+                if path == '/api/benchmark':
+                    return self.send_json(200,evidence or dict(status='unavailable',reason='No portable benchmark data is configured.',trials=[],comparison={}))
                 if path == '/api/routing':
                     # Actual persisted controller state; never a replay route
                     # preview, and never permission to issue OpenFlow updates.
@@ -106,10 +99,11 @@ def main():
     parser.add_argument('--replay-db', type=Path, default=DEFAULT_REPLAY)
     parser.add_argument('--live-db', type=Path, default=ROOT/'data/demo-live.sqlite')
     parser.add_argument('--port', type=int, default=8080)
+    parser.add_argument('--evidence-package',type=Path,default=ROOT/'data/demo-dashboard/six-switch.json')
     args = parser.parse_args()
     try:
         demo = DemoData(args.replay_db, args.live_db, args.mode)
-        server = ThreadingHTTPServer(('127.0.0.1', args.port), handler_for(demo, ROOT/'frontend/dist'))
+        server = ThreadingHTTPServer(('127.0.0.1', args.port), handler_for(demo, ROOT/'frontend/dist',load_package(args.evidence_package)))
     except (OSError, ValueError) as error:
         parser.exit(1, f'FlowRider demo: {error}\n')
     print(f'FlowRider {args.mode.upper()} demo: http://localhost:{args.port}', flush=True)

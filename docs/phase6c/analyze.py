@@ -17,19 +17,51 @@ spec=importlib.util.spec_from_file_location('phase6b_analysis',ROOT/'docs/phase6
 b=importlib.util.module_from_spec(spec);spec.loader.exec_module(b)
 
 
-def verified_dump(record,route,source,destination):
-    installed=route.get('installed_route') or {}
-    if not installed.get('path') or installed.get('cookie') is None:return False
-    cookie=installed['cookie'];path=installed['path']
+def positive_dump_counters(record,path,cookie,source,destination):
+    if not path or cookie is None:return []
+    counters=[]
     for dpid in path:
         lines=[line for line in record.get('ovs',{}).get(f's{dpid}','').splitlines()
             if f'cookie=0x{cookie:x},' in line and f'dl_src=00:00:00:00:00:{source:02x}' in line
             and f'dl_dst=00:00:00:00:00:{destination:02x}' in line]
-        if len(lines)!=1 or not re.search(r'\bn_packets=[1-9]\d*\b',lines[0]):return False
-    return True
+        if len(lines)!=1:return []
+        count=re.search(r'\bn_packets=([1-9]\d*)\b',lines[0])
+        if not count:return []
+        counters.append(dict(dpid=dpid,source_mac=f'00:00:00:00:00:{source:02x}',packet_count=int(count[1])))
+    return counters
 
 
-def validate_trial(root):
+def verified_dump(record,route,source,destination):
+    installed=route.get('installed_route') or {}
+    return bool(positive_dump_counters(record,installed.get('path'),installed.get('cookie'),source,destination))
+
+
+def supplement_changed_route_evidence(run,collection,captures):
+    # A late activation can precede the final independent dump but have its next
+    # periodic controller audit after traffic ends. Use that exact version's
+    # in-stage counters; tail audits cannot establish measured-stage forwarding.
+    for stage in collection['stages']:
+        for flow in stage['flows']:
+            src,dst=flow['source'],flow['destination']
+            source,destination=int(src[1:]),int(dst[1:])
+            route=stage.get('forwarding',{}).get(f'{src}-{dst}',{}).get('route',{})
+            if not route or b.route_key(route)!=tuple(sorted((source,destination))):continue
+            for change in run['tracked_route_changes']:
+                if (change['forwarding_evidence'] or change['route_id']!=route.get('route_id') or
+                    change.get('verification')!='openflow_flow_stats'):continue
+                for capture in captures:
+                    if (capture['stage']!=stage['index'] or not
+                        max(stage['traffic_started'],b.timestamp(change['timestamp']))<=b.timestamp(capture['timestamp'])<=stage['traffic_finished']):continue
+                    counters=positive_dump_counters(capture,change['path'],change['cookie'],source,destination)
+                    if counters:
+                        change['forwarding_evidence']=dict(timestamp=capture['timestamp'],actual_source_host=source,
+                            minimum_hop_packets=min(c['packet_count'] for c in counters),counters=counters,
+                            evidence_source='independent_ovs_dump',stage=stage['index'])
+                        break
+    run['route_metrics']['tracked_changes_positive_hops']=sum(bool(c['forwarding_evidence']) for c in run['tracked_route_changes'])
+
+
+def validate_trial(root,*,revalidate=False):
     root=Path(root);errors=[]
     def need(ok,message):
         if not ok:errors.append(message)
@@ -42,10 +74,10 @@ def validate_trial(root):
     status=json.loads((root/'trial-status.json').read_text());collection=json.loads((root/'collection.json').read_text())
     need(manifest['plan_hash']==digest(plan),'Manifest plan hash mismatch')
     need(status.get('collector_exit_code')==0 and not status.get('interrupted'),'Collector failed/interrupted')
-    need(not status.get('error') and not status.get('validation_error'),'Recorded trial failure')
+    need(not status.get('error') and (revalidate or not status.get('validation_error')),'Recorded trial failure')
     need(status.get('controller_stop_requested') and status.get('controller_exit_code') in (0,-15),
          'Unexpected controller exit or forced kill')
-    if profile=='phase6c':
+    if profile=='phase6c' or plan.get('profile')=='six-switch':
         need(status.get('model_unchanged') and status.get('source_unchanged'),
              'Model or benchmark sources changed during collection')
     need(collection.get('status')=='collected','Collector did not complete')
@@ -56,6 +88,8 @@ def validate_trial(root):
         if collection.get('error'):errors.append('Collector error: '+collection['error'])
         return dict(errors=errors,summary=None)
     run=b.load_run(root,manifest['routing_mode'],flow_pattern='[0-9][0-9]-h*-h*.json')
+    captures=[json.loads(line) for line in (root/'forwarding-tc.jsonl').read_text().splitlines()]
+    supplement_changed_route_evidence(run,collection,captures)
     # Phase 6B's historical exposure denominator is seven links.
     run['utilization']['coverage_percent']=run['utilization']['coverage_link_seconds']/(link_count*(run['end']-run['start']))*100
     config=run['config']
@@ -115,7 +149,6 @@ def validate_trial(root):
                  'Live TC metadata differs from physical plan')
             check_tc_output(record['qdisc'],record['classes'],expected[0],expected[1])
             if expected[2] is not None:check_queue(record['qdisc'],expected[2])
-    captures=[json.loads(line) for line in (root/'forwarding-tc.jsonl').read_text().splitlines()]
     probe_stages=[];samples=[];sent=received=0
     for stage in collection['stages']:
         per_pair=[]
@@ -138,7 +171,7 @@ def validate_trial(root):
                  'Missing measured-stage per-hop counter increases')
             need(any(verified_dump(c,route,int(src[1:]),int(dst[1:])) for c in stage_captures),
                  f'Stage {stage["index"]} {src}-{dst}: missing independent positive OVS rules')
-            if profile=='phase6c':
+            if profile=='phase6c' or plan.get('profile')=='six-switch':
                 reverse=stage.get('bidirectional_forwarding',{}).get(f'{src}-{dst}',{})
                 reverse_route=reverse.get('route',{})
                 before=reverse.get('starting_counters',{});after=reverse.get('ending_counters',{})
@@ -167,6 +200,7 @@ def validate_trial(root):
     with b.readonly_database(root/'telemetry.sqlite') as connection:
         events=[e for e in b.rows(connection,'routing_events') if run['start']<=b.timestamp(e['timestamp'])<=run['end']]
         observations=list(b.rows(connection,'observations'));predictions=list(b.rows(connection,'predictions'))
+        directions=list(b.rows(connection,'directions')) if plan.get('profile')=='six-switch' else []
     window_predictions=[p for p in predictions if run['start']<=b.timestamp(p['observation_timestamp'])<=run['end']]
     accuracy=forecast_metrics(observations,window_predictions)
     # Reuse the established timestamp/valid-history evaluation on real schema
@@ -185,6 +219,19 @@ def validate_trial(root):
     if profile=='phase6c':
         need(len(spare)==2 and all(v['peak_utilization'] is not None and v['peak_utilization']<.8
             for v in spare.values()),'Alternative path spare capacity not demonstrated')
+    if plan.get('profile')=='six-switch' and manifest['routing_mode']=='baseline':
+        # Check directional spare capacity: opposite directions are independent.
+        # Shared edges already carry this flow, so rerouting adds no load there.
+        for (src,dst),path,rate in zip(((1,4),(2,5),(3,6)),
+                ([1,6,5,4],[2,3,4,5],[3,4,5,6]),plan['flow_rates_mbps']['sustained']):
+            baseline=next((p['path'] for p in run['installed_trace'] if p['pair']==[src,dst]),[])
+            shared=set(zip(baseline,baseline[1:]))
+            for u,v in zip(path,path[1:]):
+                direction_samples=[r for r in directions if r.get('valid') and r['source_dpid']==u and r['destination_dpid']==v
+                         and any(s['start']<=b.timestamp(r['observation_timestamp'])<=s['end'] for s in sustained)]
+                added=0 if (u,v) in shared else rate*1.03  # payload plus wire overhead margin
+                need(bool(direction_samples) and max(r['tx_mbps'] for r in direction_samples)+added<=min(r['capacity_mbps'] for r in direction_samples),
+                     f'Baseline alternative h{src}-h{dst}: no demonstrated spare capacity on s{u}->s{v}')
     queue_drops={}
     for interface in bottleneck_interfaces(plan):
         points=[]
@@ -279,8 +326,25 @@ def figures(summaries,output):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--experiment',type=Path,required=True)
-    parser.add_argument('--output',type=Path,required=True)
-    args=parser.parse_args();args.experiment=args.experiment.resolve();args.output=args.output.resolve()
+    parser.add_argument('--output',type=Path)
+    parser.add_argument('--validate-only',action='store_true',help='Recheck one stopped trial read-only; print verdict without reports or status updates')
+    args=parser.parse_args();args.experiment=args.experiment.resolve()
+    if args.validate_only:
+        if args.output is not None:parser.error('--validate-only does not write output')
+        before=b.inventory(args.experiment)
+        prior=json.loads((args.experiment/'trial-status.json').read_text())
+        result=validate_trial(args.experiment,revalidate=True)
+        if b.inventory(args.experiment)!=before:raise RuntimeError('Raw evidence changed during revalidation')
+        if prior.get('validation_error'):print('Historical validation error (retained): '+prior['validation_error'])
+        print(('FAIL' if result['errors'] else 'PASS')+': '+str(args.experiment))
+        for error in result['errors']:print(error)
+        if result['summary']:
+            routing=result['summary']['routing']
+            print(f"Measured-pair changed versions with positive counters: {routing['tracked_changes_positive_hops']}/{routing['tracked_changes']}")
+        if result['errors']:raise SystemExit(1)
+        return
+    if args.output is None:parser.error('--output is required unless --validate-only is used')
+    args.output=args.output.resolve()
     if args.output==args.experiment or args.experiment in args.output.parents:
         parser.error('Analysis output must be outside raw experiment evidence')
     before=b.inventory(args.experiment)

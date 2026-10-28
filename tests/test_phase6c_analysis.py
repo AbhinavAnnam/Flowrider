@@ -13,6 +13,7 @@ import unittest
 from phase6c import (PAIRS, create_trial, make_plan, parse_ping, validate_collection, write_json)
 from telemetry_store import TelemetryStore
 from topology_config import HOSTS, wired_links, topology_definition
+from phase6c import stage_flows
 
 spec=importlib.util.spec_from_file_location('phase6c_analysis',Path(__file__).parents[1]/'docs/phase6c/analyze.py')
 a=importlib.util.module_from_spec(spec);spec.loader.exec_module(a)
@@ -24,6 +25,7 @@ def stamp(seconds):return datetime.fromtimestamp(1700000000+seconds,timezone.utc
 def fixture(root,index=1,plan=None):
     """A complete baseline *test fixture*, with known UDP/loss/RTT arithmetic."""
     plan=plan or make_plan();profile=plan.get('topology','six');hosts=topology_definition(profile)[1]
+    quick=plan.get('profile')=='six-switch';bidirectional=profile=='phase6c' or quick
     pairs=[(int(src[1:]),int(dst[1:])) for src,dst in plan['flow_pairs']]
     manifest=create_trial(root,index,plan,'fixture-only-model-hash')
     manifest['source_sha256']={'fixture':'not-live'}
@@ -38,32 +40,36 @@ def fixture(root,index=1,plan=None):
             capacity_mbps=plan['bottleneck']['bandwidth_mbps'] if f's{min(u,v)}-s{max(u,v)}'==plan['bottleneck']['link_id'] else 100,base_delay_ms=l['base_delay']))
     routes=[]
     for index,(src,dst) in enumerate(pairs,1):
-        path=([1,2,4] if src==1 else [2,4]) if profile=='phase6c' else ([1,2,5,4] if src==1 else [3,2,5,6])
+        path=([1,2,4] if src==1 else [2,4]) if profile=='phase6c' else {1:[1,2,5,4],2:[2,5],3:[3,2,5,6]}[src]
         route=dict(route_id=f'fixture-{src}-{dst}',source_mac=HOSTS[src]['mac'],destination_mac=HOSTS[dst]['mac'],
-            baseline_path=path,recommended_route=dict(path=path,policy='baseline'),installed_route=dict(path=path,cookie=index),
+            baseline_path=path,recommended_route=dict(path=path,policy='baseline',timestamp=stamp(0)),installed_route=dict(path=path,cookie=index),
             observed_route=dict(cookie=index,counters=[dict(dpid=d,source_mac=HOSTS[src]['mac'],packet_count=10) for d in path]))
-        if profile=='phase6c':
+        if bidirectional:
             route['observed_route']['counters'] += [dict(dpid=d,source_mac=hosts[dst]['mac'],packet_count=10) for d in path]
         routes.append(route)
         store.write_routing('event',dict(timestamp=stamp(0),kind='route_activated',reason='initial_baseline',
             route_id=route['route_id'],path=path,previous_path=None,cookie=index,verification='openflow_flow_stats'))
     for elapsed in range(0,plan['seconds']+1,5):
-        observations=[];predictions=[]
+        observations=[];predictions=[];directions=[]
         for link in links:
-            utilization=.1 if profile=='phase6c' and link['link_id']!=plan['bottleneck']['link_id'] else .9
+            utilization=.1 if (profile=='phase6c' or quick) and link['link_id']!=plan['bottleneck']['link_id'] else .9
             observations.append(dict(link_id=link['link_id'],observation_timestamp=stamp(elapsed),monotonic_elapsed_time=elapsed,
                 valid=True,link_active=True,utilization=utilization,tx_mbps=utilization*link['capacity_mbps'],rx_mbps=0,capacity_mbps=link['capacity_mbps'],status='valid'))
             predictions.append(dict(link_id=link['link_id'],observation_timestamp=stamp(elapsed),
                 status='valid',model_version='fixture-only',predicted_utilization=.9,raw_predicted_utilization=.9,
                 congestion_threshold=.8,prediction_horizon_seconds=15,target_timestamp=stamp(elapsed+15),
                 target_monotonic_elapsed_time=elapsed+15,current_utilization=utilization))
-        store.write_batch([],[],observations,predictions)
+            if quick:
+                for u,v in ((link['source_dpid'],link['destination_dpid']),(link['destination_dpid'],link['source_dpid'])):
+                    directions.append(dict(link_id=link['link_id'],observation_timestamp=stamp(elapsed),valid=True,
+                        source_dpid=u,destination_dpid=v,tx_mbps=0,capacity_mbps=link['capacity_mbps']))
+        store.write_batch([],directions,observations,predictions)
         store.write_routing('snapshot',dict(timestamp=stamp(elapsed),topology_epoch=12,policy={},routes=routes,
             topology=dict(connected_switches=list(topology_definition(profile)[0]),switches=[],hosts=[],links=links)))
     store.close();stages=[];captures=[]
     for index,planned in enumerate(plan['stages']):
         t=planned['planned_elapsed_seconds'];seconds=planned['seconds'];probes=[];flows=[];forwarding={}
-        for (src,dst),route in zip(plan['flow_pairs'],routes):
+        for (src,dst,rate),route in zip(stage_flows(plan,planned),routes):
             count=seconds*5
             text=''.join(f'[{1700000000+t+i*.2:.3f}] 64 bytes: icmp_seq={i+1} ttl=64 time=20.0 ms\n' for i in range(count))
             text+=f'{count} packets transmitted, {count} received, 0% packet loss, time {seconds*1000}ms\n'
@@ -71,11 +77,11 @@ def fixture(root,index=1,plan=None):
             probes.append(dict(source=src,destination=dst,file=file,expected_count=count,exit_code=0,complete=True,
                 started=1700000000+t,scheduled_last_send=1700000000+t+seconds-.2,**parse_ping(text,count)))
             file=f'{index:02d}-{src}-{dst}.json'
-            data=dict(start=dict(test_start=dict(protocol='UDP',duration=seconds,target_bitrate=planned['rate_mbps']*1e6),
+            data=dict(start=dict(test_start=dict(protocol='UDP',duration=seconds,target_bitrate=rate*1e6),
                 connected=[dict(local_host='10.0.0.'+src[1:],remote_host='10.0.0.'+dst[1:])],version='fixture',system_info='fixture'),
                 end=dict(sum_sent=dict(bytes=1000*seconds,seconds=seconds),
                     sum_received=dict(bytes=1000*seconds,seconds=seconds,packets=seconds,lost_packets=0)))
-            write_json(traffic/file,data);flows.append(dict(source=src,destination=dst,iperf_json=file))
+            write_json(traffic/file,data);flows.append(dict(source=src,destination=dst,rate_mbps=rate,iperf_json=file))
             forwarding[f'{src}-{dst}']=dict(route=route,
                 starting_counters={str(d):1 for d in route['installed_route']['path']},
                 ending_counters={str(d):10 for d in route['installed_route']['path']})
@@ -86,7 +92,7 @@ def fixture(root,index=1,plan=None):
         for dpid in topology_definition(profile)[0]:
             ovs[f's{dpid}']='\n'.join(f"cookie=0x{r['installed_route']['cookie']:x}, n_packets=10, dl_src={r['source_mac']},dl_dst={r['destination_mac']} actions=output:2"
                 for r in routes if dpid in r['installed_route']['path'])
-        if profile=='phase6c':
+        if bidirectional:
             stage['bidirectional_forwarding']=copy.deepcopy(forwarding)
             for dpid in topology_definition(profile)[0]:
                 ovs[f's{dpid}']+='\n'+'\n'.join(f"cookie=0x{r['installed_route']['cookie']:x}, n_packets=10, dl_src={r['destination_mac']},dl_dst={r['source_mac']} actions=output:2" for r in routes if dpid in r['installed_route']['path'])
@@ -109,6 +115,85 @@ def fixture(root,index=1,plan=None):
 
 
 class Phase6CAnalysisTests(unittest.TestCase):
+    def late_route_fixture(self, directory):
+        from phase6c import make_six_switch_plan
+        root=fixture(Path(directory),index=2,plan=make_six_switch_plan())
+        cookie=0x4652000000000041;path=[3,4,5,6]
+        with sqlite3.connect(root/'telemetry.sqlite') as c:
+            session=c.execute('SELECT session_id FROM sessions').fetchone()[0]
+            event=dict(kind='route_activated',timestamp=stamp(208.4),route_id='fixture-3-6',
+                path=path,previous_path=[3,2,5,6],cookie=cookie,reason='predicted_congestion',
+                verification='openflow_flow_stats')
+            c.execute('INSERT INTO routing_events(session_id,timestamp,record_json) VALUES (?,?,?)',
+                (session,event['timestamp'],json.dumps(event)))
+            row=c.execute('SELECT id,record_json FROM routing_snapshots ORDER BY id DESC LIMIT 1').fetchone()
+            snap=json.loads(row[1]);route=snap['routes'][2]
+            route['installed_route']=dict(cookie=cookie,path=path)
+            route['observed_route']=dict(cookie=cookie,counters=[dict(dpid=d,source_mac=HOSTS[3]['mac'],packet_count=0) for d in path])
+            c.execute('UPDATE routing_snapshots SET record_json=? WHERE id=?',(json.dumps(snap),row[0]))
+            # The next positive controller audit is outside the traffic window.
+            snap['timestamp']=stamp(215)
+            for counter in route['observed_route']['counters']:counter['packet_count']=100
+            c.execute('INSERT INTO routing_snapshots(session_id,timestamp,record_json) VALUES (?,?,?)',
+                (session,snap['timestamp'],json.dumps(snap)))
+        capture=dict(timestamp=stamp(209.9),stage=3,tc={},ovs={f's{d}':
+            f'cookie=0x{cookie:x}, n_packets=1037, dl_src={HOSTS[3]["mac"]},dl_dst={HOSTS[6]["mac"]} actions=output:2'
+            for d in path})
+        with (root/'forwarding-tc.jsonl').open('a') as f:f.write(json.dumps(capture)+'\n')
+        return root,capture
+
+    def test_late_changed_version_uses_in_stage_independent_counters_before_next_audit(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root,_=self.late_route_fixture(directory);before=a.b.inventory(root)
+            result=a.validate_trial(root)
+            self.assertEqual(result['errors'],[])
+            self.assertEqual(result['summary']['routing']['tracked_changes_positive_hops'],1)
+            proof=result['summary']['route_changes'][0]['forwarding_evidence']
+            self.assertEqual(proof['minimum_hop_packets'],1037)
+            self.assertEqual(proof['actual_source_host'],3)
+            self.assertEqual(a.b.inventory(root),before)
+
+    def test_late_version_still_requires_exact_cookie_direction_every_hop_and_stage_time(self):
+        for defect in ('zero','missing','cookie','reverse','duplicate','after_stage','before_activation','wrong_stage','unverified'):
+            with self.subTest(defect=defect),tempfile.TemporaryDirectory() as directory:
+                root,capture=self.late_route_fixture(directory)
+                if defect=='zero':capture['ovs']['s6']=capture['ovs']['s6'].replace('n_packets=1037','n_packets=0')
+                elif defect=='missing':del capture['ovs']['s6']
+                elif defect=='cookie':capture['ovs']['s6']=capture['ovs']['s6'].replace('0000000041','0000000042')
+                elif defect=='reverse':capture['ovs']['s6']=capture['ovs']['s6'].replace(
+                    'dl_src='+HOSTS[3]['mac']+',dl_dst='+HOSTS[6]['mac'],
+                    'dl_src='+HOSTS[6]['mac']+',dl_dst='+HOSTS[3]['mac'])
+                elif defect=='duplicate':capture['ovs']['s6']+='\n'+capture['ovs']['s6']
+                elif defect=='after_stage':capture['timestamp']=stamp(210.1)
+                elif defect=='before_activation':capture['timestamp']=stamp(208.3)
+                elif defect=='wrong_stage':capture['stage']=2
+                elif defect=='unverified':
+                    with sqlite3.connect(root/'telemetry.sqlite') as c:
+                        row=c.execute('SELECT id,record_json FROM routing_events ORDER BY id DESC LIMIT 1').fetchone()
+                        event=json.loads(row[1]);event['verification']=None
+                        c.execute('UPDATE routing_events SET record_json=? WHERE id=?',(json.dumps(event),row[0]))
+                file=root/'forwarding-tc.jsonl';lines=file.read_text().splitlines()
+                file.write_text('\n'.join(lines[:-1]+[json.dumps(capture)])+'\n')
+                self.assertIn('Measured-pair changed route lacks positive counters in actual traffic direction',
+                    a.validate_trial(root)['errors'])
+
+    def test_read_only_revalidation_rechecks_prior_verdict_but_retains_runtime_failures(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root,_=self.late_route_fixture(directory)
+            status=json.loads((root/'trial-status.json').read_text())
+            status.update(status='failed',validation_error='Measured-pair changed route lacks positive counters in actual traffic direction')
+            write_json(root/'trial-status.json',status);before=a.b.inventory(root)
+            command=[sys.executable,a.__file__,'--experiment',str(root),'--validate-only']
+            result=subprocess.run(command,capture_output=True,text=True,timeout=20)
+            self.assertEqual(result.returncode,0,result.stderr+result.stdout)
+            self.assertIn('PASS',result.stdout)
+            self.assertIn(status['validation_error'],result.stdout)
+            self.assertEqual(a.b.inventory(root),before)
+            status['error']='Collector runtime exception';write_json(root/'trial-status.json',status)
+            result=subprocess.run(command,capture_output=True,text=True,timeout=20)
+            self.assertEqual(result.returncode,1)
+            self.assertIn('Recorded trial failure',result.stdout)
+
     def test_read_only_database_retains_committed_wal_without_touching_raw_files(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory);database=root/'wal.sqlite'

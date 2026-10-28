@@ -107,8 +107,6 @@ class DemoData:
         except (OSError, ValueError, sqlite3.Error, KeyError) as error:
             self.recording_error = str(error)
             self.start, self.end, self.event_times, self.recorded_events = 0, 1, [], []
-            if mode == 'replay':
-                raise ValueError(f'Replay unavailable: {error}') from error
 
     def _recorded_events(self):
         events, times, forecast_times, previous = [], [], [], {}
@@ -199,7 +197,7 @@ class DemoData:
                 self.position, self.playing = position, False
             recorded = self.mode == 'replay'
             as_of = self.start + position if recorded else time.time()
-            error = None
+            error = self.recording_error if recorded else None
             if recorded:
                 session, observations, predictions = self.session, self.observations, self.predictions
             else:
@@ -247,7 +245,7 @@ class DemoData:
                     prediction_status=pred.get('status') if prediction_valid else 'not_ready', age_seconds=age))
             recent_count = sum(l['current_utilization'] is not None for l in links)
             prediction_count = sum(l['predicted_utilization'] is not None for l in links)
-            state = 'recorded' if recorded else 'fresh' if recent_count else 'stale' if observations else 'unavailable'
+            state = 'recorded' if recorded and not self.recording_error else 'fresh' if not recorded and recent_count else 'stale' if observations else 'unavailable'
             events = [e for e in self.recorded_events if timestamp(e['timestamp']).timestamp() <= as_of][-8:][::-1] if recorded else []
             if not recorded:
                 for link in links:
