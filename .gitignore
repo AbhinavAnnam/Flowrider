@@ -1,81 +1,58 @@
-
-# Python virtual environments
+# Python environments, caches and test output
 .venv/
 venv/
 env/
 ENV/
 flowrider-env/
-
-# Python caches and test artifacts
 __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-.coverage
-htmlcov/
 .tox/
+.coverage*
+htmlcov/
 
-# Editor and OS files
+# Local editor settings and credentials
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
 *~
-
-# Environment variables and credentials
 .env
 .env.*
 !.env.example
 *.pem
 *.key
 
-# Frontend generated dependencies and builds
+# Frontend installs, builds and browser artifacts
 frontend/node_modules/
 frontend/dist/
 frontend/test-results/
 frontend/playwright-report/
 frontend/coverage/
 
-# Keep frontend source and HTML
-!frontend/index.html
-
-# Ignore generated experiment data
+# Local experiments and trained models; share only the portable demo assets
 /data/*
 !/data/demo-dashboard/
+/data/demo-dashboard/*
 !/data/demo-dashboard/six-switch.json
-!/data/demo-replay.sqlite
-
-# Local trained model artifacts
 /models/
-
-# Local databases, temporary database journals
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
 *.db
 *.db-shm
 *.db-wal
-
-# Explicitly retain portable demo database
 !/data/demo-replay.sqlite
 
-# Logs, temporary outputs and local measurements
+# Logs and temporary outputs; research documents and source images stay visible
 *.log
 *.tmp
 *.temp
 *.bak
 *.pid
+*.pdf
 /tmp/
 logs/
-
-# Generated reports and plots
-*.pdf
-*.png
-*.svg
-
-# Preserve tracked frontend and documentation assets
-!frontend/public/
-!frontend/src/
-!docs/

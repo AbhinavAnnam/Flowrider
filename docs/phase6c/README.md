@@ -1,5 +1,8 @@
 # Phase 6C: controlled four-switch benchmark
 
+> Historical four-switch procedure: retained for reproducibility and its out-of-distribution investigation. The later completed six-switch ABBA results and portable replay workflow are documented in the [current README](../../README.md). No new run is required for the faculty demo.
+
+
 Implementation is ready for privileged execution. No live Phase 6C trial has
 been executed in this session: `sudo -n true` reports `a password is required`.
 There are no measured Phase 6C performance results or improvement percentages.

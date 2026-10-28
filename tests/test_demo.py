@@ -5,7 +5,7 @@ from pathlib import Path
 
 from demo_data import DemoData, calculate_routes
 
-RECORDING = Path('data/research-20261015T180515Z/inference-71.sqlite')
+RECORDING = Path(__file__).resolve().parents[1]/'data/demo-replay.sqlite'
 
 
 class DemoTests(unittest.TestCase):

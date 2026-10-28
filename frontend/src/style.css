@@ -91,3 +91,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,[t
 @media(prefers-reduced-motion:reduce){.verified-path{animation:none}}
 .chart-scroll { overflow-x:auto;max-width:100%; }
 .evidence-shell .topology,.evidence-shell .history-chart { min-width:520px; }
+.recovery-shortcuts { display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:8px 20px 16px; }
+.recovery-shortcuts>span { color:var(--muted);font-size:12px; }
+.recovery-shortcuts button[aria-pressed=true] { outline:2px solid var(--cyan);outline-offset:3px; }
+.recovery-path-summary { padding:0 20px 12px;color:var(--muted);font-size:12px;line-height:1.9;overflow-wrap:anywhere; }
+.recovery-path-summary strong { color:var(--cyan);font-weight:500; }
+@media(max-width:440px){.header-right{flex-wrap:wrap}}

@@ -1,5 +1,8 @@
 # FlowRider faculty demo review
 
+> Historical Phase 3 review: the startup instructions and proposal-only limitations below describe that earlier demo. For the completed six-switch ABBA results and current faculty workflow, use [README](../README.md) and [demo.md](demo.md).
+
+
 **Recommended presentation: Replay.** It uses the real, validated Phase 3
 Mininet recording and saved forecasts. No Mininet, sudo, model training or
 Internet access is needed after the installed frontend dependencies are present.

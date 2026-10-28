@@ -1,197 +1,178 @@
+# FlowRider
 
-# FlowRider: AI-Driven SDN Traffic Control Engine
+FlowRider is a six-switch predictive SDN research project. An OS-Ken/OpenFlow
+1.3 controller compares static delay-weighted Dijkstra with routes weighted by
+saved Random Forest forecasts. A read-only React/Vite/Tailwind dashboard shows
+recorded measurements, controller decisions and actual forwarding evidence.
 
-FlowRider explores predictive congestion avoidance with a Random Forest model
-and delay-weighted Dijkstra routing. The simulation remains independent of the
-OS-Ken/OpenFlow 1.3 lab.
+## Fresh-clone dashboard setup
 
-## Faculty dashboard demo
-
-```bash
-cd ~/Flowrider
-bash scripts/start_demo.sh replay
-```
-
-Open **http://localhost:8080**. Click **Reset → Next event** to show a saved
-congestion warning and a calculated alternative route. Start/pause playback to
-explore the real Phase 3 recording. No Mininet or sudo is needed for replay.
-The amber route is **proposed only**; this dashboard does not install OpenFlow
-rules. Ctrl+C stops only the dashboard/API.
-
-See [the faculty review guide](docs/demo_review.md) for exact live commands,
-the three-minute script, source-file explanations, architecture and review
-questions. [Quick demo walkthrough](docs/demo.md).
-
-## Phase 2 SDN lab
-
-The lab has six OVS switches, seven inter-switch links, and six IPv4 hosts.
-The OS-Ken controller implements static topology awareness, explicit unicast
-paths, loop-safe broadcast, and route invalidation on switch/port changes.
-The Phase 2 startup command below leaves optional Phase 3 telemetry disabled.
-
-The project owner reports successful manual Phase 2 connection, connectivity,
-forwarding, failure/recovery, shaping and restart checks. Original automated
-evidence and the distinction between manual and automated live verification are
-preserved in the Phase 2 documentation.
-
-From `~/Flowrider`, start the controller in one terminal:
+Use Linux or WSL, Python **3.10+ with venv support**, and Node **22.12+** with npm.
+The replay dashboard needs only NetworkX; OS-Ken, Mininet, sudo and the original
+experiment/model folders are unnecessary.
 
 ```bash
-~/.pyenv/versions/3.10.16/bin/python -u controller.py \
-  --ofp-listen-host 127.0.0.1 --ofp-tcp-listen-port 6653
+git clone https://github.com/AbhinavAnnam/Flowrider.git
+cd Flowrider
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-demo.txt
+npm --prefix frontend ci
+bash scripts/start_demo.sh replay --port 8081
 ```
 
-Start the new topology in another terminal:
+Open **http://localhost:8081**. The launcher builds the frontend and starts one
+loopback API/server. Ctrl+C stops it. It uses `FLOWRIDER_PYTHON` when explicitly
+set, otherwise the repository `.venv/bin/python`, otherwise `python3` on PATH.
+It never starts a controller, Mininet, traffic, privileged commands or training.
+After installation, the recorded demonstration works offline.
+
+Both portable assets are tracked in Git:
+
+- `data/demo-dashboard/six-switch.json`: validated six-switch ABBA measurements,
+  route events, original timestamps, snapshot/counter evidence and Phase 5 recovery.
+- `data/demo-replay.sqlite`: the independent historical Phase 3 recording.
+
+No data preparation is needed after cloning. Missing or invalid assets produce
+unavailable/error messages; there are no substitute fixture measurements. Restore
+missing tracked files from Git. To select a different prepared package, pass
+`--evidence-package /path/to/package.json` to the launcher. The optional
+`scripts/prepare_dashboard_data.py` exporter is for maintainers with original
+raw evidence; it is not a demo prerequisite and refuses overwriting evidence.
+
+## Faculty walkthrough
+
+The six navigation sections are Overview, Network Topology, Predictive Routing,
+Link Failure & Recovery, Performance Comparison and Event Timeline.
+
+1. Inspect **Performance Comparison** and the four individual ABBA trials.
+2. Select predictive trial **02** or **03**. Inspect the original six-switch,
+   seven-link topology, S2–S5 measurements/forecasts and the existing 80% gate.
+3. Click **Next verified reroute**. It cycles through actual ML-triggered traffic
+   transitions, selects a matching installed-cookie snapshot, and highlights the
+   old/new paths. Event Timeline preserves the reason, exact version, activation
+   time and separate positive-counter evidence time. Each ML trial has two such
+   changes. Static baseline and amber recommendations remain distinct from the
+   green verified installed path.
+4. Open **Link Failure & Recovery**. Use **Before Failure**, **Link Down /
+   Rerouting**, and **Link Restored** to select real Phase 5 snapshots. Inspect
+   timestamps, epochs, down ports, affected h2→h5 path, invalidation, temporary
+   `[2,1,6,5]` route and restoration. The slider and event history remain available.
+5. Choose **Phase 3 replay** for its original Start/Pause/Reset/Next event controls.
+   Its calculated route previews do not prove installed packet paths. **Live** is
+   a separate read-only view requiring an active controller database; pass
+   `--live-db /path/to/live.sqlite` when starting the dashboard.
+
+See [the short presentation guide](docs/demo.md).
+
+## Verified six-switch results and limits
+
+Controlled Mininet ABBA order: baseline → predictive ML → predictive ML → baseline.
+Values below are **equal-weight means of two trials per mode**, derived from the
+portable validated evidence for `phase6c-20261028T151727708712Z`.
+
+| Metric | Static Dijkstra | Predictive ML |
+| --- | ---: | ---: |
+| Average RTT (ms) | 50.348 | 24.547 |
+| P95 RTT (ms) | 82.200 | 44.850 |
+| ICMP loss (%) | 4.889 | 0.000 |
+| Aggregate UDP goodput (Mbps) | 127.463 | 142.431 |
+| UDP loss (%) | 10.124 | 0.000 |
+| Congestion exposure (link-seconds) | 232.513 | 460.029 |
+
+**Congestion exposure increased under ML by 97.85%.** This unfavorable result
+remains visible. These are descriptive results from a small controlled study,
+not statistical significance, a general guarantee, or proof of advance-warning
+lead time. The P95 value is a mean of per-trial P95s, not a pooled percentile.
+
+Recorded proof is historical, never a claim that switches are currently active.
+A recommendation is separate from installation/readback; verified traffic changes
+require exact-cookie positive counters on every hop in the actual traffic
+direction. The real Phase 5 failure/restoration window has 52 retained snapshots
+and host connectivity checks. Positive per-hop counters for its temporary recovery
+routes were not retained, so those routes are labeled installed/rule-readback
+rather than independently verified packet forwarding.
+
+## Architecture
+
+- `topology_config.py`, `topology_state.py`: the original six switches, seven
+  links, host/port mapping and link-failure/recovery state.
+- `controller.py`, `predictive_routing.py`: loop-safe forwarding and versioned,
+  bidirectional OpenFlow installation, barriers, readback and counter audits.
+- `telemetry*.py`, `prediction.py`: five-second measurements, SQLite history and
+  causal +15-second RF forecasts. Existing weight: `D₀ × (1 + 25 × Û⁴)`; policy
+  retains the 80% gate, 10% improvement, two confirmations and 30-second cooldown.
+- `phase3.py`, `research_phase3.py`: preserved offline training/evaluation code.
+  No model training occurs during dashboard startup.
+- `dashboard_evidence.py`, `demo_data.py`, `demo_server.py`, `routing_state.py`:
+  portable evidence, Phase 3 replay and read-only live APIs (`/api/benchmark`,
+  `/api/state`, `/api/routing`). POST controls change only dashboard selection.
+- `frontend/src/`: existing React dashboard and charts. `main.py` and
+  `traffic_engine.py` retain the independent simulation.
+
+## Automated checks (no live Mininet)
+
+With the minimal dashboard environment:
 
 ```bash
-sudo /usr/bin/python3 mininet_topology.py
+python -m unittest discover -s tests -p 'test_demo*.py' -v
+python -m unittest discover -s tests -p test_dashboard_evidence.py -v
+npm --prefix frontend run test:unit
+npm --prefix frontend run build
+npx --prefix frontend playwright install chromium
+npm --prefix frontend test
 ```
 
-At the `mininet>` prompt:
+Playwright starts a temporary local API on port 18080 and uses the built frontend.
+Its faculty-workflow test uses the tracked evidence, including both verified ML
+transitions and the three recovery controls. Browser system libraries must be
+available; use your distribution's Playwright prerequisites if missing. An
+existing compatible Chromium can be selected with `PLAYWRIGHT_CHROMIUM_EXECUTABLE`.
 
-```text
-pingall
-h1 ping -c 3 h4
-link s2 s5 down
-h2 ping -c 3 h5
-link s2 s5 up
-h2 ping -c 3 h5
-exit
-```
-
-Stop any previous lab session first. The runner refuses existing `s1`–`s6`
-bridge/interface names and never calls global `mn -c`.
-
-Tests without root:
+For the **full controller/research regression suite**, use a compatible Python
+(tested with 3.10) and install the retained controller/scientific dependencies:
 
 ```bash
-~/.pyenv/versions/3.10.16/bin/python -m unittest discover -s tests -v
-/usr/bin/python3 -m unittest discover -s tests -p test_mininet_topology.py -v
+python -m pip install -r requirements.txt -r requirements-ml.txt 'scikit-learn==1.7.2'
+python -m unittest discover -s tests -q
 ```
 
-Opt-in live test, with the controller running and no interactive lab running:
+When Ubuntu's Mininet Python package is installed, cover the environment-specific
+unit checks separately; these use mocks and do not launch a lab:
 
 ```bash
-sudo /usr/bin/python3 tests/integration_phase2.py --repeat 2
+PYTHONPATH=tests /usr/bin/python3 -m unittest test_phase5_lifecycle test_mininet_topology test_phase6_smoke test_phase6c_collector -q
 ```
 
-See [Phase 2 architecture, setup, mapping, troubleshooting and limitations](docs/phase2.md)
-and the [captured validation results](docs/phase2-validation.txt).
+## Optional live lab
 
-## Dependencies and simulation
+Live execution additionally needs OVS, Mininet, `tc`, `ip`, `iperf3`, `ping`,
+authenticated sudo and no conflicting lab interfaces. Install OS-Ken from
+`requirements-controller.txt`; use `requirements-ml.txt` and **scikit-learn 1.7.2**
+for the original frozen RF artifact. That trusted model and full raw experiments
+are intentionally not bundled in Git. No retraining is needed for recorded replay.
 
-Use the existing Python 3.10 installation for OS-Ken. Ubuntu's Mininet uses
-`/usr/bin/python3`; it does not need OS-Ken or NetworkX installed in that Python.
-If missing, install only the controller's dependencies:
+In one terminal, using the controller/scientific environment:
 
 ```bash
-~/.pyenv/versions/3.10.16/bin/python -m pip install -r requirements-controller.txt
+python -u controller.py --ofp-listen-host 127.0.0.1 --ofp-tcp-listen-port 6653 \
+  --routing-mode baseline --telemetry-enabled --telemetry-db data/live.sqlite
 ```
 
-To run the independent simulation, install its existing dependencies and run:
+In another terminal, optionally launch the original topology:
 
 ```bash
-~/.pyenv/versions/3.10.16/bin/python -m pip install -r requirements.txt
-~/.pyenv/versions/3.10.16/bin/python main.py
+sudo /usr/bin/python3 mininet_topology.py --controller-port 6653
 ```
 
-No Ryu or Ubuntu `python3-os-ken` package is required. OS-Ken 4.2.2 has no
-manager CLI; `controller.py` starts it through `AppManager.run_apps()`.
+For predictive operation, use `--routing-mode predictive_ml` and
+`--telemetry-model /absolute/path/to/the/original/model.pkl`. The dashboard does
+not supply or start that model/controller. Stop the lab/controller separately;
+no automatic global network cleanup is performed by the dashboard.
 
-## Phase 3 telemetry and prediction
-
-Phase 3 adds opt-in five-second OpenFlow polling, directional utilization,
-session-separated SQLite history, timestamp-aligned +15 second Random Forest
-forecasts, persistence-baseline evaluation, and structured prediction inspection.
-Predictions never change forwarding rules or routing weights.
-
-```bash
-~/.pyenv/versions/3.10.16/bin/python -m pip install -r requirements-ml.txt
-~/.pyenv/versions/3.10.16/bin/python -u controller.py \
-  --ofp-listen-host 127.0.0.1 --ofp-tcp-listen-port 6653 \
-  --telemetry-enabled --telemetry-db data/telemetry.sqlite \
-  --telemetry-model models/live-rf.pkl
-```
-
-Start the existing topology in a second terminal. Without a trained live model,
-measurements are recorded and predictions report `model_not_ready`. After varied
-traffic collection, train offline; the running worker loads the artifact when
-it appears or changes:
-
-```bash
-~/.pyenv/versions/3.10.16/bin/python phase3.py train data/telemetry.sqlite --model models/live-rf.pkl
-~/.pyenv/versions/3.10.16/bin/python phase3.py inspect data/telemetry.sqlite
-```
-
-**Phase 3: COMPLETE WITH RESEARCH LIMITATIONS.** Four real Mininet sessions
-produced 3,516 valid measurements and 850 matched live forecasts. RF reduced
-live MAE/RMSE by 11.0%/13.2% versus persistence; congestion alert performance
-varied across independent sessions. Phase 2 forwarding/fault recovery passed,
-along with 89 distinct automated tests. Proactive routing benefits remain unproven.
-See [Phase 3 methodology, schema, traffic scenarios and live checks](docs/phase3.md).
-Actual results are retained in [the finalization report](docs/phase3-finalization.json),
-with presentation plots in [docs/phase3-results](docs/phase3-results).
-
-For a new independent experiment, use `bash scripts/run_phase3_research.sh` in an
-authenticated Ubuntu terminal. The existing verified run is
-`data/research-20261015T180515Z`; inspect its saved artifacts rather than rerunning it.
-
-## Phase 5 automatic predictive routing
-
-Automatic forwarding updates are now available with the opt-in
-`--predictive-routing --telemetry-enabled` controller flags. The controller
-uses fresh saved-model predictions, applies the existing weight equation,
-stages bidirectional versioned OpenFlow rules, and verifies flow-entry readback
-before marking a route installed. Default launches keep Phase 2 forwarding.
-The React dashboard retains calculated previews and now adds a live controller
-panel showing baseline, recommended, installed and observed OpenFlow routes,
-readback counters and routing events. SQLite snapshots, `routing_state.py`, and
-read-only `/api/routing` expose the same controller evidence.
-
-**Targeted Phase 5 live acceptance passed**, including real RF-selected h1→h4
-forwarding, initial/final 30/30 connectivity, 0% continuous ping loss, low-load
-recovery and scoped cleanup. Evidence: `data/phase5-20261023T091240Z/acceptance.json`.
-Saved full ten-stage acceptance also passed in
-`data/phase5-20261023T092150Z/acceptance.json`, including backbone recovery and
-scoped cleanup. These are preserved Phase 5 results, not live Phase 6 validation.
-See the [verification report, safety review and limitations](docs/phase5-manual-verification.md)
-and [Phase 5 routing details](docs/phase5.md). The next full validation command
-(in an authenticated terminal, with no conflicting lab names) is:
-
-```bash
-FLOWRIDER_SCENARIO=full bash scripts/run_phase5_validation.sh \
-  data/research-20261015T180515Z/evaluation/model.pkl
-```
-
-Use `FLOWRIDER_SCENARIO=targeted` only when repeating the already-passed shorter
-demonstration is needed. No matched latency, throughput or packet-loss improvement
-over baseline routing has been established.
-
-## Phase 6 static Dijkstra control mode
-
-Explicit `--routing-mode baseline` uses fixed `base_delay` weights through the
-same verified bidirectional forwarding engine as `--routing-mode predictive_ml`.
-Both collect telemetry and record trial/mode/topology metadata. Baseline ignores
-predictions for route selection while retaining audits, rule verification and
-topology recovery. No-mode launches and `--predictive-routing` remain compatible.
-
-See [exact controller/smoke commands, fair traffic plans and validation limits](docs/phase6-baseline.md).
-Live baseline validation still requires interactive sudo; no matched performance
-improvement is claimed and no model/topology/ML formula was changed.
-
-## Phase 6C controlled four-switch comparison
-
-Run the feasibility pair followed by the complete baseline/ML/ML/baseline
-benchmark, including collection, validation and graphs:
-
-```bash
-sudo /usr/bin/python3 scripts/run_phase6c.py --trials 4
-```
-
-The separately selected four-switch topology has 4 ms and 10 ms paths, a shared
-20 Mbps bottleneck, and a 100 Mbps alternative. Ordinary launches retain the
-six-switch topology. The saved RF and routing safety policy are unchanged.
-Live Phase 6C measurements are pending authenticated sudo; the 20 Mbps capacity
-is outside the model's recorded training range. No performance benefit is
-claimed. See [commands, methodology and output files](docs/phase6c/README.md),
-[current evidence](docs/phase6c/report.md), and [automated verification](docs/phase6c/validation.md).
+Historical methods and evidence remain in [Phase 2](docs/phase2.md),
+[Phase 3](docs/phase3.md), [Phase 5](docs/phase5.md),
+[Phase 6 baseline](docs/phase6-baseline.md), [Phase 6B](docs/phase6b/report.md),
+and [Phase 6C](docs/phase6c/README.md). Earlier documents describe the status at
+the time of those runs; the current faculty workflow and six-switch results are
+summarized here. Four-switch experiments and existing tests are preserved.

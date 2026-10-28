@@ -72,6 +72,37 @@ test('Phase 3 replay and read-only live mode retain their controls',async({page}
   await expect(page.getByText('LIVE · READ-ONLY NETWORK VIEW',{exact:true})).toBeVisible();
   await expect(page.getByText('LIVE · CONTROLLER READBACK',{exact:true})).toBeVisible();
   await expect(page.getByRole('button',{name:'Refresh live',exact:true})).toBeVisible();
+  await page.setViewportSize({width:320,height:1000});
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   await page.getByRole('button',{name:'Benchmark',exact:true}).click();
   await expect(page.getByRole('heading',{name:'Benchmark data unavailable'})).toBeVisible();
+});
+
+test('faculty workflow uses the tracked ABBA package and actual recovery snapshots',async({page,request})=>{
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const evidence=await (await request.get('/api/benchmark')).json();
+  expect(evidence.status).toBe('available');
+  await page.goto('/');
+  await expect(page.getByRole('heading',{name:'Performance comparison',exact:true})).toBeVisible();
+  await page.getByLabel('Recorded trial').selectOption('2');
+  const changes=evidence.trials[1].events.filter(e=>e.forwarding_evidence&&e.reason==='predicted_congestion');
+  for(const event of changes){
+    await page.getByRole('button',{name:'Next verified reroute',exact:true}).click();
+    await expect(page.getByTestId('selected-event')).toContainText(event.cookie_hex);
+    await expect(page.getByTestId('selected-event')).toContainText('Positive counters on every hop');
+    await expect(page.locator('#network .verified-path')).toHaveCount(event.path.length-1);
+  }
+  await page.getByRole('link',{name:'Link Failure & Recovery',exact:true}).click();
+  await page.getByRole('button',{name:'Before Failure',exact:true}).click();
+  await expect(page.getByTestId('recovery-topology').locator('[data-link="s2-s5"]')).toHaveAttribute('data-state','active');
+  await page.getByRole('button',{name:'Link Down / Rerouting',exact:true}).click();
+  await expect(page.getByTestId('recovery-topology').locator('[data-link="s2-s5"]')).toHaveAttribute('data-state','inactive');
+  await expect(page.locator('#recovery')).toContainText('s2 → s1 → s6 → s5');
+  await expect(page.locator('#recovery')).toContainText('Topology epoch');
+  await page.getByRole('button',{name:'Link Restored',exact:true}).click();
+  await expect(page.getByTestId('recovery-topology').locator('[data-link="s2-s5"]')).toHaveAttribute('data-state','recovered');
+  await expect(page.locator('#recovery')).toContainText('not labeled verified');
+  await page.getByRole('button',{name:'Phase 3 replay',exact:true}).click();
+  await expect(page.getByRole('button',{name:'Start replay',exact:true})).toBeVisible();
+  expect(errors).toEqual([]);
 });

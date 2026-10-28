@@ -10,6 +10,7 @@ page.on('pageerror',error=>errors.push(error.message));
 page.on('console',message=>{if(message.type()==='error')errors.push(message.text());});
 try {
   await page.goto(base);
+  await page.getByRole('button',{name:'Phase 3 replay',exact:true}).click();
   await page.getByRole('heading',{name:'A clearer view of your network.'}).waitFor();
   assert.equal(await page.locator('.switch-node').count(),6);
   assert.equal(await page.locator('.link-label').count(),7);

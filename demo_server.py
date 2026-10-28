@@ -12,8 +12,7 @@ from routing_state import read_routing_state,routing_json
 from dashboard_evidence import load_package
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT_REPLAY = (ROOT/'data/demo-replay.sqlite' if (ROOT/'data/demo-replay.sqlite').exists()
-                  else ROOT/'data/research-20261015T180515Z/inference-71.sqlite')
+DEFAULT_REPLAY = ROOT/'data/demo-replay.sqlite'
 
 
 def handler_for(demo, assets, evidence=None):

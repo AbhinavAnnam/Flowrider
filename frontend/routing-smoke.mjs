@@ -25,6 +25,7 @@ try {
       snapshot:{routes:[record]},events:[{sequence:1,timestamp:new Date().toISOString(),route_id:'test-pair',kind:'route_activated',reason:'predicted_congestion'}]}});
   });
   await page.goto(base);
+  await page.getByRole('button',{name:'Live',exact:true}).click();
   const panel=page.getByRole('region',{name:'Controller forwarding'});
   await panel.getByText('Positive counters at every hop for the installed cookie',{exact:false}).waitFor();
   assert.match(await panel.innerText(),/s1 → s6 → s5 → s4/);

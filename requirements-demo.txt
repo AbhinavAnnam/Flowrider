@@ -1,0 +1,2 @@
+# Recorded dashboard only: no OS-Ken, Mininet, inference or training required.
+networkx>=3.0,<4.0
